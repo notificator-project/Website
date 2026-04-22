@@ -1,0 +1,65 @@
+---
+import { getCollection } from "astro:content";
+import type { AstroSeoProps } from "@astrolib/seo";
+import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection("posts");
+
+	return blogEntries
+		.map((entry) => {
+			const [lang, ...slug] = entry.slug.split("/");
+			return { params: { lang, slug: slug.join("/") || undefined }, props: entry };
+		})
+		.filter((entry) => entry.params.lang === "en");
+}
+
+const entry = Astro.props;
+
+// slug without the `en/` prefix
+const cleanSlug = entry.slug.replace(/^en\//, "");
+
+// Build absolute URLs
+const canonicalUrl = new URL(`/blog/${cleanSlug}/`, Astro.site).href;
+
+// If entry.data.image.source is ImageMetadata (Astro images), it has .src
+const ogImageMeta = entry.data.image?.source;
+const ogImageUrl = ogImageMeta ? new URL(ogImageMeta.src, Astro.site).href : undefined;
+
+const { Content } = await entry.render();
+
+const seo: AstroSeoProps = {
+	title: entry.data.title,
+	description: entry.data.description,
+	canonical: canonicalUrl,
+
+	openGraph: {
+		url: canonicalUrl, // MUST be absolute
+		title: entry.data.title,
+		description: entry.data.description,
+		type: "article",
+		images: ogImageUrl
+			? [
+					{
+						url: ogImageUrl, // MUST be absolute
+						width: 1200,
+						height: 630,
+						alt: entry.data.image?.alt ?? entry.data.title,
+						type: "image/jpeg",
+					},
+				]
+			: [],
+		site_name: "Notificator Project",
+	},
+
+	twitter: {
+		handle: "@WP_Notificator",
+		site: "@WP_Notificator",
+		cardType: "summary_large_image",
+	},
+};
+---
+
+<MarkdownPostLayout frontmatter={entry.data} body={entry.body} seo={seo}>
+	<Content />
+</MarkdownPostLayout>

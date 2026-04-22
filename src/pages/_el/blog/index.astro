@@ -1,0 +1,46 @@
+---
+import type { AstroSeoProps } from "@astrolib/seo";
+import Articles from "@components/blog/Articles.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const seo: AstroSeoProps = {
+	title: "Notificator Project Blog: Project Updates, Releases, and Product Insights",
+	description:
+		"Read the official Notificator Project blog for product announcements, release notes, development updates, and technical insights about the project.",
+	canonical: "https://notificator-project.com/el/blog/",
+	openGraph: {
+		url: "https://notificator-project.com/el/blog/",
+		title: "Notificator Project Blog: Development Stories and Project Progress",
+		description:
+			"Stay updated on new features, improvements, and milestones with blog posts focused entirely on the Notificator Project project.",
+		images: [
+			{
+				url: "https://notificator-project.com/opengraph/social-og.jpg",
+				width: 1200,
+				height: 630,
+				alt: "Social open graph image of Notificator Project Blog",
+				type: "image/jpeg",
+			},
+			{
+				url: "https://notificator-project.com/opengraph/twitter-og.jpg",
+				width: 4096,
+				height: 4096,
+				alt: "Twitter open graph image of Notificator Project Blog",
+				type: "image/jpeg",
+			},
+			{ url: "https://notificator-project.com/opengraph/social-og.jpg" },
+			{ url: "https://notificator-project.com/opengraph/twitter-og.jpg" },
+		],
+		site_name: "Notificator Project",
+	},
+	twitter: {
+		handle: "@mintakastudio",
+		site: "@mintakastudio",
+		cardType: "summary_large_image",
+	},
+};
+---
+
+<BaseLayout seo={seo}>
+	<Articles />
+</BaseLayout>

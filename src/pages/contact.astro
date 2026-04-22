@@ -1,0 +1,16 @@
+---
+import Contact from "@/components/forms/Contact.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Contact Notificator Project: Get in Touch !",
+	description:
+		"Reach out to Notificator Project",
+	canonical: "https://notificator-project.com/contact/",
+};
+---
+
+<BaseLayout seo={seo}>
+	<Contact />
+</BaseLayout>

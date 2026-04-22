@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://notificator-project.com/sitemap-index.xml
