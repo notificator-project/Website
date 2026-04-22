@@ -1,0 +1,184 @@
+---
+pubDate: 2026-04-23
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "Open Release Phase"
+description: "Final Early Access devices are now in testers' hands. You can now join the Notificator Project testing phase using the mobile app and WordPress plugin."
+image: 
+    source: "@assets/images/blog/update.png"
+    alt: "Notificator Project testing phase with mobile app and IoT devices"
+tags: ["Notificator Project", "Open Release", "Testing"]
+---
+
+## **Testing Phase Expansion**
+
+The final batch of Early Access devices is now in the hands of testers.
+
+This marks a key milestone for the Notificator Project.  
+Hardware is now being validated in real-world environments, alongside a platform that is stable enough to support broader testing.
+
+You can now join the testing phase using the **mobile app** and the **WordPress plugin**, without needing a physical device.
+
+---
+
+## **Join Testing (App & Plugin)**
+
+Testing access is now open through the official app builds:
+
+- iOS (TestFlight): https://testflight.apple.com/join/gqckJS1c
+- Android (Internal Testing): https://play.google.com/apps/internaltest/4701127134114365289
+
+You can install the app, connect your WordPress site, and immediately start working with real notifications, scenarios, and triggers.
+
+The **hardware remains optional**, and the full system can be tested entirely in software.
+
+---
+
+## **Download the WordPress Plugin**
+
+You can download the latest Early Access version of the plugin directly from GitHub:
+
+👉 https://github.com/notificator-project/WordPress-Plugin/releases/download/v1.1.0-beta.2/notificator-companion-1.1.0-beta.2.zip
+
+Install it on your WordPress site, connect it with the mobile app, and start testing the full notification flow.
+
+---
+
+## **Open Development & Documentation**
+
+The Notificator Project is built as an open ecosystem.
+
+- GitHub Organization: https://github.com/notificator-project
+- Documentation: https://docs.notificator-project.com
+
+The documentation site includes setup guides, API references, and integration examples.
+
+---
+
+## **Core Repositories**
+
+Development is organized into focused, purpose-driven repositories:
+
+- [`/WordPress-Plugin`](https://github.com/notificator-project/WordPress-Plugin)  
+  Scenario-based monitoring for WordPress, built around hook scanning and rule-driven notifications.
+
+- [`/docs`](https://github.com/notificator-project/docs)  
+  Documentation source and technical references.
+
+- [`/IoT-Firmware-Early-Access`](https://github.com/notificator-project/IoT-Firmware-Early-Access)  
+  Firmware used in Early Access devices, built for ESP32-based hardware.
+
+- [`/API`](https://github.com/notificator-project/API)  
+  Public notification ingestion service for external systems.
+
+---
+
+## **Scenario-Based Monitoring**
+
+The WordPress plugin introduces a structured monitoring model:
+
+- Hook scanning across WordPress core and plugins
+- Scenario-based rules with reusable templates
+- Condition operators `( =, !=, >, <, contains )`
+- Severity levels (info, warning, critical)
+- Dynamic placeholders (e.g. `{{order.total}}`)
+
+This allows you to define not just when events trigger, but how they are interpreted and delivered.
+
+---
+
+## **Public API & Notification Pipeline**
+
+The Notificator Public API acts as the central ingestion layer for notifications.
+
+It is designed for external systems that need a reliable way to deliver events into the Notificator ecosystem.
+
+Core responsibilities:
+
+- Accept notifications over HTTP
+- Validate API keys and domain restrictions
+- Normalize incoming payloads from different webhook formats
+- Store notifications securely (encrypted at rest)
+- Deliver push notifications to mobile devices
+- Publish MQTT messages to connected IoT devices (optional)
+
+The API supports flexible delivery behavior:
+
+- Default mode returns success even if MQTT delivery fails (with warning metadata)
+- Strict delivery mode can enforce full delivery guarantees
+
+This makes it suitable for both lightweight integrations and more critical, production-grade workflows.
+
+---
+
+## **Send Notifications from Anywhere**
+
+Using the public API, notifications can originate from virtually any system:
+
+- Custom backends
+- SaaS platforms
+- Monitoring tools
+- Automation pipelines
+
+With a simple request, events flow through validation, storage, and delivery layers before reaching users and devices in real time.
+
+---
+
+## **Follow the Project**
+
+You can follow development updates, demos, and hardware previews on the official YouTube channel:
+
+- YouTube: https://www.youtube.com/@NotificatorProject
+- GitHub: https://github.com/notificator-project
+- X: https://x.com/wp_notificator
+
+---
+
+# **Detailed Platform Overview**
+
+## **WordPress Plugin**
+
+- Hook scanner for WordPress core and plugins
+- Scenario Builder with conditions and templates
+- Multi-key API configuration with signed requests
+- Notification logging with export (CSV) and filtering
+- JSON import/export for scenarios
+- Optional background scans via WP-Cron
+
+---
+
+## **Mobile App ( iOS & Android )**
+
+- Real-time push notifications and in-app notification center
+- Multi-account support with secure authentication
+- Device pairing and management
+- Notification history and interaction actions
+- Designed for both standalone use and hardware pairing
+
+---
+
+## **IoT Devices (Early Access)**
+
+The Early Access devices are built around a compact ESP32-C3 platform with a focus on low-latency, glanceable notifications.
+
+- MQTT-based message delivery
+- OLED display (SSD1306 128x64) for message rendering
+- Local message history stored on-device (ring buffer)
+- Interaction via physical button and capacitive touch sensor
+
+Devices support gesture-based navigation, on-device message management, and a Wi-Fi setup portal for provisioning.
+
+The firmware is published for transparency and extensibility, allowing developers to adapt it to their own hardware setups.
+
+---
+
+The Notificator Project continues to evolve through real usage, feedback, and open collaboration.
+
+It's not e perfect but it's a significant step forward in creating a flexible, user-friendly notification ecosystem.
+
+You can start testing today, with or without hardware.
+
+Free.  
+Open.  
+Extensible.
