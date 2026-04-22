@@ -17,7 +17,7 @@ const translatePath = useTranslatedPath(lang);
 		<form 
   name="contact"
   method="POST"
-      action={translatePath("/thank-you/")}
+      action={translatePath("/contact/")}
   data-netlify="true"
   class="mx-auto max-w-2xl pt-12 lg:pt-20"
 >
@@ -44,7 +44,6 @@ const translatePath = useTranslatedPath(lang);
     <div class="flex gap-x-4 sm:col-span-2">
       <label class="text-sm leading-6 text-gray-600" id="switch-1-label">
         {t("contact.agree")}
-        <a href="/privacy" class="font-semibold text-slate-800">privacy policy</a>.
       </label>
     </div>
   </div>

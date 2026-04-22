@@ -9,7 +9,7 @@ const translatePath = useTranslatedPath(lang);
 
 <div class:list={["relative mt-8 h-20 max-w-[30rem] leading-6 lg:max-w-[35rem]", className]}>
 	<div class="origin-left-center squircle-bg-light absolute h-full w-full scale-100 transform rounded-xl bg-slate-200"></div>
-	<form class="h-full" method="POST" action={translatePath("/thank-you/")} name="newsletter" data-netlify="true" netlify>
+	<form class="h-full" method="POST" action={translatePath("/blog/")} name="newsletter" data-netlify="true" netlify>
 		<input type="hidden" name="form-name" value="newsletter"/>
 		<label for="email" class="sr-only">{t("footer.yourmail")}</label>
 		<input
