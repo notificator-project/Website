@@ -155,3 +155,9 @@ html {
 	background: #fff;
 	mask-image: paint(squircle);
 }
+
+@media (max-width: 767px) {
+	.text-5xl {
+		font-size: 2.5rem;
+	}
+}
