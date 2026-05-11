@@ -1,0 +1,330 @@
+---
+pubDate: 2026-05-11
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "Matter Device Support & Mobile App Improvements"
+description: "The Notificator Project ecosystem now includes Matter-enabled devices, improved mobile onboarding, MQTT + Matter firmware hardening, and major reliability improvements across the platform."
+image: 
+    source: "@assets/images/blog/matter-firmware-update.png"
+    alt: "Notificator Project Matter firmware and mobile app update"
+tags: ["Notificator Project", "Matter", "ESP32-C3", "MQTT", "Mobile App"]
+---
+
+## **Matter Support Arrives in the Notificator Project Ecosystem**
+
+The Notificator Project ecosystem continues evolving beyond traditional notifications and deeper into smart-home and physical-device integrations.
+
+This update introduces:
+
+- **Matter-enabled device support**
+- **A new firmware architecture for ESP32-C3 devices**
+- **Major mobile app onboarding improvements**
+- **Reliability and memory optimizations**
+- **Improved Android UI behavior**
+- **Faster notification refresh handling**
+
+The goal remains the same:
+
+Deliver notifications where they are actually useful — not just inside dashboards ( we do that as well ).
+
+---
+
+# **Expanding Beyond Mobile Notifications**
+
+Notificator Project already supports:
+
+- WordPress-based notification flows
+- Mobile push notifications
+- In-app notification management
+- MQTT-enabled physical devices
+
+With this release, the ecosystem now expands into Matter-compatible smart-home environments.
+
+This allows notifications to participate directly in:
+
+- Home automations
+- Smart lighting scenes
+- Physical alert systems
+- Context-aware smart-home workflows
+
+The platform is gradually evolving into a broader notification and automation ecosystem rather than a traditional alert-only system.
+
+---
+
+# **New Matter Device Support**
+
+The mobile app now supports a dedicated Matter device type during onboarding and setup.
+
+Matter devices behave differently from existing Early Access MQTT devices, so the setup experience was redesigned to become capability-aware.
+
+The app dynamically adapts based on the selected device type and only displays controls relevant to that hardware.
+
+---
+
+## **Capability-aware Setup Flow**
+
+Matter devices now automatically hide unsupported functionality.
+
+Examples include:
+
+- OTA update actions
+- Message-clearing controls
+- Weather/idle-related fields
+- Device-specific management actions
+
+This keeps onboarding significantly cleaner and easier to understand.
+
+The app also now includes dedicated Matter icons throughout the interface for easier device identification and management.
+
+---
+
+# **The ESP32-C3 Challenge**
+
+One of the most interesting parts of this release wasn’t the UI.
+
+It was getting Matter, BLE, TLS, MQTT, Wi-Fi, and real-time notification handling to coexist reliably on an ESP32-C3.
+
+On paper, it sounds manageable.
+
+In reality, every byte starts mattering very quickly.
+
+The firmware now powers a surprisingly complex stack:
+
+- Matter endpoints
+- BLE commissioning
+- MQTT over TLS
+- Wi-Fi transport
+- Real-time notification processing
+- Home ecosystem interoperability
+- Runtime reconnect management
+
+All running inside a constrained embedded environment.
+
+This release involved a huge amount of iteration around reliability, heap pressure, transport behavior, and reconnect discipline.
+
+---
+
+# **Matter + MQTT Notification Bridge**
+
+At the core of the firmware is a Matter-aware MQTT bridge.
+
+The device listens for MQTT events and exposes them into Matter ecosystems using dedicated virtual switch endpoints.
+
+Current severity mappings include:
+
+- `info`
+- `warning`
+- `critical`
+
+Each severity maps to its own Matter endpoint to make Home automations cleaner and more predictable.
+
+This allows users to create automations like:
+
+- Flashing lights for critical events
+- Smart-home alerts for warnings
+- Physical indicators for operational notifications
+
+The goal was simplicity and reliability rather than over-engineering the automation model.
+
+---
+
+# **Reliability First**
+
+Early firmware iterations exposed several real-world issues:
+
+- TLS allocation failures
+- PacketBuffer exhaustion
+- CASE session instability
+- Wi-Fi roaming interruptions
+- mDNS churn
+- Reconnect storms
+
+The firmware architecture had to evolve significantly to stabilize runtime behavior.
+
+---
+
+## **Commissioning-aware MQTT Lifecycle**
+
+One major improvement was separating MQTT behavior from Matter commissioning.
+
+During commissioning:
+
+- MQTT connections pause
+- TLS reconnect logic is deferred
+- Runtime reconnect loops are suspended
+
+This prevents BLE commissioning and TLS negotiation from competing for memory and networking resources.
+
+That separation alone dramatically improved setup stability.
+
+---
+
+## **Memory Optimization Passes**
+
+A large part of development became a constant balancing act around RAM usage.
+
+Several important optimizations were introduced:
+
+- Fixed-size buffers
+- Lightweight plain-text parsing
+- Reduced TLS buffer sizes
+- Heap-backed Matter packet allocation
+- Removal of unnecessary runtime services
+- Reduced allocation-heavy patterns
+
+JSON-heavy parsing paths were intentionally removed from the notification flow to reduce fragmentation and runtime allocation pressure.
+
+The result was a much more stable system under long-running real-world conditions.
+
+---
+
+## **TLS and Reconnect Hardening**
+
+The MQTT/TLS stack also received extensive hardening.
+
+The firmware now includes:
+
+- Heap budget validation before TLS connection attempts
+- Largest free-block checks
+- Controlled reconnect cooldowns
+- Exponential retry backoff
+- Controlled MQTT restart flows
+- Forced reinitialization paths after severe allocation failures
+
+These changes dramatically improved reconnect reliability on constrained hardware.
+
+---
+
+# **Networking Lessons Learned**
+
+One major takeaway from this firmware cycle is that transport reliability matters just as much as application logic.
+
+Real-world Wi-Fi instability can affect:
+
+- Matter subscriptions
+- CASE sessions
+- mDNS discovery
+- Automation responsiveness
+
+Interestingly, MQTT delivery may still continue functioning while Matter automation propagation temporarily degrades.
+
+That became one of the biggest lessons throughout development:
+
+Reliable IoT systems are as much about networking behavior as application architecture.
+
+---
+
+# **And Then You Open the Mobile App**
+
+One funny contrast throughout this entire process was switching between firmware work and mobile app development.
+
+On the ESP32-C3:
+
+- Every allocation matters
+- Every TLS buffer matters
+- Every reconnect strategy matters
+- Every service competes for RAM
+
+Then you move back to the mobile app and suddenly you have effectively unlimited resources by comparison.
+
+After spending hours optimizing heap usage and reconnect logic on embedded hardware, it honestly feels luxurious returning to modern mobile environments where complex UI interactions, animations, caching layers, and large data structures are almost effortless.
+
+That contrast became one of the most enjoyable parts of working on the ecosystem as a whole.
+
+---
+
+# **Mobile App Improvements**
+
+The mobile app also received several important updates alongside the firmware release.
+
+## **Faster Notification Refresh**
+
+Notification refresh behavior was improved when reopening the app from:
+
+- Background state
+- Closed state
+- Push notification opens
+
+Recent notifications now appear significantly faster across both:
+
+- Home dashboard views
+- Notification history screens
+
+---
+
+## **Android UI & Modal Improvements**
+
+Another major focus area was Android modal behavior.
+
+Several spacing and layout fixes were introduced to improve compatibility with:
+
+- Gesture navigation
+- 3-button navigation systems
+- Bottom system controls
+
+The update improves:
+
+- Button visibility
+- Tap accessibility
+- Footer spacing consistency
+- Modal usability across different Android devices
+
+Special thanks to community testers who helped identify and validate these edge cases during testing.
+
+---
+
+# **Where the Ecosystem Is Heading**
+
+The Notificator Project ecosystem is gradually becoming a unified platform connecting:
+
+- WordPress events
+- Mobile notifications
+- MQTT infrastructure
+- Matter-compatible smart homes
+- Open-source hardware
+- Automation workflows
+
+The long-term goal is flexibility.
+
+Users should be able to choose how and where notifications appear:
+
+- Inside WordPress
+- On mobile devices
+- Through physical indicators
+- Inside Home automations
+- Across custom integrations and workflows
+
+**The Matter firmware shown in this update will soon become publicly available for free.**
+
+**Anyone with a compatible ESP32-C3 board will be able to install the firmware directly using the upcoming web installer without needing to manually build or flash the project themselves.**
+
+**This is an important step toward making the ecosystem more accessible to developers, makers, and home automation enthusiasts who want to experiment with Matter-enabled notification devices using inexpensive hardware.**
+
+At the same time, the hardware ecosystem continues expanding.
+
+Two additional firmware variants are already close to release:
+
+- A **portable Notificator device** featuring a small touchscreen display and integrated battery for portable notifications and monitoring
+- A **thermal printer Notificator device** capable of printing notifications, logs, alerts, and automation events in real time
+
+The goal is not to build a single device.
+
+The goal is to build a flexible notification ecosystem where users can choose the form factor and delivery experience that best fits their workflow.
+
+---
+
+The Notificator Project ecosystem continues evolving across:
+
+- **WordPress integrations**
+- **Mobile applications**
+- **Open-source firmware**
+- **Matter-enabled IoT devices**
+- **Portable notification hardware**
+- **Thermal printer integrations**
+- **Automation tooling**
+- **Notification infrastructure**
+
+Free.  
+Open.  
+Extensible.
