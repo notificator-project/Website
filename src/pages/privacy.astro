@@ -1,0 +1,515 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Notificator Privacy Policy",
+	description: "Learn how Notificator handles account, notification, device, website, and support data across its apps and services.",
+	canonical: "https://notificator-project.com/privacy/",
+	openGraph: {
+		url: "https://notificator-project.com/privacy/",
+		title: "Notificator Privacy Policy",
+		description: "How Notificator collects, uses, protects, and deletes data across its apps and services.",
+	},
+};
+
+const policySections = [
+	{ href: "#scope", label: "Scope" },
+	{ href: "#data-we-handle", label: "Data we handle" },
+	{ href: "#how-we-use-data", label: "How we use data" },
+	{ href: "#sharing", label: "Service providers" },
+	{ href: "#security", label: "Security" },
+	{ href: "#retention", label: "Retention" },
+	{ href: "#privacy-choices", label: "Your choices" },
+	{ href: "#account-deletion", label: "Account deletion" },
+	{ href: "#contact", label: "Contact" },
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="privacy-hero section-space">
+		<div class="site-shell privacy-hero-layout">
+			<div>
+				<p class="eyebrow">Privacy at Notificator</p>
+				<h1 class="display-title">Your alerts are useful because they are yours.</h1>
+				<p class="section-copy">
+					This policy explains what information Notificator handles, why it is needed, how it is protected, and the choices available to you
+					across the mobile apps, WordPress plugin, API, website, and compatible devices.
+				</p>
+			</div>
+
+			<div class="policy-summary" aria-label="Privacy policy summary">
+				<div><span>Effective</span><strong>21 July 2026</strong></div>
+				<div><span>Advertising</span><strong>None</strong></div>
+				<div><span>Data sales</span><strong>We do not sell personal data</strong></div>
+				<div><span>Contact</span><a href="mailto:hello@notificator-project.com">hello@notificator-project.com</a></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="privacy-content section-space">
+		<div class="site-shell policy-layout">
+			<aside class="policy-navigation" aria-label="Privacy policy sections">
+				<strong>On this page</strong>
+				<nav>
+					{policySections.map((section) => <a href={section.href}>{section.label}</a>)}
+				</nav>
+			</aside>
+
+			<article class="policy-copy">
+				<section id="scope">
+					<p class="section-number">01</p>
+					<h2>Who this policy covers</h2>
+					<p>
+						This policy applies to Notificator, including the Notificator mobile applications for iOS and Android, the Notificator
+						WordPress plugin, the Notificator API and notification infrastructure, compatible Notificator devices and firmware, and the
+						website at notificator-project.com.
+					</p>
+					<p>
+						Notificator is an independent open-source project operated by Vagelis Papaioannou (“Notificator”, “we”, “us”, or “our”).
+						Questions about this policy or your data can be sent to <a href="mailto:hello@notificator-project.com">
+							hello@notificator-project.com
+						</a>.
+					</p>
+				</section>
+
+				<section id="data-we-handle">
+					<p class="section-number">02</p>
+					<h2>Information we handle</h2>
+					<h3>Account and profile information</h3>
+					<p>
+						When you create an account, we process your email address, authentication information, account identifier, and security
+						settings such as two-factor authentication. You may also choose to provide profile details such as your name, phone number,
+						and notification preferences. Password authentication is handled by our authentication provider; we do not receive your
+						password in readable form.
+					</p>
+
+					<h3>Notification and integration information</h3>
+					<p>
+						We process the information needed to route an alert, which may include its title, message, category, source, event name,
+						timestamp, website or integration name, and event details supplied by you or your connected service. API-key records, allowed
+						domains, delivery preferences, and related configuration are also stored so integrations can authenticate and deliver alerts.
+					</p>
+					<div class="policy-callout">
+						<strong>Keep event payloads focused.</strong>
+						<p>
+							You control the content sent by your WordPress site and other integrations. Avoid including passwords, access tokens,
+							payment details, health information, or other sensitive personal data in notification titles, messages, or event
+							arguments.
+						</p>
+					</div>
+
+					<h3>App and push-delivery information</h3>
+					<p>
+						To deliver mobile notifications, we process push tokens, device platform, app registration status, notification permission
+						state, and associated account identifiers. The app also stores necessary information locally, including your signed-in
+						session, encryption material, preferences, and cached notifications and device information. Sensitive encryption material is
+						stored using the operating system’s secure-storage facilities when available.
+					</p>
+
+					<h3>Device information</h3>
+					<p>
+						If you connect a compatible device, we may process its identifier, name, type, active or paused state, firmware version and
+						update status, connection details, command results, and operational telemetry. Location information is processed only when you
+						deliberately provide coordinates, a city, or a time zone for a device feature such as weather display; the mobile app does not
+						request continuous location access.
+					</p>
+
+					<h3>Website, newsletter, and support information</h3>
+					<p>
+						When you subscribe to project updates or contact us, we process the information you submit, such as your name, email address,
+						company or project, and message. If you report a problem, we also process any diagnostic details you choose to provide. Our
+						hosting providers may process routine network information, such as IP address, browser or device type, request time, and
+						requested page, for delivery, reliability, and security logs.
+					</p>
+
+					<h3>Information we do not use for advertising</h3>
+					<p>
+						Notificator does not contain third-party advertising SDKs, does not sell personal data, and does not use your information for
+						cross-app or cross-site advertising tracking. The website does not currently use advertising cookies or behavioral analytics
+						tools.
+					</p>
+				</section>
+
+				<section id="how-we-use-data">
+					<p class="section-number">03</p>
+					<h2>How and why we use information</h2>
+					<p>We use information only as reasonably necessary to:</p>
+					<ul>
+						<li>Create, authenticate, secure, and support your account.</li>
+						<li>Receive, encrypt, synchronize, display, and deliver the alerts you configure.</li>
+						<li>Connect WordPress sites, API integrations, mobile apps, and compatible devices.</li>
+						<li>Manage API keys, delivery channels, preferences, devices, and firmware operations.</li>
+						<li>Send service messages, password resets, security notices, or opted-in project updates.</li>
+						<li>Respond to support requests, diagnose failures, prevent abuse, and protect the service.</li>
+						<li>Maintain, improve, and comply with legal obligations applicable to the project.</li>
+					</ul>
+					<p>
+						Where privacy law requires a legal basis, we generally rely on performing the service you requested, our legitimate interests
+						in operating and securing it, your consent for optional communications or permissions, and compliance with legal obligations.
+						You may withdraw consent for optional processing at any time, without affecting processing that already occurred lawfully.
+					</p>
+				</section>
+
+				<section id="sharing">
+					<p class="section-number">04</p>
+					<h2>Service providers and disclosures</h2>
+					<p>
+						We share information only when required to operate a feature, protect the service, comply with law, or follow your direction.
+						Key providers include:
+					</p>
+					<ul>
+						<li>
+							<a href="https://supabase.com/privacy" target="_blank" rel="noreferrer">Supabase</a> for authentication, account records, and
+							database services.
+						</li>
+						<li>
+							<a href="https://expo.dev/privacy" target="_blank" rel="noreferrer">Expo</a> and the Apple or Google push services for mobile
+							notification delivery.
+						</li>
+						<li>
+							<a href="https://www.netlify.com/privacy/" target="_blank" rel="noreferrer">Netlify</a> for website, form, and API hosting.
+						</li>
+						<li>
+							Email-delivery providers for password recovery, requested email notifications, support replies, and newsletter messages.
+						</li>
+						<li>MQTT and connected-device infrastructure when you enable those delivery channels.</li>
+					</ul>
+					<p>
+						These providers may process information in countries other than yours under their own terms and privacy commitments. We may
+						also disclose information when legally required, to investigate fraud or security threats, or to protect users and the
+						project. Public GitHub issues are visible to everyone, so do not post personal data or secrets there.
+					</p>
+				</section>
+
+				<section id="security">
+					<p class="section-number">05</p>
+					<h2>How we protect information</h2>
+					<p>
+						We use encrypted network connections, access controls, scoped authentication, request validation, and other reasonable
+						safeguards. Notification history synchronized through the service is designed to be encrypted using your account’s public key
+						before database storage. Incoming event data must still be processed temporarily to route the notification, and email delivery
+						necessarily exposes the email content to the selected email provider.
+					</p>
+					<p>
+						No system can guarantee absolute security. Protect your account, enable two-factor authentication where available, keep API
+						keys secret, restrict their allowed domains, and revoke any credential you believe has been exposed. Please report suspected
+						security issues privately through our
+						<a href="/contact/">contact form</a> rather than a public issue.
+					</p>
+				</section>
+
+				<section id="retention">
+					<p class="section-number">06</p>
+					<h2>Retention</h2>
+					<p>
+						Account-linked information is generally retained while your account is active or while it is needed to provide the service.
+						You can remove notifications, devices, and API keys using available controls. Support messages and operational or security
+						logs are retained only as long as reasonably needed for the request, reliability, abuse prevention, dispute resolution, or
+						legal obligations.
+					</p>
+					<p>
+						When an account-deletion request is completed, account-linked records are deleted or anonymized unless limited retention is
+						required for security, fraud prevention, legal compliance, or backup recovery. Data may remain temporarily in protected
+						backups until those backups rotate out of use.
+					</p>
+				</section>
+
+				<section id="privacy-choices">
+					<p class="section-number">07</p>
+					<h2>Your privacy choices and rights</h2>
+					<p>
+						Depending on where you live, you may have rights to access, correct, delete, restrict, object to, or receive a copy of your
+						personal information.
+					</p>
+					<ul>
+						<li>Update profile information and notification preferences in the app.</li>
+						<li>Allow or disable push notifications in your operating-system settings.</li>
+						<li>Disable email delivery, API keys, devices, or individual WordPress delivery channels.</li>
+						<li>Delete stored notification history, devices, and API keys using available app controls.</li>
+						<li>Unsubscribe from project newsletters using the link in the message or by contacting us.</li>
+						<li>Request access, correction, export, or deletion by emailing us from the address associated with your account.</li>
+					</ul>
+					<p>
+						We may need to verify your identity before completing a request. You may also have the right to complain to your local
+						data-protection authority.
+					</p>
+				</section>
+
+				<section id="account-deletion">
+					<p class="section-number">08</p>
+					<h2>Request account deletion</h2>
+					<p>
+						To request deletion of your Notificator account and associated data, email
+						<a href="mailto:hello@notificator-project.com?subject=Delete%20my%20Notificator%20account">hello@notificator-project.com</a> from
+						the email address connected to your account with the subject “Delete my Notificator account”, or use the <a href="/contact/">
+							contact form
+						</a> and choose the same wording in your message.
+					</p>
+					<p>
+						After verifying account ownership, we will delete or anonymize the account profile, registered push tokens, API keys,
+						connected-device records, and stored notification history associated with the account, subject to the limited retention
+						described above. Account deletion is permanent and may prevent connected plugins and devices from delivering future alerts
+						until configured with another account.
+					</p>
+					<a class="button button-primary" href="mailto:hello@notificator-project.com?subject=Delete%20my%20Notificator%20account">
+						Request deletion
+					</a>
+				</section>
+
+				<section>
+					<p class="section-number">09</p>
+					<h2>Children’s privacy</h2>
+					<p>
+						Notificator is not directed to children, and we do not knowingly collect personal information from children who cannot legally
+						consent to its processing. If you believe a child has provided information to Notificator, contact us so we can review and
+						remove it where appropriate.
+					</p>
+				</section>
+
+				<section>
+					<p class="section-number">10</p>
+					<h2>Changes to this policy</h2>
+					<p>
+						We may update this policy when Notificator’s features, providers, or legal obligations change. The effective date at the top
+						of the page will be updated, and material changes may also be announced through the app, website, or project channels.
+					</p>
+				</section>
+
+				<section id="contact">
+					<p class="section-number">11</p>
+					<h2>Contact</h2>
+					<p>
+						Notificator Project<br />
+						Operated by Vagelis Papaioannou<br />
+						Email: <a href="mailto:hello@notificator-project.com">hello@notificator-project.com</a><br />
+						Website: <a href="https://notificator-project.com/">notificator-project.com</a>
+					</p>
+				</section>
+			</article>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.privacy-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+
+	.privacy-hero-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.55fr);
+		gap: clamp(50px, 8vw, 110px);
+		align-items: end;
+	}
+
+	.privacy-hero .display-title {
+		max-width: 850px;
+	}
+
+	.policy-summary {
+		display: grid;
+		border: 1px solid rgba(112, 142, 210, 0.22);
+		border-radius: 22px;
+		background: rgba(255, 255, 255, 0.82);
+		box-shadow: var(--shadow-soft);
+		padding: 10px 24px;
+	}
+
+	.policy-summary div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		border-bottom: 1px solid #e9edf5;
+		padding: 16px 0;
+	}
+
+	.policy-summary div:last-child {
+		border-bottom: 0;
+	}
+
+	.policy-summary span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: #7a8499;
+	}
+
+	.policy-summary strong,
+	.policy-summary a {
+		font-size: 0.78rem;
+		text-align: right;
+	}
+
+	.policy-summary a {
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.privacy-content {
+		padding-top: 20px;
+	}
+
+	.policy-layout {
+		display: grid;
+		grid-template-columns: 210px minmax(0, 760px);
+		gap: clamp(50px, 8vw, 100px);
+		justify-content: center;
+		align-items: start;
+	}
+
+	.policy-navigation {
+		position: sticky;
+		top: 120px;
+		border-left: 1px solid var(--line);
+		padding-left: 20px;
+	}
+
+	.policy-navigation > strong {
+		display: block;
+		margin-bottom: 14px;
+		font-size: 0.76rem;
+	}
+
+	.policy-navigation nav {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 9px;
+	}
+
+	.policy-navigation a {
+		font-size: 0.76rem;
+		color: #68738a;
+	}
+
+	.policy-navigation a:hover {
+		color: var(--blue);
+	}
+
+	.policy-copy > section {
+		scroll-margin-top: 120px;
+		border-bottom: 1px solid var(--line);
+		padding: 0 0 56px;
+	}
+
+	.policy-copy > section + section {
+		padding-top: 56px;
+	}
+
+	.policy-copy > section:last-child {
+		border-bottom: 0;
+	}
+
+	.section-number {
+		margin: 0 0 10px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.68rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.policy-copy h2 {
+		margin: 0 0 24px;
+		font-size: clamp(1.75rem, 3vw, 2.6rem);
+		letter-spacing: -0.045em;
+		line-height: 1.08;
+	}
+
+	.policy-copy h3 {
+		margin: 32px 0 10px;
+		font-size: 1.08rem;
+		letter-spacing: -0.025em;
+	}
+
+	.policy-copy p,
+	.policy-copy li {
+		font-size: 0.95rem;
+		line-height: 1.78;
+		color: var(--ink-soft);
+	}
+
+	.policy-copy p {
+		margin: 16px 0 0;
+	}
+
+	.policy-copy ul {
+		margin: 20px 0 0;
+		padding-left: 22px;
+	}
+
+	.policy-copy li + li {
+		margin-top: 8px;
+	}
+
+	.policy-copy a:not(.button) {
+		font-weight: 650;
+		color: var(--blue);
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+	}
+
+	.policy-copy .button {
+		margin-top: 26px;
+	}
+
+	.policy-callout {
+		margin-top: 28px;
+		border: 1px solid #cbd8f8;
+		border-radius: 18px;
+		background: var(--blue-pale);
+		padding: 22px 24px;
+	}
+
+	.policy-callout strong {
+		font-size: 0.9rem;
+		color: #173d9c;
+	}
+
+	.policy-callout p {
+		margin-top: 7px;
+		font-size: 0.84rem;
+		color: #405783;
+	}
+
+	@media (max-width: 900px) {
+		.privacy-hero-layout,
+		.policy-layout {
+			grid-template-columns: 1fr;
+		}
+
+		.policy-navigation {
+			position: static;
+			border: 1px solid var(--line);
+			border-radius: 18px;
+			background: rgba(255, 255, 255, 0.7);
+			padding: 20px;
+		}
+
+		.policy-navigation nav {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.policy-summary div {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 5px;
+		}
+
+		.policy-summary strong,
+		.policy-summary a {
+			text-align: left;
+		}
+
+		.policy-navigation nav {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+</style>
