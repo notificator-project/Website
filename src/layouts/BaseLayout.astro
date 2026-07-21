@@ -1,13 +1,8 @@
 ---
-//import BlobCursorFollower from "@/components/global/BlobCursorFollower.astro";
 import { AstroSeo, type AstroSeoProps } from "@astrolib/seo";
 import BaseHead from "@components/BaseHead.astro";
-import BackgroundTexture from "@components/global/BackgroundTexture.astro";
 import Footer from "@components/global/Footer.astro";
 import Navigation from "@components/global/Navigation.astro";
-import { getLangFromUrl } from "../i18n/utils";
-
-const { pathname } = Astro.url;
 
 type Props = {
 	seo?: AstroSeoProps;
@@ -15,41 +10,31 @@ type Props = {
 
 const { seo: seoProp } = Astro.props;
 
-const lang = getLangFromUrl(Astro.url);
-
-const shareImage = new URL("logo.svg", Astro.site).toString();
+const shareImage = new URL("og.png", Astro.site).toString();
 
 const defaultSeo: AstroSeoProps = {
-	title: "Notificator Project is the ultimate toolkit for managing notifications",
+	title: "Notificator — Alerts that start with your WordPress events",
 	description:
-		"Notificator Project is the ultimate toolkit for managing and creating notifications for WordPress and WooCommerce websites.",
-	canonical: "https://Notificator Project.com",
+		"Turn WordPress events into dashboard alerts, mobile push notifications, and MQTT messages with the free, open-source Notificator plugin.",
+	canonical: "https://notificator-project.com/",
 	openGraph: {
-		url: "https://Notificator Project.com",
-		title: "Notificator Project",
-		description:
-			"Notificator Project is the ultimate toolkit for managing and creating notifications for WordPress and WooCommerce websites.",
+		url: "https://notificator-project.com/",
+		title: "Notificator — WordPress alerts, your way",
+		description: "Discover site events and route the ones that matter to your dashboard, phone, or MQTT devices.",
 		images: [
 			{
 				url: shareImage,
-				width: 1200,
-				height: 630,
-				alt: "Social open graph",
-				type: "image/gif",
-			},
-			{
-				url: shareImage,
-				width: 4096,
-				height: 4096,
-				alt: "Twitter open graph",
-				type: "image/gif",
+				width: 1734,
+				height: 907,
+				alt: "Notificator",
+				type: "image/png",
 			},
 		],
 		site_name: "Notificator Project",
 	},
 	twitter: {
-		handle: "",
-		site: "",
+		handle: "@wp_notificator",
+		site: "@wp_notificator",
 		cardType: "summary_large_image",
 	},
 	additionalMetaTags: [
@@ -63,24 +48,26 @@ const defaultSeo: AstroSeoProps = {
 const seo = {
 	...defaultSeo,
 	...seoProp,
+	openGraph: {
+		...defaultSeo.openGraph,
+		...seoProp?.openGraph,
+	},
+	twitter: {
+		...defaultSeo.twitter,
+		...seoProp?.twitter,
+	},
 };
-
-function cursorFollowerActive() {
-	const paths = ["", "/", "/el/", "/el"];
-	return paths.includes(pathname);
-}
 ---
 
-<html lang={lang}>
+<html lang="en">
 	<head>
 		<BaseHead />
 		<AstroSeo {...seo} />
 	</head>
-	<body class="bg-slate-50">
-		<BackgroundTexture />
+	<body>
+		<a class="skip-link" href="#main-content">Skip to content</a>
 		<Navigation />
-		<!-- {cursorFollowerActive() && <BlobCursorFollower />} -->
-		<slot />
+		<main id="main-content"><slot /></main>
 		<Footer />
 	</body>
 </html>

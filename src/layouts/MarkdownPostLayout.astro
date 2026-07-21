@@ -1,16 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import Cta from "@/components/blog/Cta.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
-import Comments from "@components/blog/Comments.astro";
-import Title from "@components/global/Title.astro";
-import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
-import { Icon } from "astro-icon/components";
 import BaseLayout from "./BaseLayout.astro";
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
 
 type Props = {
 	frontmatter: any;
@@ -19,75 +10,280 @@ type Props = {
 };
 
 const { frontmatter, body, seo } = Astro.props;
-
-function getArticleReadingTime(body: string): number {
-	if (!body) return 0;
-	const wordsPerMinute = 183;
-	const numberOfWords = body.split(/\s/g).length;
-	const minutes = numberOfWords / wordsPerMinute;
-	const readTime = Math.ceil(minutes);
-	return readTime;
-}
-
-const readingTime = getArticleReadingTime(body);
+const words = body ? body.trim().split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.ceil(words / 200));
+const published = new Date(frontmatter.pubDate).toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric" });
 ---
 
 <BaseLayout seo={seo}>
-	<section>
-		<div class="mx-auto max-w-7xl px-8 py-12 md:px-12 lg:px-32 lg:py-32">
-			<div class="flex flex-col gap-6 pt-20">
-				<Title
-					title={frontmatter.title}
-					subtitle={`Written by: <a href="${frontmatter.author.link}" rel="author">${frontmatter.author.name}</a> on ${frontmatter.pubDate
-						.toString()
-						.slice(0, 10)}`}
-				/>
-
-				<p class="max-w-2xl text-base">
-					<em>{frontmatter.description}</em>
-				</p>
-
-				{
-					frontmatter?.link && (
-						<a class="font-mono text-xl font-bold" href={frontmatter?.link} target="_blank">
-							<Icon name="iconamoon:link-external-thin" class="inline" /> {t("blog.gotoproject")}
-						</a>
-					)
-				}
-			</div>
-			<div class="mt-12 w-full justify-center">
-				<Image class="mt-12 w-full rounded-lg object-cover" src={frontmatter.image.source} alt={frontmatter.image.alt} />
-				<div class="flex justify-between px-2 pt-4 font-mono text-sm">
-					<div class="flex flex-wrap gap-1">
-						{frontmatter?.tags?.length > 0 && <span class="py-3">TAGS:</span>}
-						<ul class="flex flex-wrap justify-center">
-							{
-								frontmatter?.tags?.map((tag: string) => (
-									<li class="inline-flex items-center rounded-full px-1 py-3 font-medium uppercase tracking-widest">
-										<span>{tag}</span>
-									</li>
-								))
-							}
-						</ul>
-					</div>
-					<span class="py-3">~{readingTime} MIN</span>
+	<article class="article-page section-space">
+		<div class="site-shell">
+			<a class="back-link" href="/blog/">← Back to the journal</a>
+			<header class="article-header">
+				<div class="article-kicker"><span>{published}</span><span>{readingTime} min read</span></div>
+				<h1>{frontmatter.title}</h1>
+				<p>{frontmatter.description}</p>
+				<div class="article-author">
+					<span>{frontmatter.author.name.slice(0, 1)}</span>
+					<div><small>Written by</small><a href={frontmatter.author.link} rel="author">{frontmatter.author.name}</a></div>
 				</div>
-				<div class="prose-styles mt-12 !text-black"><slot /></div>
-				{
-					(frontmatter.imageb?.source || frontmatter.imagec?.source) && (
-						<div class="flex justify-center gap-3">
-							{frontmatter.imageb?.source && (
-								<Image class="mt-12 w-1/2 rounded-lg object-cover" src={frontmatter.imageb.source} alt={frontmatter.imageb.alt} />
-							)}
-							{frontmatter.imagec?.source && (
-								<Image class="mt-12 w-1/2 rounded-lg object-cover" src={frontmatter.imagec.source} alt={frontmatter.imagec.alt} />
-							)}
-						</div>
-					)
-				}
+			</header>
+
+			<div class="article-cover"><Image src={frontmatter.image.source} alt={frontmatter.image.alt || frontmatter.title} /></div>
+
+			<div class="article-layout">
+				<aside>
+					<span>Share</span>
+					<a
+						href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(frontmatter.title)}&url=${encodeURIComponent(Astro.url.href)}`}
+						target="_blank"
+						rel="noreferrer">
+						X / Twitter
+					</a>
+					<a
+						href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
+						target="_blank"
+						rel="noreferrer">
+						LinkedIn
+					</a>
+					{
+						frontmatter?.tags?.length > 0 && (
+							<>
+								<span class="tag-title">Filed under</span>
+								{frontmatter.tags.map((tag: string) => (
+									<em>{tag}</em>
+								))}
+							</>
+						)
+					}
+				</aside>
+				<div class="prose-styles"><slot /></div>
 			</div>
-			<Comments />
+
+			{
+				(frontmatter.imageb?.source || frontmatter.imagec?.source) && (
+					<div class="article-gallery">
+						{frontmatter.imageb?.source && <Image src={frontmatter.imageb.source} alt={frontmatter.imageb.alt || "Article image"} />}
+						{frontmatter.imagec?.source && <Image src={frontmatter.imagec.source} alt={frontmatter.imagec.alt || "Article image"} />}
+					</div>
+				)
+			}
+
+			<div class="article-cta">
+				<div><small>Continue exploring</small><h2>Make your WordPress events useful.</h2></div>
+				<a class="button button-primary" href="https://docs.notificator-project.com/" target="_blank" rel="noreferrer">
+					Read the documentation ↗
+				</a>
+			</div>
 		</div>
-	</section>
-	<Cta />
+	</article>
 </BaseLayout>
+
+<style>
+	.article-page {
+		padding-top: clamp(62px, 8vw, 108px);
+	}
+
+	.back-link {
+		display: inline-flex;
+		font-size: 0.76rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.article-header {
+		max-width: 920px;
+		margin: 65px auto 0;
+		text-align: center;
+	}
+
+	.article-kicker {
+		display: flex;
+		justify-content: center;
+		gap: 16px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.62rem;
+		text-transform: uppercase;
+		color: #758097;
+	}
+
+	.article-header h1 {
+		margin: 22px 0 0;
+		font-size: clamp(2.7rem, 6vw, 5.6rem);
+		font-weight: 750;
+		letter-spacing: -0.06em;
+		line-height: 0.99;
+	}
+
+	.article-header > p {
+		max-width: 720px;
+		margin: 26px auto 0;
+		font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+		line-height: 1.65;
+		color: var(--ink-soft);
+	}
+
+	.article-author {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		margin-top: 30px;
+		text-align: left;
+	}
+
+	.article-author > span {
+		display: grid;
+		width: 38px;
+		height: 38px;
+		place-items: center;
+		border-radius: 12px;
+		background: var(--blue);
+		font-weight: 800;
+		color: white;
+	}
+
+	.article-author div {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.article-author small {
+		font-size: 0.58rem;
+		color: #7c869b;
+	}
+
+	.article-author a {
+		font-size: 0.78rem;
+		font-weight: 700;
+	}
+
+	.article-cover {
+		overflow: hidden;
+		margin-top: 64px;
+		border-radius: 28px;
+		background: #e7ebf3;
+		box-shadow: var(--shadow-soft);
+	}
+
+	.article-cover :global(img) {
+		width: 100%;
+		max-height: 680px;
+		object-fit: cover;
+	}
+
+	.article-layout {
+		display: grid;
+		grid-template-columns: 150px minmax(0, 760px) 150px;
+		gap: 36px;
+		margin-top: 70px;
+	}
+
+	.article-layout aside {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 8px;
+		grid-column: 1;
+		padding-top: 8px;
+	}
+
+	.article-layout aside > span {
+		margin-bottom: 3px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.58rem;
+		font-weight: 700;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: #7b8599;
+	}
+
+	.article-layout aside > a,
+	.article-layout aside > em {
+		font-size: 0.7rem;
+		font-style: normal;
+		color: #525d75;
+	}
+
+	.article-layout aside .tag-title {
+		margin-top: 22px;
+	}
+
+	.article-layout .prose-styles {
+		grid-column: 2;
+		margin: 0;
+	}
+
+	.article-gallery {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
+		margin-top: 55px;
+	}
+
+	.article-gallery :global(img) {
+		width: 100%;
+		border-radius: 20px;
+		object-fit: cover;
+	}
+
+	.article-cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 30px;
+		margin-top: 90px;
+		border: 1px solid #cbd8ff;
+		border-radius: 24px;
+		background: #edf3ff;
+		padding: 34px;
+	}
+
+	.article-cta small {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.58rem;
+		text-transform: uppercase;
+		color: var(--blue);
+	}
+
+	.article-cta h2 {
+		margin: 6px 0 0;
+		font-size: clamp(1.35rem, 2.5vw, 2.2rem);
+		letter-spacing: -0.04em;
+	}
+
+	@media (max-width: 900px) {
+		.article-layout {
+			grid-template-columns: minmax(0, 760px);
+			justify-content: center;
+		}
+
+		.article-layout aside {
+			display: none;
+		}
+
+		.article-layout .prose-styles {
+			grid-column: 1;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.article-header {
+			margin-top: 44px;
+		}
+
+		.article-cover,
+		.article-layout {
+			margin-top: 45px;
+		}
+
+		.article-gallery {
+			grid-template-columns: 1fr;
+		}
+
+		.article-cta {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

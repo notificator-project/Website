@@ -1,100 +1,174 @@
----
-import Title from "@components/global/Title.astro";
+<section class="contact-page section-space">
+	<div class="site-shell contact-layout">
+		<div class="contact-copy">
+			<p class="eyebrow">Talk to the project</p>
+			<h1 class="display-title">Questions, ideas, or a useful integration?</h1>
+			<p>
+				Tell us what you are building, report a problem, or ask how Notificator could fit your workflow. For reproducible plugin bugs, GitHub
+				Issues is usually the fastest route.
+			</p>
+			<div class="contact-options">
+				<a href="https://github.com/notificator-project/WordPress-Plugin/issues" target="_blank" rel="noreferrer">
+					<span>GH</span><div><strong>GitHub Issues</strong><small>Bug reports and feature requests</small></div><i>↗</i>
+				</a>
+				<a href="mailto:hello@notificator-project.com">
+					<span>@</span><div><strong>Email</strong><small>hello@notificator-project.com</small></div><i>↗</i>
+				</a>
+			</div>
+		</div>
 
-import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
----
-
-<section class="isolate px-6 py-24 sm:py-32 lg:px-8">
-	<div class="absolute inset-x-0 top-[-10rem] transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">
-		<div class="gradient-element"></div>
-	</div>
-	<div class="mx-auto">
-		<Title class="pb-10 pt-20 uppercase" title={t("contact.title")} subtitle={t("contact.subtitle")} />
-		<form 
-  name="contact"
-  method="POST"
-      action={translatePath("/contact/")}
-  data-netlify="true"
-  class="mx-auto max-w-2xl pt-12 lg:pt-20"
->
-  <!-- Netlify requires a hidden input with the same name -->
-  <input type="hidden" name="form-name" value="contact"/>
-
-  <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-    <div class="form-field sm:col-span-2">
-      <label for="name" class="form-label">{t("contact.name")}*</label>
-      <input type="text" name="name" id="name" autocomplete="given-name" required />
-    </div>
-    <div class="form-field sm:col-span-2">
-      <label for="email" class="form-label">{t("contact.email")}*</label>
-      <input type="email" name="email" id="email" autocomplete="email" required />
-    </div>
-    <div class="form-field sm:col-span-2">
-      <label for="company" class="form-label">{t("contact.company")}</label>
-      <input type="text" name="company" id="company" autocomplete="organization" />
-    </div>
-    <div class="form-field sm:col-span-2">
-      <label for="message" class="form-label">{t("contact.message")}*</label>
-      <textarea name="message" id="message" rows="4" required></textarea>
-    </div>
-    <div class="flex gap-x-4 sm:col-span-2">
-      <label class="text-sm leading-6 text-gray-600" id="switch-1-label">
-        {t("contact.agree")}
-      </label>
-    </div>
-  </div>
-
-  <div class="flex pt-10">
-    <div class="squircle-bg rounded-lg bg-zinc-900">
-      <button
-        type="submit"
-        class="flex h-10 w-full max-w-52 flex-1 items-center justify-center px-4 py-2 text-xl text-slate-200 transition-all hover:text-white sm:w-auto md:font-bold lg:h-10"
-      >
-        {t("contact.send")}
-      </button>
-    </div>
-  </div>
-</form>
+		<form name="contact" method="POST" action="/contact/" data-netlify="true" class="contact-form">
+			<input type="hidden" name="form-name" value="contact" />
+			<div class="form-heading"><strong>Send a message</strong><small>We usually reply within a few days.</small></div>
+			<label>Name <input type="text" name="name" autocomplete="name" required /></label>
+			<label>Email <input type="email" name="email" autocomplete="email" required /></label>
+			<label>Company or project <input type="text" name="company" autocomplete="organization" /></label>
+			<label>Message <textarea name="message" rows="6" required></textarea></label>
+			<p>By sending this, you agree to our privacy practices. Do not include API keys, access tokens, passwords, or other secrets.</p>
+			<button class="button button-primary" type="submit">Send message →</button>
+		</form>
 	</div>
 </section>
 
 <style>
-	.gradient-element {
-		@apply relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem];
-		clip-path: polygon(
-			74.1% 44.1%,
-			100% 61.6%,
-			97.5% 26.9%,
-			85.5% 0.1%,
-			80.7% 2%,
-			72.5% 32.5%,
-			60.2% 62.4%,
-			52.4% 68.1%,
-			47.5% 58.3%,
-			45.2% 34.5%,
-			27.5% 76.7%,
-			0.1% 64.9%,
-			17.9% 100%,
-			27.6% 76.8%,
-			76.1% 97.7%,
-			74.1% 44.1%
-		);
+	.contact-page {
+		padding-top: clamp(70px, 8vw, 110px);
 	}
 
-	.form-field {
-		@apply block;
+	.contact-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 0.85fr) minmax(440px, 0.65fr);
+		gap: clamp(60px, 9vw, 130px);
+		align-items: start;
 	}
 
-	.form-label {
-		@apply flex pl-1 text-sm font-semibold leading-6 text-gray-900;
+	.contact-copy > p:not(.eyebrow) {
+		max-width: 650px;
+		margin: 28px 0 0;
+		font-size: 1.05rem;
+		line-height: 1.7;
+		color: var(--ink-soft);
 	}
 
-	input,
-	textarea {
-		@apply pointer-events-auto relative m-0 w-full cursor-text rounded-lg border-0 bg-slate-200 px-5 py-2 text-xl font-normal not-italic outline-none placeholder:text-gray-400 focus:ring-slate-500;
+	.contact-options {
+		display: grid;
+		gap: 10px;
+		margin-top: 40px;
+	}
+
+	.contact-options a {
+		display: flex;
+		align-items: center;
+		gap: 13px;
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		background: rgba(255, 255, 255, 0.7);
+		padding: 15px;
+	}
+
+	.contact-options a > span {
+		display: grid;
+		width: 42px;
+		height: 42px;
+		place-items: center;
+		border-radius: 12px;
+		background: var(--blue-pale);
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.7rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.contact-options div {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.contact-options strong {
+		font-size: 0.86rem;
+	}
+
+	.contact-options small {
+		font-size: 0.7rem;
+		color: #748097;
+	}
+
+	.contact-options i {
+		margin-left: auto;
+		font-style: normal;
+		color: #9aa4b7;
+	}
+
+	.contact-form {
+		border: 1px solid var(--line);
+		border-radius: 24px;
+		background: white;
+		box-shadow: var(--shadow-soft);
+		padding: clamp(24px, 4vw, 38px);
+	}
+
+	.form-heading {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		margin-bottom: 24px;
+	}
+
+	.form-heading strong {
+		font-size: 1.15rem;
+		letter-spacing: -0.03em;
+	}
+
+	.form-heading small {
+		margin-top: 4px;
+		color: #7c869a;
+	}
+
+	.contact-form label {
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+		margin-top: 17px;
+		font-size: 0.72rem;
+		font-weight: 700;
+		color: #49536b;
+	}
+
+	.contact-form input,
+	.contact-form textarea {
+		width: 100%;
+		resize: vertical;
+		border: 1px solid #d9e0eb;
+		border-radius: 12px;
+		background: #fafbfe;
+		padding: 12px 14px;
+		font-size: 0.9rem;
+		color: var(--ink);
+		outline: none;
+	}
+
+	.contact-form input:focus,
+	.contact-form textarea:focus {
+		border-color: #8eaaff;
+		box-shadow: 0 0 0 3px rgba(37, 94, 232, 0.1);
+	}
+
+	.contact-form > p {
+		margin: 15px 0 0;
+		font-size: 0.65rem;
+		color: #7c869a;
+	}
+
+	.contact-form button {
+		width: 100%;
+		margin-top: 22px;
+		border: 0;
+	}
+
+	@media (max-width: 900px) {
+		.contact-layout {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

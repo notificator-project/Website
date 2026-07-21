@@ -1,84 +1,150 @@
 ---
 import Newsletter from "@components/blog/Newsletter.astro";
-import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
-import { Icon } from "astro-icon/components";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
+const year = new Date().getFullYear();
 ---
 
-<footer class="section min-h-screen gap-y-10 py-3 lg:gap-y-32">
-	<div class="relative flex-grow"></div>
-	<div class="relative grid grid-cols-6 gap-y-20 lg:grid-cols-12 lg:text-xl">
-		<div class="col-span-6 col-start-1 grid grid-cols-6 gap-6 lg:col-span-8">
-			<div class="flex flex-col gap-2">
-				<a href={translatePath("/")}>Home</a>
-				<a href={translatePath("/blog/")}>Blog</a>
-				<a href={translatePath("/contact/")}>{t("contacts")}</a>
-			</div>
-			<div class="col-span-3 row-start-1 lg:col-span-2 lg:col-start-4 lg:row-start-auto">
-				<div class="col-span-2 col-start-4 flex flex-col gap-2 lg:col-span-3">
-					<a href="https://github.com/vagelisp" target="_blank">GitHub</a>
-					<a href="https://twitter.com/wp_notificator" target="_blank">Twitter</a>
-				</div>
-			</div>
-			<div class="col-span-3 mt-10 lg:col-start-4">
-				<div class="relative flex flex-col"></div>
-				<div class="relative mt-1 flex h-8 flex-col">
-					<a href="mailto:hello@notificator-project.com" class="block cursor-pointer">hello@notificator-project.com</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-span-6 row-start-1 text-5xl leading-tight lg:col-span-4 lg:row-start-auto lg:text-6xl">
-			<!-- Newsletter Section -->
-			<div>{t("footer.newsletter")}</div>
-			<div>{t("footer.newsletter2")}</div>
+<footer class="site-footer">
+	<div class="site-shell footer-card">
+		<div class="footer-lead">
+			<a class="footer-brand" href="/" aria-label="Notificator home">
+				<img src="/notificator-icon-on-dark.png" alt="" aria-hidden="true" />
+				<span>Notificator</span>
+			</a>
+			<p>Turn meaningful WordPress events into alerts you can act on.</p>
 			<Newsletter />
 		</div>
-	</div>
-	<div class="relative mt-4 flex w-full items-end justify-between gap-y-4 text-sm lg:text-xl lg:font-normal">
-		<div>{t("footer.copyright")}</div>
-		<!-- https://codepen.io/fliseno1k/pen/WNboLBy -->
-		<button
-			id="go-top-button"
-			aria-label="Go to Top"
-			class="fill-transparent transition-colors duration-300 hover:fill-black hover:text-white"
-			data-cursor-hover
-			data-cursor-parallax>
-			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
-				<g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-					<circle cx="12" cy="12" r="9"></circle><path d="m15 12l-3-3m0 0l-3 3m3-3v6"></path>
-				</g>
-			</svg>
-		</button>
 
-		<!-- Scroll Up Arrow -->
+		<div class="footer-links">
+			<div>
+				<h2>Explore</h2>
+				<a href="/#how-it-works">How it works</a>
+				<a href="/#channels">Delivery channels</a>
+				<a href="/#integrations">Integrations</a>
+			</div>
+			<div>
+				<h2>Resources</h2>
+				<a href="https://docs.notificator-project.com/">Documentation</a>
+				<a href="/blog/">Blog</a>
+				<a href="https://github.com/notificator-project/WordPress-Plugin">GitHub</a>
+			</div>
+			<div>
+				<h2>Project</h2>
+				<a href="/contact/">Contact</a>
+				<a href="https://buymeacoffee.com/vagelis">Donate</a>
+				<a href="https://github.com/sponsors/vagelisp">Sponsor</a>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<span>© {year} Notificator Project</span>
+			<span>Free and open source</span>
+		</div>
 	</div>
 </footer>
 
 <style>
-	footer {
-		@apply relative flex w-full flex-col;
+	.site-footer {
+		padding: 30px 0 36px;
+	}
+
+	.footer-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+		gap: 70px;
+		border-radius: 30px;
+		background: #0b1020;
+		padding: clamp(34px, 6vw, 70px);
+		color: white;
+	}
+
+	.footer-lead p {
+		max-width: 440px;
+		margin: 28px 0 0;
+		font-size: clamp(1.35rem, 2.5vw, 2.15rem);
+		font-weight: 650;
+		letter-spacing: -0.035em;
+		line-height: 1.18;
+		color: #dce4fa;
+	}
+
+	.footer-brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 11px;
+		font-size: 1rem;
+		font-weight: 750;
+		color: white;
+	}
+
+	.footer-brand img {
+		display: block;
+		width: 42px;
+		height: 42px;
+		object-fit: contain;
+	}
+
+	.footer-lead :global(.newsletter-form) {
+		margin-top: 34px;
+	}
+
+	.footer-links {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 28px;
+	}
+
+	.footer-links div {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 11px;
+	}
+
+	.footer-links h2 {
+		margin: 0 0 6px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.72rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #7f8baa;
+	}
+
+	.footer-links a {
+		font-size: 0.9rem;
+		color: #dce4fa;
+	}
+
+	.footer-links a:hover {
+		color: white;
+	}
+
+	.footer-bottom {
+		display: flex;
+		grid-column: 1 / -1;
+		justify-content: space-between;
+		border-top: 1px solid rgba(255, 255, 255, 0.12);
+		padding-top: 24px;
+		font-size: 0.78rem;
+		color: #8792ad;
+	}
+
+	@media (max-width: 820px) {
+		.footer-card {
+			grid-template-columns: 1fr;
+			gap: 52px;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.footer-links {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.footer-bottom {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 8px;
+		}
 	}
 </style>
-
-<script>
-	import { gsap } from "gsap";
-	import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
-	gsap.registerPlugin(ScrollToPlugin);
-
-	function init() {
-		var goTopButton = document.getElementById("go-top-button");
-
-		if (!goTopButton) return;
-
-		goTopButton.addEventListener("click", function () {
-			gsap.to(window, { duration: 0.5, scrollTo: 0 });
-		});
-	}
-
-	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
-	document.addEventListener("DOMContentLoaded", init); // astro:page-load
-</script>

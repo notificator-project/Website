@@ -1,0 +1,95 @@
+---
+pubDate: 2026-07-21
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "A New Notificator: Redesigned for the Public Release"
+description: "Notificator 1.1 brings a redesigned WordPress plugin and website as we prepare to submit the plugin to the official WordPress.org directory."
+image:
+    source: "@assets/images/blog/notificator-1-1-redesign.png"
+    alt: "The redesigned Notificator 1.1 overview inside the WordPress dashboard"
+tags: ["Notificator", "WordPress Plugin", "Version 1.1", "Open Source"]
+---
+
+Notificator is approaching an important milestone: we are preparing to submit version 1.1 to the official WordPress.org plugin directory.
+
+This release is more than a visual refresh. We have redesigned the WordPress plugin, improved the way people discover and configure events, refreshed the project website, and polished the codebase for a wider public audience.
+
+The objective has stayed simple throughout the work: make useful WordPress notifications easier to create without removing the flexibility that developers and existing users rely on.
+
+## **A WordPress Plugin That Is Easier to Understand**
+
+The previous interface had grown alongside the project. It worked, but important actions were spread across a large page and the distinction between discovered events, templates, and configured notifications was not always obvious.
+
+Notificator 1.1 introduces a clearer workspace with dedicated areas for:
+
+- Overview and site health
+- Created notifications
+- Ready-to-use templates
+- Event discovery
+- Activity and delivery history
+- Settings
+- Developer integrations
+- Support
+
+The new overview acts as a practical starting point. It shows connection health, active notifications, scan status, recent events, and delivery information without forcing users to search through configuration screens.
+
+## **A Better Notification / Scenario Builder**
+
+Creating a notification now follows a guided flow: choose the source, select the event, and configure the notification.
+
+Event arguments are presented as useful details instead of unexplained developer data. Search and filtering have also been improved so that large sites with thousands of available hooks remain manageable.
+
+The redesigned builder continues to support conditions, placeholders, severity levels, throttling, and multiple delivery destinations. Existing features remain available, but the path through them is considerably clearer.
+
+## **More Useful Event Discovery**
+
+Hook discovery is one of the most powerful parts of Notificator, so it received a substantial improvement.
+
+The scanner now helps users understand what an event means, not only what its technical hook name is. Plain-language descriptions, useful-detail labels, recommendations, observation tools, and improved filters make it easier to identify events worth turning into notifications.
+
+Curated templates provide ready-made starting points for common workflows, while developers can register first-class events and reusable templates directly from their own plugins.
+
+Discovery remains an on-demand process, with safeguards intended to keep scanning practical on larger WordPress installations.
+
+## **Dashboard, Mobile, and Physical Notifications**
+
+Notificator can be configured before creating an account or adding an API key. Dashboard alerts work locally inside WordPress, making the plugin useful on its own.
+
+When users want notifications beyond the dashboard, they can connect a Notificator account created through the mobile app and enable additional destinations:
+
+- Push notifications through the Notificator app for iOS and Android
+- Messages for compatible Notificator displays, printers, and other connected devices
+- MQTT delivery for supported workflows
+
+Each notification can control its destinations independently, so a routine event can remain in the dashboard while an urgent event can also reach a phone or physical device.
+
+## **Configuration You Can Reuse**
+
+Notification setups can be exported and imported on another site. This makes it possible to configure a useful set of events once and reuse it across staging environments, client sites, or multiple installations.
+
+The import and export tools remain deliberately separate from everyday notification management, while settings now provide clearer controls for API keys, dashboard alerts, activity history, scanner limits, and notification safeguards.
+
+## **The Website Has Been Redesigned Too**
+
+The Notificator website has been rebuilt around the ecosystem rather than a generic marketing layout.
+
+The new site explains the complete path from a WordPress event to a dashboard alert, mobile notification, or Notificator device. It also gives the mobile apps, developer integrations, documentation, open-source project, and physical devices a clearer place in the story.
+
+The blog, contact form, and newsletter remain part of the site, now presented in a cleaner and more focused design.
+
+## **Preparing for the WordPress.org Directory**
+
+Version 1.1 is being prepared for submission to the official WordPress.org plugin directory. The plugin has not been approved or published there yet; the next step is to submit it for review.
+
+Directory review timing is controlled by the WordPress.org team, so we cannot promise an exact publication date. While that process takes place, development will continue openly through the [Notificator GitHub organization](https://github.com/notificator-project), with setup and integration guidance available in the [documentation](https://docs.notificator-project.com/).
+
+The public release will remain free and open source. There is no separate paid or “Pro” version of the current feature set planned. Future additions may expand the platform, but the capabilities included in this release are intended to remain freely available.
+
+## **What Comes Next**
+
+The immediate focus is completing the directory submission, responding to any review feedback, and making the first public installation experience as smooth as possible.
+
+After the release, the project will continue improving event templates, integrations, mobile delivery, connected devices, and documentation based on real-world feedback.
+
+This redesign is the clearest version of Notificator so far—and a strong foundation for the public release ahead.

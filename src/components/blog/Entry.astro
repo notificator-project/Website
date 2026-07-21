@@ -1,69 +1,145 @@
 ---
 import { Image } from "astro:assets";
-import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
-
-const { title, url, author, pubDate, description, image, titleInside = false } = Astro.props;
+const { title, url, author, pubDate, description, image, featured = false } = Astro.props;
+const date = new Date(pubDate).toLocaleDateString("en", { day: "numeric", month: "short", year: "numeric" });
 ---
 
-<a href={translatePath(url)} title={title} class="group">
-	<article class="relative flex h-full flex-1 flex-col overflow-hidden rounded-lg">
-		<div
-			class:list={[
-				"article-overlay relative block w-full overflow-hidden lg:col-span-2",
-				titleInside ? "article-gradient-overlay-bottom" : "article-gradient-overlay",
-			]}>
-			<Image class="relative aspect-[384/246] h-full w-full bg-center object-cover" src={image} alt={title} />
-		</div>
-		<div
-			class={`flex w-full flex-1 flex-col items-start justify-between  ${
-				titleInside ? "absolute bottom-0 text-white p-12" : "text-black pt-4 md:p-2 md:pt-6"
-			}`}>
-			<div class="w-full">
-				<div>
-					<p class="font-mono text-lg font-medium uppercase tracking-wide lg:text-xl">
-						{title}
-					</p>
-				</div>
-				<p class={`mt-2 line-clamp-3 text-base`}>
-					{description}
-				</p>
-			</div>
-			<footer>
-				<div class="mt-6 inline-flex items-center space-x-1">
-					<p class={`text-xs font-medium ${titleInside ? "text-slate-200" : "text-slate-900"}`}>
-						{author.name}
-					</p>
-					<span aria-hidden="true">&middot;</span>
-					<div class={`flex text-xs ${titleInside ? "text-slate-400" : "text-slate-800"}`}>
-						<time datetime="2020-03-16">{pubDate}</time>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</article>
+<a href={url} class:list={["post-card", featured && "featured"]}>
+	<div class="post-image"><Image src={image} alt={title} /></div>
+	<div class="post-body">
+		<div class="post-meta"><time datetime={pubDate}>{date}</time><span>{author.name}</span></div>
+		<h2>{title}</h2>
+		<p>{description}</p>
+		<strong>Read article <span aria-hidden="true">→</span></strong>
+	</div>
 </a>
 
 <style>
-	.article-overlay,
-	.article-overlay img {
-		border-radius: inherit;
+	.post-card {
+		display: flex;
+		height: 100%;
+		min-width: 0;
+		flex-direction: column;
+		overflow: hidden;
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		background: white;
+		transition: 180ms ease;
 	}
-	.article-overlay.article-gradient-overlay {
-		background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+
+	.post-card:hover {
+		border-color: #bfd0ff;
+		box-shadow: var(--shadow-soft);
+		transform: translateY(-4px);
 	}
-	.article-overlay.article-gradient-overlay-bottom {
-		background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 5%, rgba(0, 0, 0, 0) 50%);
+
+	.post-image {
+		aspect-ratio: 16 / 10;
+		max-height: 240px;
+		overflow: hidden;
+		background: #e8edf5;
 	}
-	.article-overlay:before {
-		content: "";
-		border-radius: inherit;
-		filter: url(#article-noise-filter);
-		opacity: 0.5;
-		z-index: 10;
-		@apply absolute bottom-0 left-0 right-0 top-0 rounded-lg;
+
+	.post-image :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 350ms ease;
+	}
+
+	.post-card:hover .post-image :global(img) {
+		transform: scale(1.025);
+	}
+
+	.post-body {
+		display: flex;
+		flex: 1;
+		align-items: flex-start;
+		flex-direction: column;
+		padding: 23px;
+	}
+
+	.post-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 7px 14px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.58rem;
+		text-transform: uppercase;
+		color: #7b859a;
+	}
+
+	.post-body h2 {
+		margin: 14px 0 0;
+		font-size: 1.15rem;
+		letter-spacing: -0.035em;
+		line-height: 1.25;
+	}
+
+	.post-body p {
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		margin: 11px 0 0;
+		font-size: 0.78rem;
+		line-height: 1.65;
+		color: #69738a;
+	}
+
+	.post-body > strong {
+		margin-top: auto;
+		padding-top: 22px;
+		font-size: 0.73rem;
+		color: var(--blue);
+	}
+
+	.featured {
+		display: grid;
+		grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+	}
+
+	.featured .post-image {
+		max-height: none;
+		aspect-ratio: auto;
+	}
+
+	.featured .post-image :global(img) {
+		height: 100%;
+		min-height: 430px;
+	}
+
+	.featured .post-body {
+		justify-content: center;
+		padding: clamp(30px, 5vw, 58px);
+	}
+
+	.featured .post-body h2 {
+		font-size: clamp(1.8rem, 3vw, 2.8rem);
+		line-height: 1.08;
+	}
+
+	.featured .post-body p {
+		-webkit-line-clamp: 4;
+		font-size: 0.95rem;
+	}
+
+	.featured .post-body > strong {
+		margin-top: 24px;
+	}
+
+	@media (max-width: 820px) {
+		.featured {
+			display: flex;
+		}
+
+		.featured .post-image :global(img) {
+			min-height: auto;
+		}
+
+		.featured .post-image {
+			aspect-ratio: 16 / 10;
+		}
 	}
 </style>
