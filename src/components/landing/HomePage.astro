@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import devicePhoto from "@assets/images/device/notificator-devices.jpeg";
 
 const posts = (await getCollection("posts"))
 	.filter((post) => post.slug.startsWith("en/"))
@@ -202,6 +203,59 @@ const integrations = [
 				<h3>Notificator devices</h3>
 				<p>Route selected alerts to dedicated displays, printers, and other compatible Notificator devices.</p>
 			</article>
+		</div>
+	</div>
+</section>
+
+<section id="device" class="section-space device-section">
+	<div class="site-shell device-layout">
+		<figure class="device-visual">
+			<div class="device-photo">
+				<Image src={devicePhoto} alt="An assembled grey Notificator display device with a black OLED screen" loading="lazy" />
+				<span>Working prototype · Early access</span>
+			</div>
+			<figcaption>
+				Enclosure based on
+				<a href="https://makerworld.com/en/models/2270326-tinytosh-mini-retro-pc-smart-wifi-display-esp32" target="_blank" rel="noreferrer">
+					TinyTosh Mini Retro PC
+				</a>
+				by <a href="https://makerworld.com/en/@hitsarau" target="_blank" rel="noreferrer">Uladzimir Hitsarau</a>, licensed separately under
+				the MakerWorld Standard Digital File License.
+			</figcaption>
+		</figure>
+
+		<div class="device-copy">
+			<p class="eyebrow">Open hardware in progress</p>
+			<h2 class="section-title">Build a tiny home for the alerts that matter.</h2>
+			<p class="section-copy">
+				The Notificator device electronics and firmware are open source. Makers can build a compatible ESP32 device, adapt the firmware, and
+				decide how an alert should look and feel beyond the screen.
+			</p>
+
+			<div class="device-points">
+				<article><strong>Build it yourself</strong><span>Use accessible components and inspect or adapt the firmware.</span></article>
+				<article><strong>Free community batches</strong><span>We occasionally build devices and give them away at no cost.</span></article>
+				<article>
+					<strong>Dozens already shared</strong><span>Early units went to WordCamp Athens 2025 attendees after the public debut.</span>
+				</article>
+			</div>
+
+			<div class="device-actions">
+				<a
+					class="button button-primary"
+					href="https://github.com/notificator-project/IoT-Firmware-Early-Access"
+					target="_blank"
+					rel="noreferrer">
+					Explore the firmware ↗
+				</a>
+				<a
+					class="device-model-link"
+					href="https://makerworld.com/en/models/2270326-tinytosh-mini-retro-pc-smart-wifi-display-esp32"
+					target="_blank"
+					rel="noreferrer">
+					View the enclosure model ↗
+				</a>
+			</div>
 		</div>
 	</div>
 </section>
@@ -1103,6 +1157,121 @@ const integrations = [
 		color: #69738a;
 	}
 
+	.device-section {
+		background: linear-gradient(145deg, #eef3ff, #f8faff 58%, #e7efff);
+	}
+
+	.device-layout {
+		display: grid;
+		grid-template-columns: minmax(360px, 0.85fr) minmax(0, 1fr);
+		gap: clamp(50px, 8vw, 110px);
+		align-items: center;
+	}
+
+	.device-visual {
+		margin: 0;
+	}
+
+	.device-photo {
+		position: relative;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		border-radius: 30px;
+		background: #0b1020;
+		box-shadow: 0 32px 80px rgba(31, 53, 105, 0.2);
+		padding: 10px;
+		transform: rotate(-1deg);
+	}
+
+	.device-photo :global(img) {
+		width: 100%;
+		height: 100%;
+		border-radius: 22px;
+		object-fit: cover;
+	}
+
+	.device-photo > span {
+		position: absolute;
+		bottom: 24px;
+		left: 24px;
+		border: 1px solid rgba(255, 255, 255, 0.24);
+		border-radius: 999px;
+		background: rgba(10, 16, 33, 0.72);
+		padding: 8px 11px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: white;
+		-webkit-backdrop-filter: blur(12px);
+		backdrop-filter: blur(12px);
+	}
+
+	.device-visual figcaption {
+		margin: 18px 12px 0;
+		font-size: 0.65rem;
+		line-height: 1.65;
+		color: #69738a;
+	}
+
+	.device-visual figcaption a {
+		font-weight: 700;
+		color: #33415f;
+		text-decoration: underline;
+		text-decoration-color: #aebbd5;
+		text-underline-offset: 3px;
+	}
+
+	.device-copy .section-copy {
+		max-width: 650px;
+	}
+
+	.device-points {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 10px;
+		margin-top: 36px;
+	}
+
+	.device-points article {
+		border: 1px solid rgba(183, 199, 234, 0.7);
+		border-radius: 17px;
+		background: rgba(255, 255, 255, 0.62);
+		padding: 18px;
+		-webkit-backdrop-filter: blur(12px);
+		backdrop-filter: blur(12px);
+	}
+
+	.device-points strong,
+	.device-points span {
+		display: block;
+	}
+
+	.device-points strong {
+		font-size: 0.76rem;
+		line-height: 1.35;
+	}
+
+	.device-points span {
+		margin-top: 8px;
+		font-size: 0.66rem;
+		line-height: 1.55;
+		color: #6a7590;
+	}
+
+	.device-actions {
+		display: flex;
+		align-items: center;
+		gap: 22px;
+		margin-top: 34px;
+	}
+
+	.device-model-link {
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
 	.integrations-section {
 		background: white;
 	}
@@ -1478,7 +1647,8 @@ const integrations = [
 		}
 
 		.feature-layout,
-		.open-source-card {
+		.open-source-card,
+		.device-layout {
 			grid-template-columns: 1fr 1fr;
 			gap: 55px;
 		}
@@ -1487,8 +1657,13 @@ const integrations = [
 	@media (max-width: 820px) {
 		.split-heading,
 		.feature-layout,
-		.open-source-card {
+		.open-source-card,
+		.device-layout {
 			grid-template-columns: 1fr;
+		}
+
+		.device-visual {
+			max-width: 650px;
 		}
 
 		.split-heading .section-copy {
@@ -1601,6 +1776,15 @@ const integrations = [
 
 		.delivery-options {
 			grid-template-columns: 1fr;
+		}
+
+		.device-points {
+			grid-template-columns: 1fr;
+		}
+
+		.device-actions {
+			align-items: flex-start;
+			flex-direction: column;
 		}
 
 		.journal-heading {
