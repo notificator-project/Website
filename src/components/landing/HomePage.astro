@@ -327,6 +327,42 @@ const integrations = [
 	</div>
 </section>
 
+<section class="section-space creator-section">
+	<div class="site-shell creator-card">
+		<div class="creator-copy">
+			<p class="eyebrow">Behind Notificator</p>
+			<h2 class="section-title">Built independently. Shaped around the globe.</h2>
+			<p class="section-copy">
+				Notificator is created and maintained by Vagelis Papaioannou, a WordPress developer and maker turning software events into useful
+				signals in the physical world.
+			</p>
+			<p class="creator-note">
+				What started as a small experiment continues to grow thanks to the feedback, support, and contributions of people from the WordPress
+				and open-source communities.
+			</p>
+			<div class="creator-actions">
+				<a class="button button-primary" href="/contact/">Start a conversation</a>
+				<a href="/blog/">Read the blog →</a>
+			</div>
+		</div>
+
+		<aside class="creator-profile" aria-label="Notificator creator">
+			<div class="creator-avatar" aria-hidden="true">VP</div>
+			<div class="creator-identity">
+				<small>Creator &amp; maintainer</small>
+				<strong>Vagelis P.</strong>
+				<p>Software Developer · Maker · Open-source builder</p>
+			</div>
+			<div class="creator-links">
+				<a href="https://github.com/vagelisp" target="_blank" rel="noreferrer">GitHub ↗</a>
+				<a href="https://x.com/vagelisp" target="_blank" rel="noreferrer">X ↗</a>
+				<a href="https://profiles.wordpress.org/eboxnet/" target="_blank" rel="noreferrer">WordPress.org ↗</a>
+				<a href="https://x.com/WP_Notificator" target="_blank" rel="noreferrer">Follow the project ↗</a>
+			</div>
+		</aside>
+	</div>
+</section>
+
 {
 	posts.length > 0 && (
 		<section class="section-space journal-section">
@@ -1496,6 +1532,135 @@ const integrations = [
 		padding-top: 16px;
 	}
 
+	.creator-section {
+		background: white;
+	}
+
+	.creator-card {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(340px, 0.58fr);
+		gap: clamp(45px, 8vw, 100px);
+		align-items: center;
+		overflow: hidden;
+		border: 1px solid #dce4f4;
+		border-radius: 30px;
+		background: radial-gradient(circle at 92% 5%, rgba(63, 124, 255, 0.15), transparent 25rem), linear-gradient(135deg, #ffffff, #f3f7ff);
+		padding: clamp(34px, 6vw, 72px);
+	}
+
+	.creator-copy {
+		position: relative;
+		z-index: 1;
+	}
+
+	.creator-copy .section-title {
+		max-width: 690px;
+	}
+
+	.creator-copy .section-copy {
+		max-width: 690px;
+	}
+
+	.creator-note {
+		max-width: 650px;
+		margin: 18px 0 0;
+		font-size: 0.82rem;
+		line-height: 1.7;
+		color: #758098;
+	}
+
+	.creator-actions {
+		display: flex;
+		align-items: center;
+		gap: 22px;
+		margin-top: 30px;
+	}
+
+	.creator-actions > a:last-child {
+		font-size: 0.76rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.creator-profile {
+		position: relative;
+		z-index: 1;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 24px;
+		background: linear-gradient(145deg, #111a31, #0b1020);
+		box-shadow: 0 28px 65px rgba(26, 42, 80, 0.22);
+		padding: 26px;
+		color: white;
+	}
+
+	.creator-avatar {
+		display: grid;
+		width: 64px;
+		height: 64px;
+		place-items: center;
+		border-radius: 19px;
+		background: linear-gradient(145deg, #4d88ff, #255ee8);
+		box-shadow: 0 12px 28px rgba(37, 94, 232, 0.35);
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.88rem;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+	}
+
+	.creator-identity {
+		margin-top: 26px;
+	}
+
+	.creator-identity small,
+	.creator-identity strong {
+		display: block;
+	}
+
+	.creator-identity small {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: #8491ad;
+	}
+
+	.creator-identity strong {
+		margin-top: 7px;
+		font-size: 1.18rem;
+		letter-spacing: -0.03em;
+	}
+
+	.creator-identity p {
+		margin: 8px 0 0;
+		font-size: 0.72rem;
+		line-height: 1.55;
+		color: #aab5cd;
+	}
+
+	.creator-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 28px;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		padding-top: 18px;
+	}
+
+	.creator-links a {
+		border-radius: 9px;
+		background: rgba(255, 255, 255, 0.07);
+		padding: 8px 10px;
+		font-size: 0.62rem;
+		font-weight: 650;
+		color: #dce4fa;
+	}
+
+	.creator-links a:hover {
+		background: rgba(255, 255, 255, 0.12);
+		color: white;
+	}
+
 	.journal-heading {
 		display: flex;
 		align-items: flex-end;
@@ -1658,7 +1823,8 @@ const integrations = [
 		.split-heading,
 		.feature-layout,
 		.open-source-card,
-		.device-layout {
+		.device-layout,
+		.creator-card {
 			grid-template-columns: 1fr;
 		}
 
@@ -1783,6 +1949,11 @@ const integrations = [
 		}
 
 		.device-actions {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.creator-actions {
 			align-items: flex-start;
 			flex-direction: column;
 		}
