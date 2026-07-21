@@ -1,0 +1,495 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Notificator Support",
+	description: "Get help with the Notificator mobile apps, WordPress plugin, notifications, accounts, and compatible devices.",
+	canonical: "https://notificator-project.com/support/",
+	openGraph: {
+		url: "https://notificator-project.com/support/",
+		title: "Notificator Support",
+		description: "Troubleshooting and support for the Notificator apps, WordPress plugin, and compatible devices.",
+	},
+};
+
+const supportAreas = [
+	{
+		marker: "APP",
+		title: "Mobile app",
+		copy: "Account access, notification permissions, device registration, and mobile push delivery.",
+		href: "#mobile-app",
+	},
+	{
+		marker: "WP",
+		title: "WordPress plugin",
+		copy: "API keys, event discovery, dashboard alerts, templates, and plugin integrations.",
+		href: "#wordpress-plugin",
+	},
+	{
+		marker: "IoT",
+		title: "Notificator devices",
+		copy: "Compatible hardware, open-source firmware, MQTT delivery, and device setup.",
+		href: "#devices",
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="support-hero section-space">
+		<div class="site-shell support-hero-layout">
+			<div>
+				<p class="eyebrow">Notificator support</p>
+				<h1 class="display-title">Let’s get your alerts moving again.</h1>
+				<p class="section-copy">
+					Find practical help for the iOS and Android apps, the WordPress plugin, and compatible Notificator devices. You do not need to be
+					a developer to use this page.
+				</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#common-questions">Start troubleshooting</a>
+					<a class="button button-secondary" href="/contact/">Contact support</a>
+				</div>
+			</div>
+
+			<aside class="support-note" aria-label="Support response information">
+				<span>Human support</span>
+				<strong>Tell us what happened.</strong>
+				<p>
+					Include your platform, app or plugin version, and the steps that led to the problem. Please never send passwords, API keys, or
+					access tokens.
+				</p>
+				<a href="mailto:hello@notificator-project.com">hello@notificator-project.com</a>
+			</aside>
+		</div>
+	</section>
+
+	<section class="support-areas" aria-labelledby="choose-support-area">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Choose an area</p>
+				<h2 id="choose-support-area" class="section-title">Help for every part of Notificator.</h2>
+			</div>
+			<div class="area-grid">
+				{
+					supportAreas.map((area) => (
+						<a class="area-card" href={area.href}>
+							<span>{area.marker}</span>
+							<h3>{area.title}</h3>
+							<p>{area.copy}</p>
+							<i aria-hidden="true">Explore →</i>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section id="common-questions" class="support-faq section-space" aria-labelledby="support-questions-title">
+		<div class="site-shell faq-layout">
+			<div class="faq-intro">
+				<p class="eyebrow">Common questions</p>
+				<h2 id="support-questions-title" class="section-title">Try these checks first.</h2>
+				<p class="section-copy">Most notification issues come from a disabled delivery channel, a permission, or an inactive connection.</p>
+				<a href="https://docs.notificator-project.com/" target="_blank" rel="noreferrer">Read the full documentation ↗</a>
+			</div>
+
+			<div class="faq-list">
+				<details id="mobile-app" open>
+					<summary>I’m not receiving notifications on my phone.</summary>
+					<div>
+						<p>
+							Confirm that notifications are allowed for Notificator in your phone’s settings, then open the app so it can refresh its
+							device registration.
+						</p>
+						<p>
+							In WordPress, make sure the API key is active and that mobile push is enabled for the event. Trigger the event again and
+							check whether a dashboard alert appears. If it does, the WordPress event is working and the problem is limited to push
+							delivery.
+						</p>
+					</div>
+				</details>
+
+				<details>
+					<summary>How do I create a Notificator account?</summary>
+					<div>
+						<p>
+							Install Notificator from the Apple App Store or Google Play and create your account inside the mobile app. The same
+							account connects your phone, WordPress sites, and compatible devices.
+						</p>
+					</div>
+				</details>
+
+				<details id="wordpress-plugin">
+					<summary>Can I use the WordPress plugin without an account or API key?</summary>
+					<div>
+						<p>
+							Yes. You can discover events, configure notifications, and receive dashboard alerts without an API key. An active key is
+							required only for remote delivery such as mobile push and MQTT.
+						</p>
+					</div>
+				</details>
+
+				<details>
+					<summary>The dashboard alert works, but mobile push does not.</summary>
+					<div>
+						<p>
+							This usually means the WordPress event is configured correctly. Check the event’s mobile-push toggle, confirm the selected
+							API key is active, and verify the operating-system notification permission for Notificator. Opening the app once can also
+							refresh the phone’s registration.
+						</p>
+					</div>
+				</details>
+
+				<details id="devices">
+					<summary>Where can I get help with a Notificator device?</summary>
+					<div>
+						<p>
+							Start with the open-source firmware repository for setup and compatibility information. For a build-specific problem,
+							include the board, firmware version, and connection method when contacting us.
+						</p>
+						<a href="https://github.com/notificator-project/IoT-Firmware-Early-Access" target="_blank" rel="noreferrer">
+							Open the firmware repository ↗
+						</a>
+					</div>
+				</details>
+
+				<details>
+					<summary>Where should I report a reproducible plugin bug?</summary>
+					<div>
+						<p>
+							Use GitHub Issues when possible. Include the WordPress and plugin versions, the affected hook or event, steps to reproduce
+							the problem, and any relevant error message with secrets removed.
+						</p>
+						<a href="https://github.com/notificator-project/WordPress-Plugin/issues" target="_blank" rel="noreferrer">
+							Report a plugin issue ↗
+						</a>
+					</div>
+				</details>
+
+				<details>
+					<summary>I need help with my account or personal data.</summary>
+					<div>
+						<p>
+							Send your request through the contact form or email us from the address connected to your account. Do not include
+							passwords, API keys, access tokens, or other secrets.
+						</p>
+					</div>
+				</details>
+			</div>
+		</div>
+	</section>
+
+	<section class="support-cta">
+		<div class="site-shell support-cta-card">
+			<div>
+				<p class="eyebrow">Still need help?</p>
+				<h2>Send us the details.</h2>
+				<p>We’ll help you narrow down whether the issue is in the app, your WordPress event, remote delivery, or a connected device.</p>
+			</div>
+			<div class="cta-actions">
+				<a class="button button-primary" href="/contact/">Open the contact form</a>
+				<a href="mailto:hello@notificator-project.com">Email support →</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.support-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+
+	.support-hero-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+		gap: clamp(50px, 8vw, 110px);
+		align-items: end;
+	}
+
+	.support-hero .display-title {
+		max-width: 850px;
+	}
+
+	.hero-actions,
+	.cta-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+
+	.support-note {
+		border: 1px solid rgba(112, 142, 210, 0.22);
+		border-radius: 24px;
+		background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(234, 240, 255, 0.7));
+		box-shadow: var(--shadow-soft);
+		padding: clamp(24px, 4vw, 38px);
+	}
+
+	.support-note > span {
+		display: block;
+		margin-bottom: 12px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--blue);
+	}
+
+	.support-note strong {
+		display: block;
+		font-size: 1.35rem;
+		letter-spacing: -0.035em;
+	}
+
+	.support-note p {
+		margin: 14px 0 20px;
+		font-size: 0.9rem;
+		line-height: 1.65;
+		color: var(--ink-soft);
+	}
+
+	.support-note a,
+	.faq-intro > a,
+	.faq-list a,
+	.cta-actions > a:not(.button) {
+		font-size: 0.88rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.support-areas {
+		padding: 0 0 clamp(72px, 9vw, 124px);
+	}
+
+	.section-heading {
+		margin-bottom: 38px;
+	}
+
+	.area-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	.area-card {
+		display: flex;
+		min-height: 285px;
+		align-items: flex-start;
+		flex-direction: column;
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		background: rgba(255, 255, 255, 0.78);
+		padding: clamp(24px, 3vw, 34px);
+		transition:
+			transform 160ms ease,
+			box-shadow 160ms ease,
+			border-color 160ms ease;
+	}
+
+	.area-card:hover {
+		transform: translateY(-4px);
+		border-color: #b9c9f4;
+		box-shadow: 0 20px 50px rgba(35, 65, 130, 0.1);
+	}
+
+	.area-card > span {
+		display: grid;
+		min-width: 48px;
+		height: 48px;
+		place-items: center;
+		border-radius: 13px;
+		background: var(--blue-pale);
+		padding-inline: 10px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.68rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.area-card h3 {
+		margin: 24px 0 10px;
+		font-size: 1.25rem;
+		letter-spacing: -0.035em;
+	}
+
+	.area-card p {
+		margin: 0;
+		font-size: 0.88rem;
+		line-height: 1.65;
+		color: var(--ink-soft);
+	}
+
+	.area-card i {
+		margin-top: auto;
+		padding-top: 24px;
+		font-size: 0.8rem;
+		font-style: normal;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.support-faq {
+		background: rgba(255, 255, 255, 0.52);
+	}
+
+	.faq-layout {
+		display: grid;
+		grid-template-columns: minmax(280px, 0.62fr) minmax(0, 1fr);
+		gap: clamp(50px, 8vw, 110px);
+		align-items: start;
+	}
+
+	.faq-intro {
+		position: sticky;
+		top: 120px;
+	}
+
+	.faq-intro > a {
+		display: inline-block;
+		margin-top: 24px;
+	}
+
+	.faq-list {
+		display: grid;
+		gap: 10px;
+	}
+
+	.faq-list details {
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		background: white;
+		box-shadow: 0 8px 26px rgba(30, 48, 88, 0.05);
+		padding: 0 20px;
+	}
+
+	.faq-list summary {
+		position: relative;
+		padding: 21px 40px 21px 0;
+		font-size: 0.95rem;
+		font-weight: 720;
+		list-style: none;
+		cursor: pointer;
+	}
+
+	.faq-list summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq-list summary::after {
+		position: absolute;
+		top: 17px;
+		right: 0;
+		display: grid;
+		width: 30px;
+		height: 30px;
+		place-items: center;
+		border-radius: 9px;
+		background: var(--blue-pale);
+		color: var(--blue);
+		content: "+";
+	}
+
+	.faq-list details[open] summary::after {
+		content: "−";
+	}
+
+	.faq-list details > div {
+		border-top: 1px solid #edf0f6;
+		padding: 4px 0 20px;
+	}
+
+	.faq-list details p {
+		margin: 14px 0 0;
+		font-size: 0.88rem;
+		line-height: 1.7;
+		color: var(--ink-soft);
+	}
+
+	.faq-list details a {
+		display: inline-block;
+		margin-top: 16px;
+	}
+
+	.support-cta {
+		padding: clamp(72px, 9vw, 124px) 0;
+	}
+
+	.support-cta-card {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 40px;
+		border-radius: 28px;
+		background: #0b1020;
+		padding: clamp(32px, 6vw, 64px);
+		color: white;
+	}
+
+	.support-cta-card .eyebrow {
+		color: #8baaff;
+	}
+
+	.support-cta-card h2 {
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.4rem);
+		letter-spacing: -0.05em;
+	}
+
+	.support-cta-card p {
+		max-width: 620px;
+		margin: 16px 0 0;
+		line-height: 1.65;
+		color: #b9c3da;
+	}
+
+	.cta-actions {
+		min-width: max-content;
+		align-items: center;
+		flex-direction: column;
+		margin: 0;
+	}
+
+	.cta-actions > a:not(.button) {
+		color: #b9caff;
+	}
+
+	@media (max-width: 900px) {
+		.support-hero-layout,
+		.faq-layout {
+			grid-template-columns: 1fr;
+		}
+
+		.faq-intro {
+			position: static;
+		}
+
+		.area-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.area-card {
+			min-height: 0;
+		}
+
+		.support-cta-card {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.cta-actions {
+			min-width: 0;
+			align-items: flex-start;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.hero-actions,
+		.hero-actions .button,
+		.cta-actions,
+		.cta-actions .button {
+			width: 100%;
+		}
+	}
+</style>

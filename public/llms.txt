@@ -9,6 +9,7 @@ Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-s
 - [Notificator website](https://notificator-project.com/): Project overview, features, supported notification channels, and recent news.
 - [Documentation](https://docs.notificator-project.com/): Setup instructions, configuration guidance, and developer integration references.
 - [WordPress plugin source](https://github.com/notificator-project/WordPress-Plugin): Source code, releases, issues, and contribution history for the Notificator WordPress plugin.
+- [Support](https://notificator-project.com/support/): Troubleshooting for the mobile apps, WordPress plugin, notification delivery, accounts, and compatible devices.
 - [Contact](https://notificator-project.com/contact/): Questions, feedback, collaboration, and project support.
 
 ## Open-source resources
