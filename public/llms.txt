@@ -1,0 +1,28 @@
+# Notificator
+
+> Notificator is a free, open-source notification ecosystem that turns meaningful WordPress events into dashboard alerts, mobile push notifications, MQTT messages, and notifications on compatible physical devices.
+
+Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-source device firmware, developer integrations, and project documentation. Dashboard alerts work without a Notificator account. Remote delivery is available after creating an account through the mobile app.
+
+## Start here
+
+- [Notificator website](https://notificator-project.com/): Project overview, features, supported notification channels, and recent news.
+- [Documentation](https://docs.notificator-project.com/): Setup instructions, configuration guidance, and developer integration references.
+- [WordPress plugin source](https://github.com/notificator-project/WordPress-Plugin): Source code, releases, issues, and contribution history for the Notificator WordPress plugin.
+- [Contact](https://notificator-project.com/contact/): Questions, feedback, collaboration, and project support.
+
+## Open-source resources
+
+- [Notificator on GitHub](https://github.com/notificator-project): The project's public repositories.
+- [Device firmware](https://github.com/notificator-project/IoT-Firmware-Early-Access): Open-source firmware for compatible Notificator devices.
+- [API source](https://github.com/notificator-project/API): Source code for the Notificator API.
+- [Blog](https://notificator-project.com/blog/): Release news, development updates, and project stories.
+- [X / Twitter](https://x.com/WP_Notificator): Short project updates.
+- [YouTube](https://www.youtube.com/@NotificatorProject): Demonstrations, updates, and hardware previews.
+
+## Key articles
+
+- [Notificator 1.1 redesign and WordPress directory release](https://notificator-project.com/blog/notificator-1-1-redesign-and-wordpress-directory-release/): An overview of the redesigned plugin and its upcoming public release.
+- [Open release phase](https://notificator-project.com/blog/open-release-phase/): Background on the project's open release and repositories.
+- [Matter support and app updates](https://notificator-project.com/blog/matter-support-and-app-updates/): Updates on mobile apps and device interoperability.
+- [Notificator at WordCamp Athens 2025](https://notificator-project.com/blog/wp-notificator-at-wordcamp-athens-2025/): The project's first public presentation and community device giveaway.
