@@ -1,0 +1,628 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Credits and Acknowledgements | Notificator",
+	description: "Credits for the open-source software, fonts, services, tools, and creative work used to build the Notificator website.",
+	canonical: "https://notificator-project.com/credits/",
+	openGraph: {
+		url: "https://notificator-project.com/credits/",
+		title: "Notificator Website Credits",
+		description: "The open-source libraries, typefaces, services, and creative work behind the Notificator website.",
+	},
+};
+
+const libraries = [
+	{
+		name: "Astro",
+		version: "5.3.0",
+		license: "MIT",
+		copy: "The web framework used to build and generate the site.",
+		href: "https://astro.build/",
+	},
+	{
+		name: "Astro MDX",
+		version: "4.0.8",
+		license: "MIT",
+		copy: "Adds MDX support for the Notificator blog and long-form content.",
+		href: "https://docs.astro.build/en/guides/integrations-guide/mdx/",
+	},
+	{
+		name: "Astro Sitemap",
+		version: "3.2.1",
+		license: "MIT",
+		copy: "Generates the public XML sitemap during each production build.",
+		href: "https://docs.astro.build/en/guides/integrations-guide/sitemap/",
+	},
+	{
+		name: "AstroLib SEO",
+		version: "1.0.0-beta.8",
+		license: "MIT",
+		copy: "Provides structured page, Open Graph, and social metadata.",
+		href: "https://github.com/onwidget/astrolib/tree/main/packages/seo",
+	},
+	{
+		name: "Sharp",
+		version: "0.33.5",
+		license: "Apache-2.0",
+		copy: "Processes and optimizes site images as part of the build.",
+		href: "https://sharp.pixelplumbing.com/",
+	},
+];
+
+const fonts = [
+	{
+		name: "Inter",
+		creator: "Rasmus Andersson",
+		license: "SIL Open Font License 1.1",
+		copy: "The primary interface and reading typeface.",
+		href: "https://rsms.me/inter/",
+	},
+	{
+		name: "JetBrains Mono",
+		creator: "JetBrains",
+		license: "SIL Open Font License 1.1",
+		copy: "Used for labels, technical details, and compact interface markers.",
+		href: "https://www.jetbrains.com/lp/mono/",
+	},
+	{
+		name: "OpenDyslexic",
+		creator: "Abbie Gonzalez",
+		license: "SIL Open Font License 1.1",
+		copy: "The optional accessibility typeface available from the floating font control.",
+		href: "https://github.com/antijingoist/opendyslexic",
+	},
+];
+
+const services = [
+	{
+		name: "Netlify",
+		copy: "Website hosting, deployment, contact-form handling, and newsletter-form handling.",
+		href: "https://www.netlify.com/",
+	},
+	{
+		name: "GitHub",
+		copy: "Source hosting, issue tracking, project collaboration, and the Discussions data used by blog comments.",
+		href: "https://github.com/notificator-project",
+	},
+	{
+		name: "giscus",
+		copy: "Connects blog comments to GitHub Discussions without maintaining a separate comment database.",
+		href: "https://giscus.app/",
+	},
+	{
+		name: "Fontsource",
+		copy: "Packages the OpenDyslexic webfont used by the accessibility control.",
+		href: "https://fontsource.org/fonts/opendyslexic",
+	},
+	{
+		name: "Google Fonts",
+		copy: "Delivers the JetBrains Mono webfont used by the site.",
+		href: "https://fonts.google.com/",
+	},
+	{
+		name: "rsms.me",
+		copy: "Hosts and delivers the Inter webfont used throughout the site interface.",
+		href: "https://rsms.me/inter/",
+	},
+];
+
+const tools = [
+	{
+		name: "Prettier",
+		detail: "3.5.2 · MIT",
+		copy: "Keeps source formatting consistent.",
+		href: "https://prettier.io/",
+	},
+	{
+		name: "Prettier Plugin for Astro",
+		detail: "0.14.1 · MIT",
+		copy: "Formats Astro components alongside the rest of the project.",
+		href: "https://github.com/withastro/prettier-plugin-astro",
+	},
+	{
+		name: "Netlify CLI",
+		detail: "23.x · MIT",
+		copy: "Supports local development and Netlify deployment workflows.",
+		href: "https://github.com/netlify/cli",
+	},
+	{
+		name: "favicon.io",
+		detail: "Web tool",
+		copy: "Used to generate the browser favicon asset set.",
+		href: "https://favicon.io/",
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="credits-hero section-space">
+		<div class="site-shell hero-layout">
+			<div>
+				<p class="eyebrow">Credits and acknowledgements</p>
+				<h1 class="display-title">Built with open tools and generous work.</h1>
+				<p class="section-copy">
+					Notificator stands on the work of open-source maintainers, type designers, hosting platforms, community tools, and independent
+					creators. This page recognises the people and projects that help power the website.
+				</p>
+			</div>
+			<aside class="thanks-card">
+				<span aria-hidden="true">♥</span>
+				<strong>Thank you.</strong>
+				<p>Every library, font, service, bug report, contribution, and shared idea helps an independent open-source project move forward.</p>
+				<a href="https://github.com/notificator-project/website">View the website source ↗</a>
+			</aside>
+		</div>
+	</section>
+
+	<section class="library-section section-space" aria-labelledby="libraries-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Open-source libraries</p>
+				<h2 id="libraries-title" class="section-title">The core website stack.</h2>
+				<p class="section-copy">
+					These are the direct libraries used by the website. Their own dependencies remain subject to the notices and licenses published by
+					their respective projects.
+				</p>
+			</div>
+
+			<div class="library-grid">
+				{
+					libraries.map((library) => (
+						<a href={library.href}>
+							<div>
+								<span>{library.license}</span>
+								<small>v{library.version}</small>
+							</div>
+							<h3>{library.name}</h3>
+							<p>{library.copy}</p>
+							<i aria-hidden="true">View project ↗</i>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="font-section section-space" aria-labelledby="fonts-title">
+		<div class="site-shell font-layout">
+			<div>
+				<p class="eyebrow">Typography</p>
+				<h2 id="fonts-title" class="section-title">Three typefaces, including a more accessible choice.</h2>
+				<p class="section-copy">
+					The optional OpenDyslexic control keeps its setting on the current device and lets visitors choose the reading experience that
+					works best for them.
+				</p>
+			</div>
+
+			<div class="font-list">
+				{
+					fonts.map((font) => (
+						<a href={font.href}>
+							<span class:list={["font-sample", font.name === "OpenDyslexic" && "dyslexic"]} aria-hidden="true">
+								Aa
+							</span>
+							<div>
+								<h3>{font.name}</h3>
+								<p>{font.copy}</p>
+								<small>
+									{font.creator} · {font.license}
+								</small>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="service-section section-space" aria-labelledby="services-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Platforms and services</p>
+				<h2 id="services-title" class="section-title">The services that keep the site available and connected.</h2>
+			</div>
+
+			<div class="service-grid">
+				{
+					services.map((service) => (
+						<a href={service.href}>
+							<h3>{service.name}</h3>
+							<p>{service.copy}</p>
+							<span aria-hidden="true">↗</span>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="tool-section section-space" aria-labelledby="tools-title">
+		<div class="site-shell tool-layout">
+			<div>
+				<p class="eyebrow">Development tools</p>
+				<h2 id="tools-title" class="section-title">Tools used to maintain and publish the website.</h2>
+			</div>
+			<ul>
+				{
+					tools.map((tool) => (
+						<li>
+							<div>
+								<a href={tool.href}>{tool.name} ↗</a>
+								<small>{tool.detail}</small>
+							</div>
+							<p>{tool.copy}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="creative-section section-space" aria-labelledby="creative-title">
+		<div class="site-shell creative-card">
+			<div>
+				<p class="eyebrow">Creative attribution</p>
+				<h2 id="creative-title">The device enclosure shown on this site.</h2>
+				<p>
+					The Notificator device enclosure is based on the TinyTosh Mini Retro PC by Uladzimir Hitsarau. It is licensed separately under the
+					MakerWorld Standard Digital File License. Notificator does not redistribute the model files.
+				</p>
+			</div>
+			<div class="creative-actions">
+				<a class="button button-primary" href="https://makerworld.com/en/models/2270326-tinytosh-mini-retro-pc-smart-wifi-display-esp32">
+					View the original model ↗
+				</a>
+				<a href="https://makerworld.com/en/@hitsarau">Uladzimir Hitsarau’s profile ↗</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="license-section">
+		<div class="site-shell license-note">
+			<strong>Website source</strong>
+			<p>
+				The Notificator website repository is released under The Unlicense. Third-party software, fonts, services, trademarks, and creative
+				assets keep their original licenses and ownership.
+			</p>
+			<a href="https://github.com/notificator-project/website">Source and licence information ↗</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.credits-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+
+	.hero-layout,
+	.font-layout,
+	.tool-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+		gap: clamp(50px, 8vw, 110px);
+		align-items: center;
+	}
+
+	.credits-hero .display-title {
+		max-width: 900px;
+	}
+
+	.thanks-card {
+		border: 1px solid rgba(112, 142, 210, 0.22);
+		border-radius: 25px;
+		background: rgba(255, 255, 255, 0.82);
+		box-shadow: var(--shadow-soft);
+		padding: clamp(25px, 4vw, 38px);
+	}
+
+	.thanks-card > span {
+		display: grid;
+		width: 48px;
+		height: 48px;
+		margin-bottom: 28px;
+		place-items: center;
+		border-radius: 15px;
+		background: var(--blue-pale);
+		font-size: 1.25rem;
+		color: var(--blue);
+	}
+
+	.thanks-card > strong {
+		font-size: 1.4rem;
+	}
+
+	.thanks-card p {
+		color: var(--ink-soft);
+	}
+
+	.thanks-card a,
+	.license-note a {
+		font-weight: 750;
+		color: var(--blue);
+	}
+
+	.library-section,
+	.service-section {
+		background: white;
+	}
+
+	.section-heading {
+		max-width: 820px;
+	}
+
+	.library-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+		margin-top: 52px;
+	}
+
+	.library-grid > a {
+		display: flex;
+		min-height: 275px;
+		flex-direction: column;
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		background: #f9faff;
+		padding: clamp(22px, 3vw, 30px);
+		transition: 180ms ease;
+	}
+
+	.library-grid > a:hover,
+	.service-grid > a:hover {
+		border-color: #b6c8f8;
+		box-shadow: 0 16px 40px rgba(35, 56, 104, 0.08);
+		transform: translateY(-3px);
+	}
+
+	.library-grid > a > div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.library-grid span,
+	.library-grid small {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.74rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.library-grid small {
+		color: #667088;
+	}
+
+	.library-grid h3,
+	.font-list h3,
+	.service-grid h3 {
+		margin: 42px 0 0;
+		font-size: 1.3rem;
+		letter-spacing: -0.03em;
+	}
+
+	.library-grid p,
+	.font-list p,
+	.service-grid p {
+		color: var(--ink-soft);
+	}
+
+	.library-grid i {
+		margin-top: auto;
+		padding-top: 18px;
+		font-size: 0.82rem;
+		font-style: normal;
+		font-weight: 750;
+		color: var(--blue);
+	}
+
+	.font-section {
+		background: linear-gradient(145deg, #edf3ff, #f8faff 64%);
+	}
+
+	.font-layout {
+		align-items: start;
+	}
+
+	.font-list {
+		display: grid;
+		gap: 12px;
+	}
+
+	.font-list > a {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 16px;
+		border: 1px solid rgba(112, 142, 210, 0.22);
+		border-radius: 18px;
+		background: rgba(255, 255, 255, 0.76);
+		padding: 19px;
+	}
+
+	.font-sample {
+		display: grid;
+		width: 52px;
+		height: 52px;
+		place-items: center;
+		border-radius: 14px;
+		background: var(--blue-pale);
+		font-size: 1rem;
+		font-weight: 750;
+		color: var(--blue);
+	}
+
+	.font-sample.dyslexic {
+		font-family: "OpenDyslexic", sans-serif !important;
+	}
+
+	.font-list h3 {
+		margin: 0;
+	}
+
+	.font-list p {
+		margin: 4px 0;
+	}
+
+	.font-list small {
+		font-size: 0.76rem;
+		color: #667088;
+	}
+
+	.service-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+		margin-top: 52px;
+	}
+
+	.service-grid > a {
+		position: relative;
+		min-height: 205px;
+		border: 1px solid var(--line);
+		border-radius: 21px;
+		padding: 26px;
+		transition: 180ms ease;
+	}
+
+	.service-grid h3 {
+		margin: 0;
+	}
+
+	.service-grid > a > span {
+		position: absolute;
+		right: 24px;
+		bottom: 22px;
+		color: var(--blue);
+	}
+
+	.tool-layout {
+		align-items: start;
+	}
+
+	.tool-layout ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.tool-layout li {
+		border-top: 1px solid var(--line);
+		padding: 20px 0;
+	}
+
+	.tool-layout li:first-child {
+		border-top: 0;
+		padding-top: 0;
+	}
+
+	.tool-layout li > div {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	.tool-layout a {
+		font-weight: 750;
+		color: var(--blue);
+	}
+
+	.tool-layout small {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.7rem;
+		color: #667088;
+	}
+
+	.tool-layout li p {
+		margin: 7px 0 0;
+		color: var(--ink-soft);
+	}
+
+	.creative-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 40px;
+		align-items: end;
+		border-radius: 28px;
+		background: #0b1020;
+		padding: clamp(30px, 6vw, 64px);
+		color: white;
+	}
+
+	.creative-card h2 {
+		max-width: 740px;
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		letter-spacing: -0.05em;
+		line-height: 1.05;
+	}
+
+	.creative-card p:not(.eyebrow) {
+		max-width: 720px;
+		color: #c7d1e8;
+	}
+
+	.creative-actions {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.creative-actions > a:not(.button) {
+		color: #dce4fa;
+	}
+
+	.license-section {
+		padding: 0 0 36px;
+	}
+
+	.license-note {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		gap: 20px;
+		align-items: center;
+		border: 1px solid var(--line);
+		border-radius: 18px;
+		background: white;
+		padding: 22px;
+	}
+
+	.license-note p {
+		margin: 0;
+		font-size: 0.84rem;
+		color: var(--ink-soft);
+	}
+
+	.license-note a {
+		font-size: 0.84rem;
+	}
+
+	@media (max-width: 900px) {
+		.hero-layout,
+		.font-layout,
+		.tool-layout,
+		.creative-card {
+			grid-template-columns: 1fr;
+		}
+
+		.library-grid,
+		.service-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 620px) {
+		.library-grid,
+		.service-grid,
+		.license-note {
+			grid-template-columns: 1fr;
+		}
+
+		.library-grid > a,
+		.service-grid > a {
+			min-height: auto;
+		}
+	}
+</style>
