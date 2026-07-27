@@ -4,6 +4,7 @@ import BaseHead from "@components/BaseHead.astro";
 import AccessibilityFontToggle from "@components/global/AccessibilityFontToggle.astro";
 import Footer from "@components/global/Footer.astro";
 import Navigation from "@components/global/Navigation.astro";
+import { ClientRouter } from "astro:transitions";
 
 type Props = {
 	seo?: AstroSeoProps;
@@ -72,6 +73,7 @@ const seo = {
 	<head>
 		<BaseHead />
 		<AstroSeo {...seo} />
+		<ClientRouter fallback="animate" />
 	</head>
 	<body>
 		<a class="skip-link" href="#main-content">Skip to content</a>

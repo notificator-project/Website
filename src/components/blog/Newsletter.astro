@@ -152,9 +152,14 @@ const { class: className } = Astro.props;
 <script>
 	import { enhanceNetlifyForm } from "../forms/netlify-form";
 
-	enhanceNetlifyForm(document.querySelector<HTMLFormElement>(".newsletter-form"), {
-		pending: "Subscribing…",
-		success: "You’re subscribed. The next Notificator update will arrive in your inbox.",
-		error: "We couldn’t add you right now. Please try again in a moment.",
-	});
+	const initialiseNewsletterForm = () => {
+		enhanceNetlifyForm(document.querySelector<HTMLFormElement>(".newsletter-form"), {
+			pending: "Subscribing…",
+			success: "You’re subscribed. The next Notificator update will arrive in your inbox.",
+			error: "We couldn’t add you right now. Please try again in a moment.",
+		});
+	};
+
+	document.addEventListener("astro:page-load", initialiseNewsletterForm);
+	initialiseNewsletterForm();
 </script>

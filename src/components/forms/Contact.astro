@@ -255,9 +255,14 @@
 <script>
 	import { enhanceNetlifyForm } from "./netlify-form";
 
-	enhanceNetlifyForm(document.querySelector<HTMLFormElement>(".contact-form"), {
-		pending: "Sending…",
-		success: "Thanks! Your message has been sent. We’ll get back to you soon.",
-		error: "We couldn’t send your message right now. Please try again or email hello@notificator-project.com.",
-	});
+	const initialiseContactForm = () => {
+		enhanceNetlifyForm(document.querySelector<HTMLFormElement>(".contact-form"), {
+			pending: "Sending…",
+			success: "Thanks! Your message has been sent. We’ll get back to you soon.",
+			error: "We couldn’t send your message right now. Please try again or email hello@notificator-project.com.",
+		});
+	};
+
+	document.addEventListener("astro:page-load", initialiseContactForm);
+	initialiseContactForm();
 </script>

@@ -223,19 +223,29 @@ const links = [
 </style>
 
 <script>
-	const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
-	const navigation = document.querySelector<HTMLElement>("#primary-navigation");
+	const initialiseNavigation = () => {
+		const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+		const navigation = document.querySelector<HTMLElement>("#primary-navigation");
 
-	toggle?.addEventListener("click", () => {
-		const isOpen = toggle.getAttribute("aria-expanded") === "true";
-		toggle.setAttribute("aria-expanded", String(!isOpen));
-		navigation?.classList.toggle("open", !isOpen);
-	});
+		if (!toggle || !navigation || toggle.dataset.navigationReady === "true") {
+			return;
+		}
 
-	navigation?.querySelectorAll("a").forEach((link) => {
-		link.addEventListener("click", () => {
-			toggle?.setAttribute("aria-expanded", "false");
-			navigation.classList.remove("open");
+		toggle.dataset.navigationReady = "true";
+		toggle.addEventListener("click", () => {
+			const isOpen = toggle.getAttribute("aria-expanded") === "true";
+			toggle.setAttribute("aria-expanded", String(!isOpen));
+			navigation.classList.toggle("open", !isOpen);
 		});
-	});
+
+		navigation.querySelectorAll("a").forEach((link) => {
+			link.addEventListener("click", () => {
+				toggle.setAttribute("aria-expanded", "false");
+				navigation.classList.remove("open");
+			});
+		});
+	};
+
+	document.addEventListener("astro:page-load", initialiseNavigation);
+	initialiseNavigation();
 </script>

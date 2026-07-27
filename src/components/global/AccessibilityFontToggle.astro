@@ -145,21 +145,34 @@
 
 <script>
 	const preferenceKey = "notificator-font-preference";
-	const toggle = document.querySelector<HTMLButtonElement>("#accessibility-font-toggle");
-	const description = toggle?.querySelector<HTMLElement>("#accessibility-font-description");
 
-	const updateToggle = (enabled: boolean) => {
-		document.documentElement.classList.toggle("font-open-dyslexic", enabled);
-		toggle?.setAttribute("aria-checked", String(enabled));
+	const initialiseFontToggle = () => {
+		const toggle = document.querySelector<HTMLButtonElement>("#accessibility-font-toggle");
+		const description = toggle?.querySelector<HTMLElement>("#accessibility-font-description");
 
-		if (description) {
-			description.textContent = enabled ? "Font on" : "Font off";
+		if (!toggle || toggle.dataset.fontToggleReady === "true") {
+			return;
 		}
-	};
 
-	if (toggle) {
+		const updateToggle = (enabled: boolean) => {
+			document.documentElement.classList.toggle("font-open-dyslexic", enabled);
+			toggle.setAttribute("aria-checked", String(enabled));
+
+			if (description) {
+				description.textContent = enabled ? "Font on" : "Font off";
+			}
+		};
+
+		let enabled = document.documentElement.classList.contains("font-open-dyslexic");
+		try {
+			enabled = localStorage.getItem(preferenceKey) === "opendyslexic";
+		} catch {
+			// Retain the current document preference when storage is unavailable.
+		}
+
+		toggle.dataset.fontToggleReady = "true";
 		toggle.hidden = false;
-		updateToggle(document.documentElement.classList.contains("font-open-dyslexic"));
+		updateToggle(enabled);
 
 		toggle.addEventListener("click", () => {
 			const enabled = toggle.getAttribute("aria-checked") !== "true";
@@ -171,5 +184,9 @@
 				// The preference remains active for this page when storage is unavailable.
 			}
 		});
-	}
+	};
+
+	document.addEventListener("astro:after-swap", initialiseFontToggle);
+	document.addEventListener("astro:page-load", initialiseFontToggle);
+	initialiseFontToggle();
 </script>
