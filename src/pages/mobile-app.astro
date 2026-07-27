@@ -1,0 +1,551 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Notificator Mobile App",
+	description: "Connect WordPress sites and receive selected Notificator alerts through the mobile app for iOS and Android.",
+	canonical: "https://notificator-project.com/mobile-app/",
+	openGraph: {
+		url: "https://notificator-project.com/mobile-app/",
+		title: "Notificator Mobile App",
+		description: "Keep meaningful WordPress alerts with you on iOS and Android.",
+	},
+};
+
+const setupSteps = [
+	{
+		number: "01",
+		title: "Create your account",
+		copy: "The Notificator account is created through the mobile app and becomes the connection point for your sites and devices.",
+	},
+	{
+		number: "02",
+		title: "Connect WordPress",
+		copy: "Create an API key for the site, add it to the plugin, and keep the key active for remote delivery.",
+	},
+	{
+		number: "03",
+		title: "Enable mobile delivery",
+		copy: "Choose mobile push on the notifications that deserve your attention away from the WordPress dashboard.",
+	},
+	{
+		number: "04",
+		title: "Receive and review",
+		copy: "Open an alert on your phone and use its title, message, priority, and event details to understand what happened.",
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-layout">
+			<div>
+				<p class="eyebrow">Mobile app</p>
+				<h1 class="display-title">The alerts that matter, wherever you are.</h1>
+				<p class="section-copy">
+					The Notificator mobile app connects your account, WordPress sites, and compatible devices while delivering the push notifications
+					you choose.
+				</p>
+				<div class="platform-note">
+					<span aria-hidden="true">iOS</span>
+					<span aria-hidden="true">Android</span>
+					<p>Public store links will appear here as the listings are finalized.</p>
+				</div>
+			</div>
+
+			<div class="phone-stage" role="img" aria-label="Example Notificator notification displayed on a mobile phone">
+				<div class="phone">
+					<div class="phone-status"><span>9:41</span><i></i></div>
+					<div class="app-heading">
+						<span aria-hidden="true">N</span>
+						<div><small>NOTIFICATOR</small><strong>Activity</strong></div>
+					</div>
+					<div class="mobile-alert">
+						<div><span aria-hidden="true">WC</span><small>now</small></div>
+						<strong>New order received</strong>
+						<p>Order #1048 is ready for review.</p>
+						<i>High priority</i>
+					</div>
+					<div class="mobile-alert secondary">
+						<div><span aria-hidden="true">F</span><small>11m</small></div>
+						<strong>Form submission received</strong>
+						<p>A new website enquiry was submitted.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="role-section section-space" aria-labelledby="role-title">
+		<div class="site-shell role-layout">
+			<div>
+				<p class="eyebrow">Part of the ecosystem</p>
+				<h2 id="role-title" class="section-title">Your account and remote alerts meet in one place.</h2>
+			</div>
+			<div class="role-points">
+				<article>
+					<span aria-hidden="true">01</span><p><strong>Receive push alerts</strong>See selected WordPress events on your phone.</p>
+				</article>
+				<article>
+					<span aria-hidden="true">02</span><p><strong>Connect your sites</strong>Use account API keys to enable remote delivery.</p>
+				</article>
+				<article>
+					<span aria-hidden="true">03</span><p>
+						<strong>Manage devices</strong>Keep compatible Notificator hardware connected to your account.
+					</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="setup-section section-space" aria-labelledby="setup-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Getting connected</p>
+				<h2 id="setup-title" class="section-title">From account to first mobile alert.</h2>
+				<p class="section-copy">
+					Dashboard notifications continue to work locally. These steps are only needed when you want mobile push delivery.
+				</p>
+			</div>
+
+			<ol class="setup-grid">
+				{
+					setupSteps.map((step) => (
+						<li>
+							<span>{step.number}</span>
+							<h3>{step.title}</h3>
+							<p>{step.copy}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="control-section section-space" aria-labelledby="control-title">
+		<div class="site-shell control-layout">
+			<div>
+				<p class="eyebrow">You stay in control</p>
+				<h2 id="control-title" class="section-title">Only send an event to your phone when it belongs there.</h2>
+				<p class="section-copy">
+					Mobile push is selected per notification inside WordPress. An event can remain dashboard-only, use mobile push, reach a device, or
+					combine those destinations.
+				</p>
+				<a href="/how-it-works/">See the complete notification workflow →</a>
+			</div>
+			<div class="control-card">
+				<strong>New order received</strong>
+				<p>Deliver this notification to</p>
+				<div><span aria-hidden="true">✓</span><strong>WordPress dashboard</strong><small>Enabled</small></div>
+				<div><span aria-hidden="true">✓</span><strong>Mobile app</strong><small>Enabled</small></div>
+				<div class="disabled"><span aria-hidden="true"></span><strong>MQTT devices</strong><small>Off</small></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="privacy-section">
+		<div class="site-shell privacy-card">
+			<div>
+				<p class="eyebrow">Privacy and permissions</p>
+				<h2>Clear controls for notifications and account data.</h2>
+				<p>
+					Your phone controls whether Notificator may display notifications. You can also disable mobile delivery for individual WordPress
+					notifications or deactivate an API key.
+				</p>
+			</div>
+			<div class="privacy-actions">
+				<a class="button button-primary" href="/privacy/">Read the privacy policy</a>
+				<a href="/support/#mobile-app">Mobile app support →</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		overflow: hidden;
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+
+	.hero-layout,
+	.role-layout,
+	.control-layout {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(50px, 9vw, 120px);
+		align-items: center;
+	}
+
+	.page-hero .display-title {
+		max-width: 830px;
+	}
+
+	.platform-note {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		align-items: center;
+		margin-top: 32px;
+	}
+
+	.platform-note > span {
+		border-radius: 999px;
+		background: var(--blue);
+		padding: 7px 12px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.75rem;
+		font-weight: 800;
+		color: white;
+	}
+
+	.platform-note p {
+		flex-basis: 100%;
+		margin: 5px 0 0;
+		font-size: 0.9rem;
+		color: #59647b;
+	}
+
+	.phone-stage {
+		position: relative;
+		min-height: 600px;
+	}
+
+	.phone-stage::before {
+		position: absolute;
+		inset: 10% -20%;
+		border-radius: 50%;
+		background: radial-gradient(circle, rgba(63, 124, 255, 0.25), transparent 65%);
+		content: "";
+	}
+
+	.phone {
+		position: relative;
+		width: min(330px, 88%);
+		min-height: 590px;
+		margin-inline: auto;
+		border: 10px solid #0b1020;
+		border-radius: 46px;
+		background: #f5f7fb;
+		box-shadow: 0 38px 90px rgba(22, 40, 87, 0.25);
+		padding: 20px 18px;
+		transform: rotate(2deg);
+	}
+
+	.phone::before {
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		width: 88px;
+		height: 22px;
+		transform: translateX(-50%);
+		border-radius: 999px;
+		background: #0b1020;
+		content: "";
+	}
+
+	.phone-status {
+		display: flex;
+		justify-content: space-between;
+		padding: 3px 8px 34px;
+		font-size: 0.72rem;
+		font-weight: 800;
+	}
+
+	.phone-status i {
+		width: 20px;
+		height: 8px;
+		border-radius: 999px;
+		background: #0b1020;
+	}
+
+	.app-heading,
+	.mobile-alert > div {
+		display: flex;
+		align-items: center;
+	}
+
+	.app-heading {
+		gap: 10px;
+		margin-bottom: 28px;
+	}
+
+	.app-heading > span,
+	.mobile-alert > div > span {
+		display: grid;
+		place-items: center;
+		border-radius: 10px;
+		background: var(--blue);
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.68rem;
+		font-weight: 800;
+		color: white;
+	}
+
+	.app-heading > span {
+		width: 38px;
+		height: 38px;
+	}
+
+	.app-heading div {
+		display: grid;
+	}
+
+	.app-heading small {
+		font-size: 0.62rem;
+		letter-spacing: 0.08em;
+		color: #667088;
+	}
+
+	.mobile-alert {
+		border: 1px solid #cbd8f7;
+		border-radius: 19px;
+		background: white;
+		box-shadow: 0 14px 35px rgba(33, 58, 116, 0.1);
+		padding: 18px;
+	}
+
+	.mobile-alert > div {
+		justify-content: space-between;
+		margin-bottom: 20px;
+	}
+
+	.mobile-alert > div > span {
+		width: 30px;
+		height: 30px;
+		background: var(--blue-pale);
+		color: var(--blue);
+	}
+
+	.mobile-alert small {
+		color: #7a849a;
+	}
+
+	.mobile-alert > strong {
+		font-size: 1.05rem;
+	}
+
+	.mobile-alert p {
+		margin: 8px 0 16px;
+		font-size: 0.85rem;
+		color: var(--ink-soft);
+	}
+
+	.mobile-alert > i {
+		border-radius: 999px;
+		background: #fff1d8;
+		padding: 5px 8px;
+		font-size: 0.68rem;
+		font-style: normal;
+		font-weight: 800;
+		color: #8a5700;
+	}
+
+	.mobile-alert.secondary {
+		margin-top: 12px;
+		opacity: 0.8;
+	}
+
+	.role-section {
+		background: linear-gradient(145deg, #edf3ff, #f8faff 64%);
+	}
+
+	.role-layout {
+		align-items: end;
+	}
+
+	.role-points {
+		display: grid;
+		gap: 12px;
+	}
+
+	.role-points article {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 14px;
+		border: 1px solid rgba(112, 142, 210, 0.22);
+		border-radius: 17px;
+		background: rgba(255, 255, 255, 0.75);
+		padding: 18px;
+	}
+
+	.role-points article > span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.75rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.role-points p {
+		margin: 0;
+		color: var(--ink-soft);
+	}
+
+	.role-points strong {
+		display: block;
+		color: var(--ink);
+	}
+
+	.setup-section {
+		background: white;
+	}
+
+	.section-heading {
+		max-width: 800px;
+	}
+
+	.setup-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 12px;
+		margin: 52px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.setup-grid li {
+		border: 1px solid var(--line);
+		border-radius: 21px;
+		background: #f9faff;
+		padding: 25px;
+	}
+
+	.setup-grid li > span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.78rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.setup-grid h3 {
+		margin: 50px 0 0;
+		font-size: 1.2rem;
+		letter-spacing: -0.03em;
+	}
+
+	.setup-grid p {
+		color: var(--ink-soft);
+	}
+
+	.control-section {
+		background: #f5f7fb;
+	}
+
+	.control-layout a {
+		display: inline-block;
+		margin-top: 26px;
+		font-weight: 750;
+		color: var(--blue);
+	}
+
+	.control-card {
+		border: 1px solid #cbd8f7;
+		border-radius: 24px;
+		background: white;
+		box-shadow: var(--shadow-soft);
+		padding: clamp(22px, 4vw, 34px);
+	}
+
+	.control-card > p {
+		color: #667088;
+	}
+
+	.control-card > div {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 11px;
+		align-items: center;
+		border-top: 1px solid var(--line);
+		padding: 16px 0;
+	}
+
+	.control-card > div > span {
+		display: grid;
+		width: 22px;
+		height: 22px;
+		place-items: center;
+		border-radius: 7px;
+		background: var(--blue);
+		font-size: 0.72rem;
+		color: white;
+	}
+
+	.control-card small {
+		color: var(--success);
+	}
+
+	.control-card .disabled {
+		opacity: 0.55;
+	}
+
+	.control-card .disabled > span {
+		border: 1px solid #aeb8c9;
+		background: transparent;
+	}
+
+	.control-card .disabled small {
+		color: #667088;
+	}
+
+	.privacy-section {
+		padding: 30px 0 36px;
+	}
+
+	.privacy-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 40px;
+		align-items: end;
+		border-radius: 28px;
+		background: #0b1020;
+		padding: clamp(30px, 6vw, 64px);
+		color: white;
+	}
+
+	.privacy-card h2 {
+		max-width: 720px;
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		letter-spacing: -0.05em;
+		line-height: 1.05;
+	}
+
+	.privacy-card p:not(.eyebrow) {
+		max-width: 680px;
+		color: #c7d1e8;
+	}
+
+	.privacy-actions {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.privacy-actions > a:not(.button) {
+		color: #dce4fa;
+	}
+
+	@media (max-width: 820px) {
+		.hero-layout,
+		.role-layout,
+		.control-layout,
+		.privacy-card {
+			grid-template-columns: 1fr;
+		}
+
+		.phone-stage {
+			min-height: 560px;
+		}
+
+		.setup-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.setup-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

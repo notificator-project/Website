@@ -2,8 +2,8 @@
 const { pathname } = Astro.url;
 
 const links = [
-	{ label: "How it works", href: "/#how-it-works" },
-	{ label: "Integrations", href: "/#integrations" },
+	{ label: "How it works", href: "/how-it-works/" },
+	{ label: "Integrations", href: "/integrations/" },
 	{ label: "Blog", href: "/blog/" },
 	{ label: "Support", href: "/support/" },
 	{ label: "Contact", href: "/contact/" },
@@ -29,8 +29,8 @@ const links = [
 						<li>
 							<a
 								href={link.href}
-								class:list={[pathname.startsWith(link.href) && link.href !== "/#how-it-works" && "active"]}
-								aria-current={pathname.startsWith(link.href) && link.href !== "/#how-it-works" ? "page" : undefined}
+								class:list={[pathname.startsWith(link.href) && "active"]}
+								aria-current={pathname.startsWith(link.href) ? "page" : undefined}
 								target={link.external ? "_blank" : undefined}
 								rel={link.external ? "noreferrer" : undefined}>
 								{link.label}

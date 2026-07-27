@@ -29,7 +29,7 @@ const integrations = [
 			</p>
 			<div class="hero-actions">
 				<a class="button button-primary" href="#ecosystem">Explore the ecosystem <span aria-hidden="true">↓</span></a>
-				<a class="button button-secondary" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a>
+				<a class="button button-secondary" href="/how-it-works/">See how it works <span aria-hidden="true">→</span></a>
 			</div>
 			<ul class="hero-proof" aria-label="Notificator highlights">
 				<li><span aria-hidden="true">✓</span> Free and open source</li>
@@ -185,24 +185,27 @@ const integrations = [
 		</div>
 
 		<div class="ecosystem-grid">
-			<article>
+			<a href="/wordpress-plugin/">
 				<span class="ecosystem-label">Included</span>
 				<div class="ecosystem-icon">WP</div>
 				<h3>Dashboard alerts</h3>
 				<p>Review important events directly in WordPress. No Notificator account or API key is required.</p>
-			</article>
-			<article class="featured">
+				<i aria-hidden="true">Explore plugin →</i>
+			</a>
+			<a class="featured" href="/mobile-app/">
 				<span class="ecosystem-label">iOS + Android</span>
 				<div class="ecosystem-icon">APP</div>
 				<h3>Notificator mobile app</h3>
 				<p>Create your Notificator account in the mobile app and receive push alerts wherever you are.</p>
-			</article>
-			<article>
+				<i aria-hidden="true">Explore mobile app →</i>
+			</a>
+			<a href="/devices/">
 				<span class="ecosystem-label">Physical</span>
 				<div class="ecosystem-icon">IoT</div>
 				<h3>Notificator devices</h3>
 				<p>Route selected alerts to dedicated displays, printers, and other compatible Notificator devices.</p>
-			</article>
+				<i aria-hidden="true">Explore devices →</i>
+			</a>
 		</div>
 	</div>
 </section>
@@ -241,12 +244,9 @@ const integrations = [
 			</div>
 
 			<div class="device-actions">
-				<a
-					class="button button-primary"
-					href="https://github.com/notificator-project/IoT-Firmware-Early-Access"
-					target="_blank"
-					rel="noreferrer">
-					Explore the firmware ↗
+				<a class="button button-primary" href="/devices/">Explore Notificator devices</a>
+				<a class="device-model-link" href="https://github.com/notificator-project/IoT-Firmware-Early-Access" target="_blank" rel="noreferrer">
+					View the firmware ↗
 				</a>
 				<a
 					class="device-model-link"
@@ -272,7 +272,7 @@ const integrations = [
 		<div class="integration-grid">
 			{
 				integrations.map((integration) => (
-					<article>
+					<a href="/integrations/" aria-label={`Explore ${integration.name} integrations`}>
 						<span>{integration.icon}</span>
 						<div>
 							<>
@@ -281,7 +281,7 @@ const integrations = [
 							</>
 						</div>
 						<i aria-hidden="true">↗</i>
-					</article>
+					</a>
 				))
 			}
 		</div>
@@ -1140,16 +1140,25 @@ const integrations = [
 		margin-top: 52px;
 	}
 
-	.ecosystem-grid article {
+	.ecosystem-grid > a {
 		position: relative;
+		display: flex;
 		min-height: 280px;
+		flex-direction: column;
 		border: 1px solid var(--line);
 		border-radius: 24px;
 		background: white;
 		padding: 28px;
+		transition: 180ms ease;
 	}
 
-	.ecosystem-grid article.featured {
+	.ecosystem-grid > a:hover {
+		border-color: #b6c8f8;
+		box-shadow: 0 18px 44px rgba(35, 56, 104, 0.09);
+		transform: translateY(-3px);
+	}
+
+	.ecosystem-grid > a.featured {
 		border-color: #b9caff;
 		background: linear-gradient(155deg, #f7f9ff, #e9efff);
 		box-shadow: 0 22px 50px rgba(37, 94, 232, 0.1);
@@ -1191,6 +1200,15 @@ const integrations = [
 		font-size: 0.95rem;
 		line-height: 1.65;
 		color: #4b566d;
+	}
+
+	.ecosystem-grid > a > i {
+		margin-top: auto;
+		padding-top: 24px;
+		font-size: 0.84rem;
+		font-style: normal;
+		font-weight: 750;
+		color: var(--blue);
 	}
 
 	.device-section {
@@ -1319,7 +1337,7 @@ const integrations = [
 		margin-top: 50px;
 	}
 
-	.integration-grid article {
+	.integration-grid > a {
 		display: flex;
 		min-height: 112px;
 		align-items: center;
@@ -1331,13 +1349,13 @@ const integrations = [
 		transition: 180ms ease;
 	}
 
-	.integration-grid article:hover {
+	.integration-grid > a:hover {
 		border-color: #b6c8f8;
 		box-shadow: 0 14px 36px rgba(35, 56, 104, 0.08);
 		transform: translateY(-3px);
 	}
 
-	.integration-grid article > span {
+	.integration-grid > a > span {
 		display: grid;
 		width: 46px;
 		height: 46px;
@@ -1363,7 +1381,7 @@ const integrations = [
 		color: #4f5a72;
 	}
 
-	.integration-grid article > i {
+	.integration-grid > a > i {
 		margin-left: auto;
 		font-style: normal;
 		color: #a1a9ba;

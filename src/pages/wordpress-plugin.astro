@@ -1,0 +1,509 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Notificator WordPress Plugin",
+	description: "Discover WordPress events and turn them into dashboard alerts, mobile push notifications, and MQTT messages with Notificator.",
+	canonical: "https://notificator-project.com/wordpress-plugin/",
+	openGraph: {
+		url: "https://notificator-project.com/wordpress-plugin/",
+		title: "Notificator WordPress Plugin",
+		description: "Build useful alerts from real WordPress events without writing a monitoring system.",
+	},
+};
+
+const features = [
+	{
+		number: "01",
+		title: "Discover events",
+		copy: "Scan active plugins for useful hooks, review plain-language descriptions, and focus on events that are suitable for notifications.",
+	},
+	{
+		number: "02",
+		title: "Start from templates",
+		copy: "Use curated starting points with suggested messages and useful event details, then adapt them to your own workflow.",
+	},
+	{
+		number: "03",
+		title: "Build readable alerts",
+		copy: "Create notification titles and messages from event data, add conditions, set priorities, and control repeated activity.",
+	},
+	{
+		number: "04",
+		title: "Choose each destination",
+		copy: "Enable dashboard, mobile push, and MQTT delivery independently for every notification you create.",
+	},
+	{
+		number: "05",
+		title: "Understand activity",
+		copy: "Review recent events, delivery outcomes, and the information used to build each alert from one focused activity view.",
+	},
+	{
+		number: "06",
+		title: "Reuse your setup",
+		copy: "Export configured events and import them on another WordPress site instead of rebuilding the same notification rules.",
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-layout">
+			<div>
+				<p class="eyebrow">WordPress plugin</p>
+				<h1 class="display-title">Your site already knows what happened. Notificator helps it tell you.</h1>
+				<p class="section-copy">
+					Choose meaningful WordPress events, turn their details into clear notifications, and deliver each alert to the places that make
+					sense.
+				</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#plugin-features">Explore the plugin</a>
+					<a class="button button-secondary" href="https://docs.notificator-project.com/">Read the documentation ↗</a>
+				</div>
+			</div>
+
+			<aside class="plugin-window" aria-label="Example Notificator plugin overview">
+				<div class="window-header">
+					<span class="plugin-logo" aria-hidden="true">N</span>
+					<div><small>Notificator</small><strong>Your site is listening.</strong></div>
+					<i>Live</i>
+				</div>
+				<div class="metric-grid">
+					<div><small>Active alerts</small><strong>12</strong></div>
+					<div><small>Events today</small><strong>148</strong></div>
+					<div><small>Delivery</small><strong>100%</strong></div>
+				</div>
+				<div class="event-list">
+					<strong>Recent events</strong>
+					<p><span aria-hidden="true">WC</span>New order received <time>Now</time></p>
+					<p><span aria-hidden="true">U</span>New user registered <time>4m</time></p>
+					<p><span aria-hidden="true">F</span>Form submission received <time>11m</time></p>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<section class="local-section section-space" aria-labelledby="local-title">
+		<div class="site-shell local-layout">
+			<div>
+				<p class="eyebrow">Useful from the start</p>
+				<h2 id="local-title" class="section-title">Dashboard alerts need no account or API key.</h2>
+			</div>
+			<div>
+				<p class="section-copy">
+					Install the plugin, discover events, and create local notifications entirely inside WordPress. Connect a Notificator account only
+					when you want mobile push or MQTT delivery.
+				</p>
+				<ul>
+					<li><span aria-hidden="true">✓</span> Event discovery and templates</li>
+					<li><span aria-hidden="true">✓</span> Notification builder and conditions</li>
+					<li><span aria-hidden="true">✓</span> Dashboard activity and alerts</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="plugin-features" class="features-section section-space" aria-labelledby="features-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Inside the plugin</p>
+				<h2 id="features-title" class="section-title">A focused workflow from discovery to delivery.</h2>
+				<p class="section-copy">The plugin keeps setup understandable while still providing useful controls for more advanced sites.</p>
+			</div>
+
+			<div class="feature-grid">
+				{
+					features.map((feature) => (
+						<article>
+							<span>{feature.number}</span>
+							<h3>{feature.title}</h3>
+							<p>{feature.copy}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="audience-section section-space" aria-labelledby="audience-title">
+		<div class="site-shell audience-layout">
+			<div>
+				<p class="eyebrow">For site owners</p>
+				<h2 id="audience-title" class="section-title">Start with the events that need a response.</h2>
+				<p class="section-copy">
+					Use ready-made templates or guided discovery to create alerts for store activity, user accounts, forms, content, and the plugins
+					that run your site.
+				</p>
+				<a href="/integrations/">Explore event integrations →</a>
+			</div>
+			<div>
+				<p class="eyebrow">For developers</p>
+				<h2 class="section-title">Give custom events a first-class experience.</h2>
+				<p class="section-copy">
+					Register readable event metadata and reusable templates from your own plugin. Notificator provides the interface while your code
+					keeps ownership of the event.
+				</p>
+				<a href="https://docs.notificator-project.com/">Read the integration documentation ↗</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="release-section">
+		<div class="site-shell release-layout">
+			<aside class="independence-card" aria-labelledby="plugin-independence-title">
+				<span aria-hidden="true">i</span>
+				<div>
+					<strong id="plugin-independence-title">An independent community project</strong>
+					<p>
+						Notificator is not affiliated with, endorsed by, or sponsored by WordPress.org, the WordPress Foundation, or Automattic. Our
+						connection to the WordPress ecosystem is through compatibility, open-source participation, and contributions to community
+						plugins and related projects.
+					</p>
+				</div>
+			</aside>
+
+			<div class="release-card">
+				<div>
+					<p class="eyebrow">Public release</p>
+					<h2>The WordPress.org listing is being finalized.</h2>
+					<p>
+						The plugin is free and open source. The public source, release history, and issue tracker remain available on GitHub while the
+						directory listing is completed.
+					</p>
+				</div>
+				<div class="release-actions">
+					<a class="button button-primary" href="https://github.com/notificator-project/WordPress-Plugin">View the source ↗</a>
+					<a href="/support/">Plugin support →</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+
+	.hero-layout,
+	.local-layout,
+	.audience-layout {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(44px, 8vw, 100px);
+		align-items: center;
+	}
+
+	.page-hero .display-title {
+		max-width: 900px;
+	}
+
+	.hero-actions,
+	.release-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+
+	.plugin-window {
+		border: 1px solid #cdd9f5;
+		border-radius: 26px;
+		background: #f8faff;
+		box-shadow: 0 32px 80px rgba(30, 54, 112, 0.16);
+		padding: clamp(18px, 3vw, 28px);
+		transform: rotate(1deg);
+	}
+
+	.window-header,
+	.event-list p {
+		display: flex;
+		align-items: center;
+	}
+
+	.window-header {
+		gap: 13px;
+	}
+
+	.plugin-logo,
+	.event-list p > span {
+		display: grid;
+		flex: 0 0 auto;
+		place-items: center;
+		background: var(--blue);
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 800;
+		color: white;
+	}
+
+	.plugin-logo {
+		width: 44px;
+		height: 44px;
+		border-radius: 13px;
+	}
+
+	.window-header div {
+		display: grid;
+		gap: 2px;
+	}
+
+	.window-header small {
+		color: #667088;
+	}
+
+	.window-header i {
+		margin-left: auto;
+		font-size: 0.78rem;
+		font-style: normal;
+		font-weight: 700;
+		color: var(--success);
+	}
+
+	.metric-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 8px;
+		margin-top: 26px;
+	}
+
+	.metric-grid div {
+		display: grid;
+		gap: 5px;
+		border: 1px solid var(--line);
+		border-radius: 14px;
+		background: white;
+		padding: 15px;
+	}
+
+	.metric-grid small {
+		font-size: 0.7rem;
+		color: #667088;
+	}
+
+	.metric-grid strong {
+		font-size: 1.25rem;
+	}
+
+	.event-list {
+		margin-top: 10px;
+		border: 1px solid var(--line);
+		border-radius: 14px;
+		background: white;
+		padding: 16px;
+	}
+
+	.event-list > strong {
+		font-size: 0.8rem;
+	}
+
+	.event-list p {
+		gap: 9px;
+		margin: 12px 0 0;
+		font-size: 0.76rem;
+	}
+
+	.event-list p > span {
+		width: 26px;
+		height: 26px;
+		border-radius: 7px;
+		background: var(--blue-pale);
+		font-size: 0.58rem;
+		color: var(--blue);
+	}
+
+	.event-list time {
+		margin-left: auto;
+		color: #7a849a;
+	}
+
+	.local-section {
+		background: linear-gradient(145deg, #edf3ff, #f8faff 64%);
+	}
+
+	.local-layout {
+		align-items: end;
+	}
+
+	.local-layout .section-copy {
+		margin-top: 0;
+	}
+
+	.local-layout ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px 18px;
+		margin: 26px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.local-layout li {
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.local-layout li span {
+		margin-right: 5px;
+		color: var(--success);
+	}
+
+	.features-section {
+		background: white;
+	}
+
+	.section-heading {
+		max-width: 800px;
+	}
+
+	.feature-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+		margin-top: 52px;
+	}
+
+	.feature-grid article {
+		min-height: 245px;
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		background: #f9faff;
+		padding: clamp(22px, 3vw, 30px);
+	}
+
+	.feature-grid article > span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.78rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.feature-grid h3 {
+		margin: 48px 0 0;
+		font-size: 1.25rem;
+		letter-spacing: -0.03em;
+	}
+
+	.feature-grid p {
+		color: var(--ink-soft);
+	}
+
+	.audience-layout {
+		align-items: start;
+	}
+
+	.audience-layout > div {
+		border-left: 3px solid #a9bfff;
+		padding-left: clamp(22px, 4vw, 40px);
+	}
+
+	.audience-layout a {
+		display: inline-block;
+		margin-top: 25px;
+		font-weight: 750;
+		color: var(--blue);
+	}
+
+	.release-section {
+		padding: 30px 0 36px;
+	}
+
+	.release-layout {
+		display: grid;
+		gap: 16px;
+	}
+
+	.independence-card {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 14px;
+		border: 1px solid #c9d6f6;
+		border-radius: 18px;
+		background: #eef3ff;
+		padding: clamp(20px, 3vw, 28px);
+	}
+
+	.independence-card > span {
+		display: grid;
+		width: 30px;
+		height: 30px;
+		place-items: center;
+		border-radius: 9px;
+		background: var(--blue);
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.8rem;
+		font-weight: 800;
+		color: white;
+	}
+
+	.independence-card strong {
+		display: block;
+		margin-top: 3px;
+	}
+
+	.independence-card p {
+		max-width: 900px;
+		margin: 7px 0 0;
+		font-size: 0.88rem;
+		line-height: 1.65;
+		color: var(--ink-soft);
+	}
+
+	.release-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 40px;
+		align-items: end;
+		border-radius: 28px;
+		background: #0b1020;
+		padding: clamp(30px, 6vw, 64px);
+		color: white;
+	}
+
+	.release-card h2 {
+		max-width: 700px;
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		letter-spacing: -0.05em;
+		line-height: 1.05;
+	}
+
+	.release-card p:not(.eyebrow) {
+		max-width: 680px;
+		color: #c7d1e8;
+	}
+
+	.release-actions {
+		align-items: flex-start;
+		flex-direction: column;
+		margin: 0;
+	}
+
+	.release-actions > a:not(.button) {
+		color: #dce4fa;
+	}
+
+	@media (max-width: 820px) {
+		.hero-layout,
+		.local-layout,
+		.audience-layout,
+		.release-card {
+			grid-template-columns: 1fr;
+		}
+
+		.feature-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 560px) {
+		.feature-grid,
+		.metric-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.feature-grid article {
+			min-height: auto;
+		}
+	}
+</style>

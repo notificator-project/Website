@@ -1,0 +1,497 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "How Notificator Works",
+	description: "Learn how Notificator turns meaningful WordPress events into dashboard alerts, mobile push notifications, and MQTT messages.",
+	canonical: "https://notificator-project.com/how-it-works/",
+	openGraph: {
+		url: "https://notificator-project.com/how-it-works/",
+		title: "How Notificator Works",
+		description: "Follow the path from a WordPress event to an alert on your dashboard, phone, or connected device.",
+	},
+};
+
+const steps = [
+	{
+		number: "01",
+		title: "Discover what can happen",
+		copy: "Scan your active plugins for useful events, start from a ready-made template, or use an event registered by your own code.",
+		detail: "Discovery happens inside WordPress and does not require a Notificator account.",
+	},
+	{
+		number: "02",
+		title: "Choose what matters",
+		copy: "Select an event, give the notification a clear name, and use the available event details to write a message that makes sense.",
+		detail: "Conditions and throttling help prevent noisy or repetitive alerts.",
+	},
+	{
+		number: "03",
+		title: "Select the destinations",
+		copy: "Keep alerts in the WordPress dashboard, send them to the Notificator mobile app, or route them to compatible MQTT devices.",
+		detail: "Each notification can use the delivery channels that suit that event.",
+	},
+	{
+		number: "04",
+		title: "Review, refine, and reuse",
+		copy: "Use the activity view to understand what fired and how it was delivered. Export your setup when you want to reuse it on another site.",
+		detail: "You stay in control of active notifications, API keys, delivery channels, and alert history.",
+	},
+];
+
+const channels = [
+	{
+		label: "Included",
+		marker: "WP",
+		title: "Dashboard alerts",
+		copy: "See important activity inside WordPress. This works locally with no Notificator account or API key.",
+		requirement: "No account required",
+	},
+	{
+		label: "iOS + Android",
+		marker: "APP",
+		title: "Mobile push",
+		copy: "Receive selected alerts on your phone through the Notificator mobile app, wherever you are.",
+		requirement: "Account and active API key",
+	},
+	{
+		label: "Connected devices",
+		marker: "IoT",
+		title: "MQTT delivery",
+		copy: "Send structured event messages to compatible displays, printers, automations, and other MQTT clients.",
+		requirement: "Account and active API key",
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-layout">
+			<div>
+				<p class="eyebrow">How it works</p>
+				<h1 class="display-title">From a WordPress event to an alert you can act on.</h1>
+				<p class="section-copy">
+					Notificator listens for events you choose, turns their useful details into a readable message, and delivers that message only
+					where you want it.
+				</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#workflow">Follow the workflow</a>
+					<a class="button button-secondary" href="/integrations/">Explore integrations</a>
+				</div>
+			</div>
+
+			<aside class="signal-card" aria-label="Example Notificator event flow">
+				<div class="signal-node">
+					<span aria-hidden="true">WC</span>
+					<div>
+						<small>WordPress event</small>
+						<strong>New order created</strong>
+					</div>
+				</div>
+				<i aria-hidden="true">↓</i>
+				<div class="signal-node signal-node-active">
+					<span aria-hidden="true">N</span>
+					<div>
+						<small>Notification rule</small>
+						<strong>High-value order</strong>
+					</div>
+				</div>
+				<i aria-hidden="true">↓</i>
+				<div class="signal-destinations" aria-label="Selected destinations">
+					<span>Dashboard</span>
+					<span>Mobile app</span>
+					<span>Device</span>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<section id="workflow" class="workflow-section section-space" aria-labelledby="workflow-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">The workflow</p>
+				<h2 id="workflow-title" class="section-title">Set it up clearly, then let it run.</h2>
+				<p class="section-copy">
+					Every notification follows the same understandable path, whether it starts with WordPress itself, an installed plugin, or custom
+					code.
+				</p>
+			</div>
+
+			<ol class="step-list">
+				{
+					steps.map((step) => (
+						<li>
+							<span class="step-number" aria-hidden="true">
+								{step.number}
+							</span>
+							<div>
+								<h3>{step.title}</h3>
+								<p>{step.copy}</p>
+								<small>{step.detail}</small>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="local-first-section section-space" aria-labelledby="local-first-title">
+		<div class="site-shell local-first-layout">
+			<div>
+				<p class="eyebrow">Local first</p>
+				<h2 id="local-first-title" class="section-title">Start without creating an account.</h2>
+				<p class="section-copy">
+					You can scan for events, create notifications, and receive dashboard alerts entirely inside WordPress. Add a Notificator account
+					only when you want alerts to leave the site.
+				</p>
+			</div>
+			<div class="local-checklist">
+				<div>
+					<span aria-hidden="true">✓</span>
+					<p><strong>No API key for local alerts</strong>Dashboard notifications work as soon as an event is configured.</p>
+				</div>
+				<div>
+					<span aria-hidden="true">✓</span>
+					<p><strong>Delivery is selected per notification</strong>Use local, mobile, and device delivery independently.</p>
+				</div>
+				<div>
+					<span aria-hidden="true">✓</span>
+					<p><strong>Your setup is portable</strong>Export configured events and import them on another WordPress site.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="channels-section section-space" aria-labelledby="channels-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Delivery channels</p>
+				<h2 id="channels-title" class="section-title">One event can reach the right places.</h2>
+				<p class="section-copy">Begin with the dashboard, then add remote delivery only where it is genuinely useful.</p>
+			</div>
+
+			<div class="channel-grid">
+				{
+					channels.map((channel) => (
+						<article>
+							<div class="channel-topline">
+								<span class="channel-marker" aria-hidden="true">
+									{channel.marker}
+								</span>
+								<small>{channel.label}</small>
+							</div>
+							<h3>{channel.title}</h3>
+							<p>{channel.copy}</p>
+							<strong>{channel.requirement}</strong>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="page-cta">
+		<div class="site-shell page-cta-card">
+			<div>
+				<p class="eyebrow">Choose a starting point</p>
+				<h2>Find an event that matters to your site.</h2>
+				<p>See how built-in templates, hook discovery, and custom integrations fit into the workflow.</p>
+			</div>
+			<div class="cta-actions">
+				<a class="button button-primary" href="/integrations/">Explore integrations</a>
+				<a href="https://docs.notificator-project.com/">Read the documentation ↗</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+
+	.hero-layout,
+	.local-first-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+		gap: clamp(50px, 8vw, 110px);
+		align-items: center;
+	}
+
+	.page-hero .display-title {
+		max-width: 900px;
+	}
+
+	.hero-actions,
+	.cta-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+
+	.signal-card {
+		display: grid;
+		gap: 14px;
+		border-radius: 28px;
+		background: #0d1427;
+		box-shadow: 0 30px 80px rgba(15, 27, 58, 0.2);
+		padding: clamp(24px, 4vw, 38px);
+		color: white;
+	}
+
+	.signal-card > i {
+		margin-left: 23px;
+		font-style: normal;
+		color: #6f8bd4;
+	}
+
+	.signal-node {
+		display: flex;
+		align-items: center;
+		gap: 15px;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 17px;
+		background: rgba(255, 255, 255, 0.06);
+		padding: 16px;
+	}
+
+	.signal-node > span,
+	.channel-marker {
+		display: grid;
+		width: 46px;
+		height: 46px;
+		flex: 0 0 auto;
+		place-items: center;
+		border-radius: 13px;
+		background: #eaf0ff;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.76rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.signal-node div {
+		display: grid;
+		gap: 3px;
+	}
+
+	.signal-node small {
+		color: #aeb9d2;
+	}
+
+	.signal-node-active {
+		border-color: rgba(84, 137, 255, 0.7);
+		background: rgba(51, 104, 235, 0.2);
+	}
+
+	.signal-destinations {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 8px;
+	}
+
+	.signal-destinations span {
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.08);
+		padding: 11px 8px;
+		text-align: center;
+		font-size: 0.78rem;
+		font-weight: 700;
+		color: #dce4fa;
+	}
+
+	.workflow-section,
+	.channels-section {
+		background: white;
+	}
+
+	.section-heading {
+		max-width: 800px;
+	}
+
+	.step-list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+		margin: 54px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.step-list li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 18px;
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		background: #f9faff;
+		padding: clamp(22px, 4vw, 32px);
+	}
+
+	.step-number {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.82rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.step-list h3,
+	.channel-grid h3 {
+		margin: 0;
+		font-size: 1.35rem;
+		letter-spacing: -0.03em;
+	}
+
+	.step-list p,
+	.channel-grid p {
+		margin: 12px 0;
+		color: var(--ink-soft);
+	}
+
+	.step-list small {
+		display: block;
+		border-top: 1px solid var(--line);
+		padding-top: 14px;
+		line-height: 1.55;
+		color: #59647b;
+	}
+
+	.local-first-section {
+		background: linear-gradient(145deg, #edf3ff, #f7f9fd 62%);
+	}
+
+	.local-checklist {
+		display: grid;
+		gap: 12px;
+	}
+
+	.local-checklist > div {
+		display: flex;
+		gap: 14px;
+		border: 1px solid rgba(112, 142, 210, 0.2);
+		border-radius: 17px;
+		background: rgba(255, 255, 255, 0.75);
+		padding: 18px;
+	}
+
+	.local-checklist span {
+		color: var(--success);
+		font-weight: 800;
+	}
+
+	.local-checklist p {
+		margin: 0;
+		color: var(--ink-soft);
+	}
+
+	.local-checklist strong {
+		display: block;
+		margin-bottom: 3px;
+		color: var(--ink);
+	}
+
+	.channel-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+		margin-top: 50px;
+	}
+
+	.channel-grid article {
+		display: flex;
+		min-height: 310px;
+		flex-direction: column;
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		padding: clamp(22px, 3vw, 30px);
+	}
+
+	.channel-topline {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 34px;
+	}
+
+	.channel-topline small {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.channel-grid article > strong {
+		margin-top: auto;
+		border-top: 1px solid var(--line);
+		padding-top: 16px;
+		font-size: 0.85rem;
+		color: var(--blue);
+	}
+
+	.page-cta {
+		padding: 30px 0 36px;
+	}
+
+	.page-cta-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 40px;
+		align-items: end;
+		border-radius: 28px;
+		background: #0b1020;
+		padding: clamp(30px, 6vw, 64px);
+		color: white;
+	}
+
+	.page-cta-card h2 {
+		max-width: 700px;
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		letter-spacing: -0.05em;
+		line-height: 1.05;
+	}
+
+	.page-cta-card p:not(.eyebrow) {
+		max-width: 650px;
+		margin: 18px 0 0;
+		color: #c7d1e8;
+	}
+
+	.page-cta-card .cta-actions {
+		align-items: flex-start;
+		flex-direction: column;
+		margin: 0;
+	}
+
+	.page-cta-card .cta-actions > a:not(.button) {
+		color: #dce4fa;
+	}
+
+	@media (max-width: 820px) {
+		.hero-layout,
+		.local-first-layout,
+		.page-cta-card {
+			grid-template-columns: 1fr;
+		}
+
+		.channel-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.channel-grid article {
+			min-height: auto;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.step-list {
+			grid-template-columns: 1fr;
+		}
+
+		.signal-destinations {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

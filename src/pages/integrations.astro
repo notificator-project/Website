@@ -1,0 +1,597 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Notificator Integrations",
+	description: "Connect Notificator to WordPress events using built-in templates, hook discovery, or the public integration API.",
+	canonical: "https://notificator-project.com/integrations/",
+	openGraph: {
+		url: "https://notificator-project.com/integrations/",
+		title: "Notificator Integrations",
+		description: "Use ready-made templates, discover plugin events, or publish a first-class Notificator integration.",
+	},
+};
+
+const sources = [
+	{
+		marker: "W",
+		title: "WordPress Core",
+		copy: "Build alerts around users, comments, updates, authentication, content, and other native WordPress activity.",
+		examples: ["New user registered", "Comment awaiting review", "Administrator login"],
+	},
+	{
+		marker: "WC",
+		title: "Commerce",
+		copy: "Keep an eye on orders, stock, payments, refunds, and the store events that need a timely response.",
+		examples: ["New order", "Order status changed", "Low-stock event"],
+	},
+	{
+		marker: "F",
+		title: "Forms",
+		copy: "Turn successful submissions, delivery failures, and other form events into useful operational alerts.",
+		examples: ["New enquiry", "Message failed to send", "Submission received"],
+	},
+	{
+		marker: "{}",
+		title: "Your own code",
+		copy: "Register documented events and templates from a custom plugin, theme, or internal WordPress integration.",
+		examples: ["Deployment completed", "Import failed", "Custom workflow changed"],
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-layout">
+			<div>
+				<p class="eyebrow">Integrations</p>
+				<h1 class="display-title">Connect the events your site already creates.</h1>
+				<p class="section-copy">
+					Start with curated templates, discover events from installed plugins, or give your own integration a first-class Notificator
+					experience.
+				</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#ways-to-connect">See the options</a>
+					<a class="button button-secondary" href="https://docs.notificator-project.com/">Developer documentation ↗</a>
+				</div>
+			</div>
+
+			<aside class="integration-preview" aria-label="Example integration template">
+				<div class="preview-header">
+					<span aria-hidden="true">WC</span>
+					<div>
+						<small>Ready-made template</small>
+						<strong>New order received</strong>
+					</div>
+				</div>
+				<p>Receive a clear alert when a new order is created.</p>
+				<div class="preview-details">
+					<span>Order number</span>
+					<span>Order total</span>
+					<span>Customer</span>
+				</div>
+				<div class="preview-action">
+					<span>woocommerce_new_order</span>
+					<strong>Use template</strong>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<section id="ways-to-connect" class="connection-section section-space" aria-labelledby="connection-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Three ways to connect</p>
+				<h2 id="connection-title" class="section-title">Choose the right starting point.</h2>
+				<p class="section-copy">Each route ends with a notification you control. The difference is how the event becomes available.</p>
+			</div>
+
+			<div class="connection-grid">
+				<article>
+					<span class="connection-number">01</span>
+					<p class="connection-label">Fastest start</p>
+					<h3>Built-in templates</h3>
+					<p>
+						Curated starting points with a useful event, plain-language description, suggested message, and known event details already
+						prepared.
+					</p>
+					<strong>Choose a template, review it, then save your notification.</strong>
+				</article>
+				<article>
+					<span class="connection-number">02</span>
+					<p class="connection-label">Broader coverage</p>
+					<h3>Hook discovery</h3>
+					<p>
+						Scan active plugin code for event hooks. Notificator groups the findings and adds context to help you judge which events are
+						useful.
+					</p>
+					<strong>Discovery finds possibilities. You decide which ones become notifications.</strong>
+				</article>
+				<article>
+					<span class="connection-number">03</span>
+					<p class="connection-label">Best developer experience</p>
+					<h3>Public integration API</h3>
+					<p>
+						Register event metadata and templates directly from your code so users see meaningful names, descriptions, fields, and
+						defaults.
+					</p>
+					<strong>Ideal for plugin authors and private site integrations.</strong>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="difference-section section-space" aria-labelledby="difference-title">
+		<div class="site-shell difference-layout">
+			<div>
+				<p class="eyebrow">An important distinction</p>
+				<h2 id="difference-title" class="section-title">A template is a starting point. A notification is the rule you save.</h2>
+				<p class="section-copy">
+					Templates make setup faster, but they do not send anything by themselves. Once you choose a template, you can edit its message,
+					conditions, priority, and delivery channels before saving it as an active notification.
+				</p>
+			</div>
+
+			<div class="difference-flow" aria-label="Template to notification flow">
+				<div>
+					<span>Template</span>
+					<strong>Suggested setup</strong>
+					<small>Reusable and inactive</small>
+				</div>
+				<i aria-hidden="true">→</i>
+				<div>
+					<span>Your choices</span>
+					<strong>Message and delivery</strong>
+					<small>Reviewed by you</small>
+				</div>
+				<i aria-hidden="true">→</i>
+				<div class="active-step">
+					<span>Notification</span>
+					<strong>Saved event rule</strong>
+					<small>Ready to receive events</small>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="source-section section-space" aria-labelledby="source-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Event sources</p>
+				<h2 id="source-title" class="section-title">Useful across the WordPress ecosystem.</h2>
+				<p class="section-copy">
+					Notificator is not limited to one plugin category. If WordPress code publishes an event, it can become part of a notification
+					workflow.
+				</p>
+			</div>
+
+			<div class="source-grid">
+				{
+					sources.map((source) => (
+						<article>
+							<span class="source-marker" aria-hidden="true">
+								{source.marker}
+							</span>
+							<h3>{source.title}</h3>
+							<p>{source.copy}</p>
+							<ul aria-label={`${source.title} event examples`}>
+								{source.examples.map((example) => (
+									<li>{example}</li>
+								))}
+							</ul>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="developer-section section-space" aria-labelledby="developer-title">
+		<div class="site-shell developer-card">
+			<div>
+				<p class="eyebrow">For developers</p>
+				<h2 id="developer-title">Make your integration feel native.</h2>
+				<p>
+					Register readable event names, descriptions, fields, and templates through the public PHP API. Users get a guided setup experience
+					while your plugin keeps ownership of the event itself.
+				</p>
+			</div>
+			<ul>
+				<li>Document event arguments in plain language</li>
+				<li>Provide ready-to-use notification templates</li>
+				<li>Keep integration code inside your own plugin</li>
+				<li>Use trusted filters for advanced field resolution</li>
+			</ul>
+			<div class="developer-actions">
+				<a class="button button-primary" href="https://docs.notificator-project.com/">Read developer docs ↗</a>
+				<a href="https://github.com/notificator-project/WordPress-Plugin">View the plugin source ↗</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="page-cta">
+		<div class="site-shell page-cta-card">
+			<div>
+				<p class="eyebrow">See the complete path</p>
+				<h2>Understand what happens after you choose an event.</h2>
+			</div>
+			<a class="button button-primary" href="/how-it-works/">See how Notificator works</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+
+	.hero-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+		gap: clamp(50px, 8vw, 110px);
+		align-items: center;
+	}
+
+	.page-hero .display-title {
+		max-width: 900px;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+
+	.integration-preview {
+		border: 1px solid rgba(112, 142, 210, 0.22);
+		border-radius: 26px;
+		background: rgba(255, 255, 255, 0.86);
+		box-shadow: var(--shadow-soft);
+		padding: clamp(24px, 4vw, 34px);
+	}
+
+	.preview-header {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+	}
+
+	.preview-header > span,
+	.source-marker {
+		display: grid;
+		width: 48px;
+		height: 48px;
+		flex: 0 0 auto;
+		place-items: center;
+		border-radius: 13px;
+		background: var(--blue-pale);
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.78rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.preview-header div {
+		display: grid;
+		gap: 3px;
+	}
+
+	.preview-header small {
+		color: #667088;
+	}
+
+	.integration-preview > p {
+		margin: 24px 0;
+		color: var(--ink-soft);
+	}
+
+	.preview-details {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 7px;
+	}
+
+	.preview-details span {
+		border: 1px solid #bfd0fb;
+		border-radius: 999px;
+		background: #f4f7ff;
+		padding: 6px 10px;
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.preview-action {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		margin-top: 26px;
+		border-top: 1px solid var(--line);
+		padding-top: 18px;
+	}
+
+	.preview-action span {
+		overflow: hidden;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.72rem;
+		text-overflow: ellipsis;
+		color: #667088;
+	}
+
+	.preview-action strong {
+		flex: 0 0 auto;
+		color: var(--blue);
+	}
+
+	.connection-section,
+	.source-section {
+		background: white;
+	}
+
+	.section-heading {
+		max-width: 800px;
+	}
+
+	.connection-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+		margin-top: 54px;
+	}
+
+	.connection-grid article {
+		display: flex;
+		min-height: 390px;
+		flex-direction: column;
+		border: 1px solid var(--line);
+		border-radius: 23px;
+		background: #f9faff;
+		padding: clamp(24px, 4vw, 34px);
+	}
+
+	.connection-number,
+	.connection-label {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.78rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.connection-label {
+		margin: 40px 0 10px;
+		text-transform: uppercase;
+	}
+
+	.connection-grid h3,
+	.source-grid h3 {
+		margin: 0;
+		font-size: 1.45rem;
+		letter-spacing: -0.035em;
+	}
+
+	.connection-grid article > p:not(.connection-label),
+	.source-grid article > p {
+		color: var(--ink-soft);
+	}
+
+	.connection-grid article > strong {
+		margin-top: auto;
+		border-top: 1px solid var(--line);
+		padding-top: 18px;
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+
+	.difference-section {
+		background: linear-gradient(145deg, #edf3ff, #f7f9fd 62%);
+	}
+
+	.difference-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 0.8fr) minmax(500px, 1.2fr);
+		gap: clamp(50px, 8vw, 100px);
+		align-items: center;
+	}
+
+	.difference-flow {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr auto 1fr;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.difference-flow > div {
+		display: grid;
+		min-height: 170px;
+		align-content: center;
+		gap: 8px;
+		border: 1px solid rgba(112, 142, 210, 0.24);
+		border-radius: 18px;
+		background: rgba(255, 255, 255, 0.72);
+		padding: 18px;
+	}
+
+	.difference-flow > i {
+		font-style: normal;
+		color: var(--blue);
+	}
+
+	.difference-flow span,
+	.difference-flow small {
+		font-size: 0.78rem;
+		color: #667088;
+	}
+
+	.difference-flow .active-step {
+		border-color: var(--blue);
+		background: var(--blue);
+		color: white;
+	}
+
+	.difference-flow .active-step :where(span, small) {
+		color: #dbe6ff;
+	}
+
+	.source-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 16px;
+		margin-top: 50px;
+	}
+
+	.source-grid article {
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		padding: clamp(24px, 4vw, 32px);
+	}
+
+	.source-marker {
+		margin-bottom: 28px;
+	}
+
+	.source-grid ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin: 24px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.source-grid li {
+		border-radius: 999px;
+		background: var(--blue-pale);
+		padding: 6px 10px;
+		font-size: 0.78rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.developer-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(280px, 0.65fr);
+		gap: 30px 70px;
+		border-radius: 28px;
+		background: #0b1020;
+		padding: clamp(30px, 6vw, 64px);
+		color: white;
+	}
+
+	.developer-card h2 {
+		max-width: 700px;
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		letter-spacing: -0.05em;
+		line-height: 1.05;
+	}
+
+	.developer-card p:not(.eyebrow) {
+		max-width: 650px;
+		color: #c7d1e8;
+	}
+
+	.developer-card ul {
+		display: grid;
+		gap: 12px;
+		align-content: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.developer-card li {
+		position: relative;
+		padding-left: 25px;
+		color: #dce4fa;
+	}
+
+	.developer-card li::before {
+		position: absolute;
+		left: 0;
+		color: #65dda5;
+		content: "✓";
+	}
+
+	.developer-actions {
+		display: flex;
+		grid-column: 1 / -1;
+		flex-wrap: wrap;
+		gap: 18px;
+		align-items: center;
+		border-top: 1px solid rgba(255, 255, 255, 0.12);
+		padding-top: 28px;
+	}
+
+	.developer-actions > a:not(.button) {
+		color: #dce4fa;
+	}
+
+	.page-cta {
+		padding: 30px 0 36px;
+	}
+
+	.page-cta-card {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 40px;
+		border-radius: 28px;
+		background: white;
+		padding: clamp(30px, 6vw, 64px);
+	}
+
+	.page-cta-card h2 {
+		max-width: 700px;
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		letter-spacing: -0.05em;
+		line-height: 1.05;
+	}
+
+	.page-cta-card > .button {
+		flex: 0 0 auto;
+	}
+
+	@media (max-width: 900px) {
+		.hero-layout,
+		.difference-layout {
+			grid-template-columns: 1fr;
+		}
+
+		.connection-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.connection-grid article {
+			min-height: auto;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.source-grid,
+		.developer-card {
+			grid-template-columns: 1fr;
+		}
+
+		.difference-flow {
+			grid-template-columns: 1fr;
+		}
+
+		.difference-flow > div {
+			min-height: auto;
+		}
+
+		.difference-flow > i {
+			text-align: center;
+			transform: rotate(90deg);
+		}
+
+		.page-cta-card {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>
