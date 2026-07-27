@@ -4,6 +4,7 @@
 	type="button"
 	role="switch"
 	aria-checked="false"
+	aria-label="OpenDyslexic font"
 	aria-describedby="accessibility-font-description"
 	hidden>
 	<span class="font-sample" aria-hidden="true">Aa</span>
@@ -113,6 +114,18 @@
 
 	.font-toggle[aria-checked="true"] .switch-track span {
 		transform: translateX(16px);
+	}
+
+	@media (max-width: 820px) {
+		.font-toggle-copy {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0 0 0 0);
+			clip-path: inset(50%);
+			white-space: nowrap;
+		}
 	}
 
 	@media (max-width: 520px) {
