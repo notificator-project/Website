@@ -41,6 +41,9 @@ const published = new Date(frontmatter.pubDate).toLocaleDateString("en", { day: 
 						rel="noreferrer">
 						X / Twitter
 					</a>
+					<a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noreferrer">
+						Facebook
+					</a>
 					<a
 						href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
 						target="_blank"
