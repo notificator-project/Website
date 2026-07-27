@@ -33,6 +33,18 @@ const lastUpdated = new Intl.DateTimeFormat("en-GB", {
 			</a>
 			<p>Turn meaningful WordPress events into alerts you can act on.</p>
 			<Newsletter />
+			<nav class="footer-social" aria-label="Social media">
+				<span>Follow the project</span>
+				<a href="https://github.com/notificator-project" target="_blank" rel="noreferrer" aria-label="Notificator on GitHub">
+					<img src="/social-icons/github.svg" alt="" aria-hidden="true" />
+				</a>
+				<a href="https://x.com/WP_Notificator" target="_blank" rel="noreferrer" aria-label="Notificator on X">
+					<img src="/social-icons/x.svg" alt="" aria-hidden="true" />
+				</a>
+				<a href="https://www.youtube.com/@NotificatorProject" target="_blank" rel="noreferrer" aria-label="Notificator on YouTube">
+					<img src="/social-icons/youtube.svg" alt="" aria-hidden="true" />
+				</a>
+			</nav>
 		</div>
 
 		<nav class="footer-links" aria-label="Footer navigation">
@@ -50,9 +62,6 @@ const lastUpdated = new Intl.DateTimeFormat("en-GB", {
 				<a href="https://docs.notificator-project.com/">Documentation</a>
 				<a href="/support/">Support</a>
 				<a href="/blog/">Blog</a>
-				<a href="https://github.com/notificator-project" target="_blank" rel="noreferrer">GitHub</a>
-				<a href="https://x.com/WP_Notificator" target="_blank" rel="noreferrer">X / Twitter</a>
-				<a href="https://www.youtube.com/@NotificatorProject" target="_blank" rel="noreferrer">YouTube</a>
 			</div>
 			<div>
 				<h2>Project</h2>
@@ -127,6 +136,60 @@ const lastUpdated = new Intl.DateTimeFormat("en-GB", {
 
 	.footer-lead :global(.newsletter-form) {
 		margin-top: 34px;
+	}
+
+	.footer-social {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-top: 24px;
+	}
+
+	.footer-social > span {
+		margin-right: 8px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: #aeb9d2;
+	}
+
+	.footer-social a {
+		display: grid;
+		width: 44px;
+		height: 44px;
+		place-items: center;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		border-radius: 12px;
+		background: rgba(255, 255, 255, 0.06);
+		transition:
+			transform 150ms ease,
+			border-color 150ms ease,
+			background 150ms ease;
+	}
+
+	.footer-social a:hover {
+		transform: translateY(-2px);
+		border-color: rgba(255, 255, 255, 0.28);
+		background: rgba(255, 255, 255, 0.12);
+	}
+
+	.footer-social img {
+		width: 20px;
+		height: 20px;
+		filter: brightness(0) invert(1);
+		opacity: 1;
+	}
+
+	.footer-social a:nth-child(2) img {
+		width: 17px;
+		height: 17px;
+	}
+
+	.footer-social a:nth-child(3) img {
+		width: 22px;
+		height: 22px;
 	}
 
 	.footer-links {

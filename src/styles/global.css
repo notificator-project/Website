@@ -37,11 +37,41 @@ html {
 }
 
 ::view-transition-old(root) {
-	animation-duration: 140ms;
+	animation: notificator-page-out 120ms ease-out both;
 }
 
 ::view-transition-new(root) {
-	animation-duration: 220ms;
+	animation: notificator-page-in 180ms ease-out both;
+}
+
+@keyframes notificator-page-out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes notificator-page-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 820px) {
+	::view-transition-old(root) {
+		animation-duration: 80ms;
+	}
+
+	::view-transition-new(root) {
+		animation-duration: 140ms;
+	}
 }
 
 body {
