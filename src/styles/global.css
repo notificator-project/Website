@@ -162,6 +162,7 @@ img {
 	padding: 0 20px;
 	font-size: 1rem;
 	font-weight: 700;
+	white-space: nowrap;
 	transition:
 		transform 160ms ease,
 		box-shadow 160ms ease,

@@ -244,16 +244,20 @@ const integrations = [
 			</div>
 
 			<div class="device-actions">
-				<a class="button button-primary" href="/devices/">Explore Notificator devices</a>
-				<a class="device-model-link" href="https://github.com/notificator-project/IoT-Firmware-Early-Access" target="_blank" rel="noreferrer">
-					View the firmware ↗
+				<a class="button button-primary" href="/devices/">Explore devices</a>
+				<a
+					class="button button-secondary"
+					href="https://github.com/notificator-project/IoT-Firmware-Early-Access"
+					target="_blank"
+					rel="noreferrer">
+					Firmware ↗
 				</a>
 				<a
-					class="device-model-link"
+					class="button button-secondary"
 					href="https://makerworld.com/en/models/2270326-tinytosh-mini-retro-pc-smart-wifi-display-esp32"
 					target="_blank"
 					rel="noreferrer">
-					View the enclosure model ↗
+					Enclosure model ↗
 				</a>
 			</div>
 		</div>
@@ -1316,14 +1320,16 @@ const integrations = [
 	.device-actions {
 		display: flex;
 		align-items: center;
-		gap: 22px;
+		flex-wrap: wrap;
+		gap: 10px;
 		margin-top: 34px;
 	}
 
-	.device-model-link {
+	.device-actions .button {
+		min-height: 46px;
+		padding-inline: 16px;
 		font-size: 0.88rem;
-		font-weight: 700;
-		color: var(--blue);
+		white-space: nowrap;
 	}
 
 	.integrations-section {
@@ -1974,6 +1980,10 @@ const integrations = [
 		.device-actions {
 			align-items: flex-start;
 			flex-direction: column;
+		}
+
+		.device-actions .button {
+			width: 100%;
 		}
 
 		.creator-actions {
