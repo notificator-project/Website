@@ -11,6 +11,7 @@ The site presents the complete Notificator ecosystem, publishes project updates,
 - [WordPress plugin](https://notificator-project.com/wordpress-plugin/) introduces local alerts, remote delivery, activity, exports, and the plugin workflow.
 - [Mobile app](https://notificator-project.com/mobile-app/) explains accounts, connected sites, push delivery, and device management.
 - [Devices](https://notificator-project.com/devices/) covers compatible hardware, MQTT, open-source firmware, community builds, and enclosure attribution.
+- [Build a device](https://notificator-project.com/build-a-device/) explains the ESP32-C3 electronics, OLED and touch hardware, wiring, the Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing, assembly, firmware, materials, licensing, the planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Blog](https://notificator-project.com/blog/) contains release notes, development updates, and project stories.
 - [Support](https://notificator-project.com/support/) provides troubleshooting for the plugin, apps, accounts, and devices.
 - [Privacy](https://notificator-project.com/privacy/) describes how data is handled across the project.

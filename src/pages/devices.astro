@@ -50,11 +50,19 @@ const buildSteps = [
 					delivery.
 				</p>
 				<div class="hero-actions">
-					<a class="button button-primary" href="#build-path">See how it connects</a>
+					<a class="button button-primary" href="/build-a-device/">Build a device</a>
 					<a class="button button-secondary" href="https://github.com/notificator-project/IoT-Firmware-Early-Access">
 						Explore the firmware ↗
 					</a>
 				</div>
+				<aside class="hero-batch-note">
+					<span aria-hidden="true">●</span>
+					<p>
+						<strong>You do not have to build one yourself.</strong> Follow the project for future limited batches of ready-to-use devices sent
+						free of charge to randomly selected community members.
+						<a href="#community-batches">Learn about community batches ↓</a>
+					</p>
+				</aside>
 			</div>
 
 			<figure class="device-figure">
@@ -133,28 +141,58 @@ const buildSteps = [
 				<li>Room for custom displays and outputs</li>
 			</ul>
 			<div class="source-actions">
-				<a class="button button-primary" href="https://github.com/notificator-project/IoT-Firmware-Early-Access">View the firmware ↗</a>
+				<a class="button button-primary" href="/build-a-device/">Explore the hardware build</a>
+				<a class="button button-secondary" href="https://github.com/notificator-project/IoT-Firmware-Early-Access">View the firmware ↗</a>
 				<a href="/how-it-works/">See the full notification workflow →</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="community-section section-space" aria-labelledby="community-title">
-		<div class="site-shell community-layout">
-			<div>
-				<p class="eyebrow">Built with the community</p>
-				<h2 id="community-title" class="section-title">From a public experiment to devices shared with real people.</h2>
+	<section id="community-batches" class="community-section section-space" aria-labelledby="community-title">
+		<div class="site-shell">
+			<div class="community-heading">
+				<div>
+					<p class="eyebrow">Community batches</p>
+					<h2 id="community-title" class="section-title">Cannot build one? You may still get one.</h2>
+				</div>
 				<p class="section-copy">
-					Notificator devices were first introduced publicly at WordCamp Athens 2025. Dozens of early units have since been shared, and
-					occasional community batches continue to be given away at no cost.
+					Notificator devices were introduced publicly at WordCamp Athens 2025, where the first devices were shared with attendees. We plan
+					to keep making occasional small batches and send ready-to-use devices free of charge to randomly selected people in the community.
 				</p>
 			</div>
-			<aside>
-				<strong>Build one yourself</strong>
-				<p>Follow the firmware repository for supported hardware, setup guidance, and project updates.</p>
-				<strong>Watch for giveaways</strong>
-				<p>Project news and community channels announce future device batches and testing opportunities.</p>
-			</aside>
+
+			<div class="batch-grid">
+				<article>
+					<span aria-hidden="true">01</span>
+					<strong>Ready to use</strong>
+					<p>Each device is printed, assembled, flashed, and tested before it leaves us.</p>
+				</article>
+				<article>
+					<span aria-hidden="true">02</span>
+					<strong>Free community project</strong>
+					<p>The devices are not sold. Selected recipients receive their device at no charge.</p>
+				</article>
+				<article>
+					<span aria-hidden="true">03</span>
+					<strong>Small and random batches</strong>
+					<p>Quantities are limited, and recipients are selected randomly according to the details announced for each batch.</p>
+				</article>
+			</div>
+
+			<div class="batch-follow">
+				<div>
+					<strong>How will I know when a batch is available?</strong>
+					<p>
+						Follow project updates. Every opportunity will explain its timing, availability, selection process, and any location
+						restrictions before entries open.
+					</p>
+				</div>
+				<div class="batch-actions">
+					<a class="button button-primary" href="/blog/">Follow the Journal</a>
+					<a href="https://x.com/WP_Notificator" target="_blank" rel="noreferrer">Follow on X ↗</a>
+					<a href="https://www.youtube.com/@NotificatorProject" target="_blank" rel="noreferrer">Follow on YouTube ↗</a>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -184,8 +222,7 @@ const buildSteps = [
 	}
 
 	.hero-layout,
-	.purpose-layout,
-	.community-layout {
+	.purpose-layout {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: clamp(50px, 8vw, 110px);
@@ -203,6 +240,37 @@ const buildSteps = [
 		flex-wrap: wrap;
 		gap: 12px;
 		margin-top: 32px;
+	}
+
+	.hero-batch-note {
+		display: flex;
+		max-width: 650px;
+		align-items: flex-start;
+		gap: 12px;
+		margin-top: 24px;
+		border-radius: 16px;
+		background: rgba(234, 240, 255, 0.82);
+		padding: 16px 18px;
+		color: var(--ink-soft);
+	}
+
+	.hero-batch-note > span {
+		margin-top: 4px;
+		font-size: 0.7rem;
+		color: var(--success);
+	}
+
+	.hero-batch-note p {
+		margin: 0;
+	}
+
+	.hero-batch-note strong {
+		color: var(--ink);
+	}
+
+	.hero-batch-note a {
+		font-weight: 700;
+		color: var(--blue);
 	}
 
 	.device-figure {
@@ -383,22 +451,77 @@ const buildSteps = [
 		color: #dce4fa;
 	}
 
-	.community-layout {
+	.community-heading {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(40px, 8vw, 100px);
 		align-items: start;
 	}
 
-	.community-layout aside {
-		border-left: 3px solid #a9bfff;
-		padding-left: clamp(22px, 4vw, 40px);
+	.community-heading .section-copy {
+		margin-top: 0;
 	}
 
-	.community-layout aside strong:not(:first-child) {
-		display: block;
-		margin-top: 28px;
+	.batch-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 12px;
+		margin-top: 50px;
 	}
 
-	.community-layout aside p {
+	.batch-grid article {
+		display: grid;
+		align-content: start;
+		border: 1px solid var(--line);
+		border-radius: 20px;
+		background: white;
+		padding: 25px;
+	}
+
+	.batch-grid span {
+		margin-bottom: 46px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.76rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.batch-grid strong {
+		font-size: 1.15rem;
+	}
+
+	.batch-grid p,
+	.batch-follow p {
 		color: var(--ink-soft);
+	}
+
+	.batch-follow {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 30px;
+		align-items: center;
+		margin-top: 14px;
+		border-radius: 20px;
+		background: #eaf0ff;
+		padding: clamp(24px, 4vw, 38px);
+	}
+
+	.batch-follow p {
+		max-width: 650px;
+		margin-bottom: 0;
+	}
+
+	.batch-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 12px 18px;
+	}
+
+	.batch-actions > a:not(.button) {
+		font-weight: 700;
+		color: var(--blue);
 	}
 
 	.license-section {
@@ -419,10 +542,19 @@ const buildSteps = [
 	@media (max-width: 820px) {
 		.hero-layout,
 		.purpose-layout,
-		.community-layout,
+		.community-heading,
+		.batch-follow,
 		.open-source-card,
 		.license-card {
 			grid-template-columns: 1fr;
+		}
+
+		.batch-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.batch-actions {
+			justify-content: flex-start;
 		}
 
 		.build-grid {

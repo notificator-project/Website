@@ -1,0 +1,828 @@
+---
+import { Image } from "astro:assets";
+import devicePhoto from "@assets/images/device/notificator-devices.jpeg";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Build a Notificator Device",
+	description:
+		"Explore the ESP32-C3 microcontroller, OLED display, 3D-printed enclosure, firmware, wiring, and assembly behind a Notificator device.",
+	canonical: "https://notificator-project.com/build-a-device/",
+	openGraph: {
+		url: "https://notificator-project.com/build-a-device/",
+		title: "Build a Notificator Device",
+		description: "A practical look at the electronics, 3D printing, firmware, and assembly behind the open-source device.",
+	},
+};
+
+const parts = [
+	{
+		code: "MCU",
+		title: "ESP32-C3 SuperMini",
+		copy: "The compact Wi-Fi microcontroller that runs the firmware, connects to MQTT, and controls the display and inputs.",
+	},
+	{
+		code: "OLED",
+		title: "128 × 64 SSD1306 display",
+		copy: "A small monochrome I²C screen at address 0x3C for alerts, status information, the clock, and device menus.",
+	},
+	{
+		code: "TOUCH",
+		title: "TTP223 touch sensor",
+		copy: "Adds capacitive gestures for moving through messages, changing their read state, and opening device information.",
+	},
+	{
+		code: "POWER",
+		title: "Power and connections",
+		copy: "Wiring, headers, and a suitable low-voltage USB power connection complete the electronics. The capacitive sensor is the reference build’s only user input.",
+	},
+];
+
+const buildStages = [
+	{
+		number: "01",
+		title: "Print the enclosure",
+		copy: "Prepare the enclosure parts for your printer and filament. Our samples were produced in PLA on a Bambu Lab A1 mini with AMS lite for efficient colour changes.",
+	},
+	{
+		number: "02",
+		title: "Wire and test",
+		copy: "Connect the OLED and capacitive touch sensor to the documented GPIO pins. Test the electronics before placing them inside the enclosure.",
+	},
+	{
+		number: "03",
+		title: "Install the firmware",
+		copy: "Build and flash the open-source Arduino firmware, then use the device setup portal to provide its network configuration.",
+	},
+	{
+		number: "04",
+		title: "Connect Notificator",
+		copy: "Add the compatible device to your Notificator account and send selected WordPress events to it through MQTT.",
+	},
+];
+
+const printingBenefits = [
+	{
+		number: "01",
+		title: "Start from a digital model",
+		copy: "A slicer turns a 3D model into the layers and toolpaths the printer follows. Modern printers automate much of the calibration that once made the first print intimidating.",
+	},
+	{
+		number: "02",
+		title: "Prototype in hours",
+		copy: "Print a part, test the fit, adjust the model or settings, and try again. That short feedback loop is ideal for microcontroller enclosures.",
+	},
+	{
+		number: "03",
+		title: "Make one or a small batch",
+		copy: "There is no mould or factory minimum. A single replacement part, a new colour, or a community batch can all use the same workflow.",
+	},
+	{
+		number: "04",
+		title: "Make the hardware feel personal",
+		copy: "Colour, texture, shape, and small design details can turn exposed electronics into an object that feels at home on a desk.",
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-layout">
+			<div>
+				<p class="eyebrow">Build a device</p>
+				<h1 class="display-title">A tiny screen, a capable microcontroller, and alerts that feel physical.</h1>
+				<p class="section-copy">
+					See how the Notificator early-access devices combine an ESP32-C3, an OLED display, open-source firmware, and a 3D-printed
+					enclosure.
+				</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#parts">Explore the parts</a>
+					<a class="button button-secondary" href="https://github.com/notificator-project/IoT-Firmware-Early-Access">
+						View the firmware ↗
+					</a>
+				</div>
+				<aside class="hero-batch-note">
+					<span aria-hidden="true">●</span>
+					<p>
+						<strong>Prefer a ready-to-use device?</strong> Follow along for future limited community batches, which we plan to send free of
+						charge to randomly selected people. <a href="#community-batches">How community batches work ↓</a>
+					</p>
+				</aside>
+			</div>
+
+			<figure class="device-figure">
+				<div>
+					<Image
+						src={devicePhoto}
+						alt="Five assembled Notificator devices with OLED screens and 3D-printed enclosures in different colours"
+						loading="eager"
+					/>
+					<span>Early-access builds</span>
+				</div>
+				<figcaption>Real devices printed, assembled, tested, and shared with members of the community.</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section id="parts" class="parts-section section-space" aria-labelledby="parts-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Inside the enclosure</p>
+				<h2 id="parts-title" class="section-title">Approachable hardware with a clear job.</h2>
+				<p class="section-copy">
+					The reference build uses widely available maker components. Check the firmware repository before ordering parts because the
+					hardware target may evolve.
+				</p>
+			</div>
+
+			<div class="parts-grid">
+				{
+					parts.map((part) => (
+						<article>
+							<span>{part.code}</span>
+							<h3>{part.title}</h3>
+							<p>{part.copy}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="wiring-section section-space" aria-labelledby="wiring-title">
+		<div class="site-shell wiring-layout">
+			<div>
+				<p class="eyebrow">Reference wiring</p>
+				<h2 id="wiring-title" class="section-title">The GPIO numbers are the source of truth.</h2>
+				<p class="section-copy">
+					Board layouts can differ, even when two modules use the same ESP32-C3 family. Match the GPIO labels in the firmware and repository
+					documentation rather than relying only on a product photo.
+				</p>
+				<a class="button button-secondary" href="https://github.com/notificator-project/IoT-Firmware-Early-Access">
+					Open the complete wiring guide ↗
+				</a>
+			</div>
+			<dl class="pin-map">
+				<div><dt>OLED SDA</dt><dd>GPIO20</dd></div>
+				<div><dt>OLED SCL</dt><dd>GPIO21</dd></div>
+				<div><dt>TTP223 output</dt><dd>GPIO0</dd></div>
+				<div><dt>OLED address</dt><dd>0x3C</dd></div>
+				<div><dt>OLED resolution</dt><dd>128 × 64</dd></div>
+			</dl>
+		</div>
+	</section>
+
+	<section class="printing-section section-space" aria-labelledby="printing-title">
+		<div class="site-shell printing-layout">
+			<div class="print-card">
+				<span aria-hidden="true">3D</span>
+				<p>PLA enclosure</p>
+				<small>Bambu Lab A1 mini + AMS lite</small>
+			</div>
+			<div>
+				<p class="eyebrow">3D printing</p>
+				<h2 id="printing-title" class="section-title">A compact enclosure with room for personality.</h2>
+				<p class="section-copy">
+					We printed the sample devices in PLA. The compact Bambu Lab A1 mini and AMS lite made it easier to prepare colour variants and
+					repeat small community batches, while careful orientation and test fitting helped reduce failed prints and wasted filament.
+				</p>
+				<div class="material-note">
+					<strong>A practical note about PLA</strong>
+					<p>
+						PLA is commonly produced from renewable plant-based feedstocks and is often described as biodegradable. In practice, it
+						usually needs controlled industrial composting conditions and should not be expected to break down quickly in home compost or
+						landfill. Using only the material needed, avoiding failed prints, and following local disposal guidance matter more than the
+						label alone.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="printing-benefits-section section-space" aria-labelledby="printing-benefits-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Why 3D printing feels different</p>
+				<h2 id="printing-benefits-title" class="section-title">An idea on your screen can become something you can hold.</h2>
+				<p class="section-copy">
+					For a project like Notificator, 3D printing closes the gap between software and the physical world. It makes custom enclosures,
+					fast experiments, and small production runs practical without specialist manufacturing equipment.
+				</p>
+			</div>
+			<div class="benefits-grid">
+				{
+					printingBenefits.map((benefit) => (
+						<article>
+							<span>{benefit.number}</span>
+							<h3>{benefit.title}</h3>
+							<p>{benefit.copy}</p>
+						</article>
+					))
+				}
+			</div>
+			<aside class="beginner-note">
+				<div>
+					<strong>Is it easy to get started?</strong>
+					<p>
+						Much easier than it used to be. With a ready-made model, a modern printer, and its slicer software, a first print can be a
+						straightforward guided process. You still need to learn a few basics such as orientation, supports, bed adhesion, filament
+						handling, and safe operation, but you do not need to become a mechanical engineer before making something useful.
+					</p>
+				</div>
+				<div>
+					<strong>What does the AMS lite add?</strong>
+					<p>
+						The AMS lite can feed multiple filament colours to the A1 mini. That makes colour changes and repeatable variants more
+						accessible, although multi-colour printing can take longer and use extra material during filament changes.
+					</p>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<section class="build-section section-space" aria-labelledby="build-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Build path</p>
+				<h2 id="build-title" class="section-title">From a set of parts to a connected notifier.</h2>
+			</div>
+			<ol class="build-grid">
+				{
+					buildStages.map((stage) => (
+						<li>
+							<span>{stage.number}</span>
+							<h3>{stage.title}</h3>
+							<p>{stage.copy}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section id="community-batches" class="shipping-section section-space" aria-labelledby="shipping-title">
+		<div class="site-shell shipping-card">
+			<div>
+				<p class="eyebrow">Community batches</p>
+				<h2 id="shipping-title">Built thoughtfully and shared at no cost.</h2>
+				<p>
+					Early Notificator devices were assembled as small community batches and given away for free. We used cardboard packaging and
+					selected greener courier options where available to reduce the impact of getting each device to its new home.
+				</p>
+				<p>
+					If building your own is not practical, follow the project. We plan to make more ready-to-use devices and send them free of charge
+					to randomly selected people in the community. Batch sizes will be limited, and future opportunities will be announced through
+					project updates.
+				</p>
+			</div>
+			<ul>
+				<li>Small batches instead of speculative stock</li>
+				<li>Cardboard shipping boxes</li>
+				<li>Lower-impact courier options where available</li>
+				<li>Reusable prototypes and careful test printing</li>
+			</ul>
+			<div class="giveaway-actions">
+				<a class="button button-primary" href="/blog/">Follow the Journal</a>
+				<a href="https://x.com/WP_Notificator" target="_blank" rel="noreferrer">Follow on X ↗</a>
+				<a href="https://www.youtube.com/@NotificatorProject" target="_blank" rel="noreferrer">Follow on YouTube ↗</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="talk-section section-space" aria-labelledby="talk-title">
+		<div class="site-shell talk-card">
+			<div>
+				<p class="eyebrow">Where the pieces came together</p>
+				<h2 id="talk-title">Presented to the world at WordCamp Athens 2025.</h2>
+				<p>
+					The Notificator project was introduced publicly in the talk “WordPress & WooCommerce Notifications: Bridging the Web with the Real
+					World.” The presentation connected WordPress events, APIs, MQTT, mobile apps, IoT devices, and 3D printing into one practical
+					notification system.
+				</p>
+			</div>
+			<div class="talk-actions">
+				<a class="button button-primary" href="https://wcath25.netlify.app/" target="_blank" rel="noreferrer">Explore the presentation ↗</a>
+				<a
+					href="https://wordpress.tv/2026/02/15/wordpress-woocommerce-notifications-%CE%B3%CE%B5%CF%86%CF%85%CF%81%CF%8E%CE%BD%CE%BF%CE%BD%CF%84%CE%B1%CF%82-%CF%84%CE%BF-web-%CE%BC%CE%B5-%CF%84%CE%BF%CE%BD-%CF%80%CF%81%CE%B1%CE%B3%CE%BC/"
+					target="_blank"
+					rel="noreferrer">
+					Watch the talk on WordPress.tv ↗
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="makerworld-section section-space" aria-labelledby="makerworld-title">
+		<div class="site-shell makerworld-layout">
+			<div>
+				<p class="eyebrow">Coming to MakerWorld</p>
+				<h2 id="makerworld-title" class="section-title">A collection of Notificator-compatible designs.</h2>
+			</div>
+			<div>
+				<p>
+					We plan to publish a MakerWorld collection that brings together 3D models suitable for Notificator builds. It will make it easier
+					to discover compatible enclosure ideas, explore different styles, and choose a design that suits your hardware and printer.
+				</p>
+				<p>
+					Every linked model will remain the work of its respective designer and subject to its own license. The collection will point
+					builders to the original model pages rather than redistribute third-party files.
+				</p>
+				<a class="button button-secondary" href="https://makerworld.com/">Explore MakerWorld ↗</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="license-section">
+		<div class="site-shell license-card">
+			<div>
+				<p class="eyebrow">Know the licenses</p>
+				<h2>Open firmware does not make every physical asset open source.</h2>
+				<p>
+					The Notificator firmware is available under the Apache License 2.0. The enclosure shown here is based on the TinyTosh Mini Retro
+					PC by Uladzimir Hitsarau and has separate MakerWorld Standard Digital File License terms. Notificator does not redistribute the
+					model files.
+				</p>
+			</div>
+			<div class="license-actions">
+				<a class="button button-primary" href="https://makerworld.com/en/models/2270326-tinytosh-mini-retro-pc-smart-wifi-display-esp32">
+					View the original model ↗
+				</a>
+				<a href="https://makerworld.com/en/@hitsarau">Visit the designer’s profile ↗</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="safety-section section-space" aria-labelledby="safety-title">
+		<div class="site-shell safety-layout">
+			<div>
+				<p class="eyebrow">Before you build</p>
+				<h2 id="safety-title" class="section-title">Treat it as a maker project.</h2>
+			</div>
+			<div>
+				<p>
+					The early-access reference is not a certified consumer product or a complete beginner kit. Work with low-voltage USB power, verify
+					every connection before powering the board, avoid exposed conductors, and supervise printed parts and electronics around heat,
+					children, and pets.
+				</p>
+				<div class="final-actions">
+					<a class="button button-primary" href="https://github.com/notificator-project/IoT-Firmware-Early-Access">
+						Start with the firmware ↗
+					</a>
+					<a class="button button-secondary" href="/devices/">Explore Notificator devices</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+
+	.hero-layout,
+	.wiring-layout,
+	.printing-layout,
+	.makerworld-layout,
+	.safety-layout {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(48px, 8vw, 100px);
+		align-items: center;
+	}
+
+	.hero-actions,
+	.final-actions,
+	.license-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+
+	.hero-batch-note {
+		display: flex;
+		max-width: 650px;
+		align-items: flex-start;
+		gap: 12px;
+		margin-top: 24px;
+		border-radius: 16px;
+		background: rgba(234, 240, 255, 0.82);
+		padding: 16px 18px;
+		color: var(--ink-soft);
+	}
+
+	.hero-batch-note > span {
+		margin-top: 4px;
+		font-size: 0.7rem;
+		color: var(--success);
+	}
+
+	.hero-batch-note p {
+		margin: 0;
+	}
+
+	.hero-batch-note strong {
+		color: var(--ink);
+	}
+
+	.hero-batch-note a {
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.device-figure {
+		margin: 0;
+	}
+
+	.device-figure > div {
+		position: relative;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		border: 10px solid #0b1020;
+		border-radius: 30px;
+		background: #0b1020;
+		box-shadow: 0 35px 90px rgba(29, 49, 99, 0.22);
+		transform: rotate(1deg);
+	}
+
+	.device-figure :global(img) {
+		width: 100%;
+		height: 100%;
+		border-radius: 20px;
+		object-fit: cover;
+	}
+
+	.device-figure span {
+		position: absolute;
+		bottom: 18px;
+		left: 18px;
+		border-radius: 999px;
+		background: rgba(11, 16, 32, 0.82);
+		padding: 7px 11px;
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: white;
+	}
+
+	.device-figure figcaption {
+		margin-top: 18px;
+		font-size: 0.82rem;
+		line-height: 1.6;
+		color: #667088;
+	}
+
+	.section-heading {
+		max-width: 800px;
+	}
+
+	.parts-section,
+	.build-section {
+		background: white;
+	}
+
+	.parts-grid,
+	.build-grid,
+	.benefits-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 12px;
+		margin-top: 52px;
+	}
+
+	.parts-grid article,
+	.build-grid li,
+	.benefits-grid article {
+		border: 1px solid var(--line);
+		border-radius: 21px;
+		background: #f9faff;
+		padding: 25px;
+	}
+
+	.parts-grid article > span,
+	.build-grid li > span,
+	.benefits-grid article > span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.75rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.parts-grid h3,
+	.build-grid h3,
+	.benefits-grid h3 {
+		margin: 42px 0 10px;
+		font-size: 1.2rem;
+		letter-spacing: -0.03em;
+	}
+
+	.parts-grid p,
+	.build-grid p,
+	.benefits-grid p {
+		margin: 0;
+		color: var(--ink-soft);
+	}
+
+	.build-grid {
+		margin-bottom: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.printing-benefits-section {
+		background: white;
+	}
+
+	.benefits-grid {
+		margin-top: 52px;
+	}
+
+	.beginner-note {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 28px;
+		margin-top: 18px;
+		border-radius: 22px;
+		background: #eaf0ff;
+		padding: clamp(24px, 4vw, 38px);
+	}
+
+	.beginner-note strong {
+		font-size: 1.08rem;
+	}
+
+	.beginner-note p {
+		margin-bottom: 0;
+		color: var(--ink-soft);
+	}
+
+	.wiring-section {
+		background: linear-gradient(145deg, #edf3ff, #f8faff 64%);
+	}
+
+	.wiring-layout {
+		align-items: end;
+	}
+
+	.wiring-layout .button {
+		margin-top: 28px;
+	}
+
+	.pin-map {
+		margin: 0;
+		border: 1px solid rgba(112, 142, 210, 0.24);
+		border-radius: 22px;
+		background: rgba(255, 255, 255, 0.78);
+		padding: 12px 24px;
+	}
+
+	.pin-map div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		border-bottom: 1px solid var(--line);
+		padding: 15px 0;
+	}
+
+	.pin-map div:last-child {
+		border: 0;
+	}
+
+	.pin-map dt {
+		font-weight: 700;
+	}
+
+	.pin-map dd {
+		margin: 0;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.86rem;
+		color: var(--blue);
+	}
+
+	.print-card {
+		display: grid;
+		min-height: 370px;
+		align-content: end;
+		border-radius: 30px;
+		background: radial-gradient(circle at 78% 24%, rgba(99, 144, 255, 0.62), transparent 25%), linear-gradient(145deg, #101a33, #244fb8);
+		box-shadow: 0 35px 90px rgba(29, 49, 99, 0.2);
+		padding: clamp(28px, 5vw, 52px);
+		color: white;
+	}
+
+	.print-card > span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: clamp(4rem, 10vw, 7rem);
+		font-weight: 800;
+		letter-spacing: -0.08em;
+		line-height: 0.85;
+		color: #87a8ff;
+	}
+
+	.print-card p {
+		margin: 30px 0 4px;
+		font-size: 1.55rem;
+		font-weight: 750;
+	}
+
+	.print-card small {
+		color: #cbd8f8;
+	}
+
+	.material-note {
+		margin-top: 28px;
+		border-left: 3px solid #8ba9ff;
+		padding-left: 22px;
+	}
+
+	.material-note p {
+		margin-bottom: 0;
+		color: var(--ink-soft);
+	}
+
+	.shipping-card,
+	.license-card,
+	.talk-card {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(280px, 0.65fr);
+		gap: 30px 70px;
+		border-radius: 28px;
+		background: #0b1020;
+		padding: clamp(30px, 6vw, 64px);
+		color: white;
+	}
+
+	.shipping-card h2,
+	.license-card h2,
+	.talk-card h2 {
+		max-width: 720px;
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		letter-spacing: -0.05em;
+		line-height: 1.05;
+	}
+
+	.shipping-card p:not(.eyebrow),
+	.license-card p:not(.eyebrow),
+	.talk-card p:not(.eyebrow) {
+		color: #c7d1e8;
+	}
+
+	.shipping-card ul {
+		display: grid;
+		gap: 12px;
+		align-content: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.shipping-card li {
+		position: relative;
+		padding-left: 25px;
+		color: #dce4fa;
+	}
+
+	.shipping-card li::before {
+		position: absolute;
+		left: 0;
+		color: #65dda5;
+		content: "✓";
+	}
+
+	.giveaway-actions {
+		display: flex;
+		grid-column: 1 / -1;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 12px 20px;
+		border-top: 1px solid rgba(255, 255, 255, 0.12);
+		padding-top: 28px;
+	}
+
+	.giveaway-actions > a:not(.button) {
+		color: #dce4fa;
+	}
+
+	.license-section {
+		padding: 30px 0;
+	}
+
+	.talk-section {
+		padding-bottom: 30px;
+	}
+
+	.talk-card {
+		align-items: end;
+		background: #111b35;
+	}
+
+	.talk-actions {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 18px;
+	}
+
+	.talk-actions > a:not(.button) {
+		color: #dce4fa;
+	}
+
+	.license-card {
+		align-items: end;
+		background: #121a2f;
+	}
+
+	.license-actions {
+		align-items: flex-start;
+		flex-direction: column;
+		margin: 0;
+	}
+
+	.license-actions > a:not(.button) {
+		color: #dce4fa;
+	}
+
+	.safety-layout {
+		align-items: start;
+	}
+
+	.makerworld-section {
+		background: linear-gradient(145deg, #edf3ff, #f8faff 64%);
+	}
+
+	.makerworld-layout {
+		align-items: start;
+	}
+
+	.makerworld-layout > div:last-child > p {
+		margin-top: 0;
+		font-size: 1.08rem;
+		line-height: 1.75;
+		color: var(--ink-soft);
+	}
+
+	.makerworld-layout > div:last-child > p + p {
+		margin-top: 18px;
+	}
+
+	.makerworld-layout .button {
+		margin-top: 14px;
+	}
+
+	.safety-layout > div:last-child > p {
+		margin-top: 0;
+		font-size: 1.08rem;
+		line-height: 1.75;
+		color: var(--ink-soft);
+	}
+
+	@media (max-width: 900px) {
+		.parts-grid,
+		.build-grid,
+		.benefits-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 820px) {
+		.hero-layout,
+		.wiring-layout,
+		.printing-layout,
+		.makerworld-layout,
+		.shipping-card,
+		.license-card,
+		.talk-card,
+		.safety-layout {
+			grid-template-columns: 1fr;
+		}
+
+		.beginner-note {
+			grid-template-columns: 1fr;
+		}
+
+		.print-card {
+			min-height: 290px;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.parts-grid,
+		.build-grid,
+		.benefits-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.pin-map {
+			padding-inline: 18px;
+		}
+
+		.pin-map div {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 4px;
+		}
+	}
+</style>
