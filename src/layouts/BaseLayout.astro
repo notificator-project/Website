@@ -60,6 +60,14 @@ const seo = {
 };
 ---
 
+<!--
+	Hello, curious human!
+
+	Notificator turns meaningful WordPress events into useful alerts.
+	It is free, open source, and built in public.
+
+	Explore the code: https://github.com/notificator-project
+-->
 <html lang="en">
 	<head>
 		<BaseHead />
@@ -71,5 +79,13 @@ const seo = {
 		<main id="main-content" tabindex="-1"><slot /></main>
 		<Footer />
 		<AccessibilityFontToggle />
+
+		<script is:inline>
+			console.info(
+				"%c🔔 Hello from Notificator!",
+				"color: #1f56db; font-size: 16px; font-weight: 700;",
+				"\nYou found the developer corner. Explore the open-source project at https://github.com/notificator-project",
+			);
+		</script>
 	</body>
 </html>
