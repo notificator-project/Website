@@ -2,7 +2,14 @@
 const { class: className } = Astro.props;
 ---
 
-<form class:list={["newsletter-form", className]} method="POST" action="/blog/" name="newsletter" data-netlify="true" netlify>
+<form
+	class:list={["newsletter-form", className]}
+	method="POST"
+	action="/blog/"
+	name="newsletter"
+	data-netlify="true"
+	netlify
+	aria-label="Newsletter subscription">
 	<input type="hidden" name="form-name" value="newsletter" />
 	<label for="newsletter-email">Project updates, without the noise.</label>
 	<p>Occasional Notificator news, release notes, and practical ideas.</p>
@@ -24,9 +31,9 @@ const { class: className } = Astro.props;
 	.newsletter-form > p {
 		max-width: 360px;
 		margin: 6px 0 16px;
-		font-size: 0.75rem;
+		font-size: 0.85rem;
 		line-height: 1.55;
-		color: #9ca8c3;
+		color: #bdc7dc;
 	}
 
 	.newsletter-form > div {
@@ -44,13 +51,13 @@ const { class: className } = Astro.props;
 		background: rgba(255, 255, 255, 0.08);
 		padding: 0 14px;
 		font: inherit;
-		font-size: 0.82rem;
+		font-size: 0.9rem;
 		color: white;
 		outline: none;
 	}
 
 	.newsletter-form input::placeholder {
-		color: #7f8ba7;
+		color: #b6c1d8;
 	}
 
 	.newsletter-form input:focus {
@@ -65,7 +72,7 @@ const { class: className } = Astro.props;
 		background: #3475ff;
 		padding: 0 16px;
 		font: inherit;
-		font-size: 0.78rem;
+		font-size: 0.88rem;
 		font-weight: 720;
 		color: white;
 		cursor: pointer;
@@ -90,7 +97,7 @@ const { class: className } = Astro.props;
 		border: 1px solid transparent;
 		border-radius: 12px;
 		padding: 11px 12px;
-		font-size: 0.72rem;
+		font-size: 0.82rem;
 		font-weight: 650;
 		line-height: 1.5;
 	}

@@ -1,7 +1,7 @@
 :root {
 	--ink: #0b1020;
-	--ink-soft: #47506a;
-	--blue: #255ee8;
+	--ink-soft: #3f4961;
+	--blue: #1f56db;
 	--blue-bright: #3f7cff;
 	--blue-pale: #eaf0ff;
 	--surface: #ffffff;
@@ -41,12 +41,24 @@ body {
 	min-width: 320px;
 	background: radial-gradient(circle at 12% 4%, rgba(63, 124, 255, 0.12), transparent 28rem), var(--canvas);
 	color: var(--ink);
+	font-size: 1rem;
+	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
+}
+
+html.font-open-dyslexic body,
+html.font-open-dyslexic body * {
+	font-family: "OpenDyslexic", sans-serif !important;
 }
 
 a {
 	color: inherit;
 	text-decoration: none;
+}
+
+:where(a, button, input, textarea, summary):focus-visible {
+	outline: 3px solid var(--blue-bright);
+	outline-offset: 3px;
 }
 
 button,
@@ -97,7 +109,7 @@ img {
 	gap: 8px;
 	margin: 0 0 18px;
 	font-family: "JetBrains Mono", monospace;
-	font-size: 0.76rem;
+	font-size: 0.82rem;
 	font-weight: 700;
 	letter-spacing: 0.08em;
 	line-height: 1.4;
@@ -148,7 +160,7 @@ img {
 	border: 1px solid transparent;
 	border-radius: 14px;
 	padding: 0 20px;
-	font-size: 0.95rem;
+	font-size: 1rem;
 	font-weight: 700;
 	transition:
 		transform 160ms ease,
@@ -184,7 +196,7 @@ img {
 .prose-styles {
 	max-width: 48rem;
 	margin-inline: auto;
-	font-size: 1.06rem;
+	font-size: 1.1rem;
 	line-height: 1.8;
 	color: #374158;
 }

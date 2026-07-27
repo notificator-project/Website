@@ -5,8 +5,8 @@ const { title, url, author, pubDate, description, image, featured = false } = As
 const date = new Date(pubDate).toLocaleDateString("en", { day: "numeric", month: "short", year: "numeric" });
 ---
 
-<a href={url} class:list={["post-card", featured && "featured"]}>
-	<div class="post-image"><Image src={image} alt={title} /></div>
+<a href={url} class:list={["post-card", featured && "featured"]} aria-label={`Read ${title}`}>
+	<div class="post-image"><Image src={image} alt="" /></div>
 	<div class="post-body">
 		<div class="post-meta"><time datetime={pubDate}>{date}</time><span>{author.name}</span></div>
 		<h2>{title}</h2>
@@ -65,9 +65,9 @@ const date = new Date(pubDate).toLocaleDateString("en", { day: "numeric", month:
 		flex-wrap: wrap;
 		gap: 7px 14px;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.58rem;
+		font-size: 0.75rem;
 		text-transform: uppercase;
-		color: #7b859a;
+		color: #536078;
 	}
 
 	.post-body h2 {
@@ -83,15 +83,15 @@ const date = new Date(pubDate).toLocaleDateString("en", { day: "numeric", month:
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;
 		margin: 11px 0 0;
-		font-size: 0.78rem;
+		font-size: 0.9rem;
 		line-height: 1.65;
-		color: #69738a;
+		color: #4b566d;
 	}
 
 	.post-body > strong {
 		margin-top: auto;
 		padding-top: 22px;
-		font-size: 0.73rem;
+		font-size: 0.85rem;
 		color: var(--blue);
 	}
 

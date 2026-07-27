@@ -1,0 +1,162 @@
+<button
+	id="accessibility-font-toggle"
+	class="font-toggle"
+	type="button"
+	role="switch"
+	aria-checked="false"
+	aria-describedby="accessibility-font-description"
+	hidden>
+	<span class="font-sample" aria-hidden="true">Aa</span>
+	<span class="font-toggle-copy">
+		<strong>OpenDyslexic</strong>
+		<small id="accessibility-font-description">Font off</small>
+	</span>
+	<span class="switch-track" aria-hidden="true"><span></span></span>
+</button>
+
+<style>
+	.font-toggle {
+		position: fixed;
+		z-index: 45;
+		right: max(18px, env(safe-area-inset-right));
+		bottom: max(18px, env(safe-area-inset-bottom));
+		display: flex;
+		min-height: 56px;
+		align-items: center;
+		gap: 11px;
+		border: 1px solid #cfd8e8;
+		border-radius: 16px;
+		background: rgba(255, 255, 255, 0.94);
+		box-shadow: 0 16px 44px rgba(16, 29, 61, 0.2);
+		padding: 8px 11px;
+		color: var(--ink);
+		cursor: pointer;
+		-webkit-backdrop-filter: blur(18px) saturate(150%);
+		backdrop-filter: blur(18px) saturate(150%);
+		transition:
+			border-color 160ms ease,
+			box-shadow 160ms ease,
+			transform 160ms ease;
+	}
+
+	.font-toggle[hidden] {
+		display: none;
+	}
+
+	.font-toggle:hover {
+		border-color: #9eb6ec;
+		box-shadow: 0 18px 48px rgba(16, 29, 61, 0.25);
+		transform: translateY(-2px);
+	}
+
+	.font-sample {
+		display: grid;
+		width: 38px;
+		height: 38px;
+		flex: 0 0 auto;
+		place-items: center;
+		border-radius: 11px;
+		background: var(--blue-pale);
+		font-family: "OpenDyslexic", sans-serif !important;
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--blue);
+	}
+
+	.font-toggle-copy {
+		display: flex;
+		min-width: 102px;
+		align-items: flex-start;
+		flex-direction: column;
+		line-height: 1.25;
+	}
+
+	.font-toggle-copy strong {
+		font-size: 0.82rem;
+	}
+
+	.font-toggle-copy small {
+		margin-top: 3px;
+		font-size: 0.75rem;
+		color: #536078;
+	}
+
+	.switch-track {
+		position: relative;
+		width: 38px;
+		height: 22px;
+		flex: 0 0 auto;
+		border-radius: 999px;
+		background: #c7cfdd;
+		transition: background 160ms ease;
+	}
+
+	.switch-track span {
+		position: absolute;
+		top: 3px;
+		left: 3px;
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		background: white;
+		box-shadow: 0 2px 5px rgba(11, 16, 32, 0.24);
+		transition: transform 160ms ease;
+	}
+
+	.font-toggle[aria-checked="true"] {
+		border-color: #9eb6ec;
+	}
+
+	.font-toggle[aria-checked="true"] .switch-track {
+		background: var(--blue);
+	}
+
+	.font-toggle[aria-checked="true"] .switch-track span {
+		transform: translateX(16px);
+	}
+
+	@media (max-width: 520px) {
+		.font-toggle {
+			right: max(10px, env(safe-area-inset-right));
+			bottom: max(10px, env(safe-area-inset-bottom));
+			min-height: 52px;
+			border-radius: 14px;
+		}
+
+		.font-sample {
+			width: 34px;
+			height: 34px;
+		}
+	}
+</style>
+
+<script>
+	const preferenceKey = "notificator-font-preference";
+	const toggle = document.querySelector<HTMLButtonElement>("#accessibility-font-toggle");
+	const description = toggle?.querySelector<HTMLElement>("#accessibility-font-description");
+
+	const updateToggle = (enabled: boolean) => {
+		document.documentElement.classList.toggle("font-open-dyslexic", enabled);
+		toggle?.setAttribute("aria-checked", String(enabled));
+
+		if (description) {
+			description.textContent = enabled ? "Font on" : "Font off";
+		}
+	};
+
+	if (toggle) {
+		toggle.hidden = false;
+		updateToggle(document.documentElement.classList.contains("font-open-dyslexic"));
+
+		toggle.addEventListener("click", () => {
+			const enabled = toggle.getAttribute("aria-checked") !== "true";
+			updateToggle(enabled);
+
+			try {
+				localStorage.setItem(preferenceKey, enabled ? "opendyslexic" : "default");
+			} catch {
+				// The preference remains active for this page when storage is unavailable.
+			}
+		});
+	}
+</script>

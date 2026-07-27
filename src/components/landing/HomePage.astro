@@ -32,15 +32,15 @@ const integrations = [
 				<a class="button button-secondary" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a>
 			</div>
 			<ul class="hero-proof" aria-label="Notificator highlights">
-				<li><span>✓</span> Free and open source</li>
-				<li><span>✓</span> Local alerts need no account</li>
-				<li><span>✓</span> Built for real WordPress events</li>
+				<li><span aria-hidden="true">✓</span> Free and open source</li>
+				<li><span aria-hidden="true">✓</span> Local alerts need no account</li>
+				<li><span aria-hidden="true">✓</span> Built for real WordPress events</li>
 			</ul>
 		</div>
 
-		<div class="platform-preview" aria-label="Preview of the Notificator WordPress dashboard">
-			<div class="stage-glow"></div>
-			<div class="dashboard-window">
+		<div class="platform-preview" role="img" aria-label="Preview of the Notificator WordPress dashboard and a mobile alert">
+			<div class="stage-glow" aria-hidden="true"></div>
+			<div class="dashboard-window" aria-hidden="true">
 				<div class="window-bar">
 					<div class="window-dots"><span></span><span></span><span></span></div>
 					<span>Notificator / Overview</span>
@@ -85,7 +85,7 @@ const integrations = [
 				</div>
 			</div>
 
-			<div class="phone-alert">
+			<div class="phone-alert" aria-hidden="true">
 				<div class="phone-top"><span>9:41</span><i></i></div>
 				<div class="phone-app"><span class="app-icon">N</span><strong>NOTIFICATOR</strong><time>now</time></div>
 				<p>New order received</p>
@@ -155,7 +155,7 @@ const integrations = [
 			</div>
 		</div>
 
-		<div class="builder-card">
+		<div class="builder-card" inert aria-hidden="true">
 			<div class="builder-top"><span>Create notification</span><small>Step 3 of 3</small></div>
 			<div class="builder-steps"><span class="done">1</span><i></i><span class="done">2</span><i></i><span class="active">3</span></div>
 			<label>Notification name<input type="text" value="New order needs attention" readonly /></label>
@@ -333,8 +333,8 @@ const integrations = [
 			<p class="eyebrow">Behind Notificator</p>
 			<h2 class="section-title">Built independently. Shaped around the globe.</h2>
 			<p class="section-copy">
-				Notificator is created and maintained by Vagelis P., a software developer and maker turning software events into useful
-				signals in the physical world.
+				Notificator is created and maintained by Vagelis P., a software developer and maker turning software events into useful signals in the
+				physical world.
 			</p>
 			<p class="creator-note">
 				What started as a small experiment continues to grow thanks to the feedback, support, and contributions of people from the WordPress
@@ -382,9 +382,9 @@ const integrations = [
 					{posts.map((post) => {
 						const slug = post.slug.replace(/^en\//, "");
 						return (
-							<a class="journal-card" href={`/blog/${slug}/`}>
+							<a class="journal-card" href={`/blog/${slug}/`} aria-label={`Read ${post.data.title}`}>
 								<div class="journal-image">
-									<Image src={post.data.image.source} alt={post.data.image.alt || post.data.title} />
+									<Image src={post.data.image.source} alt="" />
 								</div>
 								<time datetime={post.data.pubDate.toISOString()}>
 									{post.data.pubDate.toLocaleDateString("en", { day: "numeric", month: "short", year: "numeric" })}
@@ -449,9 +449,9 @@ const integrations = [
 		margin: 30px 0 0;
 		padding: 0;
 		list-style: none;
-		font-size: 0.78rem;
+		font-size: 0.9rem;
 		font-weight: 650;
-		color: #59627a;
+		color: #45516a;
 	}
 
 	.hero-proof li {
@@ -839,7 +839,7 @@ const integrations = [
 	.flow-card > small,
 	.delivery-label {
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.65rem;
+		font-size: 0.75rem;
 		font-weight: 700;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -855,9 +855,9 @@ const integrations = [
 
 	.flow-card > p {
 		margin: 12px 0 0;
-		font-size: 0.88rem;
+		font-size: 0.95rem;
 		line-height: 1.6;
-		color: #687188;
+		color: #4b566d;
 	}
 
 	.flow-connector {
@@ -916,7 +916,7 @@ const integrations = [
 		border-radius: 11px;
 		background: white;
 		padding: 9px;
-		font-size: 0.72rem;
+		font-size: 0.82rem;
 		font-weight: 650;
 	}
 
@@ -944,12 +944,12 @@ const integrations = [
 	}
 
 	.feature-section .section-copy {
-		color: #a9b3cb;
+		color: #c1cbe0;
 	}
 
 	.feature-section .eyebrow,
 	.open-source-section .eyebrow {
-		color: #75a0ff;
+		color: #9bb9ff;
 	}
 
 	.feature-points {
@@ -968,15 +968,15 @@ const integrations = [
 
 	.feature-points span {
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.65rem;
-		color: #68748f;
+		font-size: 0.75rem;
+		color: #aeb9d2;
 	}
 
 	.feature-points p {
 		margin: 0;
-		font-size: 0.85rem;
+		font-size: 0.95rem;
 		line-height: 1.6;
-		color: #a9b3cb;
+		color: #c1cbe0;
 	}
 
 	.feature-points strong {
@@ -1160,11 +1160,11 @@ const integrations = [
 		top: 25px;
 		right: 25px;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.58rem;
+		font-size: 0.75rem;
 		font-weight: 700;
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
-		color: #7c879e;
+		color: #536078;
 	}
 
 	.ecosystem-icon {
@@ -1188,9 +1188,9 @@ const integrations = [
 
 	.ecosystem-grid p {
 		margin: 12px 0 0;
-		font-size: 0.84rem;
+		font-size: 0.95rem;
 		line-height: 1.65;
-		color: #69738a;
+		color: #4b566d;
 	}
 
 	.device-section {
@@ -1235,7 +1235,7 @@ const integrations = [
 		background: rgba(10, 16, 33, 0.72);
 		padding: 8px 11px;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.58rem;
+		font-size: 0.72rem;
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
 		color: white;
@@ -1245,9 +1245,9 @@ const integrations = [
 
 	.device-visual figcaption {
 		margin: 18px 12px 0;
-		font-size: 0.65rem;
+		font-size: 0.8rem;
 		line-height: 1.65;
-		color: #69738a;
+		color: #4b566d;
 	}
 
 	.device-visual figcaption a {
@@ -1284,15 +1284,15 @@ const integrations = [
 	}
 
 	.device-points strong {
-		font-size: 0.76rem;
+		font-size: 0.88rem;
 		line-height: 1.35;
 	}
 
 	.device-points span {
 		margin-top: 8px;
-		font-size: 0.66rem;
+		font-size: 0.8rem;
 		line-height: 1.55;
-		color: #6a7590;
+		color: #4b5872;
 	}
 
 	.device-actions {
@@ -1303,7 +1303,7 @@ const integrations = [
 	}
 
 	.device-model-link {
-		font-size: 0.75rem;
+		font-size: 0.88rem;
 		font-weight: 700;
 		color: var(--blue);
 	}
@@ -1353,13 +1353,14 @@ const integrations = [
 
 	.integration-grid h3 {
 		margin: 0;
-		font-size: 0.9rem;
+		font-size: 1rem;
 	}
 
 	.integration-grid p {
 		margin: 4px 0 0;
-		font-size: 0.7rem;
-		color: #717b91;
+		font-size: 0.82rem;
+		line-height: 1.5;
+		color: #4f5a72;
 	}
 
 	.integration-grid article > i {
@@ -1401,13 +1402,13 @@ const integrations = [
 	}
 
 	.developer-strip strong {
-		font-size: 0.88rem;
+		font-size: 0.95rem;
 	}
 
 	.developer-strip p {
 		margin: 3px 0 0;
-		font-size: 0.75rem;
-		color: #68738c;
+		font-size: 0.85rem;
+		color: #4b5872;
 	}
 
 	.open-source-section {
@@ -1423,7 +1424,7 @@ const integrations = [
 	}
 
 	.open-source-card .section-copy {
-		color: #a9b3cb;
+		color: #c1cbe0;
 	}
 
 	.dark-secondary {
@@ -1468,12 +1469,12 @@ const integrations = [
 	}
 
 	.repo-head small {
-		font-size: 0.6rem;
-		color: #8995ae;
+		font-size: 0.75rem;
+		color: #aeb9d2;
 	}
 
 	.repo-head strong {
-		font-size: 0.85rem;
+		font-size: 0.95rem;
 	}
 
 	.repo-head > i {
@@ -1481,16 +1482,16 @@ const integrations = [
 		border: 1px solid #34405b;
 		border-radius: 20px;
 		padding: 5px 8px;
-		font-size: 0.52rem;
+		font-size: 0.7rem;
 		font-style: normal;
-		color: #a6b0c7;
+		color: #c1cbe0;
 	}
 
 	.repo-card > p {
 		margin: 28px 0;
-		font-size: 0.8rem;
+		font-size: 0.9rem;
 		line-height: 1.6;
-		color: #a9b3cb;
+		color: #c1cbe0;
 	}
 
 	.repo-code,
@@ -1505,8 +1506,8 @@ const integrations = [
 		display: flex;
 		align-items: center;
 		gap: 5px;
-		font-size: 0.56rem;
-		color: #a9b3cb;
+		font-size: 0.72rem;
+		color: #c1cbe0;
 	}
 
 	.repo-code i {
@@ -1565,9 +1566,9 @@ const integrations = [
 	.creator-note {
 		max-width: 650px;
 		margin: 18px 0 0;
-		font-size: 0.82rem;
+		font-size: 0.95rem;
 		line-height: 1.7;
-		color: #758098;
+		color: #4f5a72;
 	}
 
 	.creator-actions {
@@ -1578,7 +1579,7 @@ const integrations = [
 	}
 
 	.creator-actions > a:last-child {
-		font-size: 0.76rem;
+		font-size: 0.88rem;
 		font-weight: 700;
 		color: var(--blue);
 	}
@@ -1619,10 +1620,10 @@ const integrations = [
 
 	.creator-identity small {
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.58rem;
+		font-size: 0.72rem;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
-		color: #8491ad;
+		color: #aeb9d2;
 	}
 
 	.creator-identity strong {
@@ -1633,9 +1634,9 @@ const integrations = [
 
 	.creator-identity p {
 		margin: 8px 0 0;
-		font-size: 0.72rem;
+		font-size: 0.85rem;
 		line-height: 1.55;
-		color: #aab5cd;
+		color: #c1cbe0;
 	}
 
 	.creator-links {
@@ -1651,7 +1652,7 @@ const integrations = [
 		border-radius: 9px;
 		background: rgba(255, 255, 255, 0.07);
 		padding: 8px 10px;
-		font-size: 0.62rem;
+		font-size: 0.78rem;
 		font-weight: 650;
 		color: #dce4fa;
 	}
@@ -1715,8 +1716,8 @@ const integrations = [
 	.journal-card time {
 		margin: 20px 12px 0;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.6rem;
-		color: #7d879b;
+		font-size: 0.75rem;
+		color: #536078;
 	}
 
 	.journal-card h3 {
@@ -1732,15 +1733,15 @@ const integrations = [
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;
 		margin: 10px 12px 0;
-		font-size: 0.78rem;
+		font-size: 0.9rem;
 		line-height: 1.6;
-		color: #69738a;
+		color: #4b566d;
 	}
 
 	.journal-card > span {
 		margin: auto 12px 0;
 		padding-top: 18px;
-		font-size: 0.72rem;
+		font-size: 0.85rem;
 		font-weight: 700;
 		color: var(--blue);
 	}
@@ -1779,7 +1780,7 @@ const integrations = [
 
 	.final-actions > a:last-child {
 		align-self: center;
-		font-size: 0.76rem;
+		font-size: 0.88rem;
 		font-weight: 700;
 		color: var(--blue);
 	}

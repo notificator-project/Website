@@ -1,4 +1,6 @@
 ---
+import "@fontsource/opendyslexic/400.css";
+import "@fontsource/opendyslexic/700.css";
 import "../styles/global.css";
 ---
 
@@ -6,7 +8,17 @@ import "../styles/global.css";
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="author" content="Vagelis P" />
-<meta name="theme-color" content="#255ee8" />
+<meta name="theme-color" content="#1f56db" />
+
+<script is:inline>
+	try {
+		if (localStorage.getItem("notificator-font-preference") === "opendyslexic") {
+			document.documentElement.classList.add("font-open-dyslexic");
+		}
+	} catch {
+		// Use the default font when browser storage is unavailable.
+	}
+</script>
 
 <!-- Favicon guidelines generated with https://favicon.io/ -->
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />

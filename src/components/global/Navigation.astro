@@ -13,7 +13,7 @@ const links = [
 
 <header class="site-header">
 	<div class="site-shell header-inner">
-		<a class="brand" href="/" aria-label="Notificator home">
+		<a class="brand" href="/" aria-label="Notificator home" aria-current={pathname === "/" ? "page" : undefined}>
 			<img src="/notificator-icon.png" alt="" aria-hidden="true" />
 			<span>Notificator</span>
 		</a>
@@ -30,6 +30,7 @@ const links = [
 							<a
 								href={link.href}
 								class:list={[pathname.startsWith(link.href) && link.href !== "/#how-it-works" && "active"]}
+								aria-current={pathname.startsWith(link.href) && link.href !== "/#how-it-works" ? "page" : undefined}
 								target={link.external ? "_blank" : undefined}
 								rel={link.external ? "noreferrer" : undefined}>
 								{link.label}
@@ -122,9 +123,9 @@ const links = [
 		display: inline-flex;
 		border-radius: 10px;
 		padding: 10px 13px;
-		font-size: 0.88rem;
+		font-size: 0.95rem;
 		font-weight: 650;
-		color: #4d5670;
+		color: #34405a;
 		transition: 150ms ease;
 	}
 

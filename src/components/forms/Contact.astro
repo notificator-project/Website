@@ -9,22 +9,37 @@
 			</p>
 			<div class="contact-options">
 				<a href="https://github.com/notificator-project/WordPress-Plugin/issues" target="_blank" rel="noreferrer">
-					<span>GH</span><div><strong>GitHub Issues</strong><small>Bug reports and feature requests</small></div><i>↗</i>
+					<span aria-hidden="true">GH</span><div><strong>GitHub Issues</strong><small>Bug reports and feature requests</small></div><i
+						aria-hidden="true">
+						↗
+					</i>
 				</a>
 				<a href="mailto:hello@notificator-project.com">
-					<span>@</span><div><strong>Email</strong><small>hello@notificator-project.com</small></div><i>↗</i>
+					<span aria-hidden="true">@</span><div><strong>Email</strong><small>hello@notificator-project.com</small></div><i
+						aria-hidden="true">
+						↗
+					</i>
 				</a>
 			</div>
 		</div>
 
-		<form name="contact" method="POST" action="/contact/" data-netlify="true" class="contact-form">
+		<form
+			name="contact"
+			method="POST"
+			action="/contact/"
+			data-netlify="true"
+			class="contact-form"
+			aria-labelledby="contact-form-title"
+			aria-describedby="contact-privacy-note">
 			<input type="hidden" name="form-name" value="contact" />
-			<div class="form-heading"><strong>Send a message</strong><small>We usually reply within a few days.</small></div>
+			<div class="form-heading"><h2 id="contact-form-title">Send a message</h2><small>We usually reply within a few days.</small></div>
 			<label>Name <input type="text" name="name" autocomplete="name" required /></label>
 			<label>Email <input type="email" name="email" autocomplete="email" required /></label>
 			<label>Company or project <input type="text" name="company" autocomplete="organization" /></label>
 			<label>Message <textarea name="message" rows="6" required></textarea></label>
-			<p>By sending this, you agree to our privacy practices. Do not include API keys, access tokens, passwords, or other secrets.</p>
+			<p id="contact-privacy-note">
+				By sending this, you agree to our privacy practices. Do not include API keys, access tokens, passwords, or other secrets.
+			</p>
 			<div class="form-status" data-form-status role="status" aria-live="polite" aria-atomic="true" hidden></div>
 			<button class="button button-primary" type="submit">Send message →</button>
 		</form>
@@ -75,7 +90,7 @@
 		border-radius: 12px;
 		background: var(--blue-pale);
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.7rem;
+		font-size: 0.82rem;
 		font-weight: 700;
 		color: var(--blue);
 	}
@@ -87,18 +102,18 @@
 	}
 
 	.contact-options strong {
-		font-size: 0.86rem;
+		font-size: 0.95rem;
 	}
 
 	.contact-options small {
-		font-size: 0.7rem;
-		color: #748097;
+		font-size: 0.82rem;
+		color: #536078;
 	}
 
 	.contact-options i {
 		margin-left: auto;
 		font-style: normal;
-		color: #9aa4b7;
+		color: #647087;
 	}
 
 	.contact-form {
@@ -116,14 +131,15 @@
 		margin-bottom: 24px;
 	}
 
-	.form-heading strong {
+	.form-heading h2 {
+		margin: 0;
 		font-size: 1.15rem;
 		letter-spacing: -0.03em;
 	}
 
 	.form-heading small {
 		margin-top: 4px;
-		color: #7c869a;
+		color: #536078;
 	}
 
 	.contact-form label {
@@ -131,7 +147,7 @@
 		flex-direction: column;
 		gap: 7px;
 		margin-top: 17px;
-		font-size: 0.72rem;
+		font-size: 0.85rem;
 		font-weight: 700;
 		color: #49536b;
 	}
@@ -157,8 +173,9 @@
 
 	.contact-form > p {
 		margin: 15px 0 0;
-		font-size: 0.65rem;
-		color: #7c869a;
+		font-size: 0.78rem;
+		line-height: 1.55;
+		color: #536078;
 	}
 
 	.contact-form button {
@@ -182,7 +199,7 @@
 		border-radius: 14px;
 		padding: 13px 14px;
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
-		font-size: 0.76rem;
+		font-size: 0.85rem;
 		font-weight: 650;
 		line-height: 1.5;
 	}

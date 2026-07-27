@@ -51,7 +51,7 @@ const policySections = [
 		<div class="site-shell policy-layout">
 			<aside class="policy-navigation" aria-label="Privacy policy sections">
 				<strong>On this page</strong>
-				<nav>
+				<nav aria-label="Privacy policy sections">
 					{policySections.map((section) => <a href={section.href}>{section.label}</a>)}
 				</nav>
 			</aside>
@@ -333,16 +333,16 @@ const policySections = [
 
 	.policy-summary span {
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.68rem;
+		font-size: 0.8rem;
 		font-weight: 700;
 		letter-spacing: 0.05em;
 		text-transform: uppercase;
-		color: #7a8499;
+		color: #536078;
 	}
 
 	.policy-summary strong,
 	.policy-summary a {
-		font-size: 0.78rem;
+		font-size: 0.88rem;
 		text-align: right;
 	}
 
@@ -373,7 +373,7 @@ const policySections = [
 	.policy-navigation > strong {
 		display: block;
 		margin-bottom: 14px;
-		font-size: 0.76rem;
+		font-size: 0.88rem;
 	}
 
 	.policy-navigation nav {
@@ -384,8 +384,8 @@ const policySections = [
 	}
 
 	.policy-navigation a {
-		font-size: 0.76rem;
-		color: #68738a;
+		font-size: 0.85rem;
+		color: #4b566d;
 	}
 
 	.policy-navigation a:hover {
@@ -409,7 +409,7 @@ const policySections = [
 	.section-number {
 		margin: 0 0 10px;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.68rem;
+		font-size: 0.78rem;
 		font-weight: 700;
 		color: var(--blue);
 	}
@@ -429,7 +429,7 @@ const policySections = [
 
 	.policy-copy p,
 	.policy-copy li {
-		font-size: 0.95rem;
+		font-size: 1rem;
 		line-height: 1.78;
 		color: var(--ink-soft);
 	}
@@ -474,7 +474,7 @@ const policySections = [
 
 	.policy-callout p {
 		margin-top: 7px;
-		font-size: 0.84rem;
+		font-size: 0.9rem;
 		color: #405783;
 	}
 

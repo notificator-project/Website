@@ -73,7 +73,7 @@ const supportAreas = [
 				{
 					supportAreas.map((area) => (
 						<a class="area-card" href={area.href}>
-							<span>{area.marker}</span>
+							<span aria-hidden="true">{area.marker}</span>
 							<h3>{area.title}</h3>
 							<p>{area.copy}</p>
 							<i aria-hidden="true">Explore →</i>
@@ -230,7 +230,7 @@ const supportAreas = [
 		display: block;
 		margin-bottom: 12px;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.7rem;
+		font-size: 0.82rem;
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -254,7 +254,7 @@ const supportAreas = [
 	.faq-intro > a,
 	.faq-list a,
 	.cta-actions > a:not(.button) {
-		font-size: 0.88rem;
+		font-size: 0.95rem;
 		font-weight: 700;
 		color: var(--blue);
 	}
@@ -303,7 +303,7 @@ const supportAreas = [
 		background: var(--blue-pale);
 		padding-inline: 10px;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.68rem;
+		font-size: 0.8rem;
 		font-weight: 700;
 		color: var(--blue);
 	}
@@ -316,7 +316,7 @@ const supportAreas = [
 
 	.area-card p {
 		margin: 0;
-		font-size: 0.88rem;
+		font-size: 0.95rem;
 		line-height: 1.65;
 		color: var(--ink-soft);
 	}
@@ -324,7 +324,7 @@ const supportAreas = [
 	.area-card i {
 		margin-top: auto;
 		padding-top: 24px;
-		font-size: 0.8rem;
+		font-size: 0.9rem;
 		font-style: normal;
 		font-weight: 700;
 		color: var(--blue);
@@ -402,7 +402,7 @@ const supportAreas = [
 
 	.faq-list details p {
 		margin: 14px 0 0;
-		font-size: 0.88rem;
+		font-size: 0.95rem;
 		line-height: 1.7;
 		color: var(--ink-soft);
 	}
@@ -428,7 +428,7 @@ const supportAreas = [
 	}
 
 	.support-cta-card .eyebrow {
-		color: #8baaff;
+		color: #a9c0ff;
 	}
 
 	.support-cta-card h2 {
