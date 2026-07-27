@@ -2,13 +2,25 @@
 import Newsletter from "@components/blog/Newsletter.astro";
 
 const buildDate = new Date();
-const year = buildDate.getFullYear();
-const lastUpdatedIso = buildDate.toISOString().slice(0, 10);
+const projectTimeZone = "Europe/Athens";
+const dateParts = Object.fromEntries(
+	new Intl.DateTimeFormat("en-GB", {
+		day: "2-digit",
+		month: "2-digit",
+		year: "numeric",
+		timeZone: projectTimeZone,
+	})
+		.formatToParts(buildDate)
+		.filter(({ type }) => type !== "literal")
+		.map(({ type, value }) => [type, value]),
+);
+const year = dateParts.year;
+const lastUpdatedIso = `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
 const lastUpdated = new Intl.DateTimeFormat("en-GB", {
 	day: "numeric",
 	month: "long",
 	year: "numeric",
-	timeZone: "UTC",
+	timeZone: projectTimeZone,
 }).format(buildDate);
 ---
 
