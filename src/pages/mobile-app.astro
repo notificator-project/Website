@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+import appAlerts from "@assets/images/mobile/app-alerts.png";
+import appCustomisation from "@assets/images/mobile/app-customisation.png";
+import appDashboard from "@assets/images/mobile/app-dashboard.png";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
 
@@ -33,6 +37,27 @@ const setupSteps = [
 		number: "04",
 		title: "Receive and review",
 		copy: "Open an alert on your phone and use its title, message, priority, and event details to understand what happened.",
+	},
+];
+
+const appPreviews = [
+	{
+		image: appDashboard,
+		label: "Dashboard",
+		title: "See your sites and devices at a glance.",
+		alt: "Notificator App Store preview showing the mobile dashboard with active IoT devices and an all-caught-up state",
+	},
+	{
+		image: appAlerts,
+		label: "Alerts",
+		title: "Keep important WordPress events close.",
+		alt: "Notificator App Store preview showing a WordPress notification in the mobile alerts list",
+	},
+	{
+		image: appCustomisation,
+		label: "Customisation",
+		title: "Choose the information that belongs on your home screen.",
+		alt: "Notificator App Store preview showing theme and home-section customisation controls",
 	},
 ];
 ---
@@ -96,6 +121,38 @@ const setupSteps = [
 					</p>
 				</article>
 			</div>
+		</div>
+	</section>
+
+	<section class="preview-section section-space" aria-labelledby="preview-title">
+		<div class="site-shell">
+			<div class="preview-heading">
+				<div>
+					<p class="eyebrow">Inside the app</p>
+					<h2 id="preview-title" class="section-title">A clearer look at Notificator on mobile.</h2>
+				</div>
+				<p class="section-copy">
+					Move from an overview of your connected world to the alert that needs attention, then shape the app around the information you
+					want to see.
+				</p>
+			</div>
+
+			<div class="preview-grid">
+				{
+					appPreviews.map((preview) => (
+						<figure>
+							<div class="preview-image">
+								<Image src={preview.image} alt={preview.alt} width={430} loading="lazy" />
+							</div>
+							<figcaption>
+								<span>{preview.label}</span>
+								<strong>{preview.title}</strong>
+							</figcaption>
+						</figure>
+					))
+				}
+			</div>
+			<p class="preview-note">Screens shown from the iOS App Store submission. Android presentation may vary slightly by device.</p>
 		</div>
 	</section>
 
@@ -386,6 +443,80 @@ const setupSteps = [
 		color: var(--ink);
 	}
 
+	.preview-section {
+		overflow: hidden;
+		background: #0b1020;
+		color: white;
+	}
+
+	.preview-heading {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(40px, 8vw, 100px);
+		align-items: end;
+	}
+
+	.preview-heading .eyebrow {
+		color: #8eaeff;
+	}
+
+	.preview-heading .section-copy {
+		margin-top: 0;
+		color: #c7d1e8;
+	}
+
+	.preview-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 18px;
+		margin-top: 54px;
+	}
+
+	.preview-grid figure {
+		min-width: 0;
+		margin: 0;
+	}
+
+	.preview-image {
+		overflow: hidden;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		border-radius: 26px;
+		background: black;
+		box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+	}
+
+	.preview-image :global(img) {
+		width: 100%;
+		height: auto;
+	}
+
+	.preview-grid figcaption {
+		display: grid;
+		gap: 7px;
+		padding: 18px 5px 0;
+	}
+
+	.preview-grid figcaption span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: #8eaeff;
+	}
+
+	.preview-grid figcaption strong {
+		font-size: 1.05rem;
+		line-height: 1.4;
+		color: #edf2ff;
+	}
+
+	.preview-note {
+		margin: 38px 0 0;
+		font-size: 0.8rem;
+		color: #9eabc7;
+	}
+
 	.setup-section {
 		background: white;
 	}
@@ -529,6 +660,7 @@ const setupSteps = [
 	@media (max-width: 820px) {
 		.hero-layout,
 		.role-layout,
+		.preview-heading,
 		.control-layout,
 		.privacy-card {
 			grid-template-columns: 1fr;
@@ -540,6 +672,24 @@ const setupSteps = [
 
 		.setup-grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.preview-grid {
+			width: calc(100% + 40px);
+			grid-auto-columns: minmax(270px, 76vw);
+			grid-template-columns: none;
+			grid-auto-flow: column;
+			overflow-x: auto;
+			margin-right: -20px;
+			margin-left: -20px;
+			padding: 0 20px 20px;
+			scroll-padding-inline: 20px;
+			scroll-snap-type: x proximity;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.preview-grid figure {
+			scroll-snap-align: start;
 		}
 	}
 
