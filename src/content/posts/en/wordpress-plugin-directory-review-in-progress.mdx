@@ -1,0 +1,109 @@
+---
+pubDate: 2026-07-27
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "The WordPress.org Plugin Review Is Underway"
+description: "The Notificator directory review is in progress. Here is what changed in the plugin, the website, and the wider project after submission."
+image:
+    source: "@assets/images/blog/update.png"
+    alt: "A simple white graphic announcing a Notificator project update"
+tags: ["Notificator", "WordPress Plugin", "Directory Review", "Accessibility", "Open Source"]
+---
+
+The Notificator plugin is now moving through the WordPress.org directory review process.
+
+That does not mean the plugin has been approved or published yet. It means the submission has reached the review team, feedback has arrived, and we are working through the remaining checks required for a public directory release.
+
+The process has already been useful. It encouraged us to clarify the plugin’s identity, remove a few assumptions from the release package, harden one area of the notification field resolver, and explain the project’s external services and licensing more clearly.
+
+At the same time, we continued improving the plugin and expanded the website so people can understand the complete Notificator ecosystem before installing anything.
+
+## **A More Distinctive Plugin Name and Slug**
+
+The original submission used the shorter public name **Notificator** and requested the matching directory slug.
+
+The review team asked us to choose a more distinctive name and request a new slug. The submitted plugin is now called **Notificator – Alerts & Notifications**, and the requested directory slug is:
+
+`notificator-project`
+
+The text domain and public-facing release details were updated to match the new request. Existing integrations and saved plugin data continue to use the established internal identifiers where changing them would unnecessarily disrupt users.
+
+The new name is more descriptive without tying the project to one notification destination. Notificator still covers dashboard alerts, mobile push, MQTT, and compatible physical devices.
+
+## **Small Changes for Directory Compliance**
+
+Most of the review feedback involved focused packaging and policy changes rather than a redesign of the plugin.
+
+The sample integration plugin previously included a route that could lead users to a remotely hosted download. WordPress.org does not allow plugins to download executable code in that way, so the example is now included locally as readable source. It is not bundled as a ZIP inside the directory package, because compressed archives are not permitted in submitted plugins.
+
+We also reviewed the plugin’s external requests, service documentation, licenses, readme content, icons, naming, and directory metadata. The public documentation now explains when Notificator communicates with its API and which features work without that connection.
+
+Dashboard alerts, event discovery, templates, and notification setup continue to work without a Notificator account or API key. Remote delivery through mobile push or MQTT requires an active account connection.
+
+## **Additional Security Hardening**
+
+An automated review identified a field-resolution path that could dynamically call a getter method based on saved notification metadata.
+
+Although that behavior was intended to support event objects from other plugins, it was broader than necessary. The resolver now handles supported object fields through explicit server-side branches, reads ordinary values only from public properties, and provides a trusted PHP filter for integrations that require additional field handling.
+
+This keeps flexible third-party integrations possible while preventing saved field metadata from selecting arbitrary runtime methods.
+
+The hardening is included in the current review build, alongside the documentation and packaging changes.
+
+## **Discovery Now Feels More Immediate**
+
+We also used the review period to improve the event discovery experience.
+
+After a scan completes, the Overview and Discovery areas now refresh immediately instead of waiting for a full page reload. The initial setup step is marked as complete as soon as the first successful scan finishes.
+
+When a new plugin is activated later, Notificator can prompt for another scan and identify which active plugins were added since the previous successful discovery run. This makes the scan request meaningful instead of showing the same onboarding message indefinitely.
+
+The scanner remains an on-demand tool. Limits, caching, progress feedback, and safer processing help keep discovery practical on larger WordPress installations.
+
+## **A Website That Explains the Whole Project**
+
+The July redesign introduced a cleaner home page and a clearer visual direction. Since then, the site has grown into a more complete guide to the project.
+
+New dedicated pages now explain:
+
+- [How Notificator works](/how-it-works/), from event discovery to delivery
+- [Integrations](/integrations/), including templates, discovered hooks, and developer-registered events
+- The [WordPress plugin](/wordpress-plugin/) and its local-first workflow
+- The [mobile app](/mobile-app/) for accounts, connected sites, and push delivery
+- [Notificator devices](/devices/), open-source firmware, MQTT, and community builds
+- [Credits and acknowledgements](/credits/) for the libraries, fonts, services, and creative work behind the website
+
+The existing [Support](/support/), [Privacy](/privacy/), [Contact](/contact/), blog, newsletter, and GitHub Discussions comments remain part of the site.
+
+We also added a clear independence disclosure. Notificator is not affiliated with, endorsed by, or sponsored by WordPress.org, the WordPress Foundation, or Automattic. Its connection to the WordPress ecosystem comes through compatibility, open-source participation, and contributions to community plugins and related projects.
+
+## **Accessibility Is Part of the Work**
+
+The website accessibility pass covered more than color contrast.
+
+Typography was made easier to read in sections where text had become too small. Contrast, keyboard focus, semantic landmarks, heading structure, form status messages, screen-reader labels, and reduced-motion behavior were reviewed across the site.
+
+The responsive layout was checked at compact phone, standard phone, portrait tablet, and larger tablet sizes. Navigation, cards, forms, long articles, and fixed controls were adjusted to avoid horizontal overflow and unnecessary content obstruction.
+
+Visitors can also enable the OpenDyslexic typeface from a persistent accessibility control. The preference is stored on the current device, remains fully labelled for assistive technology, and becomes compact on phones and tablets.
+
+Accessibility is ongoing work, not a one-time badge. Reports and improvements remain welcome through the [website issue tracker](https://github.com/notificator-project/website/issues).
+
+## **Open Development and Clear Credits**
+
+The website now includes a public [Credits page](/credits/) covering its direct open-source dependencies, typography, Netlify hosting and forms, GitHub Discussions through giscus, development tools, and creative attribution.
+
+The Notificator device firmware remains open source. The TinyTosh enclosure shown on the site is credited to Uladzimir Hitsarau and remains separately licensed under the MakerWorld Standard Digital File License. The project links to the original model rather than redistributing it.
+
+The website source, WordPress plugin, API, documentation, and firmware projects continue to be developed in public through the [Notificator GitHub organization](https://github.com/notificator-project).
+
+## **What Happens Next**
+
+The WordPress.org review is still in progress, and the publication date is controlled by the directory review process.
+
+Our next step is to respond to any remaining feedback, keep the release package focused and compliant, and make sure the first public installation experience is as clear as possible.
+
+When the listing is approved, the website and documentation will be updated with the official directory link. Until then, progress, source code, and release history remain visible on [GitHub](https://github.com/notificator-project/WordPress-Plugin).
+
+This stage is less dramatic than the redesign, but it matters just as much. A public release should not only look ready. It should be understandable, secure, accessible, and respectful of the ecosystem it joins.
