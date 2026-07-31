@@ -132,6 +132,7 @@ const seo: AstroSeoProps = {
 			const firmwareName = selectedLabel || "Notificator firmware";
 			const panel = document.createElement("section");
 			panel.className = "notificator-install-success";
+			panel.slot = "content";
 			panel.dataset.notificatorInstallSuccess = "true";
 			panel.setAttribute("aria-labelledby", "notificator-install-success-title");
 			panel.setAttribute("aria-live", "polite");
