@@ -1,0 +1,3 @@
+# Keep the website installer same-origin while the firmware repository remains
+# the authoritative source for catalogs, manifests, and factory images.
+/firmware-assets/* https://notificator-project.github.io/IoT-Firmware/:splat 200

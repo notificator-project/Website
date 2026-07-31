@@ -1,0 +1,475 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Notificator Firmware Installer",
+	description: "Install official Notificator firmware on a compatible ESP32 device directly from a supported browser.",
+	canonical: "https://notificator-project.com/firmware-installer/",
+	openGraph: {
+		url: "https://notificator-project.com/firmware-installer/",
+		title: "Notificator Firmware Installer",
+		description: "Choose compatible Notificator firmware and install it over USB without setting up a development environment.",
+	},
+};
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-layout">
+			<div>
+				<p class="eyebrow">Firmware web installer</p>
+				<h1 class="display-title">Turn compatible hardware into a Notificator.</h1>
+				<p class="section-copy">
+					Connect a supported ESP32 device over USB, choose the matching firmware, and install it from your browser. You do not need Arduino
+					IDE or a local toolchain.
+				</p>
+			</div>
+			<aside class="compatibility-card">
+				<span aria-hidden="true">USB</span>
+				<div>
+					<strong>Use Chrome or Edge on a computer</strong>
+					<p>Web Serial is not available in Safari or iOS browsers. Use a USB cable that supports data.</p>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<section class="installer-section section-space" aria-labelledby="installer-title">
+		<div class="site-shell installer-layout">
+			<div>
+				<p class="eyebrow">Install in two steps</p>
+				<h2 id="installer-title" class="section-title">Choose the hardware, then connect it.</h2>
+				<p class="section-copy">
+					The available choices come directly from the official firmware repository. The installer checks the connected chip family before
+					writing the complete factory image.
+				</p>
+				<ol class="preflight-list">
+					<li>
+						<span>01</span><div>
+							<strong>Check the hardware</strong><small>Match the board, OLED, and touch sensor to the description.</small>
+						</div>
+					</li>
+					<li><span>02</span><div><strong>Connect over USB</strong><small>Choose the ESP32 serial port when prompted.</small></div></li>
+					<li>
+						<span>03</span><div>
+							<strong>Configure locally</strong><small>Join the WPNOTIF network and add Wi-Fi and HiveMQ details.</small>
+						</div>
+					</li>
+				</ol>
+			</div>
+
+			<div class="installer-card" data-firmware-installer>
+				<div class="card-heading">
+					<div><small>Step 1</small><h2>Choose firmware</h2></div>
+					<span data-release-status>Loading releases</span>
+				</div>
+				<label for="firmware-choice">Device model</label>
+				<div class="select-wrap">
+					<select id="firmware-choice" data-firmware-choice disabled><option>Loading available firmware…</option></select>
+				</div>
+				<dl class="release-details" aria-live="polite">
+					<div><dt>Board</dt><dd data-release-board>Checking…</dd></div>
+					<div><dt>Version</dt><dd data-release-version>Checking…</dd></div>
+					<div><dt>Channel</dt><dd data-release-channel>Stable</dd></div>
+				</dl>
+				<p class="release-description" data-release-description></p>
+
+				<div class="connect-area">
+					<div><small>Step 2</small><h2>Connect and install</h2></div>
+					<esp-web-install-button data-install-button>
+						<button class="button button-primary install-button" slot="activate" type="button" disabled>Connect device</button>
+						<p class="browser-message" slot="unsupported">Open this page in Chrome or Edge on a desktop computer to access USB.</p>
+						<p class="browser-message" slot="not-allowed">The installer needs a secure HTTPS connection.</p>
+					</esp-web-install-button>
+				</div>
+				<div class="erase-notice">
+					<strong>A web installation starts clean.</strong>
+					<p>Existing Wi-Fi and MQTT settings will be erased and must be entered again after restart.</p>
+				</div>
+				<p class="installer-error" data-installer-error role="alert" hidden></p>
+				<a
+					class="button button-secondary standalone-link"
+					data-standalone-link
+					href="https://notificator-project.github.io/IoT-Firmware/"
+					hidden>
+					Open the standalone installer ↗
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="aftercare section-space">
+		<div class="site-shell aftercare-card">
+			<div><p class="eyebrow">After installation</p><h2 class="section-title">Set it up once, then update securely.</h2></div>
+			<div>
+				<p>
+					The first boot opens the local setup portal for Wi-Fi and your user-owned HiveMQ Cloud connection. Future official releases can
+					normally be installed through the firmware’s signed OTA flow.
+				</p>
+				<div class="actions">
+					<a class="button button-primary" href="/build-a-device/">Read the build guide</a>
+					<a class="button button-secondary" href="https://github.com/notificator-project/IoT-Firmware">Inspect the firmware ↗</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		import "esp-web-tools/dist/web/install-button.js";
+
+		const catalogUrl = new URL("/firmware-assets/firmware-catalog.json", window.location.origin).href;
+
+		function initializeFirmwareInstaller() {
+			const root = document.querySelector<HTMLElement>("[data-firmware-installer]");
+			if (!root || root.dataset.ready === "true") return;
+			root.dataset.ready = "true";
+
+			const choice = root.querySelector<HTMLSelectElement>("[data-firmware-choice]");
+			const status = root.querySelector<HTMLElement>("[data-release-status]");
+			const board = root.querySelector<HTMLElement>("[data-release-board]");
+			const version = root.querySelector<HTMLElement>("[data-release-version]");
+			const channel = root.querySelector<HTMLElement>("[data-release-channel]");
+			const description = root.querySelector<HTMLElement>("[data-release-description]");
+			const installer = root.querySelector<HTMLElement>("[data-install-button]");
+			const activate = root.querySelector<HTMLButtonElement>("[slot='activate']");
+			const error = root.querySelector<HTMLElement>("[data-installer-error]");
+			const standalone = root.querySelector<HTMLAnchorElement>("[data-standalone-link]");
+			let releases: Array<Record<string, string | boolean>> = [];
+			if (!choice || !status || !board || !version || !channel || !description || !installer || !activate || !error || !standalone) return;
+
+			const render = (release: Record<string, string | boolean>) => {
+				board.textContent = String(release.board);
+				version.textContent = String(release.version);
+				channel.textContent = String(release.channel);
+				description.textContent = String(release.description);
+				status.textContent = String(release.badge || "Available");
+				installer.setAttribute("manifest", new URL(String(release.manifest), catalogUrl).href);
+				activate.disabled = false;
+			};
+
+			choice.addEventListener("change", () => {
+				const release = releases.find((item) => item.id === choice.value);
+				if (release) render(release);
+			});
+
+			fetch(catalogUrl, { cache: "no-store" })
+				.then((response) => {
+					if (!response.ok) throw new Error(`Catalog request returned ${response.status}`);
+					return response.json();
+				})
+				.then((catalog) => {
+					releases = catalog.firmwares.filter((release: Record<string, string | boolean>) => release.available !== false);
+					if (!releases.length) throw new Error("No installable firmware is currently published");
+					choice.replaceChildren(
+						...releases.map((release) => {
+							const option = document.createElement("option");
+							option.value = String(release.id);
+							option.textContent = `${release.name} · ${release.board}`;
+							return option;
+						}),
+					);
+					choice.disabled = false;
+					render(releases[0]);
+				})
+				.catch((catalogError) => {
+					console.error("[Notificator] Unable to load the firmware catalog.", catalogError);
+					status.textContent = "Temporarily unavailable";
+					error.textContent = "The release list could not be loaded here. Open the standalone installer or try again shortly.";
+					error.hidden = false;
+					standalone.hidden = false;
+				});
+		}
+
+		document.addEventListener("astro:page-load", initializeFirmwareInstaller);
+		initializeFirmwareInstaller();
+	</script>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+	.hero-layout,
+	.installer-layout,
+	.aftercare-card {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(45px, 8vw, 100px);
+		align-items: center;
+	}
+	.compatibility-card {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 18px;
+		border: 1px solid var(--line);
+		border-radius: 24px;
+		background: rgba(255, 255, 255, 0.82);
+		box-shadow: var(--shadow-soft);
+		padding: clamp(24px, 4vw, 38px);
+	}
+	.compatibility-card > span {
+		display: grid;
+		width: 54px;
+		height: 54px;
+		place-items: center;
+		border-radius: 15px;
+		background: var(--blue-pale);
+		font:
+			800 0.75rem "JetBrains Mono",
+			monospace;
+		color: var(--blue);
+	}
+	.compatibility-card strong {
+		font-size: 1.12rem;
+	}
+	.compatibility-card p {
+		margin: 8px 0 0;
+		color: var(--ink-soft);
+	}
+	.installer-section {
+		background: #edf2ff;
+	}
+	.installer-layout {
+		align-items: start;
+	}
+	.preflight-list {
+		display: grid;
+		margin: 36px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+	.preflight-list li {
+		display: grid;
+		grid-template-columns: 38px 1fr;
+		gap: 14px;
+		border-top: 1px solid #ccd7ef;
+		padding: 18px 0;
+	}
+	.preflight-list > li > span {
+		font:
+			0.8rem "JetBrains Mono",
+			monospace;
+		color: var(--blue);
+	}
+	.preflight-list div {
+		display: grid;
+		gap: 3px;
+	}
+	.preflight-list small {
+		color: var(--ink-soft);
+		font-size: 0.93rem;
+	}
+	.installer-card {
+		border: 1px solid #ced8eb;
+		border-radius: 28px;
+		background: white;
+		box-shadow: var(--shadow-soft);
+		padding: clamp(24px, 5vw, 42px);
+	}
+	.card-heading,
+	.connect-area {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+	}
+	.card-heading {
+		margin-bottom: 28px;
+	}
+	.card-heading small,
+	.connect-area small {
+		display: block;
+		margin-bottom: 4px;
+		font:
+			800 0.72rem "JetBrains Mono",
+			monospace;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--blue);
+	}
+	.card-heading h2,
+	.connect-area h2 {
+		margin: 0;
+		font-size: 1.35rem;
+	}
+	.card-heading > span {
+		border: 1px solid rgba(22, 166, 106, 0.3);
+		border-radius: 999px;
+		background: rgba(22, 166, 106, 0.09);
+		padding: 8px 11px;
+		font-size: 0.76rem;
+		font-weight: 750;
+		color: #087c4c;
+	}
+	.installer-card > label {
+		display: block;
+		margin-bottom: 8px;
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--ink-soft);
+	}
+	.select-wrap {
+		position: relative;
+	}
+	.select-wrap::after {
+		position: absolute;
+		top: 50%;
+		right: 18px;
+		width: 8px;
+		height: 8px;
+		border-right: 2px solid var(--ink-soft);
+		border-bottom: 2px solid var(--ink-soft);
+		content: "";
+		pointer-events: none;
+		transform: translateY(-70%) rotate(45deg);
+	}
+	select {
+		width: 100%;
+		min-height: 56px;
+		appearance: none;
+		border: 1px solid #bcc9df;
+		border-radius: 14px;
+		background: #f9fbff;
+		padding: 0 50px 0 16px;
+		font: inherit;
+		color: var(--ink);
+	}
+	select:focus-visible {
+		outline: 3px solid var(--blue-bright);
+		outline-offset: 3px;
+	}
+	select:disabled {
+		opacity: 0.65;
+		cursor: wait;
+	}
+	.release-details {
+		display: grid;
+		grid-template-columns: 1.4fr 0.7fr 0.7fr;
+		margin: 14px 0 0;
+		overflow: hidden;
+		border: 1px solid var(--line);
+		border-radius: 14px;
+	}
+	.release-details div {
+		display: grid;
+		gap: 4px;
+		padding: 14px;
+	}
+	.release-details div + div {
+		border-left: 1px solid var(--line);
+	}
+	.release-details dt {
+		font:
+			700 0.7rem "JetBrains Mono",
+			monospace;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: var(--ink-soft);
+	}
+	.release-details dd {
+		margin: 0;
+		font-weight: 720;
+	}
+	.release-description {
+		margin: 16px 0 0;
+		color: var(--ink-soft);
+	}
+	.connect-area {
+		margin-top: 26px;
+		border-top: 1px solid var(--line);
+		padding-top: 26px;
+	}
+	esp-web-install-button {
+		display: block;
+		min-width: 190px;
+		--esp-tools-button-color: var(--blue);
+		--esp-tools-button-text-color: white;
+		--esp-tools-button-border-radius: 14px;
+	}
+	.install-button {
+		width: 100%;
+	}
+	.install-button:disabled {
+		opacity: 0.55;
+		cursor: wait;
+	}
+	.browser-message {
+		max-width: 260px;
+		margin: 0;
+		font-size: 0.9rem;
+		color: var(--ink-soft);
+	}
+	.erase-notice {
+		margin-top: 22px;
+		border-radius: 14px;
+		background: #f4f7fd;
+		padding: 16px;
+	}
+	.erase-notice p {
+		margin: 5px 0 0;
+		font-size: 0.9rem;
+		color: var(--ink-soft);
+	}
+	.installer-error {
+		margin: 18px 0 0;
+		border: 1px solid #e9afb4;
+		border-radius: 12px;
+		background: #fff1f2;
+		padding: 12px;
+		color: #8f2630;
+	}
+	.standalone-link {
+		margin-top: 14px;
+	}
+	.aftercare-card {
+		border-radius: 30px;
+		background: #0b1020;
+		padding: clamp(34px, 6vw, 64px);
+		color: white;
+	}
+	.aftercare-card .eyebrow {
+		color: #83adff;
+	}
+	.aftercare-card p {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.7;
+		color: #cbd6ee;
+	}
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 26px;
+	}
+	.aftercare-card .button-secondary {
+		border-color: #364563;
+		background: #16213a;
+		color: white;
+	}
+	@media (max-width: 900px) {
+		.hero-layout,
+		.installer-layout,
+		.aftercare-card {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media (max-width: 600px) {
+		.card-heading,
+		.connect-area {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+		.release-details {
+			grid-template-columns: 1fr;
+		}
+		.release-details div + div {
+			border-top: 1px solid var(--line);
+			border-left: 0;
+		}
+		esp-web-install-button {
+			width: 100%;
+		}
+	}
+</style>

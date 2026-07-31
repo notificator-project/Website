@@ -11,6 +11,7 @@ Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-s
 - [Mobile app](https://notificator-project.com/mobile-app/): Notificator accounts, connected WordPress sites, mobile push delivery, and compatible devices on iOS and Android.
 - [Notificator devices](https://notificator-project.com/devices/): Compatible ESP32 hardware, open-source firmware, MQTT delivery, community devices, and enclosure attribution.
 - [Build a Notificator device](https://notificator-project.com/build-a-device/): The ESP32-C3, OLED display, touch sensor, wiring, Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing guidance, assembly, firmware, materials, licensing, planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
+- [Firmware web installer](https://notificator-project.com/firmware-installer/): Select and install official firmware on compatible ESP32 hardware over USB from a supported browser.
 - [How Notificator works](https://notificator-project.com/how-it-works/): The complete path from discovering a WordPress event to dashboard, mobile, and MQTT delivery.
 - [Integrations](https://notificator-project.com/integrations/): Built-in templates, hook discovery, supported event sources, and the public developer integration API.
 - [Documentation](https://docs.notificator-project.com/): Setup instructions, configuration guidance, and developer integration references.
@@ -23,7 +24,7 @@ Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-s
 ## Open-source resources
 
 - [Notificator on GitHub](https://github.com/notificator-project): The project's public repositories.
-- [Device firmware](https://github.com/notificator-project/IoT-Firmware-Early-Access): Open-source firmware for compatible Notificator devices.
+- [Device firmware](https://github.com/notificator-project/IoT-Firmware): Open-source firmware, hardware references, release manifests, and the standalone web installer for compatible Notificator devices.
 - [API source](https://github.com/notificator-project/API): Source code for the Notificator API.
 - [Blog](https://notificator-project.com/blog/): Release news, development updates, and project stories.
 - [X / Twitter](https://x.com/WP_Notificator): Short project updates.
