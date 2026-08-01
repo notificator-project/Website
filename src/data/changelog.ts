@@ -31,20 +31,21 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
-		id: "mobile-1-2-2",
+		id: "mobile-1-2-3",
 		date: "2026-08-01",
 		system: "mobile",
-		version: "1.2.2",
+		version: "1.2.3",
 		title: "Firmware status that follows the device",
 		summary: "The app can now reconcile its device record with the retained status reported by Notificator Base firmware.",
 		changes: [
 			"Refreshes firmware state through the user's own HiveMQ Cloud connection.",
 			"Completes OTA progress only after the newly installed firmware reports back.",
+			"Reports live synchronization failures instead of silently showing stale device data.",
 			"Keeps broker credentials on the device and out of Notificator storage.",
 		],
 		link: {
 			label: "View the mobile source",
-			href: "https://github.com/notificator-project/mobile-app/commit/a543b9567951fd0ad86c976645f31a3cfe841b1e",
+			href: "https://github.com/notificator-project/mobile-app/commit/fb6731612109397658390b78397cabc5c234cece",
 		},
 	},
 	{
