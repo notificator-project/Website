@@ -13,6 +13,7 @@ The site presents the complete Notificator ecosystem, publishes project updates,
 - [Devices](https://notificator-project.com/devices/) covers compatible hardware, MQTT, open-source firmware, community builds, and enclosure attribution.
 - [Build a device](https://notificator-project.com/build-a-device/) explains the ESP32-C3 electronics, OLED and touch hardware, wiring, the Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing, assembly, firmware, materials, licensing, the planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Firmware installer](https://notificator-project.com/firmware-installer/) loads the official firmware catalog and installs a compatible factory image over USB using ESP Web Tools.
+- [Changelog](https://notificator-project.com/changelog/) brings meaningful releases from the WordPress plugin, mobile app, firmware, API, website, and documentation into one filterable timeline.
 - [Blog](https://notificator-project.com/blog/) contains release notes, development updates, and project stories.
 - [Support](https://notificator-project.com/support/) provides troubleshooting for the plugin, apps, accounts, and devices.
 - [Privacy](https://notificator-project.com/privacy/) describes how data is handled across the project.
@@ -63,6 +64,7 @@ public/                 Static icons, favicons, robots.txt, and llms.txt
 src/assets/images/      Images processed and optimized by Astro
 src/components/         Landing, blog, form, and shared UI components
 src/content/posts/en/   English blog posts written in MDX
+src/data/               Structured changelog and other reusable site data
 src/layouts/            Shared page and article layouts
 src/pages/              File-based website routes
 src/styles/             Global styles and design tokens
