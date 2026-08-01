@@ -44,8 +44,8 @@ export const changelogEntries: ChangelogEntry[] = [
 			"Keeps broker credentials on the device and out of Notificator storage.",
 		],
 		link: {
-			label: "View the mobile source",
-			href: "https://github.com/notificator-project/mobile-app/commit/fb6731612109397658390b78397cabc5c234cece",
+			label: "Explore the mobile app",
+			href: "/mobile-app/",
 		},
 	},
 	{
@@ -60,10 +60,6 @@ export const changelogEntries: ChangelogEntry[] = [
 			"Uses HiveMQ credentials only for the lifetime of the request.",
 			"Updates the recorded firmware version and closes completed OTA states.",
 		],
-		link: {
-			label: "Inspect the API update",
-			href: "https://github.com/notificator-project/wpnotif-api/commit/e11d68834c0b3a72f33c5450cbe74a84f4fcabe2",
-		},
 	},
 	{
 		id: "firmware-1-2-0",
@@ -108,7 +104,6 @@ export const changelogEntries: ChangelogEntry[] = [
 			"Keeps the private signing key outside repositories and deployed functions.",
 			"Verifies the live manifest and binary before a release is considered complete.",
 		],
-		link: { label: "Explore the API repository", href: "https://github.com/notificator-project/wpnotif-api" },
 	},
 	{
 		id: "firmware-1-1-1",
