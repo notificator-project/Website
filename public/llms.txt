@@ -10,6 +10,7 @@ Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-s
 - [WordPress plugin](https://notificator-project.com/wordpress-plugin/): Event discovery, templates, dashboard alerts, remote delivery, activity, exports, and developer integrations.
 - [Mobile app](https://notificator-project.com/mobile-app/): Notificator accounts, connected WordPress sites, mobile push delivery, and compatible devices on iOS and Android.
 - [Notificator devices](https://notificator-project.com/devices/): Compatible ESP32 hardware, open-source firmware, MQTT delivery, community devices, and enclosure attribution.
+- [Get a Notificator device](https://notificator-project.com/get-a-device/): Supported ready-made hardware, free community batches, and build-it-yourself options.
 - [Build a Notificator device](https://notificator-project.com/build-a-device/): The ESP32-C3, OLED display, touch sensor, wiring, Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing guidance, assembly, firmware, materials, licensing, planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Firmware web installer](https://notificator-project.com/firmware-installer/): Select and install official firmware on compatible ESP32 hardware over USB from a supported browser.
 - [How Notificator works](https://notificator-project.com/how-it-works/): The complete path from discovering a WordPress event to dashboard, mobile, and MQTT delivery.

@@ -1,0 +1,451 @@
+---
+import { Image } from "astro:assets";
+import touchHomeRender from "@assets/images/blog/notificator-touch-home-render-v2.png";
+import touchClockRender from "@assets/images/device/notificator-touch-clock-render-v2.png";
+import waveshareFeatures from "@assets/images/device/waveshare-touch-features.jpg";
+import waveshareHardware from "@assets/images/device/waveshare-touch-hardware.jpg";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Get a Notificator Device",
+	description: "Choose ready-made compatible hardware, follow a free Notificator community batch, or build your own open-source device.",
+	canonical: "https://notificator-project.com/get-a-device/",
+	openGraph: {
+		url: "https://notificator-project.com/get-a-device/",
+		title: "Get a Notificator Device",
+		description: "Three practical routes to a physical Notificator: compatible hardware, community batches, or a complete maker build.",
+	},
+};
+
+const routes = [
+	{
+		code: "01",
+		title: "Start with ready-made hardware",
+		copy: "Buy a supported commercial board, then install official Notificator firmware. The current option is Notificator Touch on the Waveshare ESP32-S3 Touch LCD 3.49.",
+		action: "See compatible hardware",
+		href: "#compatible-hardware",
+	},
+	{
+		code: "02",
+		title: "Follow a community batch",
+		copy: "We occasionally assemble complete devices and send them free of charge to randomly selected community members. Quantities and regions vary by batch.",
+		action: "How batches work",
+		href: "#community-batches",
+	},
+	{
+		code: "03",
+		title: "Build one yourself",
+		copy: "Use the ESP32-C3 Base reference, OLED, capacitive sensor, and a suitable enclosure for the most hands-on and adaptable route.",
+		action: "Open the build guide",
+		href: "/build-a-device/",
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-layout">
+			<div>
+				<p class="eyebrow">Get a device</p>
+				<h1 class="display-title">Choose how physical you want the project to be.</h1>
+				<p class="section-copy">
+					You can start with commercially available compatible hardware, wait for a finished community device, or build the Base reference
+					from individual parts.
+				</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#choose-route">Compare the options</a>
+					<a class="button button-secondary" href="/firmware-installer/">Open the installer</a>
+				</div>
+			</div>
+			<aside class="availability-card">
+				<span>Good to know</span>
+				<strong>Notificator does not currently sell hardware.</strong>
+				<p>
+					Commercial boards are purchased from their manufacturer or retailer. Community-built devices are occasional, limited, and sent at
+					no charge.
+				</p>
+			</aside>
+		</div>
+	</section>
+
+	<section id="choose-route" class="routes-section section-space" aria-labelledby="routes-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Three routes</p>
+				<h2 id="routes-title" class="section-title">Ready-made board, finished device, or complete build.</h2>
+			</div>
+			<div class="route-grid">
+				{
+					routes.map((route) => (
+						<article>
+							<span>{route.code}</span>
+							<h3>{route.title}</h3>
+							<p>{route.copy}</p>
+							<a href={route.href}>{route.action} →</a>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="touch-showcase section-space" aria-labelledby="touch-showcase-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Notificator Touch interface</p>
+				<h2 id="touch-showcase-title" class="section-title">A clearer look at the preview firmware.</h2>
+				<p class="section-copy">
+					These polished device renders recreate the current 0.9.1 Home and idle displays. The interface will keep evolving as Touch moves
+					toward version 1.0.
+				</p>
+			</div>
+			<div class="touch-photo-grid">
+				<figure>
+					<Image
+						src={touchHomeRender}
+						alt="A blue Notificator Touch device showing its Home screen with Wi-Fi, MQTT, battery, unread count, and navigation status"
+						width={720}
+						loading="lazy"
+					/>
+					<figcaption>
+						<strong>Home</strong><span>
+							Connection state, unread count, and direct access to alerts, device information, and settings.
+						</span>
+					</figcaption>
+				</figure>
+				<figure>
+					<Image
+						src={touchClockRender}
+						alt="A blue Notificator Touch device showing 22:45 on Wednesday 05 August and cloudy 28 degree weather for Thessaloniki"
+						width={720}
+						loading="lazy"
+					/>
+					<figcaption>
+						<strong>Clock and weather</strong><span>A low-distraction idle view using the saved timezone and weather location.</span>
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+	</section>
+
+	<section id="compatible-hardware" class="hardware-section section-space" aria-labelledby="hardware-title">
+		<div class="site-shell hardware-card">
+			<div>
+				<p class="eyebrow">Compatible ready-made hardware</p>
+				<h2 id="hardware-title" class="section-title">Buy the board, install Notificator, keep the hardware intact.</h2>
+				<p class="section-copy">
+					This route avoids soldering and enclosure work. You still install the firmware over USB and add your own Wi-Fi and HiveMQ Cloud
+					details.
+				</p>
+			</div>
+			<article class="hardware-entry">
+				<div class="hardware-heading"><span>Preview</span><strong>Waveshare ESP32-S3 Touch LCD 3.49</strong></div>
+				<p>
+					Runs Notificator Touch 0.9.1 Preview with a 3.49-inch capacitive display, clock, weather, alert history, audio, orientation,
+					brightness, and volume controls.
+				</p>
+				<ul>
+					<li>No soldering required for the supported board</li>
+					<li>First installation through desktop Chrome or Edge</li>
+					<li>Separate preview OTA channel until Touch reaches 1.0</li>
+				</ul>
+				<div class="hardware-actions">
+					<a class="button button-primary" href="/firmware-installer/">Install Touch firmware</a>
+					<a class="button button-secondary" href="https://www.waveshare.com/esp32-s3-touch-lcd-3.49.htm" target="_blank" rel="noreferrer">
+						View the board at Waveshare ↗
+					</a>
+					<a href="https://docs.notificator-project.com/guides/notificator-touch-setup/">Read the Touch setup guide →</a>
+				</div>
+			</article>
+			<div class="hardware-gallery" aria-label="Waveshare ESP32-S3 Touch LCD 3.49 hardware reference">
+				<figure>
+					<Image
+						src={waveshareHardware}
+						alt="Official Waveshare product image showing two blue ESP32-S3 Touch LCD 3.49 devices and their physical controls"
+						width={720}
+						loading="lazy"
+					/>
+					<figcaption>Enclosed ESP32-S3 Touch LCD 3.49 hardware.</figcaption>
+				</figure>
+				<figure>
+					<Image
+						src={waveshareFeatures}
+						alt="Official Waveshare feature overview for the ESP32-S3 Touch LCD 3.49 including processor, flash, display, touch, Wi-Fi, IMU, RTC, storage, and audio"
+						width={720}
+						loading="lazy"
+					/>
+					<figcaption>Board and display capability overview.</figcaption>
+				</figure>
+			</div>
+			<p class="image-credit">
+				Hardware reference images © Waveshare, used with attribution from the
+				<a href="https://www.waveshare.com/esp32-s3-touch-lcd-3.49.htm" target="_blank" rel="noreferrer">official product page ↗</a>.
+			</p>
+			<p class="independent-note">
+				The hardware link is informational, not an affiliate link. Availability, price, shipping, warranty, and product revisions are
+				controlled by the manufacturer or retailer.
+			</p>
+		</div>
+	</section>
+
+	<section id="community-batches" class="batch-section section-space" aria-labelledby="batch-title">
+		<div class="site-shell batch-layout">
+			<div>
+				<p class="eyebrow">Finished community devices</p>
+				<h2 id="batch-title" class="section-title">Occasional small batches, shared for free.</h2>
+				<p class="section-copy">
+					We print, assemble, flash, and test limited Base devices, then announce a random community selection. These are not permanent
+					stock and cannot be ordered on demand.
+				</p>
+			</div>
+			<div class="batch-details">
+				<article><strong>What is included?</strong><p>A ready-to-configure device assembled and tested by the project.</p></article>
+				<article>
+					<strong>What does it cost?</strong><p>
+						The device is free. Any geographic limits or delivery conditions are stated before entries open.
+					</p>
+				</article>
+				<article>
+					<strong>How do I hear about one?</strong><p>
+						Follow the Journal, X, or YouTube. Each batch announcement explains dates, quantity, eligibility, and selection.
+					</p>
+				</article>
+				<div class="batch-actions">
+					<a class="button button-primary" href="/blog/">Follow the Journal</a>
+					<a href="https://x.com/WP_Notificator" target="_blank" rel="noreferrer">Follow on X ↗</a>
+					<a href="https://www.youtube.com/@NotificatorProject" target="_blank" rel="noreferrer">Follow on YouTube ↗</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="compatibility-section">
+		<div class="site-shell compatibility-card">
+			<div><p class="eyebrow">More devices over time</p><h2>Compatibility will grow one tested target at a time.</h2></div>
+			<div>
+				<p>
+					We plan to support more readily available devices. A board appears here only after its display, controls, storage, networking, and
+					recovery path have been tested with a dedicated firmware identity.
+				</p>
+				<p>
+					Similar-looking hardware is not automatically compatible. Check the exact model and revision against the firmware catalog before
+					buying or flashing it.
+				</p>
+				<a href="/changelog/#release-timeline">Follow firmware compatibility updates →</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+	.hero-layout,
+	.batch-layout,
+	.compatibility-card {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(48px, 8vw, 100px);
+		align-items: center;
+	}
+	.hero-actions,
+	.hardware-actions,
+	.batch-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		align-items: center;
+		margin-top: 28px;
+	}
+	.availability-card {
+		border-radius: 28px;
+		background: #0b1020;
+		padding: clamp(30px, 5vw, 52px);
+		color: white;
+	}
+	.availability-card > span,
+	.hardware-heading span {
+		display: inline-flex;
+		border-radius: 999px;
+		background: rgba(63, 124, 255, 0.16);
+		padding: 7px 10px;
+		font:
+			750 0.72rem "JetBrains Mono",
+			monospace;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: #8eb3ff;
+	}
+	.availability-card strong {
+		display: block;
+		margin-top: 24px;
+		font-size: clamp(1.6rem, 3vw, 2.4rem);
+		line-height: 1.1;
+	}
+	.availability-card p {
+		margin: 16px 0 0;
+		color: #b9c5df;
+		line-height: 1.7;
+	}
+	.route-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 18px;
+		margin-top: 42px;
+	}
+	.route-grid article,
+	.batch-details article {
+		border: 1px solid #dfe5f2;
+		border-radius: 22px;
+		background: white;
+		padding: 26px;
+	}
+	.route-grid article > span {
+		font:
+			800 0.78rem "JetBrains Mono",
+			monospace;
+		color: var(--blue);
+	}
+	.route-grid h3 {
+		margin: 30px 0 12px;
+		font-size: 1.25rem;
+	}
+	.route-grid p,
+	.hardware-entry p,
+	.batch-details p,
+	.compatibility-card p {
+		color: #59647b;
+		line-height: 1.7;
+	}
+	.route-grid a {
+		display: inline-flex;
+		margin-top: 16px;
+		font-weight: 750;
+		color: var(--blue);
+	}
+	.touch-photo-grid,
+	.hardware-gallery {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px;
+		margin-top: 42px;
+	}
+	.touch-photo-grid figure,
+	.hardware-gallery figure {
+		overflow: hidden;
+		margin: 0;
+		border: 1px solid #dfe5f2;
+		border-radius: 24px;
+		background: white;
+	}
+	.touch-photo-grid :global(img),
+	.hardware-gallery :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.touch-photo-grid figcaption {
+		display: grid;
+		gap: 5px;
+		padding: 20px 22px 24px;
+	}
+	.touch-photo-grid figcaption strong {
+		font-size: 1.05rem;
+	}
+	.touch-photo-grid figcaption span,
+	.hardware-gallery figcaption {
+		color: #59647b;
+		line-height: 1.55;
+	}
+	.hardware-gallery figcaption {
+		padding: 15px 18px 18px;
+		font-size: 0.86rem;
+	}
+	.hardware-card {
+		border-radius: 30px;
+		background: #edf3ff;
+		padding: clamp(30px, 6vw, 64px);
+	}
+	.hardware-entry {
+		margin-top: 38px;
+		border-radius: 24px;
+		background: white;
+		padding: clamp(26px, 4vw, 42px);
+	}
+	.hardware-heading {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 14px;
+		align-items: center;
+	}
+	.hardware-heading strong {
+		font-size: clamp(1.3rem, 2vw, 1.8rem);
+	}
+	.hardware-entry ul {
+		display: grid;
+		gap: 10px;
+		padding-left: 20px;
+		color: #34405a;
+	}
+	.independent-note {
+		margin: 22px 0 0;
+		font-size: 0.86rem;
+		color: #66738c;
+	}
+	.image-credit {
+		margin: 18px 0 0;
+		font-size: 0.82rem;
+		color: #66738c;
+	}
+	.image-credit a {
+		font-weight: 700;
+		color: var(--blue);
+	}
+	.batch-details {
+		display: grid;
+		gap: 14px;
+	}
+	.batch-details strong {
+		font-size: 1.05rem;
+	}
+	.batch-details p {
+		margin: 8px 0 0;
+	}
+	.compatibility-section {
+		padding: 20px 0 90px;
+	}
+	.compatibility-card {
+		border-radius: 30px;
+		background: #0b1020;
+		padding: clamp(32px, 6vw, 64px);
+		color: white;
+	}
+	.compatibility-card h2 {
+		margin: 10px 0 0;
+		font-size: clamp(1.7rem, 3.4vw, 3rem);
+		line-height: 1.05;
+	}
+	.compatibility-card p {
+		color: #b9c5df;
+	}
+	.compatibility-card a {
+		display: inline-flex;
+		margin-top: 14px;
+		font-weight: 750;
+		color: #8eb3ff;
+	}
+	@media (max-width: 820px) {
+		.hero-layout,
+		.batch-layout,
+		.compatibility-card,
+		.route-grid {
+			grid-template-columns: 1fr;
+		}
+		.touch-photo-grid,
+		.hardware-gallery {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

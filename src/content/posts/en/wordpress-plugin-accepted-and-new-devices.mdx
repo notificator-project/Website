@@ -1,0 +1,63 @@
+---
+pubDate: 2026-08-05
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "Notificator Has Been Accepted by WordPress.org"
+description: "The Notificator plugin has passed the WordPress.org review, while new firmware, device support, and setup guides expand the wider project."
+image:
+    source: "@assets/images/blog/notificator-touch-home-render-v2.png"
+    alt: "A crisp render of a blue Notificator Touch device displaying the firmware home screen"
+imageb:
+    source: "@assets/images/device/notificator-touch-clock-render-v2.png"
+    alt: "A matching blue Notificator Touch device displaying 22:45 and cloudy weather for Thessaloniki"
+tags: ["Notificator Project", "WordPress Plugin", "WordPress.org", "Notificator Touch", "Firmware", "Open Source"]
+---
+
+We are delighted to share that **Notificator – Alerts & Notifications has been accepted into the WordPress.org plugin directory**.
+
+The listing is not public just yet. We are finalising a few of its visual assets and presentation details, and expect the plugin to become available through WordPress.org in the upcoming days.
+
+Once published, people will be able to find and install Notificator directly from the WordPress dashboard. The project remains free and open source, with dashboard alerts available without an account and optional mobile push and MQTT delivery for connected setups.
+
+## What the review helped us improve
+
+The most important point is that the review team did not identify functional defects, security vulnerabilities, or code changes required for approval. The plugin was already in good technical shape when it was submitted.
+
+The requested adjustments focused on directory policy and presentation. We adopted a more distinctive plugin name and slug, clarified the external services and licensing information, and changed how the sample integration plugin is provided. These changes made the release package clearer and better suited to the WordPress.org directory without altering its core features.
+
+We also used the review period to make a few proactive improvements of our own, including additional hardening around how values are read from event objects. Those were part of our continuing development work rather than fixes for problems found by the review team.
+
+We also continued improving the everyday experience. Event discovery now refreshes the interface as soon as a scan finishes, recognises newly activated plugins, and makes it clearer when another scan may be useful.
+
+## A growing family of devices
+
+While the plugin review was underway, the physical side of Notificator also took a substantial step forward.
+
+**Notificator Base** remains the compact, build-it-yourself reference device powered by an ESP32-C3, OLED display, and capacitive control. Its recent firmware releases improve setup, status reporting, screen controls, MQTT configuration, and signed over-the-air updates.
+
+It is now joined by **Notificator Touch**, our new preview firmware for the Waveshare ESP32-S3 Touch LCD 3.49. The larger colour touchscreen provides a more complete interface with alert history, device information, settings, clock and weather views, brightness and volume controls, and on-device Wi-Fi setup.
+
+Both models connect to the same Notificator platform while retaining controls appropriate for their hardware.
+
+## Easier installation and updates
+
+The [browser-based firmware installer](/firmware-installer/) now supports multiple device models. It lets people choose compatible hardware, flash the correct firmware from a supported desktop browser, and continue with clear setup instructions after installation.
+
+The mobile app and API have also been updated for model-aware device settings and firmware releases. This means each device can receive the right controls, minimum-version requirements, and OTA package without treating every piece of hardware as if it were the original Base model.
+
+For people deciding how to begin, the new [Get a device guide](/get-a-device/) explains three routes: use commercially available supported hardware, follow a future community batch, or build a Notificator Base from parts. The website now includes polished Notificator Touch interface renders alongside clearly attributed hardware references.
+
+## Documentation for the complete journey
+
+The documentation now includes a dedicated Notificator Touch setup guide, updated Base instructions, multi-model firmware guidance, HiveMQ troubleshooting, and clearer explanations of the controls available from the mobile app.
+
+The public [project changelog](/changelog/) provides the detailed release history across the WordPress plugin, app, API, firmware, website, and documentation. This Journal post is the shorter version: the project has become easier to install, easier to understand, and ready to support more than one kind of device.
+
+## What happens next
+
+Our immediate priority is to finish the WordPress.org listing assets and make the accepted plugin available through the directory in the upcoming days.
+
+Alongside that release, we will keep testing Notificator Touch, refining its interface, and improving the shared journey from a WordPress event to a dashboard alert, phone notification, or physical device.
+
+Acceptance is an important milestone, but it is not the finish line. It gives Notificator a public home inside the WordPress ecosystem and a stronger foundation for everything we want to build next.

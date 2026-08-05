@@ -47,7 +47,7 @@ const seo: AstroSeoProps = {
 				<ol class="preflight-list">
 					<li>
 						<span>01</span><div>
-							<strong>Check the hardware</strong><small>Match the board, OLED, and touch sensor to the description.</small>
+							<strong>Check the hardware</strong><small>Match the board, display, and controls to the selected model.</small>
 						</div>
 					</li>
 					<li><span>02</span><div><strong>Connect over USB</strong><small>Choose the ESP32 serial port when prompted.</small></div></li>
@@ -108,7 +108,8 @@ const seo: AstroSeoProps = {
 					normally be installed through the firmware’s signed OTA flow.
 				</p>
 				<div class="actions">
-					<a class="button button-primary" href="/build-a-device/">Read the build guide</a>
+					<a class="button button-primary" href="/get-a-device/">Choose compatible hardware</a>
+					<a class="button button-secondary" href="/build-a-device/">Read the build guide</a>
 					<a class="button button-secondary" href="https://github.com/notificator-project/IoT-Firmware">Inspect the firmware ↗</a>
 				</div>
 			</div>
@@ -120,7 +121,8 @@ const seo: AstroSeoProps = {
 
 		const catalogUrl = new URL("/firmware-assets/firmware-catalog.json", window.location.origin).href;
 		const installerDocs = {
-			deviceSetup: "https://docs.notificator-project.com/guides/notificator-base-setup/",
+			baseSetup: "https://docs.notificator-project.com/guides/notificator-base-setup/",
+			touchSetup: "https://docs.notificator-project.com/guides/notificator-touch-setup/",
 			mqttSetup: "https://docs.notificator-project.com/guides/mqtt-broker-setup/",
 		};
 
@@ -129,6 +131,7 @@ const seo: AstroSeoProps = {
 			const choice = root?.querySelector<HTMLSelectElement>("[data-firmware-choice]");
 			const version = root?.querySelector<HTMLElement>("[data-release-version]")?.textContent?.trim();
 			const selectedLabel = choice?.selectedOptions[0]?.textContent?.split("·")[0]?.trim();
+			const deviceSetupUrl = choice?.value.includes("touch") ? installerDocs.touchSetup : installerDocs.baseSetup;
 			const firmwareName = selectedLabel || "Notificator firmware";
 			const panel = document.createElement("section");
 			panel.className = "notificator-install-success";
@@ -168,7 +171,7 @@ const seo: AstroSeoProps = {
 			links.className = "notificator-install-success__links";
 			links.setAttribute("aria-label", "Installation help");
 			[
-				["Device setup guide", installerDocs.deviceSetup],
+				["Device setup guide", deviceSetupUrl],
 				["HiveMQ setup guide", installerDocs.mqttSetup],
 			].forEach(([label, url]) => {
 				const link = document.createElement("a");

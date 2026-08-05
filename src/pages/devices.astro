@@ -50,8 +50,9 @@ const buildSteps = [
 					delivery.
 				</p>
 				<div class="hero-actions">
-					<a class="button button-primary" href="/firmware-installer/">Install firmware</a>
+					<a class="button button-primary" href="/get-a-device/">Get a device</a>
 					<a class="button button-secondary" href="/build-a-device/">Build a device</a>
+					<a href="/firmware-installer/">Install firmware →</a>
 					<a href="https://github.com/notificator-project/IoT-Firmware">Explore the firmware ↗</a>
 				</div>
 				<aside class="hero-batch-note">
@@ -101,6 +102,40 @@ const buildSteps = [
 		</div>
 	</section>
 
+	<section class="models-section section-space" aria-labelledby="models-title">
+		<div class="site-shell">
+			<div class="section-heading">
+				<p class="eyebrow">Choose a model</p>
+				<h2 id="models-title" class="section-title">A compact Base and a touchscreen preview.</h2>
+				<p class="section-copy">
+					Each model has its own hardware target and release channel, while sharing the same Notificator account, MQTT topics, and signed
+					update system.
+				</p>
+			</div>
+			<div class="purpose-grid">
+				<article>
+					<span aria-hidden="true">BASE</span><strong>Notificator Base</strong><p>
+						Stable firmware 1.2.1 for an ESP32-C3 SuperMini, SSD1306 OLED, and TTP223 capacitive control.
+					</p>
+					<a href="https://docs.notificator-project.com/guides/notificator-base-setup/">Base setup guide →</a>
+				</article>
+				<article>
+					<span aria-hidden="true">TOUCH</span><strong>Notificator Touch 3.49</strong><p>
+						Preview firmware 0.9.1 for the Waveshare ESP32-S3 Touch LCD 3.49, with audio, clock, weather, and alert history.
+					</p>
+					<a href="https://docs.notificator-project.com/guides/notificator-touch-setup/">Touch setup guide →</a>
+				</article>
+				<article>
+					<span aria-hidden="true">NEXT</span><strong>More hardware later</strong><p>
+						Matter and other models remain future targets. Independent firmware identities prevent an update intended for one board
+						reaching another.
+					</p>
+					<a href="/changelog/#release-timeline">Follow firmware updates →</a>
+				</article>
+			</div>
+		</div>
+	</section>
+
 	<section id="build-path" class="build-section section-space" aria-labelledby="build-title">
 		<div class="site-shell">
 			<div class="section-heading">
@@ -140,7 +175,8 @@ const buildSteps = [
 				<li>Room for custom displays and outputs</li>
 			</ul>
 			<div class="source-actions">
-				<a class="button button-primary" href="/firmware-installer/">Open the web installer</a>
+				<a class="button button-primary" href="/get-a-device/">Compare device options</a>
+				<a class="button button-secondary" href="/firmware-installer/">Open the web installer</a>
 				<a class="button button-secondary" href="/build-a-device/">Explore the hardware build</a>
 				<a href="https://github.com/notificator-project/IoT-Firmware">View the firmware ↗</a>
 				<a href="/how-it-works/">See the full notification workflow →</a>

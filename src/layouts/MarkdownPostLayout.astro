@@ -14,6 +14,7 @@ const { frontmatter, body, seo } = Astro.props;
 const words = body ? body.trim().split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.ceil(words / 200));
 const published = new Date(frontmatter.pubDate).toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric" });
+const pairCoverWithSecondary = Boolean(frontmatter.imageb?.source && !frontmatter.imagec?.source);
 ---
 
 <BaseLayout seo={seo}>
@@ -30,7 +31,10 @@ const published = new Date(frontmatter.pubDate).toLocaleDateString("en", { day: 
 				</div>
 			</header>
 
-			<div class="article-cover"><Image src={frontmatter.image.source} alt={frontmatter.image.alt || frontmatter.title} /></div>
+			<div class:list={["article-cover", { "article-cover--pair": pairCoverWithSecondary }]}>
+				<Image src={frontmatter.image.source} alt={frontmatter.image.alt || frontmatter.title} />
+				{pairCoverWithSecondary && <Image src={frontmatter.imageb.source} alt={frontmatter.imageb.alt || "Article companion image"} />}
+			</div>
 
 			<div class="article-layout">
 				<aside>
@@ -65,7 +69,7 @@ const published = new Date(frontmatter.pubDate).toLocaleDateString("en", { day: 
 			</div>
 
 			{
-				(frontmatter.imageb?.source || frontmatter.imagec?.source) && (
+				frontmatter.imagec?.source && (
 					<div class="article-gallery">
 						{frontmatter.imageb?.source && <Image src={frontmatter.imageb.source} alt={frontmatter.imageb.alt || "Article image"} />}
 						{frontmatter.imagec?.source && <Image src={frontmatter.imagec.source} alt={frontmatter.imagec.alt || "Article image"} />}
@@ -173,9 +177,29 @@ const published = new Date(frontmatter.pubDate).toLocaleDateString("en", { day: 
 	}
 
 	.article-cover :global(img) {
+		display: block;
 		width: 100%;
 		max-height: 680px;
 		object-fit: cover;
+	}
+
+	.article-cover--pair {
+		display: grid;
+		overflow: visible;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.article-cover--pair :global(img) {
+		height: 100%;
+		max-height: none;
+		aspect-ratio: 1672 / 941;
+		border: 1px solid #dfe5f2;
+		border-radius: 24px;
+		object-fit: cover;
+		box-shadow: var(--shadow-soft);
 	}
 
 	.article-layout {
@@ -284,6 +308,10 @@ const published = new Date(frontmatter.pubDate).toLocaleDateString("en", { day: 
 		}
 
 		.article-gallery {
+			grid-template-columns: 1fr;
+		}
+
+		.article-cover--pair {
 			grid-template-columns: 1fr;
 		}
 

@@ -31,6 +31,115 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "project-wordpress-directory-acceptance",
+		date: "2026-08-04",
+		system: "project",
+		version: "Public milestone",
+		title: "Notificator is accepted into the WordPress plugin directory",
+		summary: "The plugin completed directory review and reached its official public distribution milestone.",
+		changes: [
+			"Completes the naming, external-service disclosure, licensing, and packaging work requested during review.",
+			"Makes installation and future updates available through the familiar WordPress plugin workflow.",
+			"Keeps the plugin, mobile app, API, documentation, and device firmware part of one free and open-source project.",
+		],
+		link: { label: "Explore the WordPress plugin", href: "/wordpress-plugin/" },
+	},
+	{
+		id: "mobile-1-3-0",
+		date: "2026-08-05",
+		system: "mobile",
+		version: "1.3.0",
+		title: "Model-aware device controls",
+		summary: "The mobile app now treats Base and Touch as distinct devices and exposes only the controls each model supports.",
+		changes: [
+			"Adds Notificator Touch to device creation and editing.",
+			"Adds display-brightness control for Base and Touch, plus sound-volume control for Touch.",
+			"Adds Touch clock, weather, timezone, location, and preview OTA settings.",
+			"Handles declined push permission without creating a mock token or blocking the rest of the app.",
+			"Improves errors for rejected HiveMQ credentials and failed live device commands.",
+		],
+		link: { label: "Explore the mobile app", href: "/mobile-app/" },
+	},
+	{
+		id: "firmware-touch-0-9-1",
+		date: "2026-08-05",
+		system: "firmware",
+		version: "Touch 0.9.1 Preview",
+		title: "The first Notificator Touch preview",
+		summary: "The Waveshare ESP32-S3 Touch LCD 3.49 becomes a complete preview target with its own interface, setup, and signed update channel.",
+		changes: [
+			"Introduces an LVGL interface with Home, Alerts, Device, and Settings views.",
+			"Adds a digital clock, weather modes, severity-aware alerts, recent history, orientation, audio, and battery status.",
+			"Supports on-device Wi-Fi changes, a touchscreen keyboard, brightness, volume, and a phone-based recovery portal.",
+			"Ships model-locked preview OTA and a complete browser-installable factory image.",
+		],
+		link: {
+			label: "Open the Touch 0.9.1 preview",
+			href: "https://github.com/notificator-project/IoT-Firmware/releases/tag/touch-v0.9.1",
+		},
+	},
+	{
+		id: "firmware-base-1-2-1",
+		date: "2026-08-05",
+		system: "firmware",
+		version: "Base 1.2.1",
+		title: "Persistent display control and smoother setup",
+		summary: "Notificator Base adds remote brightness control and corrects secured-network password entry in its local setup portal.",
+		changes: [
+			"Stores display brightness on the device and accepts updates from the mobile app.",
+			"Keeps the Wi-Fi password field editable when a secured network is selected.",
+			"Uses the independent Base release tag and updated two-model installer catalog.",
+		],
+		link: {
+			label: "Open the Base 1.2.1 release",
+			href: "https://github.com/notificator-project/IoT-Firmware/releases/tag/base-v1.2.1",
+		},
+	},
+	{
+		id: "api-multi-model-device-control",
+		date: "2026-08-05",
+		system: "api",
+		version: "Multi-model OTA",
+		title: "Firmware policy now follows the device model",
+		summary: "The API routes commands and updates according to each device's capabilities instead of applying Base assumptions to every model.",
+		changes: [
+			"Keeps firmware 1.2 as the supported baseline for Base without imposing it on new Touch devices.",
+			"Selects stable Base and preview Touch firmware independently.",
+			"Validates display-brightness and sound-volume commands against model capabilities.",
+			"Normalizes legacy and current device IDs while reconciling retained MQTT status.",
+		],
+	},
+	{
+		id: "website-multi-model-installer",
+		date: "2026-08-05",
+		system: "website",
+		version: "August 2026",
+		title: "One installer for Base and Touch",
+		summary: "The browser installer now reads a shared firmware catalog and offers the correct complete image for either supported device.",
+		changes: [
+			"Adds Notificator Base 1.2.1 as the stable ESP32-C3 choice.",
+			"Adds Notificator Touch 0.9.1 as a clearly marked ESP32-S3 preview.",
+			"Keeps model descriptions, boards, versions, and release channels visible before connecting USB.",
+			"Adds a Get a device guide for compatible commercial hardware, free community batches, and complete maker builds.",
+		],
+		link: { label: "Open the firmware installer", href: "/firmware-installer/" },
+	},
+	{
+		id: "docs-touch-and-multi-model",
+		date: "2026-08-05",
+		system: "docs",
+		version: "August 2026",
+		title: "Touch setup and multi-model updates documented",
+		summary:
+			"The documentation now covers the complete Touch preview journey alongside Base, from first flash to live controls and OTA recovery.",
+		changes: [
+			"Adds a dedicated Notificator Touch setup and troubleshooting guide.",
+			"Documents model-specific brightness, volume, clock, weather, and OTA behavior.",
+			"Explains HiveMQ authorization failures and the separate stable and preview release channels.",
+		],
+		link: { label: "Read the Touch setup guide", href: "https://docs.notificator-project.com/guides/notificator-touch-setup/" },
+	},
+	{
 		id: "mobile-1-2-3",
 		date: "2026-08-01",
 		system: "mobile",
@@ -239,4 +348,4 @@ export const changelogEntries: ChangelogEntry[] = [
 		],
 		link: { label: "Read the WordCamp Athens recap", href: "/blog/wp-notificator-at-wordcamp-athens-2025/" },
 	},
-];
+].sort((a, b) => b.date.localeCompare(a.date));
