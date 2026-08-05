@@ -4,6 +4,8 @@
 
 Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-source device firmware, developer integrations, and project documentation. Dashboard alerts work without a Notificator account. Remote delivery is available after creating an account through the mobile app.
 
+MQTT devices use a user-owned HiveMQ Cloud cluster. Users control the broker credentials and can isolate, rotate, or revoke client access; Notificator does not store the broker password in the account database. Notificator is independent from HiveMQ.
+
 ## Start here
 
 - [Notificator website](https://notificator-project.com/): Project overview, features, supported notification channels, and recent news.
