@@ -1,7 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import devicePhoto from "@assets/images/device/notificator-devices.jpeg";
+import baseAlertRender from "@assets/images/device/notificator-base-alert-render.png";
+import baseWeatherRender from "@assets/images/device/notificator-base-weather-render.png";
+import touchClockRender from "@assets/images/device/notificator-touch-clock-render-v2.png";
+import touchHomeRender from "@assets/images/blog/notificator-touch-home-render-v2.png";
 
 const posts = (await getCollection("posts"))
 	.filter((post) => post.slug.startsWith("en/"))
@@ -211,57 +214,73 @@ const integrations = [
 </section>
 
 <section id="device" class="section-space device-section">
-	<div class="site-shell device-layout">
-		<figure class="device-visual">
-			<div class="device-photo">
-				<Image src={devicePhoto} alt="An assembled grey Notificator display device with a black OLED screen" loading="lazy" />
-				<span>Working prototype · Early access</span>
+	<div class="site-shell">
+		<div class="device-heading">
+			<div>
+				<p class="eyebrow">Physical notifications</p>
+				<h2 class="section-title">One notification platform. Many physical forms.</h2>
 			</div>
-			<figcaption>
-				Enclosure based on
-				<a href="https://makerworld.com/en/models/2270326-tinytosh-mini-retro-pc-smart-wifi-display-esp32" target="_blank" rel="noreferrer">
-					TinyTosh Mini Retro PC
-				</a>
-				by <a href="https://makerworld.com/en/@hitsarau" target="_blank" rel="noreferrer">Uladzimir Hitsarau</a>, licensed separately under
-				the MakerWorld Standard Digital File License.
-			</figcaption>
-		</figure>
-
-		<div class="device-copy">
-			<p class="eyebrow">Open hardware in progress</p>
-			<h2 class="section-title">Build a tiny home for the alerts that matter.</h2>
 			<p class="section-copy">
-				The Notificator device electronics and firmware are open source. Makers can build a compatible ESP32 device, adapt the firmware, and
-				decide how an alert should look and feel beyond the screen.
+				Build the compact open-source Base or install the Touch preview on tested ready-made hardware. Both receive selected alerts through
+				the same Notificator account and MQTT connection.
 			</p>
-
-			<div class="device-points">
-				<article><strong>Build it yourself</strong><span>Use accessible components and inspect or adapt the firmware.</span></article>
-				<article>
-					<strong>Start with ready-made hardware</strong><span>Flash a tested commercial board such as Notificator Touch.</span>
-				</article>
-				<article><strong>Free community batches</strong><span>We occasionally build devices and give them away at no cost.</span></article>
-				<article>
-					<strong>Dozens already shared</strong><span>Early units went to WordCamp Athens 2025 attendees after the public debut.</span>
-				</article>
-			</div>
-
-			<div class="device-actions">
-				<a class="button button-primary" href="/get-a-device/">Get a device</a>
-				<a class="button button-secondary" href="/devices/">Explore devices</a>
-				<a class="button button-secondary" href="/firmware-installer/">Install firmware</a>
-				<a class="button button-secondary" href="https://github.com/notificator-project/IoT-Firmware" target="_blank" rel="noreferrer">
-					Firmware source ↗
-				</a>
-				<a
-					class="button button-secondary"
-					href="https://makerworld.com/en/models/2270326-tinytosh-mini-retro-pc-smart-wifi-display-esp32"
-					target="_blank"
-					rel="noreferrer">
-					Enclosure model ↗
-				</a>
-			</div>
 		</div>
+
+		<div class="device-showcase-grid">
+			<article class="device-model-card">
+				<div class="device-render-pair">
+					<Image src={baseAlertRender} alt="A grey Notificator Base device showing a monochrome new-order alert" loading="lazy" />
+					<Image
+						src={baseWeatherRender}
+						alt="A matching Notificator Base device showing 28C and cloudy weather on its monochrome OLED"
+						loading="lazy"
+					/>
+				</div>
+				<div class="device-model-copy">
+					<div class="device-model-meta"><span>Notificator Base</span><small>Stable</small></div>
+					<h3>Small, buildable, and deliberately simple.</h3>
+					<p>An ESP32-C3, monochrome OLED, and capacitive control create a focused display you can print, assemble, and adapt yourself.</p>
+					<div><a href="/build-a-device/">Build the Base →</a><a href="/firmware-installer/">Install firmware →</a></div>
+				</div>
+			</article>
+
+			<article class="device-model-card device-model-card--touch">
+				<div class="device-render-pair">
+					<Image src={touchHomeRender} alt="A blue Notificator Touch device showing its connected Home interface" loading="lazy" />
+					<Image
+						src={touchClockRender}
+						alt="A matching Notificator Touch device showing its digital clock and Thessaloniki weather interface"
+						loading="lazy"
+					/>
+				</div>
+				<div class="device-model-copy">
+					<div class="device-model-meta"><span>Notificator Touch</span><small>Preview</small></div>
+					<h3>More room for alerts, controls, clock, and weather.</h3>
+					<p>
+						Install the preview firmware on the supported Waveshare touchscreen for richer navigation, audio, history, and on-device
+						settings.
+					</p>
+					<div>
+						<a href="/get-a-device/#compatible-hardware">See compatible hardware →</a><a href="/firmware-installer/">Install Touch →</a>
+					</div>
+				</div>
+			</article>
+		</div>
+
+		<div class="device-route-strip">
+			<div><span>01</span><p><strong>Buy compatible hardware</strong>Start with a tested commercial board.</p></div>
+			<div><span>02</span><p><strong>Build your own</strong>Use open firmware and accessible components.</p></div>
+			<div><span>03</span><p><strong>Follow community batches</strong>Watch for occasional free finished devices.</p></div>
+			<a class="button button-primary" href="/get-a-device/">Get a device</a>
+		</div>
+
+		<p class="device-attribution">
+			The Base enclosure is based on the
+			<a href="https://makerworld.com/en/models/2270326-tinytosh-mini-retro-pc-smart-wifi-display-esp32" target="_blank" rel="noreferrer">
+				TinyTosh Mini Retro PC
+			</a>
+			by <a href="https://makerworld.com/en/@hitsarau" target="_blank" rel="noreferrer">Uladzimir Hitsarau</a> and remains separately licensed.
+		</p>
 	</div>
 </section>
 
@@ -1220,117 +1239,166 @@ const integrations = [
 		background: linear-gradient(145deg, #eef3ff, #f8faff 58%, #e7efff);
 	}
 
-	.device-layout {
+	.device-heading {
 		display: grid;
-		grid-template-columns: minmax(360px, 0.85fr) minmax(0, 1fr);
-		gap: clamp(50px, 8vw, 110px);
-		align-items: center;
+		grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+		gap: clamp(40px, 8vw, 100px);
+		align-items: end;
 	}
 
-	.device-visual {
+	.device-heading .section-copy {
 		margin: 0;
 	}
 
-	.device-photo {
-		position: relative;
-		aspect-ratio: 4 / 3;
-		overflow: hidden;
-		border-radius: 30px;
-		background: #0b1020;
-		box-shadow: 0 32px 80px rgba(31, 53, 105, 0.2);
-		padding: 10px;
-		transform: rotate(-1deg);
+	.device-showcase-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px;
+		margin-top: 52px;
 	}
 
-	.device-photo :global(img) {
+	.device-model-card {
+		overflow: hidden;
+		border: 1px solid #d2def5;
+		border-radius: 28px;
+		background: rgba(255, 255, 255, 0.88);
+		box-shadow: 0 24px 70px rgba(31, 53, 105, 0.12);
+	}
+
+	.device-model-card--touch {
+		border-color: #b9ceff;
+	}
+
+	.device-render-pair {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 2px;
+		background: #dbe5f8;
+	}
+
+	.device-render-pair :global(img) {
+		display: block;
 		width: 100%;
 		height: 100%;
-		border-radius: 22px;
+		aspect-ratio: 16 / 9;
 		object-fit: cover;
 	}
 
-	.device-photo > span {
-		position: absolute;
-		bottom: 24px;
-		left: 24px;
-		border: 1px solid rgba(255, 255, 255, 0.24);
-		border-radius: 999px;
-		background: rgba(10, 16, 33, 0.72);
-		padding: 8px 11px;
+	.device-model-copy {
+		padding: clamp(24px, 4vw, 36px);
+	}
+
+	.device-model-meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 14px;
+	}
+
+	.device-model-meta span,
+	.device-model-meta small {
 		font-family: "JetBrains Mono", monospace;
-		font-size: 0.72rem;
-		letter-spacing: 0.04em;
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
 		text-transform: uppercase;
-		color: white;
-		-webkit-backdrop-filter: blur(12px);
-		backdrop-filter: blur(12px);
 	}
 
-	.device-visual figcaption {
-		margin: 18px 12px 0;
-		font-size: 0.8rem;
+	.device-model-meta span {
+		color: var(--blue);
+	}
+
+	.device-model-meta small {
+		border-radius: 999px;
+		background: #e7f8ef;
+		padding: 6px 9px;
+		color: #13754b;
+	}
+
+	.device-model-card--touch .device-model-meta small {
+		background: #e7eeff;
+		color: var(--blue);
+	}
+
+	.device-model-copy h3 {
+		max-width: 520px;
+		margin: 30px 0 0;
+		font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+		letter-spacing: -0.045em;
+		line-height: 1.08;
+	}
+
+	.device-model-copy > p {
+		margin: 14px 0 0;
 		line-height: 1.65;
-		color: #4b566d;
-	}
-
-	.device-visual figcaption a {
-		font-weight: 700;
-		color: #33415f;
-		text-decoration: underline;
-		text-decoration-color: #aebbd5;
-		text-underline-offset: 3px;
-	}
-
-	.device-copy .section-copy {
-		max-width: 650px;
-	}
-
-	.device-points {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 10px;
-		margin-top: 36px;
-	}
-
-	.device-points article {
-		border: 1px solid rgba(183, 199, 234, 0.7);
-		border-radius: 17px;
-		background: rgba(255, 255, 255, 0.62);
-		padding: 18px;
-		-webkit-backdrop-filter: blur(12px);
-		backdrop-filter: blur(12px);
-	}
-
-	.device-points strong,
-	.device-points span {
-		display: block;
-	}
-
-	.device-points strong {
-		font-size: 0.88rem;
-		line-height: 1.35;
-	}
-
-	.device-points span {
-		margin-top: 8px;
-		font-size: 0.8rem;
-		line-height: 1.55;
 		color: #4b5872;
 	}
 
-	.device-actions {
+	.device-model-copy > div:last-child {
 		display: flex;
-		align-items: center;
 		flex-wrap: wrap;
-		gap: 10px;
-		margin-top: 34px;
+		gap: 12px 22px;
+		margin-top: 28px;
 	}
 
-	.device-actions .button {
-		min-height: 46px;
-		padding-inline: 16px;
+	.device-model-copy a {
 		font-size: 0.88rem;
-		white-space: nowrap;
+		font-weight: 750;
+		color: var(--blue);
+	}
+
+	.device-route-strip {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+		gap: 16px;
+		align-items: center;
+		margin-top: 18px;
+		border: 1px solid #d2def5;
+		border-radius: 22px;
+		background: rgba(255, 255, 255, 0.72);
+		padding: 18px;
+	}
+
+	.device-route-strip > div {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 12px;
+		align-items: start;
+	}
+
+	.device-route-strip span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.7rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+
+	.device-route-strip p {
+		margin: 0;
+		font-size: 0.8rem;
+		line-height: 1.45;
+		color: #4b5872;
+	}
+
+	.device-route-strip strong {
+		display: block;
+		margin-bottom: 3px;
+		font-size: 0.84rem;
+		color: var(--ink);
+	}
+
+	.device-attribution {
+		margin: 18px 4px 0;
+		font-size: 0.74rem;
+		line-height: 1.6;
+		color: #63708a;
+	}
+
+	.device-attribution a {
+		font-weight: 700;
+		text-decoration: underline;
+		text-decoration-color: #b6c3dc;
+		text-underline-offset: 3px;
 	}
 
 	.integrations-section {
@@ -1838,10 +1906,13 @@ const integrations = [
 		}
 
 		.feature-layout,
-		.open-source-card,
-		.device-layout {
+		.open-source-card {
 			grid-template-columns: 1fr 1fr;
 			gap: 55px;
+		}
+
+		.device-route-strip {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 
@@ -1849,7 +1920,8 @@ const integrations = [
 		.split-heading,
 		.feature-layout,
 		.open-source-card,
-		.device-layout,
+		.device-heading,
+		.device-showcase-grid,
 		.creator-card {
 			grid-template-columns: 1fr;
 		}
@@ -1858,11 +1930,11 @@ const integrations = [
 			gap: 24px;
 		}
 
-		.device-visual {
-			max-width: 650px;
+		.split-heading .section-copy {
+			margin-top: 0;
 		}
 
-		.split-heading .section-copy {
+		.device-heading .section-copy {
 			margin-top: 0;
 		}
 
@@ -1974,16 +2046,11 @@ const integrations = [
 			grid-template-columns: 1fr;
 		}
 
-		.device-points {
+		.device-route-strip {
 			grid-template-columns: 1fr;
 		}
 
-		.device-actions {
-			align-items: flex-start;
-			flex-direction: column;
-		}
-
-		.device-actions .button {
+		.device-route-strip .button {
 			width: 100%;
 		}
 
