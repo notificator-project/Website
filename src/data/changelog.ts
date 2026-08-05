@@ -31,6 +31,56 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "firmware-base-1-2-2",
+		date: "2026-08-06",
+		system: "firmware",
+		version: "Base 1.2.2",
+		title: "Presence that follows the real device connection",
+		summary: "Notificator Base now reports unexpected power and network loss more quickly while keeping its online status fresh.",
+		changes: [
+			"Registers a retained MQTT Last Will so HiveMQ can report an unplanned disconnect as offline.",
+			"Publishes a retained presence heartbeat every 60 seconds with a shorter MQTT keepalive.",
+			"Keeps failed publishes from making the last successful heartbeat look newer than it is.",
+			"Ships matching signed OTA, factory installer, and stable-channel metadata.",
+		],
+		link: {
+			label: "Open the Base 1.2.2 release",
+			href: "https://github.com/notificator-project/IoT-Firmware/releases/tag/base-v1.2.2",
+		},
+	},
+	{
+		id: "firmware-touch-0-9-3",
+		date: "2026-08-06",
+		system: "firmware",
+		version: "Touch 0.9.3 Preview",
+		title: "Reliable presence and app-wide read state",
+		summary: "The Touch preview gains faster offline detection and responds to the app's mark-all-read action.",
+		changes: [
+			"Handles the authenticated mark-all-read command across the Touch alert history.",
+			"Registers a retained offline Last Will and uses tighter MQTT keepalive handling.",
+			"Keeps heartbeat timing tied to successful publishes.",
+			"Ships through the independently signed Touch preview OTA channel.",
+		],
+		link: {
+			label: "Open the Touch 0.9.3 preview",
+			href: "https://github.com/notificator-project/IoT-Firmware/releases/tag/touch-v0.9.3",
+		},
+	},
+	{
+		id: "api-device-presence",
+		date: "2026-08-06",
+		system: "api",
+		version: "Presence telemetry",
+		title: "Device status now follows authenticated telemetry",
+		summary: "The API updates saved device presence from valid online, heartbeat, OTA, and explicit offline reports.",
+		changes: [
+			"Refreshes the last-seen time when a device reports online or ready.",
+			"Marks a device down only after an explicit offline or disconnected report.",
+			"Leaves the last known state intact when a temporary broker status request fails.",
+			"Supports both Base and Touch model policies without applying Base version rules to preview hardware.",
+		],
+	},
+	{
 		id: "firmware-touch-0-9-2",
 		date: "2026-08-05",
 		system: "firmware",

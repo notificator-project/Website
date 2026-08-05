@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import devicePhoto from "@assets/images/device/notificator-devices.jpeg";
+import deviceRender from "@assets/images/device/notificator-base-alert-render.png";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
 
@@ -67,10 +67,10 @@ const buildSteps = [
 
 			<figure class="device-figure">
 				<div>
-					<Image src={devicePhoto} alt="A group of assembled Notificator display devices in different colours" loading="eager" />
-					<span>Working prototypes</span>
+					<Image src={deviceRender} alt="Rendered Notificator Base showing a new-order alert on its OLED display" loading="eager" />
+					<span>Notificator Base</span>
 				</div>
-				<figcaption>Community-built Notificator devices using compact displays and custom enclosures.</figcaption>
+				<figcaption>A compact open-source alert display built around accessible ESP32 hardware.</figcaption>
 			</figure>
 		</div>
 	</section>
@@ -116,7 +116,7 @@ const buildSteps = [
 				<article class="model-card">
 					<div class="model-meta"><span>Base</span><small>Stable</small></div>
 					<h3>Notificator Base</h3>
-					<p>Stable firmware 1.2.1 for an ESP32-C3 SuperMini, SSD1306 OLED, and TTP223 capacitive control.</p>
+					<p>Stable firmware 1.2.2 for an ESP32-C3 SuperMini, SSD1306 OLED, and TTP223 capacitive control.</p>
 					<div class="model-actions">
 						<a href="/build-a-device/">Explore the Base build →</a>
 						<a href="https://docs.notificator-project.com/guides/notificator-base-setup/">Setup guide ↗</a>
@@ -125,7 +125,7 @@ const buildSteps = [
 				<article class="model-card model-card--touch">
 					<div class="model-meta"><span>Touch 3.49</span><small>Preview</small></div>
 					<h3>Notificator Touch</h3>
-					<p>Preview firmware 0.9.1 for the Waveshare ESP32-S3 Touch LCD 3.49, with audio, clock, weather, and alert history.</p>
+					<p>Preview firmware 0.9.3 for the Waveshare ESP32-S3 Touch LCD 3.49, with audio, clock, weather, and alert history.</p>
 					<div class="model-actions">
 						<a href="/get-a-device/#compatible-hardware">See compatible hardware →</a>
 						<a href="https://docs.notificator-project.com/guides/notificator-touch-setup/">Setup guide ↗</a>

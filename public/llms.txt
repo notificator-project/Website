@@ -1,6 +1,6 @@
 # Notificator
 
-> Notificator is a free, open-source notification ecosystem that turns meaningful WordPress events into dashboard alerts, mobile push notifications, MQTT messages, and notifications on compatible physical devices.
+> Notificator is a free, open-source notification ecosystem that turns meaningful WordPress events into dashboard alerts, mobile push notifications, optional email alerts, MQTT messages, and notifications on compatible physical devices.
 
 Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-source device firmware, developer integrations, and project documentation. Dashboard alerts work without a Notificator account. Remote delivery is available after creating an account through the mobile app.
 
@@ -8,12 +8,12 @@ Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-s
 
 - [Notificator website](https://notificator-project.com/): Project overview, features, supported notification channels, and recent news.
 - [WordPress plugin](https://notificator-project.com/wordpress-plugin/): Event discovery, templates, dashboard alerts, remote delivery, activity, exports, and developer integrations.
-- [Mobile app](https://notificator-project.com/mobile-app/): Notificator accounts, connected WordPress sites, mobile push delivery, and compatible devices on iOS and Android.
+- [Mobile app](https://notificator-project.com/mobile-app/): Notificator accounts, connected WordPress sites, mobile push and optional email delivery, and compatible devices on iOS and Android.
 - [Notificator devices](https://notificator-project.com/devices/): Compatible ESP32 hardware, open-source firmware, MQTT delivery, community devices, and enclosure attribution.
 - [Get a Notificator device](https://notificator-project.com/get-a-device/): Supported ready-made hardware, free community batches, and build-it-yourself options.
 - [Build a Notificator device](https://notificator-project.com/build-a-device/): The ESP32-C3, OLED display, touch sensor, wiring, Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing guidance, assembly, firmware, materials, licensing, planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Firmware web installer](https://notificator-project.com/firmware-installer/): Select and install official firmware on compatible ESP32 hardware over USB from a supported browser.
-- [How Notificator works](https://notificator-project.com/how-it-works/): The complete path from discovering a WordPress event to dashboard, mobile, and MQTT delivery.
+- [How Notificator works](https://notificator-project.com/how-it-works/): The complete path from discovering a WordPress event to dashboard, mobile push, optional email, and MQTT delivery.
 - [Integrations](https://notificator-project.com/integrations/): Built-in templates, hook discovery, supported event sources, and the public developer integration API.
 - [Project changelog](https://notificator-project.com/changelog/): Curated releases and meaningful improvements across the WordPress plugin, mobile app, firmware, API, website, and documentation.
 - [Documentation](https://docs.notificator-project.com/): Setup instructions, configuration guidance, and developer integration references.

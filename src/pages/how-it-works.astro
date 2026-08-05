@@ -4,7 +4,7 @@ import type { AstroSeoProps } from "@astrolib/seo";
 
 const seo: AstroSeoProps = {
 	title: "How Notificator Works",
-	description: "Learn how Notificator turns meaningful WordPress events into dashboard alerts, mobile push notifications, and MQTT messages.",
+	description: "Learn how Notificator turns meaningful WordPress events into dashboard alerts, mobile push, optional email alerts, and MQTT messages.",
 	canonical: "https://notificator-project.com/how-it-works/",
 	openGraph: {
 		url: "https://notificator-project.com/how-it-works/",
@@ -29,7 +29,7 @@ const steps = [
 	{
 		number: "03",
 		title: "Select the destinations",
-		copy: "Keep alerts in the WordPress dashboard, send them to the Notificator mobile app, or route them to compatible MQTT devices.",
+		copy: "Keep alerts in the WordPress dashboard, send them through the Notificator mobile app, enable account email alerts, or route them to compatible MQTT devices.",
 		detail: "Each notification can use the delivery channels that suit that event.",
 	},
 	{
@@ -54,6 +54,13 @@ const channels = [
 		title: "Mobile push",
 		copy: "Receive selected alerts on your phone through the Notificator mobile app, wherever you are.",
 		requirement: "Account and active API key",
+	},
+	{
+		label: "Account preference",
+		marker: "@",
+		title: "Email alerts",
+		copy: "Enable email notifications from the mobile app when you want account alerts to reach your inbox as well.",
+		requirement: "Enabled in app settings",
 	},
 	{
 		label: "Connected devices",
