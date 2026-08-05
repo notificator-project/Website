@@ -77,19 +77,29 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 
 	<section class="changelog-overview" aria-label="Changelog overview">
 		<div class="site-shell overview-card">
-			<div>
-				<strong>{connectedSystemCount}</strong>
-				<span>connected systems</span>
+			<div class="overview-stats">
+				<div>
+					<span>Systems</span>
+					<strong>{connectedSystemCount}</strong>
+					<p>Connected parts of one platform</p>
+				</div>
+				<div>
+					<span>Milestones</span>
+					<strong>{changelogEntries.length}</strong>
+					<p>Curated project updates</p>
+				</div>
+				<div>
+					<span>Development</span>
+					<strong>Open</strong>
+					<p>Source-first by default</p>
+				</div>
 			</div>
-			<div>
-				<strong>{changelogEntries.length}</strong>
-				<span>curated updates</span>
+			<div class="overview-note">
+				<span>Curated by design</span>
+				<strong>Useful changes, without the commit noise.</strong>
+				<p>Technical work is translated into the improvements people can see, use, and rely on across the project.</p>
+				<a href="#release-timeline">Browse the timeline ↓</a>
 			</div>
-			<div>
-				<strong>Open</strong>
-				<span>development by default</span>
-			</div>
-			<p>Technical commits are translated into the changes people can actually see, use, or rely on.</p>
 		</div>
 	</section>
 
@@ -349,39 +359,94 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 
 	.overview-card {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(120px, 0.55fr)) minmax(280px, 1.6fr);
-		gap: 1px;
-		overflow: hidden;
+		grid-template-columns: minmax(0, 1.65fr) minmax(320px, 0.85fr);
+		gap: 16px;
 		border: 1px solid var(--line);
-		border-radius: 22px;
-		background: var(--line);
+		border-radius: 28px;
+		background: #edf3ff;
+		padding: 16px;
 		box-shadow: 0 18px 50px rgba(24, 39, 75, 0.07);
 	}
 
-	.overview-card > * {
-		background: rgba(255, 255, 255, 0.82);
-		padding: 23px;
-	}
-
-	.overview-card div {
+	.overview-stats {
 		display: grid;
-		gap: 3px;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 10px;
 	}
 
-	.overview-card strong {
-		font-size: 1.35rem;
-		letter-spacing: -0.03em;
+	.overview-stats > div {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		min-height: 158px;
+		border: 1px solid rgba(112, 142, 210, 0.2);
+		border-radius: 19px;
+		background: rgba(255, 255, 255, 0.88);
+		padding: 22px;
 	}
 
-	.overview-card span,
-	.overview-card p {
-		font-size: 0.88rem;
+	.overview-stats span,
+	.overview-note > span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+	}
+
+	.overview-stats span {
+		color: var(--blue);
+	}
+
+	.overview-stats strong {
+		margin-top: 25px;
+		font-size: clamp(1.8rem, 3vw, 2.5rem);
+		letter-spacing: -0.05em;
+		line-height: 1;
+	}
+
+	.overview-stats p {
+		margin: auto 0 0;
+		font-size: 0.84rem;
+		line-height: 1.45;
 		color: var(--ink-soft);
 	}
 
-	.overview-card p {
-		margin: 0;
+	.overview-note {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		border-radius: 20px;
+		background: linear-gradient(145deg, #14234b, #0b1020);
+		padding: 26px;
+		color: white;
+	}
+
+	.overview-note > span {
+		color: #7fa7ff;
+	}
+
+	.overview-note strong {
+		max-width: 360px;
+		margin-top: 20px;
+		font-size: clamp(1.25rem, 2.3vw, 1.75rem);
+		letter-spacing: -0.04em;
+		line-height: 1.14;
+	}
+
+	.overview-note p {
+		margin: 12px 0 0;
+		font-size: 0.88rem;
 		line-height: 1.65;
+		color: #bfcbe7;
+	}
+
+	.overview-note a {
+		margin-top: auto;
+		padding-top: 22px;
+		font-size: 0.85rem;
+		font-weight: 750;
+		color: white;
 	}
 
 	.timeline-section {
