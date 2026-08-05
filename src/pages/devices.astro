@@ -112,23 +112,34 @@ const buildSteps = [
 					update system.
 				</p>
 			</div>
-			<div class="purpose-grid">
-				<article>
-					<span aria-hidden="true">BASE</span><strong>Notificator Base</strong><p>
-						Stable firmware 1.2.1 for an ESP32-C3 SuperMini, SSD1306 OLED, and TTP223 capacitive control.
-					</p>
-					<a href="https://docs.notificator-project.com/guides/notificator-base-setup/">Base setup guide →</a>
+			<div class="model-grid">
+				<article class="model-card">
+					<div class="model-meta"><span>Base</span><small>Stable</small></div>
+					<h3>Notificator Base</h3>
+					<p>Stable firmware 1.2.1 for an ESP32-C3 SuperMini, SSD1306 OLED, and TTP223 capacitive control.</p>
+					<div class="model-actions">
+						<a href="/build-a-device/">Explore the Base build →</a>
+						<a href="https://docs.notificator-project.com/guides/notificator-base-setup/">Setup guide ↗</a>
+					</div>
 				</article>
-				<article>
-					<span aria-hidden="true">TOUCH</span><strong>Notificator Touch 3.49</strong><p>
-						Preview firmware 0.9.1 for the Waveshare ESP32-S3 Touch LCD 3.49, with audio, clock, weather, and alert history.
-					</p>
-					<a href="https://docs.notificator-project.com/guides/notificator-touch-setup/">Touch setup guide →</a>
+				<article class="model-card model-card--touch">
+					<div class="model-meta"><span>Touch 3.49</span><small>Preview</small></div>
+					<h3>Notificator Touch</h3>
+					<p>Preview firmware 0.9.1 for the Waveshare ESP32-S3 Touch LCD 3.49, with audio, clock, weather, and alert history.</p>
+					<div class="model-actions">
+						<a href="/get-a-device/#compatible-hardware">See compatible hardware →</a>
+						<a href="https://docs.notificator-project.com/guides/notificator-touch-setup/">Setup guide ↗</a>
+					</div>
 				</article>
-				<article>
-					<span aria-hidden="true">NEXT</span><strong>More hardware later</strong><p>
-						Matter and other models remain future targets. Independent firmware identities prevent an update intended for one board
-						reaching another.
+				<article class="model-card model-card--future">
+					<div>
+						<div class="model-meta"><span>What comes next</span><small>In development</small></div><h3>
+							More tested hardware over time.
+						</h3>
+					</div>
+					<p>
+						Matter and other models remain future targets. Each supported board receives its own firmware identity and update channel, so
+						packages cannot cross between incompatible devices.
 					</p>
 					<a href="/changelog/#release-timeline">Follow firmware updates →</a>
 				</article>
@@ -386,6 +397,115 @@ const buildSteps = [
 		color: var(--ink-soft);
 	}
 
+	.model-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 18px;
+		margin-top: 48px;
+	}
+
+	.model-card {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		min-height: 270px;
+		border: 1px solid #d8e2f7;
+		border-radius: 24px;
+		background: white;
+		padding: clamp(25px, 4vw, 38px);
+		box-shadow: 0 18px 50px rgba(35, 63, 128, 0.07);
+	}
+
+	.model-card--touch {
+		border-color: #bcd0ff;
+		background: linear-gradient(145deg, #fff, #f1f5ff);
+	}
+
+	.model-meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		width: 100%;
+	}
+
+	.model-meta span,
+	.model-meta small {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.72rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.model-meta span {
+		color: var(--blue);
+	}
+
+	.model-meta small {
+		border-radius: 999px;
+		background: #e9f7f0;
+		padding: 6px 9px;
+		color: #13754b;
+	}
+
+	.model-card--touch .model-meta small {
+		background: #e9efff;
+		color: var(--blue);
+	}
+
+	.model-card h3 {
+		margin: 44px 0 0;
+		font-size: clamp(1.45rem, 2.5vw, 2rem);
+		letter-spacing: -0.04em;
+	}
+
+	.model-card > p {
+		margin: 12px 0 0;
+		line-height: 1.65;
+		color: var(--ink-soft);
+	}
+
+	.model-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 22px;
+		margin-top: auto;
+		padding-top: 32px;
+	}
+
+	.model-actions a,
+	.model-card--future > a {
+		font-weight: 750;
+		color: var(--blue);
+	}
+
+	.model-card--future {
+		display: grid;
+		grid-template-columns: minmax(260px, 0.7fr) minmax(300px, 1fr) auto;
+		grid-column: 1 / -1;
+		min-height: 0;
+		gap: 28px;
+		align-items: center;
+		border-style: dashed;
+		background: rgba(255, 255, 255, 0.56);
+		box-shadow: none;
+	}
+
+	.model-card--future .model-meta {
+		justify-content: flex-start;
+	}
+
+	.model-card--future .model-meta small {
+		background: #eef1f7;
+		color: #59647b;
+	}
+
+	.model-card--future h3,
+	.model-card--future p {
+		margin: 12px 0 0;
+	}
+
 	.build-section {
 		background: white;
 	}
@@ -589,6 +709,10 @@ const buildSteps = [
 			grid-template-columns: 1fr;
 		}
 
+		.model-card--future {
+			grid-template-columns: 1fr;
+		}
+
 		.batch-actions {
 			justify-content: flex-start;
 		}
@@ -599,6 +723,14 @@ const buildSteps = [
 	}
 
 	@media (max-width: 560px) {
+		.model-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.model-card--future {
+			grid-column: auto;
+		}
+
 		.build-grid {
 			grid-template-columns: 1fr;
 		}
