@@ -1,10 +1,10 @@
 ---
-pubDate: 2026-08-05
+pubDate: 2026-08-06
 author:
     name: Vagelis P.
     link: https://github.com/vagelisp
 title: "Notificator Has Been Accepted by WordPress.org"
-description: "The Notificator plugin has passed the WordPress.org review, while new firmware, device support, and setup guides expand the wider project."
+description: "The Notificator plugin has passed the WordPress.org review, while new Base and Touch firmware, device presence, email alerts, and setup guides expand the wider project."
 image:
     source: "@assets/images/blog/notificator-touch-home-render-v2.png"
     alt: "A crisp render of a blue Notificator Touch device displaying the firmware home screen"
@@ -18,7 +18,7 @@ We are delighted to share that **Notificator – Alerts & Notifications has been
 
 The listing is not public just yet. We are finalising a few of its visual assets and presentation details, and expect the plugin to become available through WordPress.org in the upcoming days.
 
-Once published, people will be able to find and install Notificator directly from the WordPress dashboard. The project remains free and open source, with dashboard alerts available without an account and optional mobile push and MQTT delivery for connected setups.
+Once published, people will be able to find and install Notificator directly from the WordPress dashboard. The project remains free and open source, with dashboard alerts available without an account, mobile push and optional account email alerts, and MQTT delivery for connected setups.
 
 ## What the review helped us improve
 
@@ -34,23 +34,23 @@ We also continued improving the everyday experience. Event discovery now refresh
 
 While the plugin review was underway, the physical side of Notificator also took a substantial step forward.
 
-**Notificator Base** remains the compact, build-it-yourself reference device powered by an ESP32-C3, OLED display, and capacitive control. Its recent firmware releases improve setup, status reporting, screen controls, MQTT configuration, and signed over-the-air updates.
+**Notificator Base** remains the compact, build-it-yourself reference device powered by an ESP32-C3, OLED display, and capacitive control. Base **1.2.2** adds regular presence heartbeats and a retained MQTT Last Will, allowing an unexpected power or network loss to be reflected as an offline device much sooner.
 
-It is now joined by **Notificator Touch**, our new preview firmware for the Waveshare ESP32-S3 Touch LCD 3.49. The larger colour touchscreen provides a more complete interface with alert history, device information, settings, clock and weather views, brightness and volume controls, and on-device Wi-Fi setup.
+It is now joined by **Notificator Touch**, our new preview firmware for the Waveshare ESP32-S3 Touch LCD 3.49. The larger colour touchscreen provides a more complete interface with alert history, device information, settings, clock and weather views, brightness and volume controls, and on-device Wi-Fi setup. Touch **0.9.3** brings the same improved presence handling and now responds to the app's mark-all-read action.
 
 Both models connect to the same Notificator platform while retaining controls appropriate for their hardware.
 
 ## Easier installation and updates
 
-The [browser-based firmware installer](/firmware-installer/) now supports multiple device models. It lets people choose compatible hardware, flash the correct firmware from a supported desktop browser, and continue with clear setup instructions after installation.
+The [browser-based firmware installer](/firmware-installer/) now offers Base 1.2.2 and Touch 0.9.3. It lets people choose compatible hardware, flash the correct complete image from a supported desktop browser, and continue with clear setup instructions after installation.
 
-The mobile app and API have also been updated for model-aware device settings and firmware releases. This means each device can receive the right controls, minimum-version requirements, and OTA package without treating every piece of hardware as if it were the original Base model.
+The mobile app and API have also been updated for model-aware device settings, firmware releases, and live presence. This means each device can receive the right controls, minimum-version requirements, and OTA package without treating every piece of hardware as if it were the original Base model. The app refreshes retained device state while it is in use, and valid telemetry now updates the saved online or offline status rather than leaving it stuck at an old value.
 
 For people deciding how to begin, the new [Get a device guide](/get-a-device/) explains three routes: use commercially available supported hardware, follow a future community batch, or build a Notificator Base from parts. The website now includes polished Notificator Touch interface renders alongside clearly attributed hardware references.
 
 ## Documentation for the complete journey
 
-The documentation now includes a dedicated Notificator Touch setup guide, updated Base instructions, multi-model firmware guidance, HiveMQ troubleshooting, and clearer explanations of the controls available from the mobile app.
+The documentation now includes a dedicated Notificator Touch setup guide, updated Base instructions, multi-model firmware guidance, HiveMQ troubleshooting, and clearer explanations of the controls available from the mobile app. It also explains that optional email alerts are enabled as an account preference in the app and work independently from mobile push permissions and MQTT.
 
 The public [project changelog](/changelog/) provides the detailed release history across the WordPress plugin, app, API, firmware, website, and documentation. This Journal post is the shorter version: the project has become easier to install, easier to understand, and ready to support more than one kind of device.
 
