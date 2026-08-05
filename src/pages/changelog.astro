@@ -768,11 +768,7 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 		}
 
 		.overview-card {
-			grid-template-columns: repeat(3, 1fr);
-		}
-
-		.overview-card > p {
-			grid-column: 1 / -1;
+			grid-template-columns: 1fr;
 		}
 
 		.timeline-heading .section-copy {
@@ -790,12 +786,12 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 	}
 
 	@media (max-width: 700px) {
-		.overview-card {
+		.overview-stats {
 			grid-template-columns: 1fr;
 		}
 
-		.overview-card > p {
-			grid-column: auto;
+		.overview-stats > div {
+			min-height: 132px;
 		}
 
 		.release-list::before {
