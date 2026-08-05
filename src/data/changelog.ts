@@ -31,6 +31,23 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "firmware-touch-0-9-2",
+		date: "2026-08-05",
+		system: "firmware",
+		version: "Touch 0.9.2 Preview",
+		title: "Unread alerts reach the idle clock",
+		summary: "The Touch clock now provides a quiet but unmistakable signal when an alert is waiting to be read.",
+		changes: [
+			"Changes the clock time from white to red while the local alert inbox contains unread notifications.",
+			"Returns the time to white automatically after every alert has been read.",
+			"Applies the same behaviour to the primary LVGL interface and its safe fallback renderer.",
+		],
+		link: {
+			label: "Open the Touch 0.9.2 preview",
+			href: "https://github.com/notificator-project/IoT-Firmware/releases/tag/touch-v0.9.2",
+		},
+	},
+	{
 		id: "project-wordpress-directory-acceptance",
 		date: "2026-08-04",
 		system: "project",
