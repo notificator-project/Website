@@ -31,6 +31,49 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "mobile-1-3-0",
+		date: "2026-08-06",
+		system: "mobile",
+		version: "1.3.0",
+		title: "Friendlier weather and broker setup",
+		summary: "The mobile app now hides weather coordinates behind a readable place search and can verify HiveMQ credentials before saving them.",
+		changes: [
+			"Searches for a city, area, or postal code and presents regional matches before applying weather settings.",
+			"Keeps latitude and longitude as an advanced fallback while clearing stale coordinates when the place text changes.",
+			"Tests unsaved HiveMQ Cloud credentials without storing them, publishing an alert, or requiring a registered device.",
+			"Retains model-aware brightness, volume, clock, weather, and signed OTA controls for Base and Touch.",
+			"Handles declined push permission without creating a mock token or blocking the rest of the app.",
+		],
+		link: { label: "Explore the mobile app", href: "/mobile-app/" },
+	},
+	{
+		id: "api-mqtt-connection-test",
+		date: "2026-08-06",
+		system: "api",
+		version: "MQTT connection test",
+		title: "Broker credentials can be checked without a device message",
+		summary: "A dedicated authenticated API request verifies transient HiveMQ Cloud details through a short-lived secure connection.",
+		changes: [
+			"Validates the same HiveMQ Cloud hostname, secure WebSocket endpoint, credential, and topic rules used by device commands.",
+			"Does not persist credentials, create a notification, publish to MQTT, or require an existing device.",
+			"Closes the connection immediately and sanitizes broker errors before returning them to the app or logs.",
+		],
+	},
+	{
+		id: "docs-location-and-mqtt-test",
+		date: "2026-08-06",
+		system: "docs",
+		version: "August 2026",
+		title: "Device setup follows the new app workflow",
+		summary: "Base, Touch, app settings, and MQTT guides now explain place search and pre-save broker testing.",
+		changes: [
+			"Makes city, area, or postal-code search the primary weather setup path.",
+			"Moves latitude and longitude guidance to an advanced fallback for unusual locations.",
+			"Explains what the HiveMQ connection test checks, what it does not store, and how to troubleshoot a failure.",
+		],
+		link: { label: "Read the app settings guide", href: "https://docs.notificator-project.com/guides/app-settings/" },
+	},
+	{
 		id: "firmware-base-1-2-2",
 		date: "2026-08-06",
 		system: "firmware",
@@ -110,22 +153,6 @@ export const changelogEntries: ChangelogEntry[] = [
 			"Keeps the plugin, mobile app, API, documentation, and device firmware part of one free and open-source project.",
 		],
 		link: { label: "Explore the WordPress plugin", href: "/wordpress-plugin/" },
-	},
-	{
-		id: "mobile-1-3-0",
-		date: "2026-08-05",
-		system: "mobile",
-		version: "1.3.0",
-		title: "Model-aware device controls",
-		summary: "The mobile app now treats Base and Touch as distinct devices and exposes only the controls each model supports.",
-		changes: [
-			"Adds Notificator Touch to device creation and editing.",
-			"Adds display-brightness control for Base and Touch, plus sound-volume control for Touch.",
-			"Adds Touch clock, weather, timezone, location, and preview OTA settings.",
-			"Handles declined push permission without creating a mock token or blocking the rest of the app.",
-			"Improves errors for rejected HiveMQ credentials and failed live device commands.",
-		],
-		link: { label: "Explore the mobile app", href: "/mobile-app/" },
 	},
 	{
 		id: "firmware-touch-0-9-1",
