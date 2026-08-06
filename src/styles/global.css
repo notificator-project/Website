@@ -145,7 +145,7 @@ img {
 }
 
 .section-space {
-	padding-block: clamp(72px, 9vw, 124px);
+	padding-block: clamp(56px, 7vw, 68px);
 }
 
 .eyebrow {
