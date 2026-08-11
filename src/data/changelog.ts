@@ -21,7 +21,7 @@ export const changelogSystems: Array<{
 	marker: string;
 }> = [
 	{ id: "project", label: "Project milestone", shortLabel: "Milestones", marker: "N" },
-	{ id: "wordpress", label: "WordPress Plugin", shortLabel: "WordPress Plugin", marker: "WP" },
+	{ id: "wordpress", label: "WordPress Plugin", shortLabel: "WordPress", marker: "WP" },
 	{ id: "strapi", label: "Strapi Extension", shortLabel: "Strapi", marker: "S" },
 	{ id: "mobile", label: "Mobile app", shortLabel: "Mobile", marker: "APP" },
 	{ id: "firmware", label: "Device firmware", shortLabel: "Firmware", marker: "FW" },

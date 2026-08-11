@@ -1,0 +1,91 @@
+---
+pubDate: 2026-08-11
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "Notificator for Strapi: The First Extension Preview"
+description: "The first Notificator extension preview for Strapi 5 introduces rule-based content alerts, local activity, and optional delivery to the Notificator inbox, mobile app, email, and connected devices."
+image:
+    source: "@assets/images/blog/notificator-strapi-extension-preview.svg"
+    alt: "A Strapi content event passing through a rule builder and becoming a Notificator alert"
+tags: ["Notificator Project", "Strapi", "Strapi Extension", "CMS", "Notifications", "Open Source", "Preview"]
+---
+
+Notificator began with WordPress events, but the underlying idea has always been broader: useful activity should be able to reach the people and places where it can be acted on.
+
+Today we are sharing the first preview of **Notificator for Strapi**, an open-source extension for Strapi 5 that turns content lifecycle activity into readable alerts without requiring repeated lifecycle code for every content type.
+
+Version **0.1.0** is an early development preview intended for integration testing. It already provides the core rule-building and delivery journey, while giving us a solid foundation for feedback before a stable release.
+
+## Why a Strapi extension?
+
+Strapi applications often contain important operational moments: an article is published, a product changes, a record is removed, or an editor updates content that another person needs to review.
+
+Developers can respond to those events with lifecycle code, but maintaining a separate handler for every content type and notification scenario becomes repetitive. It also keeps everyday notification changes tied to a development and deployment cycle.
+
+The extension moves that work into a focused rule builder inside the Strapi admin panel. Administrators can choose what to watch, decide what the alert should say, and select how it should be delivered without changing application code.
+
+## Rules built around real content activity
+
+The initial preview supports application collection types and single types, while intentionally excluding Strapi's internal admin and plugin models.
+
+A rule can respond when an entry is:
+
+- Created
+- Updated
+- Published
+- Unpublished
+- Deleted
+
+Each rule has its own private name, content type, action, title, message, severity, enabled state, and delivery choices. Rules can be added, edited, enabled, disabled, or removed from the admin panel.
+
+Templates can use safe values from the entry, content model, event, and acting administrator. This makes it possible to turn a technical event into something understandable, such as “Homepage article published by Alex,” rather than forwarding an unexplained lifecycle name.
+
+## Local activity and connected delivery
+
+Not every Strapi alert needs to leave the CMS.
+
+The optional **Strapi activity log** stores recent matching events locally and displays admin toasts while the Strapi panel is open. This local path works without a Notificator account or API key, and remains available if a remote service or MQTT connection is temporarily unavailable.
+
+When connected delivery is useful, a rule can extend the same event to:
+
+- The Notificator inbox
+- Mobile push notifications
+- Optional account email alerts
+- Compatible IoT devices through MQTT
+
+Events accepted by the Notificator API are always stored in the account inbox. Push, email, and MQTT remain optional additional channels.
+
+## Secrets stay on the server
+
+Connected delivery uses a dedicated **Strapi Extension** API key created from the Notificator mobile app. The key is stored in the Strapi server environment and is never entered into browser-side admin fields.
+
+MQTT delivery continues to follow the project's user-owned broker model. Administrators provide their own HiveMQ Cloud connection through server environment variables, keeping broker ownership and credentials under their control. The Notificator API endpoint itself is managed by the project and is not a user-configurable value.
+
+This separation keeps rule editing convenient without exposing connection secrets to the browser.
+
+## Installing the preview
+
+The extension is published as `@notificator-project/strapi-extension` and can be installed from a Strapi application's directory:
+
+```bash
+npm install @notificator-project/strapi-extension
+```
+
+It then needs to be enabled in `config/plugins.ts`. Local Strapi activity can be used immediately; connected delivery requires the relevant server environment variables and a restart of the Strapi application.
+
+The [extension repository](https://github.com/notificator-project/Strapi-Extension) contains the complete installation example, environment-variable reference, supported template values, architecture notes, and troubleshooting guidance.
+
+## What preview means
+
+Version 0.1.0 is ready for integration testing with current Strapi 5 projects, but it should not yet be the only record of a critical business, compliance, or security event.
+
+The preview label gives us room to validate lifecycle behaviour across different content models, refine the rule-building experience, and learn which Strapi workflows are most useful to support next. Delivery failures are deliberately isolated from successful content operations: an alert problem is logged, but it does not prevent an entry from being saved.
+
+## What comes next
+
+Our next step is practical testing. We want to see how the extension behaves across real Strapi projects, larger content models, different editorial workflows, and combinations of local and connected delivery.
+
+This preview is also an important project milestone. It demonstrates that Notificator can grow beyond one CMS while keeping the same principles: understandable rules, optional connections, user-controlled delivery, and open-source code.
+
+For now, we are introducing the extension through this preview announcement, the project changelog, its repository, and the technical documentation. We will talk about its wider place on the website after the first round of feedback and testing.

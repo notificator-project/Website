@@ -307,8 +307,11 @@ img {
 }
 
 .prose-styles pre code {
+	display: block;
+	color: #f1f5ff;
 	font-family: "JetBrains Mono", monospace;
 	font-size: 0.85rem;
+	line-height: 1.7;
 }
 
 .prose-styles img {
