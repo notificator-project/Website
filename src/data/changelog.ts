@@ -1,4 +1,4 @@
-export type ChangelogSystem = "project" | "wordpress" | "mobile" | "firmware" | "api" | "website" | "docs";
+export type ChangelogSystem = "project" | "wordpress" | "strapi" | "mobile" | "firmware" | "api" | "website" | "docs";
 
 export type ChangelogEntry = {
 	id: string;
@@ -21,7 +21,8 @@ export const changelogSystems: Array<{
 	marker: string;
 }> = [
 	{ id: "project", label: "Project milestone", shortLabel: "Milestones", marker: "N" },
-	{ id: "wordpress", label: "WordPress plugin", shortLabel: "Plugin", marker: "WP" },
+	{ id: "wordpress", label: "WordPress Plugin", shortLabel: "WordPress Plugin", marker: "WP" },
+	{ id: "strapi", label: "Strapi Extension", shortLabel: "Strapi", marker: "S" },
 	{ id: "mobile", label: "Mobile app", shortLabel: "Mobile", marker: "APP" },
 	{ id: "firmware", label: "Device firmware", shortLabel: "Firmware", marker: "FW" },
 	{ id: "api", label: "Notificator API", shortLabel: "API", marker: "API" },
@@ -30,6 +31,56 @@ export const changelogSystems: Array<{
 ];
 
 export const changelogEntries: ChangelogEntry[] = [
+	{
+		id: "mobile-1-4-0",
+		date: "2026-08-11",
+		system: "mobile",
+		version: "1.4.0",
+		title: "Clearer settings and more consistent controls",
+		summary: "The mobile app refines account settings, API-key management, and device editing without changing the workflows behind them.",
+		changes: [
+			"Reorganizes settings into a clearer account overview with more deliberate spacing and hierarchy.",
+			"Improves API-key cards and domain management while adding the Strapi Extension server-key type.",
+			"Refines notification details and device editors while preserving model-specific controls and delivery behavior.",
+			"Standardizes circular header avatars and actions at one shared size across primary screens.",
+			"Uses a stable Notificator issuer during authenticator enrollment so QR-code generation does not depend on deployment URL settings.",
+		],
+		link: { label: "Explore the mobile app", href: "/mobile-app/" },
+	},
+	{
+		id: "strapi-extension-0-1-0",
+		date: "2026-08-11",
+		system: "strapi",
+		version: "0.1.0 Preview",
+		title: "Notificator rules arrive in Strapi",
+		summary:
+			"A new Strapi 5 extension turns content lifecycle activity into local and connected alerts through an administrator-friendly rule builder.",
+		changes: [
+			"Creates named rules for entry creation, updates, publishing, unpublishing, and deletion without custom lifecycle code.",
+			"Supports readable templates using safe values from the entry, content model, event, and acting administrator.",
+			"Keeps an optional local Strapi activity log and admin toasts independent from remote delivery.",
+			"Connects the Notificator inbox, mobile push, optional email, and user-owned HiveMQ delivery through server-side configuration.",
+			"Ships as an integration-testing preview with documented environment variables and reproducible package publishing.",
+		],
+		link: {
+			label: "View the Strapi Extension preview",
+			href: "https://github.com/notificator-project/Strapi-Extension/releases/tag/v0.1.0",
+		},
+	},
+	{
+		id: "api-strapi-server-keys",
+		date: "2026-08-11",
+		system: "api",
+		version: "Integration keys",
+		title: "Server keys now identify Strapi integrations",
+		summary:
+			"The API recognizes dedicated Strapi Extension credentials instead of treating every connected service as the same integration type.",
+		changes: [
+			"Adds the strapi_server key type to the validated API-key policy.",
+			"Keeps existing WordPress and general service credentials compatible.",
+			"Adds automated coverage for every accepted key type so database and API rules stay aligned.",
+		],
+	},
 	{
 		id: "mobile-1-3-0",
 		date: "2026-08-06",
