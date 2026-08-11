@@ -1,0 +1,266 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Notificator for Strapi | Extension Preview",
+	description: "Create Strapi content lifecycle rules with local panel activity and optional Notificator inbox, push, email, and MQTT delivery.",
+	canonical: "https://notificator-project.com/strapi/",
+	openGraph: {
+		url: "https://notificator-project.com/strapi/",
+		title: "Notificator for Strapi",
+		description: "Turn Strapi content activity into useful alerts without repeating lifecycle code.",
+	},
+};
+
+const actions = ["Entry created", "Entry updated", "Entry published", "Entry unpublished", "Entry deleted"];
+const destinations = [
+	["Strapi activity", "Local history and admin toasts without a Notificator API key."],
+	["Notificator inbox", "Store accepted events in the connected Notificator account."],
+	["Mobile and email", "Add push delivery and the account email preference when useful."],
+	["MQTT devices", "Use a user-owned HiveMQ Cloud connection for compatible displays."],
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-grid">
+			<div>
+				<p class="eyebrow">Strapi Extension · 0.1.0 Preview</p>
+				<h1 class="display-title">Content activity that reaches the right people.</h1>
+				<p class="section-copy">
+					Build readable alerts from Strapi 5 lifecycle events without writing and maintaining a handler for every content type.
+				</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#rule-builder">Explore the preview</a>
+					<a class="button button-secondary" href="https://github.com/notificator-project/Strapi-Extension">View on GitHub ↗</a>
+				</div>
+			</div>
+			<aside class="rule-preview" aria-label="Example Strapi notification rule">
+				<div><span>S</span><small>Enabled rule</small></div>
+				<strong>Editorial publishing</strong>
+				<p>When an Article is published</p>
+				<ul><li>Information severity</li><li>Strapi activity enabled</li><li>Notificator inbox enabled</li></ul>
+			</aside>
+		</div>
+	</section>
+
+	<section id="rule-builder" class="section-space feature-section">
+		<div class="site-shell split">
+			<div>
+				<p class="eyebrow">Rule builder</p><h2 class="section-title">Configure the event, message, and destinations in one place.</h2><p
+					class="section-copy">
+					Each rule has a private name, application content type, lifecycle action, readable title and message, severity, enabled state, and
+					delivery choices.
+				</p>
+			</div>
+			<div class="action-list">
+				{
+					actions.map((action, index) => (
+						<div>
+							<>
+								<span>{String(index + 1).padStart(2, "0")}</span>
+								<strong>{action}</strong>
+							</>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-space local-section">
+		<div class="site-shell split">
+			<div>
+				<p class="eyebrow">Local or connected</p><h2 class="section-title">Useful inside Strapi before anything leaves it.</h2><p
+					class="section-copy">
+					The Strapi activity log remains independent from the Notificator API and MQTT. Connected delivery is an optional extension of the
+					same rule.
+				</p>
+			</div>
+			<div class="destination-grid">
+				{
+					destinations.map(([title, copy]) => (
+						<article>
+							<>
+								<h3>{title}</h3>
+								<p>{copy}</p>
+							</>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-space install-section">
+		<div class="site-shell install-card">
+			<div>
+				<p class="eyebrow">Install the preview</p><h2>Start integration testing with Strapi 5.</h2><p>
+					Keep the API key and optional HiveMQ credentials in server environment variables. No connection secret is entered in the
+					browser-side rule editor.
+				</p>
+			</div>
+			<div>
+				<pre><code>npm install @notificator-project/strapi-extension</code></pre><a
+					href="https://github.com/notificator-project/Strapi-Extension#readme">
+					Read installation and configuration ↗
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="preview-note">
+		<div class="site-shell">
+			<strong>Preview status</strong><p>
+				Version 0.1.0 is ready for integration testing, but should not yet be the only record of a critical business, compliance, or security
+				event.
+			</p><a href="/blog/notificator-for-strapi-extension-preview/">Read the preview announcement →</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+	.hero-grid,
+	.split,
+	.install-card {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(44px, 8vw, 100px);
+		align-items: center;
+	}
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+	.rule-preview {
+		border: 1px solid #d4c9ff;
+		border-radius: 28px;
+		background: linear-gradient(145deg, #fff, #f0edff);
+		box-shadow: var(--shadow-soft);
+		padding: 34px;
+	}
+	.rule-preview > div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.rule-preview > div span {
+		display: grid;
+		width: 48px;
+		height: 48px;
+		place-items: center;
+		border-radius: 14px;
+		background: #7047eb;
+		font-weight: 800;
+		color: white;
+	}
+	.rule-preview small {
+		border-radius: 999px;
+		background: #e1f8ee;
+		padding: 7px 10px;
+		color: #087c58;
+	}
+	.rule-preview > strong {
+		display: block;
+		margin-top: 30px;
+		font-size: 1.8rem;
+	}
+	.rule-preview p,
+	.rule-preview li,
+	.destination-grid p,
+	.install-card p,
+	.preview-note p {
+		color: var(--ink-soft);
+		line-height: 1.7;
+	}
+	.feature-section {
+		background: #f5f7fb;
+	}
+	.action-list {
+		display: grid;
+		gap: 10px;
+	}
+	.action-list div {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		border: 1px solid var(--line);
+		border-radius: 15px;
+		background: white;
+		padding: 16px;
+	}
+	.action-list span {
+		font-family: "JetBrains Mono", monospace;
+		color: var(--blue);
+	}
+	.destination-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+	}
+	.destination-grid article {
+		border: 1px solid var(--line);
+		border-radius: 18px;
+		background: white;
+		padding: 20px;
+	}
+	.destination-grid h3 {
+		margin: 0;
+	}
+	.install-section {
+		background: #0b1020;
+		color: white;
+	}
+	.install-card h2 {
+		font-size: clamp(2rem, 4vw, 3.4rem);
+	}
+	.install-card p {
+		color: #bfcbe7;
+	}
+	.install-card pre {
+		overflow-x: auto;
+		border: 1px solid #2d3b60;
+		border-radius: 16px;
+		background: #121b33;
+		padding: 20px;
+		color: #f1f5ff;
+	}
+	.install-card a,
+	.preview-note a {
+		color: #7fa7ff;
+		font-weight: 750;
+	}
+	.preview-note {
+		padding: 34px 0;
+		background: #eeeaff;
+	}
+	.preview-note .site-shell {
+		display: flex;
+		align-items: center;
+		gap: 22px;
+	}
+	.preview-note p {
+		flex: 1;
+		margin: 0;
+	}
+	@media (max-width: 800px) {
+		.hero-grid,
+		.split,
+		.install-card {
+			grid-template-columns: 1fr;
+		}
+		.destination-grid {
+			grid-template-columns: 1fr;
+		}
+		.preview-note .site-shell {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+	}
+</style>

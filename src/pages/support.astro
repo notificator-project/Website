@@ -4,12 +4,12 @@ import type { AstroSeoProps } from "@astrolib/seo";
 
 const seo: AstroSeoProps = {
 	title: "Notificator Support",
-	description: "Get help with the Notificator mobile apps, WordPress plugin, notifications, accounts, and compatible devices.",
+	description: "Get help with the Notificator mobile apps, WordPress Plugin, Strapi Extension, accounts, delivery, and compatible devices.",
 	canonical: "https://notificator-project.com/support/",
 	openGraph: {
 		url: "https://notificator-project.com/support/",
 		title: "Notificator Support",
-		description: "Troubleshooting and support for the Notificator apps, WordPress plugin, and compatible devices.",
+		description: "Troubleshooting and support for Notificator integrations, apps, accounts, and compatible devices.",
 	},
 };
 
@@ -22,9 +22,15 @@ const supportAreas = [
 	},
 	{
 		marker: "WP",
-		title: "WordPress plugin",
+		title: "WordPress Plugin",
 		copy: "API keys, event discovery, dashboard alerts, templates, and plugin integrations.",
 		href: "#wordpress-plugin",
+	},
+	{
+		marker: "S",
+		title: "Strapi Extension",
+		copy: "Lifecycle rules, local activity, admin toasts, API keys, and connected delivery.",
+		href: "#strapi-extension",
 	},
 	{
 		marker: "IoT",
@@ -42,8 +48,8 @@ const supportAreas = [
 				<p class="eyebrow">Notificator support</p>
 				<h1 class="display-title">Let’s get your alerts moving again.</h1>
 				<p class="section-copy">
-					Find practical help for the iOS and Android apps, the WordPress plugin, and compatible Notificator devices. You do not need to be
-					a developer to use this page.
+					Find practical help for the iOS and Android apps, WordPress Plugin, Strapi Extension, and compatible Notificator devices. You do
+					not need to be a developer to use this page.
 				</p>
 				<div class="hero-actions">
 					<a class="button button-primary" href="#common-questions">Start troubleshooting</a>
@@ -102,8 +108,8 @@ const supportAreas = [
 							device registration.
 						</p>
 						<p>
-							In WordPress, make sure the API key is active and that mobile push is enabled for the event. Trigger the event again and
-							check whether a dashboard alert appears. If it does, the WordPress event is working and the problem is limited to push
+							In WordPress or Strapi, make sure the API key is active and mobile push is enabled for the rule. Trigger the event again
+							and check whether local activity appears. If it does, the source event is working and the problem is limited to connected
 							delivery.
 						</p>
 					</div>
@@ -140,6 +146,19 @@ const supportAreas = [
 					</div>
 				</details>
 
+				<details id="strapi-extension">
+					<summary>Can I use the Strapi Extension without a Notificator API key?</summary>
+					<div>
+						<p>
+							Yes. Enable the Strapi activity log for local history and admin toasts. A Strapi Extension API key is required only for
+							the Notificator inbox, mobile push, email, or MQTT delivery.
+						</p>
+						<a href="https://docs.notificator-project.com/guides/strapi-extension-setup/" target="_blank" rel="noreferrer">
+							Read the Strapi setup guide ↗
+						</a>
+					</div>
+				</details>
+
 				<details id="devices">
 					<summary>Where can I get help with a Notificator device?</summary>
 					<div>
@@ -167,6 +186,19 @@ const supportAreas = [
 				</details>
 
 				<details>
+					<summary>Where should I report a reproducible Strapi Extension issue?</summary>
+					<div>
+						<p>
+							Use the extension issue tracker and include the Strapi, Node.js, and extension versions, the content type and action, and
+							sanitized server or browser errors.
+						</p>
+						<a href="https://github.com/notificator-project/Strapi-Extension/issues" target="_blank" rel="noreferrer">
+							Report an extension issue ↗
+						</a>
+					</div>
+				</details>
+
+				<details>
 					<summary>I need help with my account or personal data.</summary>
 					<div>
 						<p>
@@ -184,7 +216,7 @@ const supportAreas = [
 			<div>
 				<p class="eyebrow">Still need help?</p>
 				<h2>Send us the details.</h2>
-				<p>We’ll help you narrow down whether the issue is in the app, your WordPress event, remote delivery, or a connected device.</p>
+				<p>We’ll help you narrow down whether the issue is in the app, source integration, connected delivery, or a physical device.</p>
 			</div>
 			<div class="cta-actions">
 				<a class="button button-primary" href="/contact/">Open the contact form</a>
@@ -269,7 +301,7 @@ const supportAreas = [
 
 	.area-grid {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 16px;
 	}
 

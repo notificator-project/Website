@@ -68,6 +68,23 @@ export const changelogEntries: ChangelogEntry[] = [
 		},
 	},
 	{
+		id: "website-multi-platform-integrations",
+		date: "2026-08-11",
+		system: "website",
+		version: "August 2026",
+		title: "The website grows beyond one event source",
+		summary: "Notificator now presents WordPress and Strapi as distinct integrations inside one shared event-to-alert ecosystem.",
+		changes: [
+			"Repositions the homepage around meaningful website events while naming WordPress and Strapi clearly.",
+			"Rebuilds Integrations as a bridge between the stable WordPress Plugin and the Strapi Extension preview.",
+			"Adds dedicated WordPress and Strapi pages with platform-specific capabilities, maturity, installation, and delivery guidance.",
+			"Makes the How it works journey platform-neutral, including local activity in either administration panel.",
+			"Moves the WordPress page to a shorter route while preserving the original address through a permanent redirect.",
+			"Updates shared metadata, footer navigation, the sitemap, llms.txt, and internal changelog links for the expanded architecture.",
+		],
+		link: { label: "Explore the integrations", href: "/integrations/" },
+	},
+	{
 		id: "api-strapi-server-keys",
 		date: "2026-08-11",
 		system: "api",
@@ -203,7 +220,7 @@ export const changelogEntries: ChangelogEntry[] = [
 			"Makes installation and future updates available through the familiar WordPress plugin workflow.",
 			"Keeps the plugin, mobile app, API, documentation, and device firmware part of one free and open-source project.",
 		],
-		link: { label: "Explore the WordPress plugin", href: "/wordpress-plugin/" },
+		link: { label: "Explore the WordPress Plugin", href: "/wordpress/" },
 	},
 	{
 		id: "firmware-touch-0-9-1",
@@ -448,7 +465,7 @@ export const changelogEntries: ChangelogEntry[] = [
 			"Prompts for a new scan when another plugin is activated.",
 			"Explains why a scan is recommended and identifies newly activated plugins.",
 		],
-		link: { label: "Explore the plugin", href: "/wordpress-plugin/" },
+		link: { label: "Explore the WordPress Plugin", href: "/wordpress/" },
 	},
 	{
 		id: "mobile-tester-update",

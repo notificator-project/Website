@@ -4,21 +4,22 @@ import type { AstroSeoProps } from "@astrolib/seo";
 
 const seo: AstroSeoProps = {
 	title: "How Notificator Works",
-	description: "Learn how Notificator turns meaningful WordPress events into dashboard alerts, mobile push, optional email alerts, and MQTT messages.",
+	description:
+		"Learn how Notificator turns meaningful WordPress and Strapi events into local activity, mobile push, email alerts, and MQTT messages.",
 	canonical: "https://notificator-project.com/how-it-works/",
 	openGraph: {
 		url: "https://notificator-project.com/how-it-works/",
 		title: "How Notificator Works",
-		description: "Follow the path from a WordPress event to an alert on your dashboard, phone, or connected device.",
+		description: "Follow the path from a website event to local activity, your phone, email, or a connected device.",
 	},
 };
 
 const steps = [
 	{
 		number: "01",
-		title: "Discover what can happen",
-		copy: "Scan your active plugins for useful events, start from a ready-made template, or use an event registered by your own code.",
-		detail: "Discovery happens inside WordPress and does not require a Notificator account.",
+		title: "Choose an event source",
+		copy: "Discover WordPress hooks and templates, or build a Strapi lifecycle rule around an application content type.",
+		detail: "WordPress is stable; the Strapi extension is currently a preview.",
 	},
 	{
 		number: "02",
@@ -29,23 +30,23 @@ const steps = [
 	{
 		number: "03",
 		title: "Select the destinations",
-		copy: "Keep alerts in the WordPress dashboard, send them through the Notificator mobile app, enable account email alerts, or route them to compatible MQTT devices.",
+		copy: "Keep activity in WordPress or Strapi, send it through the mobile app, enable account email alerts, or route it to compatible MQTT devices.",
 		detail: "Each notification can use the delivery channels that suit that event.",
 	},
 	{
 		number: "04",
 		title: "Review, refine, and reuse",
-		copy: "Use the activity view to understand what fired and how it was delivered. Export your setup when you want to reuse it on another site.",
-		detail: "You stay in control of active notifications, API keys, delivery channels, and alert history.",
+		copy: "Use local activity to understand what fired and how it was delivered, then refine or disable the rule when your workflow changes.",
+		detail: "Platform-specific tools stay separate while connected destinations remain shared.",
 	},
 ];
 
 const channels = [
 	{
-		label: "Included",
-		marker: "WP",
-		title: "Dashboard alerts",
-		copy: "See important activity inside WordPress. This works locally with no Notificator account or API key.",
+		label: "Local",
+		marker: "LOCAL",
+		title: "Administration activity",
+		copy: "See important activity inside the WordPress dashboard or Strapi panel without requiring remote delivery.",
 		requirement: "No account required",
 	},
 	{
@@ -77,7 +78,7 @@ const channels = [
 		<div class="site-shell hero-layout">
 			<div>
 				<p class="eyebrow">How it works</p>
-				<h1 class="display-title">From a WordPress event to an alert you can act on.</h1>
+				<h1 class="display-title">From a website event to an alert you can act on.</h1>
 				<p class="section-copy">
 					Notificator listens for events you choose, turns their useful details into a readable message, and delivers that message only
 					where you want it.
@@ -92,8 +93,8 @@ const channels = [
 				<div class="signal-node">
 					<span aria-hidden="true">WC</span>
 					<div>
-						<small>WordPress event</small>
-						<strong>New order created</strong>
+						<small>WordPress or Strapi event</small>
+						<strong>Meaningful activity occurs</strong>
 					</div>
 				</div>
 				<i aria-hidden="true">↓</i>
@@ -106,7 +107,7 @@ const channels = [
 				</div>
 				<i aria-hidden="true">↓</i>
 				<div class="signal-destinations" aria-label="Selected destinations">
-					<span>Dashboard</span>
+					<span>Local activity</span>
 					<span>Mobile app</span>
 					<span>Device</span>
 				</div>
@@ -120,8 +121,8 @@ const channels = [
 				<p class="eyebrow">The workflow</p>
 				<h2 id="workflow-title" class="section-title">Set it up clearly, then let it run.</h2>
 				<p class="section-copy">
-					Every notification follows the same understandable path, whether it starts with WordPress itself, an installed plugin, or custom
-					code.
+					Every notification follows the same understandable path, whether it begins with a WordPress hook or a Strapi content lifecycle
+					event.
 				</p>
 			</div>
 
@@ -150,8 +151,8 @@ const channels = [
 				<p class="eyebrow">Local first</p>
 				<h2 id="local-first-title" class="section-title">Start without creating an account.</h2>
 				<p class="section-copy">
-					You can scan for events, create notifications, and receive dashboard alerts entirely inside WordPress. Add a Notificator account
-					only when you want alerts to leave the site.
+					WordPress dashboard alerts and the Strapi activity log can stay local. Add a Notificator account only when you want an event to
+					reach the inbox, phone, email, or a connected device.
 				</p>
 			</div>
 			<div class="local-checklist">

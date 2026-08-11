@@ -15,14 +15,13 @@ const { seo: seoProp } = Astro.props;
 const shareImage = new URL("og.png", Astro.site).toString();
 
 const defaultSeo: AstroSeoProps = {
-	title: "Notificator | Alerts that start with your WordPress events",
-	description:
-		"Turn WordPress events into dashboard alerts, mobile push notifications, and MQTT messages with the free, open-source Notificator plugin.",
+	title: "Notificator | Website events turned into useful alerts",
+	description: "Turn meaningful WordPress and Strapi events into local activity, mobile push notifications, email alerts, and MQTT messages.",
 	canonical: "https://notificator-project.com/",
 	openGraph: {
 		url: "https://notificator-project.com/",
-		title: "Notificator | WordPress alerts, your way",
-		description: "Discover site events and route the ones that matter to your dashboard, phone, or MQTT devices.",
+		title: "Notificator | Website alerts, your way",
+		description: "Connect WordPress and Strapi events to local activity, your phone, email, or compatible MQTT devices.",
 		images: [
 			{
 				url: shareImage,
@@ -64,7 +63,7 @@ const seo = {
 <!--
 	Hello, curious human!
 
-	Notificator turns meaningful WordPress events into useful alerts.
+	Notificator turns meaningful website events into useful alerts.
 	It is free, open source, and built in public.
 
 	Explore the code: https://github.com/notificator-project

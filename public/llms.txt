@@ -9,7 +9,9 @@ MQTT devices use a user-owned HiveMQ Cloud cluster. Users control the broker cre
 ## Start here
 
 - [Notificator website](https://notificator-project.com/): Project overview, features, supported notification channels, and recent news.
-- [WordPress plugin](https://notificator-project.com/wordpress-plugin/): Event discovery, templates, dashboard alerts, remote delivery, activity, exports, and developer integrations.
+- [Integrations](https://notificator-project.com/integrations/): Choose WordPress or Strapi as an event source.
+- [WordPress Plugin](https://notificator-project.com/wordpress/): Stable event discovery, templates, dashboard alerts, remote delivery, activity, exports, and developer integrations.
+- [Strapi Extension](https://notificator-project.com/strapi/): Preview lifecycle rules, local panel activity, and optional connected delivery for Strapi 5.
 - [Mobile app](https://notificator-project.com/mobile-app/): Notificator accounts, connected WordPress sites, mobile push and optional email delivery, and compatible devices on iOS and Android.
 - [Notificator devices](https://notificator-project.com/devices/): Compatible ESP32 hardware, open-source firmware, MQTT delivery, community devices, and enclosure attribution.
 - [Get a Notificator device](https://notificator-project.com/get-a-device/): Supported ready-made hardware, free community batches, and build-it-yourself options.

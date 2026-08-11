@@ -1,22 +1,23 @@
 # Notificator Website
 
-The public website for [Notificator](https://notificator-project.com), a free and open-source notification ecosystem that turns meaningful WordPress events into dashboard alerts, mobile push notifications, optional email alerts, MQTT messages, and notifications on compatible physical devices.
+The public website for [Notificator](https://notificator-project.com), a free and open-source notification ecosystem that turns meaningful WordPress and Strapi events into local activity, mobile push notifications, optional email alerts, MQTT messages, and notifications on compatible physical devices.
 
 The site presents the complete Notificator ecosystem, publishes project updates, provides support and privacy information, and documents the open-source tools and creative work used to build it.
 
 ## Website sections
 
-- [How it works](https://notificator-project.com/how-it-works/) explains the path from discovering an event to delivering an alert.
-- [Integrations](https://notificator-project.com/integrations/) covers templates, hook discovery, event sources, and developer integrations.
-- [WordPress plugin](https://notificator-project.com/wordpress-plugin/) introduces local alerts, remote delivery, activity, exports, and the plugin workflow.
+- [How it works](https://notificator-project.com/how-it-works/) explains the platform-neutral path from a website event to local or connected delivery.
+- [Integrations](https://notificator-project.com/integrations/) compares the available event sources and their shared delivery model.
+- [WordPress Plugin](https://notificator-project.com/wordpress/) introduces the stable hook-discovery, template, local-alert, export, and delivery workflow.
+- [Strapi Extension](https://notificator-project.com/strapi/) introduces the Strapi 5 lifecycle-rule preview, local activity, admin toasts, and optional connected delivery.
 - [Mobile app](https://notificator-project.com/mobile-app/) explains accounts, connected sites, push and optional email delivery, searchable weather locations, secure MQTT connection testing, model-aware device controls, and firmware status.
 - [Devices](https://notificator-project.com/devices/) covers Notificator Base, the Touch 3.49 preview, MQTT, open-source firmware, community builds, and enclosure attribution.
 - [Get a device](https://notificator-project.com/get-a-device/) compares supported ready-made hardware, free community batches, and the complete maker route without implying that the project sells devices.
 - [Build a device](https://notificator-project.com/build-a-device/) explains the ESP32-C3 electronics, OLED and touch hardware, wiring, the Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing, assembly, firmware, materials, licensing, the planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Firmware installer](https://notificator-project.com/firmware-installer/) loads the official multi-model catalog and installs the matching Base or Touch factory image over USB using ESP Web Tools.
-- [Changelog](https://notificator-project.com/changelog/) brings meaningful releases from the WordPress plugin, mobile app, firmware, API, website, and documentation into one filterable timeline.
+- [Changelog](https://notificator-project.com/changelog/) brings meaningful releases from the WordPress Plugin, Strapi Extension, mobile app, firmware, API, website, and documentation into one filterable timeline.
 - [Blog](https://notificator-project.com/blog/) contains release notes, development updates, and project stories.
-- [Support](https://notificator-project.com/support/) provides troubleshooting for the plugin, apps, accounts, and devices.
+- [Support](https://notificator-project.com/support/) provides troubleshooting for integrations, apps, accounts, and devices.
 - [Privacy](https://notificator-project.com/privacy/) describes how data is handled across the project.
 - [Credits](https://notificator-project.com/credits/) acknowledges the libraries, fonts, services, tools, and creative work used by the site.
 
@@ -116,7 +117,7 @@ The production build includes:
 
 ## Independence
 
-Notificator is an independent open-source project. It is not affiliated with, endorsed by, or sponsored by WordPress.org, the WordPress Foundation, or Automattic. References to WordPress describe compatibility and participation in the open-source community, including contributions to plugins and related projects.
+Notificator is an independent open-source project. It is not affiliated with, endorsed by, or sponsored by WordPress.org, the WordPress Foundation, Automattic, Strapi Solutions SAS, Waveshare, or HiveMQ. Product and service references describe compatibility, community participation, supported hardware, or user-owned infrastructure; their names, trademarks, services, and terms remain their own.
 
 ## Contributing
 

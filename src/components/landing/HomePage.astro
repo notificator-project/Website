@@ -12,6 +12,7 @@ const posts = (await getCollection("posts"))
 	.slice(0, 3);
 
 const integrations = [
+	{ name: "Strapi", detail: "Content lifecycle rules", icon: "S" },
 	{ name: "WordPress Core", detail: "Users, comments, updates", icon: "W" },
 	{ name: "WooCommerce", detail: "Orders and store events", icon: "WC" },
 	{ name: "Form plugins", detail: "Leads and failed sends", icon: "F" },
@@ -25,10 +26,10 @@ const integrations = [
 	<div class="site-shell hero-grid">
 		<div class="hero-copy">
 			<p class="eyebrow">An open notification ecosystem</p>
-			<h1 class="display-title">Your WordPress site, finally speaking up.</h1>
+			<h1 class="display-title">Your website, finally speaking up.</h1>
 			<p class="hero-intro">
-				Discover the events that matter and turn them into dashboard alerts, mobile push notifications, optional email alerts, or MQTT
-				messages without writing a monitoring system.
+				Turn meaningful WordPress and Strapi events into local activity, mobile push notifications, optional email alerts, or MQTT messages
+				without writing a monitoring system.
 			</p>
 			<div class="hero-actions">
 				<a class="button button-primary" href="#ecosystem">Explore the ecosystem <span aria-hidden="true">↓</span></a>
@@ -36,8 +37,8 @@ const integrations = [
 			</div>
 			<ul class="hero-proof" aria-label="Notificator highlights">
 				<li><span aria-hidden="true">✓</span> Free and open source</li>
-				<li><span aria-hidden="true">✓</span> Local alerts need no account</li>
-				<li><span aria-hidden="true">✓</span> Built for real WordPress events</li>
+				<li><span aria-hidden="true">✓</span> Local activity can need no account</li>
+				<li><span aria-hidden="true">✓</span> WordPress stable · Strapi preview</li>
 			</ul>
 		</div>
 
@@ -103,21 +104,21 @@ const integrations = [
 		<div class="section-heading split-heading">
 			<div>
 				<p class="eyebrow">From event to action</p>
-				<h2 class="section-title">One clear path from WordPress to wherever you are.</h2>
+				<h2 class="section-title">One clear path from an event to wherever you are.</h2>
 			</div>
 			<p class="section-copy">
-				Notificator separates discovery, configuration, and delivery so you always understand what the plugin is listening for and where each
-				alert will go.
+				Notificator separates the event source, rule, and delivery so you understand what each integration is watching and where every alert
+				will go.
 			</p>
 		</div>
 
 		<div id="channels" class="flow-board">
 			<div class="flow-source flow-card">
 				<span class="flow-index">01</span>
-				<div class="flow-icon wordpress">W</div>
+				<div class="flow-icon wordpress">W+S</div>
 				<small>Source</small>
-				<strong>A WordPress event happens</strong>
-				<p>An order arrives, a form fails, a user signs in, or your own code fires a hook.</p>
+				<strong>A website event happens</strong>
+				<p>An order arrives, content is published, a form fails, or an editor changes an entry.</p>
 			</div>
 			<div class="flow-connector"><span></span><i>Event</i></div>
 			<div class="flow-center flow-card">
@@ -133,7 +134,7 @@ const integrations = [
 				<small>Destinations</small>
 				<strong>Deliver it your way</strong>
 				<div class="channel-list">
-					<span><b>D</b> WordPress dashboard</span>
+					<span><b>L</b> Local activity</span>
 					<span><b>P</b> iOS &amp; Android app</span>
 					<span><b>N</b> Notificator devices</span>
 				</div>
@@ -182,18 +183,25 @@ const integrations = [
 				<h2 class="section-title">See the alert where it is most useful.</h2>
 			</div>
 			<p class="section-copy">
-				Start with notifications inside WordPress, then connect the Notificator mobile app or a dedicated Notificator device whenever your
-				workflow needs to move beyond the dashboard.
+				Start with local activity in WordPress or Strapi, then connect the mobile app or a dedicated device when your workflow needs to move
+				beyond the administration panel.
 			</p>
 		</div>
 
 		<div class="ecosystem-grid">
-			<a href="/wordpress-plugin/">
-				<span class="ecosystem-label">Included</span>
+			<a href="/wordpress/">
+				<span class="ecosystem-label">Stable</span>
 				<div class="ecosystem-icon">WP</div>
-				<h3>Dashboard alerts</h3>
-				<p>Review important events directly in WordPress. No Notificator account or API key is required.</p>
-				<i aria-hidden="true">Explore plugin →</i>
+				<h3>WordPress Plugin</h3>
+				<p>Discover hooks, build notifications, and review important activity directly inside WordPress.</p>
+				<i aria-hidden="true">Explore WordPress →</i>
+			</a>
+			<a href="/strapi/">
+				<span class="ecosystem-label">Preview</span>
+				<div class="ecosystem-icon">S</div>
+				<h3>Strapi Extension</h3>
+				<p>Create lifecycle rules and keep matching content activity inside Strapi or send it onwards.</p>
+				<i aria-hidden="true">Explore Strapi →</i>
 			</a>
 			<a class="featured" href="/mobile-app/">
 				<span class="ecosystem-label">iOS + Android</span>
@@ -632,7 +640,7 @@ const integrations = [
 
 	.health-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 10px;
 		margin-top: 24px;
 	}
