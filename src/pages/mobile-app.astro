@@ -8,12 +8,12 @@ import type { AstroSeoProps } from "@astrolib/seo";
 
 const seo: AstroSeoProps = {
 	title: "Notificator Mobile App",
-	description: "Connect WordPress sites and receive selected Notificator alerts through the mobile app for iOS and Android.",
+	description: "Connect WordPress and Strapi integrations, receive selected alerts, and manage compatible devices with the Notificator mobile app.",
 	canonical: "https://notificator-project.com/mobile-app/",
 	openGraph: {
 		url: "https://notificator-project.com/mobile-app/",
 		title: "Notificator Mobile App",
-		description: "Keep meaningful WordPress alerts with you on iOS and Android.",
+		description: "Keep meaningful website alerts with you and manage compatible Notificator devices from the iOS app.",
 	},
 };
 
@@ -25,8 +25,8 @@ const setupSteps = [
 	},
 	{
 		number: "02",
-		title: "Connect WordPress",
-		copy: "Create a WordPress Plugin API key for the site, add it to the plugin, and keep the key active for remote delivery.",
+		title: "Connect an integration",
+		copy: "Create the matching API key for WordPress or Strapi, add it to the integration, and keep the key active for remote delivery.",
 	},
 	{
 		number: "03",
@@ -50,7 +50,7 @@ const appPreviews = [
 	{
 		image: appAlerts,
 		label: "Alerts",
-		title: "Keep important WordPress events close.",
+		title: "Keep important website events close.",
 		alt: "Notificator App Store preview showing a WordPress notification in the mobile alerts list",
 	},
 	{
@@ -69,13 +69,12 @@ const appPreviews = [
 				<p class="eyebrow">Mobile app</p>
 				<h1 class="display-title">The alerts that matter, wherever you are.</h1>
 				<p class="section-copy">
-					The Notificator mobile app connects your account, WordPress sites, and compatible devices while delivering the push notifications
-					you choose.
+					The Notificator mobile app connects your account, website integrations, and compatible devices while delivering the push
+					notifications you choose.
 				</p>
 				<div class="platform-note">
 					<span aria-hidden="true">iOS</span>
-					<span aria-hidden="true">Android</span>
-					<p>Public store links will appear here as the listings are finalized.</p>
+					<p><a href="https://apps.apple.com/gr/app/notificator-project/id6758410275">Available now on the App Store</a></p>
 				</div>
 			</div>
 
@@ -110,7 +109,7 @@ const appPreviews = [
 			</div>
 			<div class="role-points">
 				<article>
-					<span aria-hidden="true">01</span><p><strong>Receive push alerts</strong>See selected WordPress events on your phone.</p>
+					<span aria-hidden="true">01</span><p><strong>Receive push alerts</strong>See selected website events on your phone.</p>
 				</article>
 				<article>
 					<span aria-hidden="true">02</span><p><strong>Connect your sites</strong>Use account API keys to enable remote delivery.</p>

@@ -14,7 +14,17 @@ const [featured, ...articles] = allPosts;
 	<div class="site-shell">
 		<header class="blog-hero">
 			<div>
-				<p class="eyebrow">Project journal</p>
+				<div class="journal-kicker">
+					<p class="eyebrow">Project journal</p>
+					<a class="rss-link" href="/rss.xml" aria-label="Subscribe to the Notificator Journal RSS feed">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<circle cx="5" cy="19" r="2"></circle>
+							<path d="M4 11a9 9 0 0 1 9 9"></path>
+							<path d="M4 4a16 16 0 0 1 16 16"></path>
+						</svg>
+						<span>RSS</span>
+					</a>
+				</div>
 				<h1 class="display-title">Ideas, releases, and the work behind Notificator.</h1>
 			</div>
 			<p>
@@ -66,6 +76,47 @@ const [featured, ...articles] = allPosts;
 		grid-template-columns: minmax(0, 1fr) minmax(300px, 0.45fr);
 		gap: 60px;
 		align-items: end;
+	}
+
+	.journal-kicker {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+	}
+
+	.journal-kicker .eyebrow {
+		margin: 0;
+	}
+
+	.rss-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		padding: 6px 10px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		color: var(--brand);
+		transition:
+			border-color 150ms ease,
+			background 150ms ease;
+	}
+
+	.rss-link:hover {
+		border-color: var(--brand);
+		background: var(--brand-soft);
+	}
+
+	.rss-link svg {
+		width: 16px;
+		height: 16px;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-width: 2;
 	}
 
 	.blog-hero .display-title {

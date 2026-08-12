@@ -33,6 +33,41 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "mobile-1-2-build-1-50",
+		date: "2026-08-12",
+		system: "mobile",
+		version: "1.2",
+		build: "1.50",
+		title: "A clearer app, now live on the App Store",
+		summary:
+			"The public iOS release brings redesigned everyday screens, clearer device state, a faster Journal, and more deliberate account controls.",
+		changes: [
+			"Redesigns Home, Alerts, Devices, notification details, device editing, and account settings around clearer hierarchy and more consistent controls.",
+			"Makes unread alerts and offline devices easier to identify, hides search until requested, and adds more natural alert gestures.",
+			"Loads Journal updates from the project website with pagination, a recent-story Home card, caching, and graceful behaviour when the website is unavailable.",
+			"Improves API-key and domain management, adds the Strapi Extension key type, and keeps app version and build number independently controlled.",
+			"Preserves access to accounts, email alerts, and connected devices when mobile push permission is declined.",
+		],
+		link: { label: "Download on the App Store", href: "https://apps.apple.com/gr/app/notificator-project/id6758410275" },
+	},
+	{
+		id: "website-app-store-and-public-feeds",
+		date: "2026-08-12",
+		system: "website",
+		version: "August 2026",
+		title: "The website connects releases, readers, and the live iOS app",
+		summary:
+			"The project website now provides direct App Store access, open Journal feeds, clearer integration routes, and a more accessible responsive experience.",
+		changes: [
+			"Adds the official App Store download badge and links it directly to the live Notificator Project listing.",
+			"Publishes a standards-based RSS feed and a lightweight Journal JSON endpoint used by the mobile app.",
+			"Adds dedicated WordPress and Strapi pages, with Integrations acting as the bridge into the wider event-to-alert ecosystem.",
+			"Improves typography, contrast, screen-reader structure, responsive layouts, navigation, and the optional OpenDyslexic reading mode.",
+			"Expands the public changelog so app versions, App Store build numbers, platform releases, and project milestones remain distinct.",
+		],
+		link: { label: "Explore the project website", href: "/" },
+	},
+	{
 		id: "mobile-1-4-0",
 		date: "2026-08-11",
 		system: "mobile",

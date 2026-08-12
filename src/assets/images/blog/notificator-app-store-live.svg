@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Notificator is live on the App Store</title>
+  <desc id="desc">A dark Notificator mobile interface card beside a live App Store announcement on a pale blue background.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f9ff"/>
+      <stop offset="1" stop-color="#dce7ff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2467ed"/>
+      <stop offset="1" stop-color="#4b8cff"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="28" stdDeviation="32" flood-color="#172a58" flood-opacity=".18"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#background)"/>
+  <circle cx="1480" cy="80" r="260" fill="#2f6ff0" opacity=".08"/>
+  <circle cx="120" cy="820" r="290" fill="#2f6ff0" opacity=".1"/>
+
+  <g transform="translate(110 152)">
+    <rect width="770" height="596" rx="44" fill="#0b1020" filter="url(#shadow)"/>
+    <rect x="42" y="38" width="50" height="50" rx="15" fill="url(#blue)"/>
+    <text x="67" y="71" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">N</text>
+    <text x="112" y="70" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Notificator</text>
+    <circle cx="668" cy="63" r="7" fill="#28c88b"/>
+    <text x="687" y="70" fill="#aab7d4" font-family="Arial, Helvetica, sans-serif" font-size="17">Live</text>
+
+    <rect x="42" y="122" width="686" height="164" rx="28" fill="#17233b" stroke="#2a3b5d"/>
+    <text x="76" y="166" fill="#6f9cff" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="2">LATEST ALERT</text>
+    <text x="76" y="214" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Your site has something to say.</text>
+    <text x="76" y="254" fill="#aab7d4" font-family="Arial, Helvetica, sans-serif" font-size="20">New activity is ready when you are.</text>
+
+    <rect x="42" y="314" width="330" height="184" rx="28" fill="url(#blue)"/>
+    <text x="74" y="356" fill="#dce8ff" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">UNREAD</text>
+    <text x="74" y="428" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700">3</text>
+    <text x="74" y="470" fill="#dce8ff" font-family="Arial, Helvetica, sans-serif" font-size="18">alerts waiting</text>
+
+    <rect x="398" y="314" width="330" height="184" rx="28" fill="#17233b" stroke="#2a3b5d"/>
+    <circle cx="438" cy="357" r="8" fill="#28c88b"/>
+    <text x="460" y="364" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Devices connected</text>
+    <text x="432" y="420" fill="#aab7d4" font-family="Arial, Helvetica, sans-serif" font-size="19">Base and Touch stay close</text>
+    <text x="432" y="452" fill="#aab7d4" font-family="Arial, Helvetica, sans-serif" font-size="19">to the events that matter.</text>
+
+    <rect x="168" y="540" width="434" height="5" rx="2.5" fill="#253656"/>
+  </g>
+
+  <g transform="translate(982 232)">
+    <rect x="0" y="0" width="508" height="436" rx="38" fill="white" fill-opacity=".76" stroke="#c8d7fa" filter="url(#shadow)"/>
+    <circle cx="64" cy="66" r="10" fill="#28c88b"/>
+    <text x="90" y="75" fill="#176a4d" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing="2">NOW LIVE</text>
+    <text x="52" y="157" fill="#0b1020" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="750">Notificator</text>
+    <text x="52" y="218" fill="#0b1020" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="750">on the App Store.</text>
+    <text x="52" y="274" fill="#536078" font-family="Arial, Helvetica, sans-serif" font-size="23">Mobile app 1.2 · Build 1.50</text>
+    <rect x="52" y="322" width="220" height="56" rx="28" fill="url(#blue)"/>
+    <text x="162" y="357" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="2" text-anchor="middle">IPHONE + IPAD</text>
+  </g>
+</svg>

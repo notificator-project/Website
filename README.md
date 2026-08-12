@@ -16,7 +16,7 @@ The site presents the complete Notificator ecosystem, publishes project updates,
 - [Build a device](https://notificator-project.com/build-a-device/) explains the ESP32-C3 electronics, OLED and touch hardware, wiring, the Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing, assembly, firmware, materials, licensing, the planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Firmware installer](https://notificator-project.com/firmware-installer/) loads the official multi-model catalog and installs the matching Base or Touch factory image over USB using ESP Web Tools.
 - [Changelog](https://notificator-project.com/changelog/) brings meaningful releases from the WordPress Plugin, Strapi Extension, mobile app, firmware, API, website, and documentation into one filterable timeline.
-- [Blog](https://notificator-project.com/blog/) contains release notes, development updates, and project stories.
+- [Journal](https://notificator-project.com/blog/) contains release notes, development updates, and project stories, with a standard [RSS feed](https://notificator-project.com/rss.xml).
 - [Support](https://notificator-project.com/support/) provides troubleshooting for integrations, apps, accounts, and devices.
 - [Privacy](https://notificator-project.com/privacy/) describes how data is handled across the project.
 - [Credits](https://notificator-project.com/credits/) acknowledges the libraries, fonts, services, tools, and creative work used by the site.
@@ -88,6 +88,9 @@ The same collection generates the versioned public JSON feed at
 [`/api/v1/journal.json`](https://notificator-project.com/api/v1/journal.json).
 The Notificator mobile app consumes this feed for its News screen and home-page
 project updates, so publishing the website also updates the app's content source.
+It also generates the standard [`/rss.xml`](https://notificator-project.com/rss.xml)
+feed for RSS readers. Both feeds are produced from the same entries and publication
+dates.
 
 Blog comments are provided by [giscus](https://giscus.app/) and stored in GitHub Discussions. The integration is configured in `src/components/blog/Comments.astro`.
 
@@ -120,6 +123,7 @@ The production build includes:
 - `robots.txt`
 - `llms.txt` with important project pages and resources
 - A versioned JSON Journal feed for the mobile app
+- A standard RSS 2.0 Journal feed with browser feed discovery
 
 ## Independence
 
