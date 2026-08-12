@@ -67,7 +67,10 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 									<span aria-hidden="true">{system.marker}</span>
 									<div>
 										<small>{system.shortLabel}</small>
-										<strong>{entry.version}</strong>
+										<strong>
+											{entry.version}
+											{entry.build && <span> · build {entry.build}</span>}
+										</strong>
 									</div>
 								</a>
 							);
@@ -166,6 +169,7 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 											{system.label}
 										</span>
 										<span class="version-badge">{entry.version}</span>
+										{entry.build && <span class="build-badge">Build {entry.build}</span>}
 									</div>
 									<h3>{entry.title}</h3>
 									<p>{entry.summary}</p>
@@ -354,6 +358,12 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 
 	.radar-systems strong {
 		font-size: 0.95rem;
+	}
+
+	.radar-systems strong span {
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: #aebfe5;
 	}
 
 	.changelog-overview {
@@ -621,7 +631,8 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 	}
 
 	.system-badge,
-	.version-badge {
+	.version-badge,
+	.build-badge {
 		border-radius: 30px;
 		padding: 6px 10px;
 		font-size: 0.72rem;
@@ -636,6 +647,12 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 	.version-badge {
 		background: #eef1f6;
 		color: #4f5970;
+	}
+
+	.build-badge {
+		border: 1px solid #dfe5ef;
+		background: transparent;
+		color: #69748c;
 	}
 
 	.release-card h3 {

@@ -5,6 +5,7 @@ export type ChangelogEntry = {
 	date: string;
 	system: ChangelogSystem;
 	version: string;
+	build?: string;
 	title: string;
 	summary: string;
 	changes: string[];
@@ -35,7 +36,8 @@ export const changelogEntries: ChangelogEntry[] = [
 		id: "mobile-1-4-0",
 		date: "2026-08-11",
 		system: "mobile",
-		version: "1.4.0",
+		version: "1.1",
+		build: "1.4.0",
 		title: "Clearer settings and more consistent controls",
 		summary: "The mobile app refines account settings, API-key management, and device editing without changing the workflows behind them.",
 		changes: [
@@ -102,7 +104,8 @@ export const changelogEntries: ChangelogEntry[] = [
 		id: "mobile-1-3-0",
 		date: "2026-08-06",
 		system: "mobile",
-		version: "1.3.0",
+		version: "1.1",
+		build: "1.3.0",
 		title: "Friendlier weather and broker setup",
 		summary: "The mobile app now hides weather coordinates behind a readable place search and can verify HiveMQ credentials before saving them.",
 		changes: [
@@ -305,7 +308,8 @@ export const changelogEntries: ChangelogEntry[] = [
 		id: "mobile-1-2-3",
 		date: "2026-08-01",
 		system: "mobile",
-		version: "1.2.3",
+		version: "1.1",
+		build: "1.2.3",
 		title: "Firmware status that follows the device",
 		summary: "The app can now reconcile its device record with the retained status reported by Notificator Base firmware.",
 		changes: [
