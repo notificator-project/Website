@@ -84,6 +84,11 @@ Add an `.mdx` file to `src/content/posts/en/`. Each post must include the fields
 
 Posts are ordered by publication date. The newest post becomes the featured story on the blog page.
 
+The same collection generates the versioned public JSON feed at
+[`/api/v1/journal.json`](https://notificator-project.com/api/v1/journal.json).
+The Notificator mobile app consumes this feed for its News screen and home-page
+project updates, so publishing the website also updates the app's content source.
+
 Blog comments are provided by [giscus](https://giscus.app/) and stored in GitHub Discussions. The integration is configured in `src/components/blog/Comments.astro`.
 
 ## Forms and Netlify
@@ -114,6 +119,7 @@ The production build includes:
 - An automatically generated XML sitemap
 - `robots.txt`
 - `llms.txt` with important project pages and resources
+- A versioned JSON Journal feed for the mobile app
 
 ## Independence
 
