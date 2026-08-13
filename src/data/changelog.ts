@@ -33,6 +33,46 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "node-sdk-0-1-0",
+		date: "2026-08-13",
+		system: "api",
+		version: "Node SDK 0.1.0",
+		title: "Notificator now has an official Node.js SDK",
+		summary:
+			"Backend applications can send typed, server-side alerts through the hosted Notificator API without handling platform delivery credentials.",
+		changes: [
+			"Publishes @notificator-project/api as a small server-side package for Node.js 20 and newer.",
+			"Supports inbox, mobile push, optional email, and connected MQTT-device delivery controls.",
+			"Adds TypeScript declarations, request timeouts, cancellation, and structured API errors.",
+			"Keeps Expo, Supabase, email-provider, and platform MQTT credentials inside the hosted Notificator service.",
+			"Separates the public SDK lifecycle from the hosted API implementation and deployment.",
+		],
+		link: {
+			label: "View the Node SDK release",
+			href: "https://github.com/notificator-project/Node-SDK/releases/tag/v0.1.0",
+		},
+	},
+	{
+		id: "strapi-extension-0-1-1",
+		date: "2026-08-13",
+		system: "strapi",
+		version: "0.1.1 Preview",
+		title: "Strapi setup is clearer in the first patch release",
+		summary:
+			"The 0.1.1 preview makes the API-key and installation journey easier to follow while preserving the tested 0.1.0 runtime behaviour.",
+		changes: [
+			"Clarifies how to create a dedicated Strapi Extension API key from the Notificator mobile app.",
+			"Keeps secrets in the Strapi server environment instead of browser-side admin fields.",
+			"Documents local activity, connected delivery, MQTT ownership, supported templates, and troubleshooting in a user-first order.",
+			"Passes the complete formatting, test, TypeScript, production build, and Strapi package verification suite.",
+			"Contains no runtime behaviour changes from the initial preview.",
+		],
+		link: {
+			label: "View the Strapi Extension release",
+			href: "https://github.com/notificator-project/Strapi-Extension/releases/tag/v0.1.1",
+		},
+	},
+	{
 		id: "mobile-1-2-build-1-50",
 		date: "2026-08-12",
 		system: "mobile",
