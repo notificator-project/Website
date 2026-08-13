@@ -10,6 +10,8 @@ The site presents the complete Notificator ecosystem, publishes project updates,
 - [Integrations](https://notificator-project.com/integrations/) compares the available event sources and their shared delivery model.
 - [WordPress Plugin](https://notificator-project.com/wordpress/) introduces the stable hook-discovery, template, local-alert, export, and delivery workflow.
 - [Strapi Extension](https://notificator-project.com/strapi/) introduces the Strapi 5 lifecycle-rule preview, local activity, admin toasts, and optional connected delivery.
+- [Public API](https://docs.notificator-project.com/reference/public-notify/) accepts authenticated server-side alerts through the hosted Notificator delivery service.
+- [Node.js SDK](https://docs.notificator-project.com/guides/node-sdk/) provides a typed server client for the hosted API without exposing platform credentials.
 - [Mobile app](https://notificator-project.com/mobile-app/) explains accounts, connected sites, push and optional email delivery, searchable weather locations, secure MQTT connection testing, model-aware device controls, and firmware status.
 - [Devices](https://notificator-project.com/devices/) covers Notificator Base, the Touch 3.49 preview, MQTT, open-source firmware, community builds, and enclosure attribution.
 - [Get a device](https://notificator-project.com/get-a-device/) compares supported ready-made hardware, free community batches, and the complete maker route without implying that the project sells devices.
@@ -124,6 +126,7 @@ The production build includes:
 - `llms.txt` with important project pages and resources
 - A versioned JSON Journal feed for the mobile app
 - A standard RSS 2.0 Journal feed with browser feed discovery
+- Public documentation for the hosted API and `@notificator-project/api` Node.js SDK
 
 ## Independence
 
