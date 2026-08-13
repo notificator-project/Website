@@ -37,8 +37,11 @@
   </g>
   <g transform="translate(820 270)">
     <rect width="310" height="235" rx="26" fill="#14264d" stroke="#345cae" stroke-width="2"/>
-    <path d="M45 42h44a18 18 0 0 1 18 18v26a18 18 0 0 1-18 18H66l-21 18V42Z" fill="none" stroke="#79a8ff" stroke-width="5" stroke-linejoin="round"/>
-    <circle cx="95" cy="54" r="7" fill="#79a8ff"/>
+    <g transform="translate(24 20) scale(.09)" fill="none" stroke="#b9c7e6">
+      <path d="M82 76H850c66 0 120 54 120 120v500c0 66-54 120-120 120H310L108 954c-24 17-58 0-58-30V108c0-18 14-32 32-32Z" stroke-width="48" stroke-linejoin="round"/>
+      <circle cx="850" cy="190" r="54" stroke-width="38"/>
+      <text x="-766" y="142" transform="rotate(-90)" fill="#b9c7e6" stroke="none" font-family="Inter, Arial, sans-serif" font-size="104" font-weight="800" letter-spacing="4">NOTIFICATOR</text>
+    </g>
     <text x="24" y="150" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="750">Notificator</text>
     <text x="24" y="182" fill="#8fb5ff" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" font-weight="700">HOSTED DELIVERY</text>
     <text x="24" y="216" fill="#b9c7e6" font-family="Inter, Arial, sans-serif" font-size="18">Credentials stay protected</text>
