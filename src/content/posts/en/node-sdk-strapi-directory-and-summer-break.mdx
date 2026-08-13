@@ -1,0 +1,73 @@
+---
+pubDate: 2026-08-13
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "A Node.js SDK, a Strapi Submission, and a Short Summer Break"
+description: "The official Notificator Node.js SDK is now available, the Strapi extension has been submitted to the Strapi directory, and project updates will slow briefly for a summer break."
+image:
+    source: "@assets/images/blog/notificator-sdk-strapi-summer-update.svg"
+    alt: "Notificator Node.js SDK and Strapi extension release cards beside a small summer break message"
+tags: ["Notificator Project", "Node.js", "SDK", "Strapi", "Open Source", "Project Update"]
+---
+
+The last few weeks have brought several important parts of Notificator into public view. The mobile app is live on the App Store, the WordPress Plugin has reached its public release phase, and the first Strapi extension preview is available for testing.
+
+Today we are adding two more milestones: an official Node.js SDK and the submission of the Strapi extension to the Strapi directory.
+
+## The official Node.js SDK is available
+
+The first release of `@notificator-project/api` is now available on npm for Node.js applications, serverless functions, queue workers, scheduled jobs, and other trusted backend environments.
+
+```bash
+npm install @notificator-project/api
+```
+
+The SDK provides a small typed client for sending alerts through the hosted Notificator API:
+
+```js
+import { NotificatorClient } from "@notificator-project/api";
+
+const notificator = new NotificatorClient({
+	apiKey: process.env.NOTIFICATOR_API_KEY,
+});
+
+await notificator.notify({
+	title: "Deployment complete",
+	body: "The new version is live.",
+	source: "deploy-worker",
+	severity: "info",
+});
+```
+
+Version **0.1.0** includes TypeScript declarations, request timeouts, cancellation, structured API errors, and delivery controls for mobile push, optional email, and compatible MQTT devices.
+
+The package connects to the official hosted endpoint. Developers only provide a server-side Notificator API key. Expo, Supabase, email-provider, and platform delivery credentials remain protected inside the hosted service.
+
+The complete setup and error-handling examples are available in the new [Node.js SDK guide](https://docs.notificator-project.com/guides/node-sdk/). The package can also be found directly on [npm](https://www.npmjs.com/package/@notificator-project/api).
+
+## The Strapi extension has been submitted
+
+Notificator for Strapi **0.1.1** has now been submitted to the official Strapi directory for review.
+
+This is still a preview release, and submission does not mean directory approval has already been granted. It does mean the extension has reached a point where its packaging, installation journey, documentation, and public project information are ready for the directory review process.
+
+The extension lets Strapi 5 administrators create named rules for content creation, updates, publishing, unpublishing, and deletion. Matching activity can stay inside Strapi through the local activity log and admin toasts, or continue to the Notificator inbox, mobile push, optional email, and user-owned MQTT devices.
+
+Version 0.1.1 focuses on clearer API-key and installation documentation while preserving the tested runtime behaviour of the first preview. It is available now through [npm](https://www.npmjs.com/package/@notificator-project/strapi-extension), with the full setup covered in the [Strapi Extension guide](https://docs.notificator-project.com/guides/strapi-extension-setup/).
+
+We will share another update when the directory review has progressed.
+
+## A short summer pause
+
+After a very active release period, project updates will slow down for roughly the next week while I take a short summer holiday.
+
+The repositories, packages, website, documentation, API, and currently available services will remain in place. This is simply a brief pause in the usual development pace, not a change in direction or commitment to the project.
+
+Issue reports and feedback are still welcome. Replies, new features, and non-urgent improvements may take a little longer than usual until regular development resumes.
+
+## Thank you
+
+Thank you to everyone testing the WordPress Plugin, mobile app, firmware, Strapi preview, and now the Node.js SDK. Every practical report has helped turn separate experiments into a more understandable open notification ecosystem.
+
+The [project changelog](/changelog/) contains the complete release timeline. After the break, work will continue with Strapi testing, developer integrations, Android availability, and the next round of device and usability improvements.
