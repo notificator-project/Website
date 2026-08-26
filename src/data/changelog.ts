@@ -33,6 +33,23 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "website-get-started-paths",
+		date: "2026-08-26",
+		system: "website",
+		version: "August 2026",
+		title: "A clearer starting point for every Notificator path",
+		summary:
+			"A new Get Started page guides WordPress users, Strapi teams, and Node.js developers from their first local alert to optional connected delivery and physical devices.",
+		changes: [
+			"Adds separate setup paths for the WordPress Plugin, Strapi Extension, and the hosted API through the official Node.js SDK.",
+			"Explains which alerts remain local and when a Notificator account or integration-specific API key is required.",
+			"Connects the setup journey to the iOS app, inbox, mobile push, email alerts, and user-owned MQTT delivery.",
+			"Introduces clear hardware paths for the stable Notificator Base, the Touch preview, and the upcoming Matter model.",
+			"Adds the new page to the primary navigation and footer so it becomes the natural entry point for new users.",
+		],
+		link: { label: "Choose your Notificator path", href: "/get-started/" },
+	},
+	{
 		id: "node-sdk-0-1-0",
 		date: "2026-08-13",
 		system: "api",
@@ -58,8 +75,7 @@ export const changelogEntries: ChangelogEntry[] = [
 		system: "strapi",
 		version: "0.1.1 Preview",
 		title: "Strapi setup is clearer in the first patch release",
-		summary:
-			"The 0.1.1 preview makes the API-key and installation journey easier to follow while preserving the tested 0.1.0 runtime behaviour.",
+		summary: "The 0.1.1 preview makes the API-key and installation journey easier to follow while preserving the tested 0.1.0 runtime behaviour.",
 		changes: [
 			"Clarifies how to create a dedicated Strapi Extension API key from the Notificator mobile app.",
 			"Keeps secrets in the Strapi server environment instead of browser-side admin fields.",

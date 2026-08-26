@@ -1,0 +1,803 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+	title: "Get Started with Notificator | WordPress, Strapi, or API",
+	description: "Choose WordPress, Strapi, or the Node.js SDK and turn website or application events into useful alerts.",
+	canonical: "https://notificator-project.com/get-started/",
+	openGraph: {
+		url: "https://notificator-project.com/get-started/",
+		title: "Get Started with Notificator",
+		description: "Choose a WordPress, Strapi, or Node.js path and connect the destinations that are useful to you.",
+	},
+};
+
+const wordpressSteps = [
+	{
+		number: "01",
+		title: "Install the WordPress Plugin",
+		copy: "Install Notificator from the official WordPress.org directory, activate it, and open Notificator from your dashboard.",
+	},
+	{
+		number: "02",
+		title: "Discover your site events",
+		copy: "Scan active plugins, review plain-language event descriptions, or begin with a curated notification template.",
+	},
+	{
+		number: "03",
+		title: "Create your first alert",
+		copy: "Choose an event, write a useful title and message, and keep Dashboard enabled. This local path needs no account or API key.",
+	},
+	{
+		number: "04",
+		title: "Connect more destinations when ready",
+		copy: "Add a WordPress API key from the mobile app when you want the Notificator inbox, mobile push, email, or MQTT devices.",
+	},
+];
+
+const strapiSteps = [
+	{
+		number: "01",
+		title: "Install the Strapi Extension",
+		copy: "Add the preview package to a Strapi 5 project, enable it in config/plugins.ts, and restart the application.",
+	},
+	{
+		number: "02",
+		title: "Choose a content event",
+		copy: "Create a named rule for an application content type and choose created, updated, published, unpublished, or deleted.",
+	},
+	{
+		number: "03",
+		title: "Start with panel activity",
+		copy: "Build a readable message and enable the Strapi activity log. Local history and admin toasts need no account or API key.",
+	},
+	{
+		number: "04",
+		title: "Add connected delivery when useful",
+		copy: "Store a Strapi API key in the server environment to enable the Notificator inbox, mobile push, email, or MQTT delivery.",
+	},
+];
+
+const apiSteps = [
+	{
+		number: "01",
+		title: "Install the Node.js SDK",
+		copy: "Add the official package to a Node.js 20 or newer backend, serverless function, queue worker, or trusted server environment.",
+	},
+	{
+		number: "02",
+		title: "Create a Public API key",
+		copy: "Create a Public API key in the mobile app and store it in a server environment variable. Never expose it in browser code.",
+	},
+	{
+		number: "03",
+		title: "Create the client",
+		copy: "Initialize NotificatorClient with your server-side key. The SDK uses the hosted Notificator API and provides structured errors.",
+	},
+	{
+		number: "04",
+		title: "Send your first alert",
+		copy: "Provide a title and optional body, source, severity, and data, then choose push, email, and MQTT delivery controls.",
+	},
+];
+---
+
+<BaseLayout seo={seo}>
+	<section class="page-hero section-space">
+		<div class="site-shell hero-content">
+			<p class="eyebrow">Get started</p>
+			<h1 class="display-title">Start with the path that fits your stack.</h1>
+			<p class="section-copy">
+				Use WordPress, Strapi, or the Node.js SDK to turn meaningful events into alerts for the Notificator inbox, phones, email, and
+				compatible devices.
+			</p>
+			<div class="path-picker" aria-label="Choose your Notificator setup path">
+				<a href="#wordpress-path">
+					<span class="platform-mark wordpress-mark" aria-hidden="true">WP</span>
+					<span><small>Stable integration</small><strong>I use WordPress</strong></span>
+					<i aria-hidden="true">↓</i>
+				</a>
+				<a href="#strapi-path">
+					<span class="platform-mark strapi-mark" aria-hidden="true">S</span>
+					<span><small>Preview integration</small><strong>I use Strapi</strong></span>
+					<i aria-hidden="true">↓</i>
+				</a>
+				<a href="#api-path">
+					<span class="platform-mark api-mark" aria-hidden="true">API</span>
+					<span><small>Node.js SDK</small><strong>I build with Node.js</strong></span>
+					<i aria-hidden="true">↓</i>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="local-first-section" aria-labelledby="local-first-title">
+		<div class="site-shell local-first-card">
+			<span class="local-first-icon" aria-hidden="true">✓</span>
+			<div class="local-first-copy">
+				<div class="local-first-heading">
+					<strong id="local-first-title">WordPress and Strapi can start locally.</strong>
+					<span class="local-status">No account or API key</span>
+				</div>
+				<p>Both integrations provide a useful local destination before anything leaves your website.</p>
+				<div class="local-benefits" aria-label="Local Notificator features">
+					<span><b>WordPress</b> Dashboard alerts</span>
+					<span><b>Strapi</b> Panel activity</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="wordpress-path" class="path-section section-space" aria-labelledby="wordpress-title">
+		<div class="site-shell path-layout">
+			<div class="path-intro">
+				<div class="path-label"><span class="platform-mark wordpress-mark" aria-hidden="true">WP</span><small>WordPress path</small></div>
+				<h2 id="wordpress-title" class="section-title">Turn site events into dashboard alerts in a few focused steps.</h2>
+				<p class="section-copy">
+					Start from discovered hooks or ready-made templates. Configure everything locally before deciding whether any alert should leave
+					your WordPress site.
+				</p>
+				<div class="path-actions">
+					<a class="button button-primary" href="https://wordpress.org/plugins/notificator-project/" target="_blank" rel="noreferrer">
+						Install from WordPress.org ↗
+					</a>
+					<a class="button button-secondary" href="https://docs.notificator-project.com/guides/wordpress-plugin-setup/">
+						WordPress setup guide ↗
+					</a>
+				</div>
+			</div>
+
+			<ol class="setup-steps">
+				{
+					wordpressSteps.map((step) => (
+						<li>
+							<span>{step.number}</span>
+							<div>
+								<>
+									<h3>{step.title}</h3>
+									<p>{step.copy}</p>
+								</>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section id="strapi-path" class="path-section strapi-section section-space" aria-labelledby="strapi-title">
+		<div class="site-shell path-layout">
+			<div class="path-intro">
+				<div class="path-label"><span class="platform-mark strapi-mark" aria-hidden="true">S</span><small>Strapi path</small></div>
+				<h2 id="strapi-title" class="section-title">Build content lifecycle alerts that remain native to Strapi.</h2>
+				<p class="section-copy">
+					Create named rules from Strapi 5 content operations, keep secrets on the server, and begin with local panel activity while the
+					extension is in preview.
+				</p>
+				<div class="install-command" aria-label="Strapi extension installation command">
+					<code>npm install @notificator-project/strapi-extension</code>
+				</div>
+				<div class="path-actions">
+					<a class="button button-primary" href="https://docs.notificator-project.com/guides/strapi-extension-setup/">
+						Strapi setup guide ↗
+					</a>
+					<a class="button button-secondary" href="/strapi/">Explore the extension</a>
+				</div>
+			</div>
+
+			<ol class="setup-steps strapi-steps">
+				{
+					strapiSteps.map((step) => (
+						<li>
+							<span>{step.number}</span>
+							<div>
+								<>
+									<h3>{step.title}</h3>
+									<p>{step.copy}</p>
+								</>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section id="api-path" class="path-section api-section section-space" aria-labelledby="api-title">
+		<div class="site-shell path-layout">
+			<div class="path-intro">
+				<div class="path-label"><span class="platform-mark api-mark" aria-hidden="true">API</span><small>Developer path</small></div>
+				<h2 id="api-title" class="section-title">Send application events through the official Node.js SDK.</h2>
+				<p class="section-copy">
+					Connect backends, workers, serverless functions, and internal services to the hosted Notificator API without managing delivery
+					infrastructure yourself.
+				</p>
+				<div class="install-command api-command" aria-label="Notificator Node.js SDK installation command">
+					<code>npm install @notificator-project/api</code>
+				</div>
+				<div class="path-actions">
+					<a class="button button-primary" href="https://docs.notificator-project.com/guides/node-sdk/">Node.js SDK guide ↗</a>
+					<a class="button button-secondary" href="https://www.npmjs.com/package/@notificator-project/api" target="_blank" rel="noreferrer">
+						View on npm ↗
+					</a>
+				</div>
+			</div>
+
+			<ol class="setup-steps api-steps">
+				{
+					apiSteps.map((step) => (
+						<li>
+							<span>{step.number}</span>
+							<div>
+								<>
+									<h3>{step.title}</h3>
+									<p>{step.copy}</p>
+								</>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="connected-section section-space" aria-labelledby="connected-title">
+		<div class="site-shell connected-layout">
+			<div>
+				<p class="eyebrow">Optional shared path</p>
+				<h2 id="connected-title" class="section-title">Connect Notificator when alerts need to travel further.</h2>
+				<p class="section-copy">
+					Install the mobile app, create the API-key type that matches your integration, and enable only the destinations that are useful
+					for each rule.
+				</p>
+				<div class="key-types" aria-label="Notificator API key types">
+					<span><b>WordPress</b> WordPress key</span>
+					<span><b>Strapi</b> Strapi Extension key</span>
+					<span><b>Node.js SDK</b> Public API key</span>
+				</div>
+				<div class="connection-actions">
+					<a
+						class="button button-primary"
+						href="https://apps.apple.com/gr/app/notificator-project/id6758410275"
+						target="_blank"
+						rel="noreferrer">
+						Download for iPhone and iPad ↗
+					</a>
+					<a href="https://docs.notificator-project.com/guides/mobile-api-key-creation/">API-key setup guide ↗</a>
+				</div>
+			</div>
+			<div class="destination-list">
+				<article><span>01</span><div><h3>Notificator inbox</h3><p>Keep connected alerts together inside the mobile app.</p></div></article>
+				<article>
+					<span>02</span><div><h3>Mobile and email</h3><p>Receive push alerts and use the account-level email preference.</p></div>
+				</article>
+				<article>
+					<span>03</span><div><h3>MQTT devices</h3><p>Use your own HiveMQ Cloud connection with compatible Notificator firmware.</p></div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="device-path-section section-space" aria-labelledby="device-path-title">
+		<div class="site-shell">
+			<div class="device-path-heading">
+				<div>
+					<p class="eyebrow">Optional physical alerts</p>
+					<h2 id="device-path-title" class="section-title">Build a device or start with supported hardware.</h2>
+				</div>
+				<p class="section-copy">
+					Notificator devices receive selected alerts through your own MQTT connection. Build the compact Base model, use the touchscreen
+					model, or follow the next hardware target as it develops.
+				</p>
+			</div>
+
+			<div class="device-path-grid">
+				<article>
+					<div class="device-card-top"><span>BASE</span><small>Stable firmware</small></div>
+					<h3>Notificator Base</h3>
+					<p>
+						A compact ESP32-C3 device with an OLED display and capacitive control. Build it from accessible components and open-source
+						firmware.
+					</p>
+					<div class="device-card-actions">
+						<a href="/build-a-device/">Build your own →</a>
+						<a href="/firmware-installer/">Install firmware →</a>
+					</div>
+				</article>
+
+				<article>
+					<div class="device-card-top"><span>TOUCH</span><small>Preview firmware</small></div>
+					<h3>Notificator Touch</h3>
+					<p>A supported Waveshare ESP32-S3 touchscreen with alert history, audio, controls, and an idle clock and weather view.</p>
+					<div class="device-card-actions">
+						<a href="/get-a-device/">Get supported hardware →</a>
+						<a href="/devices/">Explore Touch →</a>
+					</div>
+				</article>
+
+				<article class="matter-card">
+					<div class="device-card-top"><span>MATTER</span><small>Coming next</small></div>
+					<h3>Notificator Matter</h3>
+					<p>An upcoming device path designed to let selected Notificator alerts trigger compatible smart-home and office devices.</p>
+					<div class="device-card-actions">
+						<a href="/devices/">See the device roadmap →</a>
+						<a href="/changelog/">Follow development →</a>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="next-section">
+		<div class="site-shell next-card">
+			<div><p class="eyebrow">Next steps</p><h2>Continue with the part you need next.</h2></div>
+			<div class="next-actions">
+				<a class="button button-primary" href="/how-it-works/">See how Notificator works</a>
+				<a href="/integrations/">Compare integrations →</a>
+				<a href="/support/">Get support →</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-hero {
+		padding-top: clamp(70px, 8vw, 110px);
+	}
+	.hero-content {
+		text-align: center;
+	}
+	.hero-content .display-title,
+	.hero-content .section-copy {
+		margin-inline: auto;
+	}
+	.hero-content .section-copy {
+		max-width: 760px;
+	}
+	.path-picker {
+		display: grid;
+		max-width: 1180px;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+		margin: 44px auto 0;
+		text-align: left;
+	}
+	.path-picker a {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 16px;
+		align-items: center;
+		border: 1px solid #cfd9ef;
+		border-radius: 22px;
+		background: rgba(255, 255, 255, 0.82);
+		box-shadow: var(--shadow-soft);
+		padding: 20px;
+		transition:
+			transform 160ms ease,
+			border-color 160ms ease,
+			box-shadow 160ms ease;
+	}
+	.path-picker a:hover {
+		transform: translateY(-3px);
+		border-color: #9cb4ed;
+		box-shadow: 0 28px 70px rgba(24, 39, 75, 0.14);
+	}
+	.path-picker a > span:nth-child(2) {
+		display: grid;
+		gap: 3px;
+	}
+	.path-picker small,
+	.path-label small {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--ink-soft);
+	}
+	.path-picker strong {
+		font-size: 1.15rem;
+	}
+	.path-picker i {
+		font-size: 1.25rem;
+		font-style: normal;
+		color: var(--blue);
+	}
+	.platform-mark {
+		display: grid;
+		width: 50px;
+		height: 50px;
+		place-items: center;
+		border-radius: 15px;
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 800;
+	}
+	.wordpress-mark {
+		background: var(--blue-pale);
+		color: var(--blue);
+	}
+	.strapi-mark {
+		background: #eeeaff;
+		color: #7047eb;
+	}
+	.api-mark {
+		background: #e2f4ff;
+		font-size: 0.78rem;
+		color: #0879af;
+	}
+	.local-first-section {
+		padding-bottom: 24px;
+	}
+	.local-first-card {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: flex-start;
+		gap: 16px;
+		border: 1px solid #bde5d2;
+		border-radius: 20px;
+		background: #effaf5;
+		padding: 22px 24px;
+	}
+	.local-first-icon {
+		display: grid;
+		width: 34px;
+		height: 34px;
+		flex: 0 0 auto;
+		place-items: center;
+		border-radius: 10px;
+		background: var(--success);
+		font-weight: 800;
+		color: white;
+	}
+	.local-first-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px 24px;
+	}
+	.local-first-card strong {
+		font-size: 1.15rem;
+	}
+	.local-first-card p {
+		margin: 5px 0 0;
+		line-height: 1.65;
+		color: var(--ink-soft);
+	}
+	.local-benefits {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 14px;
+	}
+	.local-benefits span,
+	.local-status {
+		border: 1px solid #bde5d2;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.72);
+		padding: 7px 11px;
+		font-size: 0.82rem;
+		color: #275944;
+	}
+	.local-benefits b {
+		margin-right: 5px;
+		color: #0d6041;
+	}
+	.local-status {
+		flex: 0 0 auto;
+		background: #d8f4e7;
+		font-weight: 750;
+		white-space: nowrap;
+	}
+	.path-layout,
+	.connected-layout,
+	.next-card {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(42px, 8vw, 100px);
+		align-items: start;
+	}
+	.path-layout > *,
+	.connected-layout > *,
+	.next-card > * {
+		min-width: 0;
+	}
+	.path-intro {
+		position: sticky;
+		top: 120px;
+	}
+	.path-label {
+		display: flex;
+		align-items: center;
+		gap: 13px;
+		margin-bottom: 26px;
+	}
+	.path-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 30px;
+	}
+	.setup-steps {
+		display: grid;
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.setup-steps li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 18px;
+		border: 1px solid var(--line);
+		border-radius: 20px;
+		background: white;
+		padding: 23px;
+	}
+	.setup-steps li > span,
+	.destination-list article > span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.8rem;
+		font-weight: 800;
+		color: var(--blue);
+	}
+	.setup-steps h3,
+	.destination-list h3 {
+		margin: 0;
+		font-size: 1.1rem;
+	}
+	.setup-steps p,
+	.destination-list p {
+		margin: 7px 0 0;
+		line-height: 1.65;
+		color: var(--ink-soft);
+	}
+	.strapi-section {
+		background: linear-gradient(145deg, #f5f7fb, #f2efff);
+	}
+	.strapi-steps li {
+		border-color: #ded7f7;
+	}
+	.strapi-steps li > span {
+		color: #7047eb;
+	}
+	.api-section {
+		background: linear-gradient(145deg, #f5f7fb, #eaf5ff);
+	}
+	.api-steps li {
+		border-color: #cfe4f2;
+	}
+	.api-steps li > span {
+		color: #0879af;
+	}
+	.install-command {
+		overflow-x: auto;
+		margin-top: 28px;
+		border: 1px solid #d8d0f5;
+		border-radius: 14px;
+		background: #17152b;
+		padding: 17px 18px;
+		color: #f4f1ff;
+	}
+	.install-command code {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.86rem;
+		white-space: nowrap;
+	}
+	.connected-section {
+		background: #0b1020;
+		color: white;
+	}
+	.connected-section .section-copy {
+		color: #bdc9e5;
+	}
+	.key-types {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 24px;
+	}
+	.key-types span {
+		border: 1px solid #2d3c62;
+		border-radius: 999px;
+		background: #121a30;
+		padding: 8px 11px;
+		font-size: 0.82rem;
+		color: #bdc9e5;
+	}
+	.key-types b {
+		margin-right: 5px;
+		color: white;
+	}
+	.connection-actions {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 15px;
+		margin-top: 28px;
+	}
+	.connection-actions > a:not(.button) {
+		font-weight: 700;
+		color: #8fb0ff;
+	}
+	.destination-list {
+		display: grid;
+		gap: 12px;
+	}
+	.destination-list article {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 17px;
+		border: 1px solid #293657;
+		border-radius: 18px;
+		background: #121a30;
+		padding: 22px;
+	}
+	.destination-list h3 {
+		color: white;
+	}
+	.destination-list p {
+		color: #bdc9e5;
+	}
+	.device-path-section {
+		background: linear-gradient(180deg, #f5f7fb, #edf3ff);
+	}
+	.device-path-heading {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+		gap: clamp(34px, 7vw, 88px);
+		align-items: end;
+	}
+	.device-path-heading > * {
+		min-width: 0;
+	}
+	.device-path-heading .section-copy {
+		margin: 0;
+	}
+	.device-path-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+		margin-top: 42px;
+	}
+	.device-path-grid article {
+		display: flex;
+		min-width: 0;
+		min-height: 360px;
+		flex-direction: column;
+		border: 1px solid #d7e1f3;
+		border-radius: 24px;
+		background: white;
+		box-shadow: var(--shadow-soft);
+		padding: clamp(23px, 3vw, 30px);
+	}
+	.device-path-grid article.matter-card {
+		background: linear-gradient(145deg, #fff, #eaf0ff);
+	}
+	.device-card-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+	}
+	.device-card-top span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.76rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		color: var(--blue);
+	}
+	.device-card-top small {
+		border-radius: 999px;
+		background: var(--blue-pale);
+		padding: 6px 9px;
+		font-weight: 700;
+		color: #405170;
+	}
+	.device-path-grid h3 {
+		margin: 36px 0 0;
+		font-size: clamp(1.5rem, 2.6vw, 2rem);
+		letter-spacing: -0.04em;
+	}
+	.device-path-grid p {
+		margin: 13px 0 0;
+		line-height: 1.7;
+		color: var(--ink-soft);
+	}
+	.device-card-actions {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 10px;
+		margin-top: auto;
+		padding-top: 30px;
+	}
+	.device-card-actions a {
+		font-weight: 700;
+		color: var(--blue);
+	}
+	.next-section {
+		padding: 34px 0 0;
+	}
+	.next-card {
+		align-items: center;
+		border: 1px solid var(--line);
+		border-radius: 28px;
+		background: white;
+		box-shadow: var(--shadow-soft);
+		padding: clamp(28px, 5vw, 48px);
+	}
+	.next-card h2 {
+		max-width: 580px;
+		margin: 0;
+		font-size: clamp(1.8rem, 3.4vw, 3rem);
+		letter-spacing: -0.045em;
+		line-height: 1.08;
+	}
+	.next-actions {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 15px;
+	}
+	.next-actions > a:not(.button) {
+		font-weight: 700;
+		color: var(--blue);
+	}
+	@media (max-width: 840px) {
+		.path-picker,
+		.path-layout,
+		.connected-layout,
+		.next-card {
+			grid-template-columns: 1fr;
+		}
+		.path-intro {
+			position: static;
+		}
+		.path-layout,
+		.connected-layout {
+			gap: 38px;
+		}
+		.device-path-heading,
+		.device-path-grid {
+			grid-template-columns: 1fr;
+		}
+		.device-path-heading {
+			gap: 22px;
+		}
+		.device-path-grid article {
+			min-height: 0;
+		}
+	}
+	@media (max-width: 560px) {
+		.page-hero {
+			padding-top: 56px;
+		}
+		.path-picker a {
+			grid-template-columns: auto 1fr;
+		}
+		.path-picker i {
+			display: none;
+		}
+		.local-first-card {
+			padding: 18px;
+		}
+		.local-first-heading {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+		.path-actions {
+			align-items: stretch;
+			flex-direction: column;
+		}
+		.path-actions .button {
+			width: 100%;
+			white-space: normal;
+			text-align: center;
+		}
+		.setup-steps li {
+			gap: 13px;
+			padding: 19px;
+		}
+	}
+</style>
