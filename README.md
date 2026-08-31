@@ -1,6 +1,6 @@
 # Notificator Website
 
-The public website for [Notificator](https://notificator-project.com), a free and open-source notification ecosystem that turns meaningful WordPress and Strapi events into local activity, mobile push notifications, optional email alerts, MQTT messages, and notifications on compatible physical devices.
+The public website for [Notificator](https://notificator-project.com), a free and open-source notification ecosystem that turns meaningful WordPress, Strapi, Astro, and backend events into local activity, mobile push notifications, optional email alerts, MQTT messages, and notifications on compatible physical devices.
 
 The site presents the complete Notificator ecosystem, publishes project updates, provides support and privacy information, and documents the open-source tools and creative work used to build it.
 
@@ -10,6 +10,7 @@ The site presents the complete Notificator ecosystem, publishes project updates,
 - [Integrations](https://notificator-project.com/integrations/) compares the available event sources and their shared delivery model.
 - [WordPress Plugin](https://notificator-project.com/wordpress/) introduces the stable hook-discovery, template, local-alert, export, and delivery workflow.
 - [Strapi Extension](https://notificator-project.com/strapi/) introduces the Strapi 5 lifecycle-rule preview, local activity, admin toasts, and optional connected delivery.
+- [Astro Integration](https://docs.notificator-project.com/guides/astro-integration/) covers server-side alerts from Astro Actions, API routes, webhooks, server-rendered workflows, and successful builds.
 - [Public API](https://docs.notificator-project.com/reference/public-notify/) accepts authenticated server-side alerts through the hosted Notificator delivery service.
 - [Node.js SDK](https://docs.notificator-project.com/guides/node-sdk/) provides a typed server client for the hosted API without exposing platform credentials.
 - [Mobile app](https://notificator-project.com/mobile-app/) explains accounts, connected sites, push and optional email delivery, searchable weather locations, secure MQTT connection testing, model-aware device controls, and firmware status.
@@ -17,7 +18,7 @@ The site presents the complete Notificator ecosystem, publishes project updates,
 - [Get a device](https://notificator-project.com/get-a-device/) compares supported ready-made hardware, free community batches, and the complete maker route without implying that the project sells devices.
 - [Build a device](https://notificator-project.com/build-a-device/) explains the ESP32-C3 electronics, OLED and touch hardware, wiring, the Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing, assembly, firmware, materials, licensing, the planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Firmware installer](https://notificator-project.com/firmware-installer/) loads the official multi-model catalog and installs the matching Base or Touch factory image over USB using ESP Web Tools.
-- [Changelog](https://notificator-project.com/changelog/) brings meaningful releases from the WordPress Plugin, Strapi Extension, mobile app, firmware, API, website, and documentation into one filterable timeline.
+- [Changelog](https://notificator-project.com/changelog/) brings meaningful releases from the WordPress Plugin, Strapi Extension, Astro Integration, mobile app, firmware, API, website, and documentation into one filterable timeline.
 - [Journal](https://notificator-project.com/blog/) contains release notes, development updates, and project stories, with a standard [RSS feed](https://notificator-project.com/rss.xml).
 - [Support](https://notificator-project.com/support/) provides troubleshooting for integrations, apps, accounts, and devices.
 - [Privacy](https://notificator-project.com/privacy/) describes how data is handled across the project.
@@ -126,7 +127,7 @@ The production build includes:
 - `llms.txt` with important project pages and resources
 - A versioned JSON Journal feed for the mobile app
 - A standard RSS 2.0 Journal feed with browser feed discovery
-- Public documentation for the hosted API and `@notificator-project/api` Node.js SDK
+- Public documentation for the hosted API, `@notificator-project/api` Node.js SDK, and `@notificator-project/astro` integration
 
 ## Independence
 

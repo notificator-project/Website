@@ -1,25 +1,27 @@
 # Notificator
 
-> Notificator is a free, open-source notification ecosystem that turns meaningful WordPress events into dashboard alerts, mobile push notifications, optional email alerts, MQTT messages, and notifications on compatible physical devices.
+> Notificator is a free, open-source notification ecosystem that turns meaningful WordPress, Strapi, Astro, and backend events into local or connected alerts.
 
-Notificator includes a WordPress plugin, mobile apps for iOS and Android, open-source device firmware, developer integrations, and project documentation. Dashboard alerts work without a Notificator account. Remote delivery is available after creating an account through the mobile app.
+Notificator includes a WordPress plugin, Strapi extension, Astro integration, Node.js SDK, mobile apps for iOS and Android, open-source device firmware, and project documentation. WordPress dashboard alerts and Strapi panel activity work without a Notificator account. Connected delivery is available after creating an account through the mobile app.
 
 MQTT devices use a user-owned HiveMQ Cloud cluster. Users control the broker credentials and can isolate, rotate, or revoke client access; Notificator does not store the broker password in the account database. Notificator is independent from HiveMQ.
 
 ## Start here
 
 - [Notificator website](https://notificator-project.com/): Project overview, features, supported notification channels, and recent news.
-- [Integrations](https://notificator-project.com/integrations/): Choose WordPress or Strapi as an event source.
+- [Get Started](https://notificator-project.com/get-started/): Choose a WordPress, Strapi, Astro, or Node.js setup path.
+- [Integrations](https://notificator-project.com/integrations/): Compare CMS integrations and server-side packages.
 - [WordPress Plugin](https://notificator-project.com/wordpress/): Stable event discovery, templates, dashboard alerts, remote delivery, activity, exports, and developer integrations.
 - [Strapi Extension](https://notificator-project.com/strapi/): Preview lifecycle rules, local panel activity, and optional connected delivery for Strapi 5.
+- [Astro Integration](https://docs.notificator-project.com/guides/astro-integration/): Server-side alerts for Astro Actions, API routes, webhooks, server-rendered workflows, and successful builds.
+- [Node.js SDK](https://docs.notificator-project.com/guides/node-sdk/): Typed alerts from Node.js backends through the hosted Notificator API.
 - [Mobile app](https://notificator-project.com/mobile-app/): Notificator accounts, connected WordPress sites, mobile push and optional email delivery, and compatible devices on iOS and Android.
 - [Notificator devices](https://notificator-project.com/devices/): Compatible ESP32 hardware, open-source firmware, MQTT delivery, community devices, and enclosure attribution.
 - [Get a Notificator device](https://notificator-project.com/get-a-device/): Supported ready-made hardware, free community batches, and build-it-yourself options.
 - [Build a Notificator device](https://notificator-project.com/build-a-device/): The ESP32-C3, OLED display, touch sensor, wiring, Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing guidance, assembly, firmware, materials, licensing, planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Firmware web installer](https://notificator-project.com/firmware-installer/): Select and install official firmware on compatible ESP32 hardware over USB from a supported browser.
-- [How Notificator works](https://notificator-project.com/how-it-works/): The complete path from discovering a WordPress event to dashboard, mobile push, optional email, and MQTT delivery.
-- [Integrations](https://notificator-project.com/integrations/): Built-in templates, hook discovery, supported event sources, and the public developer integration API.
-- [Project changelog](https://notificator-project.com/changelog/): Curated releases and meaningful improvements across the WordPress plugin, mobile app, firmware, API, website, and documentation.
+- [How Notificator works](https://notificator-project.com/how-it-works/): The complete path from a meaningful platform or server event to local and connected delivery.
+- [Project changelog](https://notificator-project.com/changelog/): Curated releases and meaningful improvements across integrations, apps, firmware, APIs, website, and documentation.
 - [Documentation](https://docs.notificator-project.com/): Setup instructions, configuration guidance, and developer integration references.
 - [WordPress plugin source](https://github.com/notificator-project/WordPress-Plugin): Source code, releases, issues, and contribution history for the Notificator WordPress plugin.
 - [Support](https://notificator-project.com/support/): Troubleshooting for the mobile apps, WordPress plugin, notification delivery, accounts, and compatible devices.

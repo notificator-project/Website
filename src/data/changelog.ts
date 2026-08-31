@@ -1,4 +1,4 @@
-export type ChangelogSystem = "project" | "wordpress" | "strapi" | "mobile" | "firmware" | "api" | "website" | "docs";
+export type ChangelogSystem = "project" | "wordpress" | "strapi" | "astro" | "mobile" | "firmware" | "api" | "website" | "docs";
 
 export type ChangelogEntry = {
 	id: string;
@@ -24,6 +24,7 @@ export const changelogSystems: Array<{
 	{ id: "project", label: "Project milestone", shortLabel: "Milestones", marker: "N" },
 	{ id: "wordpress", label: "WordPress Plugin", shortLabel: "WordPress", marker: "WP" },
 	{ id: "strapi", label: "Strapi Extension", shortLabel: "Strapi", marker: "S" },
+	{ id: "astro", label: "Astro Integration", shortLabel: "Astro", marker: "A" },
 	{ id: "mobile", label: "Mobile app", shortLabel: "Mobile", marker: "APP" },
 	{ id: "firmware", label: "Device firmware", shortLabel: "Firmware", marker: "FW" },
 	{ id: "api", label: "Notificator API", shortLabel: "API", marker: "API" },
@@ -32,6 +33,42 @@ export const changelogSystems: Array<{
 ];
 
 export const changelogEntries: ChangelogEntry[] = [
+	{
+		id: "astro-integration-0-1-0",
+		date: "2026-08-31",
+		system: "astro",
+		version: "0.1.0 Preview",
+		title: "Notificator arrives in Astro",
+		summary:
+			"A new server-side Astro package connects Actions, API routes, webhooks, server-rendered workflows, and successful builds to Notificator.",
+		changes: [
+			"Publishes @notificator-project/astro for Astro 5, 6, and 7 with Node.js 20 or newer.",
+			"Adds Astro-friendly server helpers backed by the official typed Node.js SDK.",
+			"Supports alerts from Actions, API routes, server-rendered pages, webhooks, workers, and scheduled server tasks.",
+			"Provides an optional successful-build notification through Astro's integration lifecycle.",
+			"Keeps API keys in trusted server or deployment environments and adds no browser tracking or client-side widget.",
+		],
+		link: {
+			label: "View the Astro Integration release",
+			href: "https://github.com/notificator-project/astro/releases/tag/v0.1.0",
+		},
+	},
+	{
+		id: "website-astro-integration-path",
+		date: "2026-08-31",
+		system: "website",
+		version: "August 2026",
+		title: "Astro joins the public integration paths",
+		summary:
+			"The website and documentation now give Astro its own route while keeping the Node.js SDK available for every other trusted backend stack.",
+		changes: [
+			"Adds a dedicated Astro path to Get Started with installation, key setup, runtime events, and optional build alerts.",
+			"Expands the homepage integration overview with first-class Astro and Node.js SDK entries.",
+			"Rebuilds the Integrations comparison around WordPress, Strapi, Astro, and generic Node.js backends.",
+			"Adds a complete Astro guide to the documentation sidebar and updates project discovery files and READMEs.",
+		],
+		link: { label: "Explore integrations", href: "/integrations/" },
+	},
 	{
 		id: "website-get-started-paths",
 		date: "2026-08-26",

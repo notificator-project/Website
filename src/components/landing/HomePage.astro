@@ -12,13 +12,12 @@ const posts = (await getCollection("posts"))
 	.slice(0, 3);
 
 const integrations = [
-	{ name: "Strapi", detail: "Content lifecycle rules", icon: "S" },
-	{ name: "WordPress Core", detail: "Users, comments, updates", icon: "W" },
-	{ name: "WooCommerce", detail: "Orders and store events", icon: "WC" },
-	{ name: "Form plugins", detail: "Leads and failed sends", icon: "F" },
-	{ name: "Custom hooks", detail: "Your own events and payloads", icon: "{}" },
-	{ name: "Mobile app", detail: "Alerts on iOS and Android", icon: "APP" },
-	{ name: "Notificator devices", detail: "Dedicated displays and printers", icon: "IoT" },
+	{ name: "WordPress Plugin", detail: "Discovery, templates, and local alerts", icon: "WP", href: "/wordpress/" },
+	{ name: "Strapi Extension", detail: "Content lifecycle rules and activity", icon: "S", href: "/strapi/" },
+	{ name: "Astro Integration", detail: "Actions, API routes, and build alerts", icon: "A", href: "/integrations/#astro" },
+	{ name: "Node.js SDK", detail: "Typed alerts from trusted server code", icon: "JS", href: "/integrations/#node-sdk" },
+	{ name: "Mobile app", detail: "Inbox, push, email, and account controls", icon: "APP", href: "/mobile-app/" },
+	{ name: "Notificator devices", detail: "Dedicated displays and physical alerts", icon: "IoT", href: "/devices/" },
 ];
 ---
 
@@ -28,8 +27,8 @@ const integrations = [
 			<p class="eyebrow">An open notification ecosystem</p>
 			<h1 class="display-title">Your website, finally speaking up.</h1>
 			<p class="hero-intro">
-				Turn meaningful WordPress and Strapi events into local activity, mobile push notifications, optional email alerts, or MQTT messages
-				without writing a monitoring system.
+				Turn meaningful WordPress, Strapi, Astro, and backend events into local activity or connected alerts without building a delivery
+				system from scratch.
 			</p>
 			<div class="hero-actions">
 				<a class="button button-primary" href="#ecosystem">Explore the ecosystem <span aria-hidden="true">↓</span></a>
@@ -38,7 +37,7 @@ const integrations = [
 			<ul class="hero-proof" aria-label="Notificator highlights">
 				<li><span aria-hidden="true">✓</span> Free and open source</li>
 				<li><span aria-hidden="true">✓</span> Local activity can need no account</li>
-				<li><span aria-hidden="true">✓</span> WordPress stable · Strapi preview</li>
+				<li><span aria-hidden="true">✓</span> WordPress stable · Strapi and Astro previews</li>
 			</ul>
 		</div>
 
@@ -295,16 +294,16 @@ const integrations = [
 <section id="integrations" class="section-space integrations-section">
 	<div class="site-shell">
 		<p class="eyebrow">Ready to connect</p>
-		<h2 class="section-title">Useful integrations without the setup headache.</h2>
+		<h2 class="section-title">A clear route from your stack to Notificator.</h2>
 		<p class="section-copy">
-			Start with curated templates, discover events from installed plugins, or publish a first-class Notificator integration from your own
-			plugin.
+			Use a guided CMS integration, add the Astro package to trusted server workflows, or connect another backend through the official Node.js
+			SDK.
 		</p>
 
 		<div class="integration-grid">
 			{
 				integrations.map((integration) => (
-					<a href="/integrations/" aria-label={`Explore ${integration.name} integrations`}>
+					<a href={integration.href} aria-label={`Explore ${integration.name}`}>
 						<span>{integration.icon}</span>
 						<div>
 							<>
@@ -321,12 +320,10 @@ const integrations = [
 		<div class="developer-strip">
 			<div>
 				<span class="code-mark">&lt;/&gt;</span><div>
-					<strong>Building a plugin?</strong><p>Register documented events and ready-made templates through the public integration API.</p>
+					<strong>Building with another stack?</strong><p>Use the Node.js SDK or hosted API from trusted server-side code.</p>
 				</div>
 			</div>
-			<a class="button button-secondary" href="https://docs.notificator-project.com/" target="_blank" rel="noreferrer">
-				Read developer docs ↗
-			</a>
+			<a class="button button-secondary" href="/integrations/">Compare integrations →</a>
 		</div>
 	</div>
 </section>

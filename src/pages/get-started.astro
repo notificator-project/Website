@@ -3,13 +3,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
 
 const seo: AstroSeoProps = {
-	title: "Get Started with Notificator | WordPress, Strapi, or API",
-	description: "Choose WordPress, Strapi, or the Node.js SDK and turn website or application events into useful alerts.",
+	title: "Get Started with Notificator | WordPress, Strapi, Astro, or API",
+	description: "Choose WordPress, Strapi, Astro, or the Node.js SDK and turn website or application events into useful alerts.",
 	canonical: "https://notificator-project.com/get-started/",
 	openGraph: {
 		url: "https://notificator-project.com/get-started/",
 		title: "Get Started with Notificator",
-		description: "Choose a WordPress, Strapi, or Node.js path and connect the destinations that are useful to you.",
+		description: "Choose a WordPress, Strapi, Astro, or Node.js path and connect the destinations that are useful to you.",
 	},
 };
 
@@ -59,6 +59,29 @@ const strapiSteps = [
 	},
 ];
 
+const astroSteps = [
+	{
+		number: "01",
+		title: "Install the Astro package",
+		copy: "Add @notificator-project/astro to an Astro 5 or newer project. It wraps the official Node.js SDK with Astro-friendly server helpers.",
+	},
+	{
+		number: "02",
+		title: "Create a Public API key",
+		copy: "Create a Public API key in the mobile app and store it as NOTIFICATOR_API_KEY in your server or deployment environment.",
+	},
+	{
+		number: "03",
+		title: "Choose a server-side event",
+		copy: "Send an alert from an Astro Action, API route, server-rendered page, webhook, scheduled task, or another trusted server workflow.",
+	},
+	{
+		number: "04",
+		title: "Optionally report successful builds",
+		copy: "Enable the Astro integration hook when a successful production build is also an event your team should know about.",
+	},
+];
+
 const apiSteps = [
 	{
 		number: "01",
@@ -89,7 +112,7 @@ const apiSteps = [
 			<p class="eyebrow">Get started</p>
 			<h1 class="display-title">Start with the path that fits your stack.</h1>
 			<p class="section-copy">
-				Use WordPress, Strapi, or the Node.js SDK to turn meaningful events into alerts for the Notificator inbox, phones, email, and
+				Use WordPress, Strapi, Astro, or the Node.js SDK to turn meaningful events into alerts for the Notificator inbox, phones, email, and
 				compatible devices.
 			</p>
 			<div class="path-picker" aria-label="Choose your Notificator setup path">
@@ -103,11 +126,24 @@ const apiSteps = [
 					<span><small>Preview integration</small><strong>I use Strapi</strong></span>
 					<i aria-hidden="true">↓</i>
 				</a>
+				<a href="#astro-path">
+					<span class="platform-mark astro-mark" aria-hidden="true">A</span>
+					<span><small>Astro integration</small><strong>I build with Astro</strong></span>
+					<i aria-hidden="true">↓</i>
+				</a>
 				<a href="#api-path">
 					<span class="platform-mark api-mark" aria-hidden="true">API</span>
 					<span><small>Node.js SDK</small><strong>I build with Node.js</strong></span>
 					<i aria-hidden="true">↓</i>
 				</a>
+				<div class="path-placeholder" aria-label="Another Notificator integration is planned">
+					<span class="platform-mark placeholder-mark" aria-hidden="true">+</span>
+					<span><small>Future integration</small><strong>Another path is coming</strong></span>
+				</div>
+				<div class="path-placeholder" aria-label="More Notificator integrations will be added over time">
+					<span class="platform-mark placeholder-mark" aria-hidden="true">+</span>
+					<span><small>Open ecosystem</small><strong>More integrations ahead</strong></span>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -204,6 +240,46 @@ const apiSteps = [
 		</div>
 	</section>
 
+	<section id="astro-path" class="path-section astro-section section-space" aria-labelledby="astro-title">
+		<div class="site-shell path-layout">
+			<div class="path-intro">
+				<div class="path-label"><span class="platform-mark astro-mark" aria-hidden="true">A</span><small>Astro path</small></div>
+				<h2 id="astro-title" class="section-title">Send useful alerts from trusted Astro server workflows.</h2>
+				<p class="section-copy">
+					Connect Astro Actions, API routes, webhooks, server-rendered pages, and successful builds without exposing delivery credentials to
+					the browser.
+				</p>
+				<div class="install-command astro-command" aria-label="Notificator Astro package installation command">
+					<code>npm install @notificator-project/astro</code>
+				</div>
+				<div class="path-actions">
+					<a class="button button-primary" href="https://docs.notificator-project.com/guides/astro-integration/">Astro setup guide ↗</a>
+					<a
+						class="button button-secondary"
+						href="https://www.npmjs.com/package/@notificator-project/astro"
+						target="_blank"
+						rel="noreferrer">
+						View on npm ↗
+					</a>
+				</div>
+			</div>
+
+			<ol class="setup-steps astro-steps">
+				{
+					astroSteps.map((step) => (
+						<li>
+							<span>{step.number}</span>
+							<div>
+								<h3>{step.title}</h3>
+								<p>{step.copy}</p>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
 	<section id="api-path" class="path-section api-section section-space" aria-labelledby="api-title">
 		<div class="site-shell path-layout">
 			<div class="path-intro">
@@ -254,6 +330,7 @@ const apiSteps = [
 				<div class="key-types" aria-label="Notificator API key types">
 					<span><b>WordPress</b> WordPress key</span>
 					<span><b>Strapi</b> Strapi Extension key</span>
+					<span><b>Astro</b> Public API key</span>
 					<span><b>Node.js SDK</b> Public API key</span>
 				</div>
 				<div class="connection-actions">
@@ -363,7 +440,8 @@ const apiSteps = [
 		margin: 44px auto 0;
 		text-align: left;
 	}
-	.path-picker a {
+	.path-picker a,
+	.path-placeholder {
 		display: grid;
 		grid-template-columns: auto 1fr auto;
 		gap: 16px;
@@ -378,14 +456,24 @@ const apiSteps = [
 			border-color 160ms ease,
 			box-shadow 160ms ease;
 	}
+	.path-placeholder {
+		grid-template-columns: auto 1fr;
+		border-style: dashed;
+		background: rgba(246, 248, 252, 0.58);
+		box-shadow: none;
+		color: #6f7b94;
+	}
 	.path-picker a:hover {
 		transform: translateY(-3px);
 		border-color: #9cb4ed;
 		box-shadow: 0 28px 70px rgba(24, 39, 75, 0.14);
 	}
-	.path-picker a > span:nth-child(2) {
+	.path-picker a > span:nth-child(2),
+	.path-placeholder > span:nth-child(2) {
 		display: grid;
-		gap: 3px;
+		grid-template-rows: 2.2em 2.8em;
+		align-content: center;
+		gap: 4px;
 	}
 	.path-picker small,
 	.path-label small {
@@ -396,8 +484,15 @@ const apiSteps = [
 		text-transform: uppercase;
 		color: var(--ink-soft);
 	}
+	.path-picker small {
+		line-height: 1.35;
+	}
 	.path-picker strong {
 		font-size: 1.15rem;
+		line-height: 1.35;
+	}
+	.path-placeholder strong {
+		color: #69758d;
 	}
 	.path-picker i {
 		font-size: 1.25rem;
@@ -421,10 +516,19 @@ const apiSteps = [
 		background: #eeeaff;
 		color: #7047eb;
 	}
+	.astro-mark {
+		background: #fff0e8;
+		color: #bd4a18;
+	}
 	.api-mark {
 		background: #e2f4ff;
 		font-size: 0.78rem;
 		color: #0879af;
+	}
+	.placeholder-mark {
+		border: 1px dashed #aebbd3;
+		background: transparent;
+		color: #8290aa;
 	}
 	.local-first-section {
 		padding-bottom: 24px;
@@ -560,6 +664,15 @@ const apiSteps = [
 	}
 	.strapi-steps li > span {
 		color: #7047eb;
+	}
+	.astro-section {
+		background: linear-gradient(145deg, #fff, #fff3ed);
+	}
+	.astro-steps li {
+		border-color: #f0d8cb;
+	}
+	.astro-steps li > span {
+		color: #bd4a18;
 	}
 	.api-section {
 		background: linear-gradient(145deg, #f5f7fb, #eaf5ff);
@@ -743,6 +856,11 @@ const apiSteps = [
 	.next-actions > a:not(.button) {
 		font-weight: 700;
 		color: var(--blue);
+	}
+	@media (max-width: 1120px) {
+		.path-picker {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 	@media (max-width: 840px) {
 		.path-picker,

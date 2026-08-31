@@ -3,14 +3,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
 
 const seo: AstroSeoProps = {
-	title: "Notificator Integrations | WordPress and Strapi",
+	title: "Notificator Integrations | WordPress, Strapi, Astro, and Node.js",
 	description:
-		"Choose WordPress or Strapi as a Notificator event source, then keep activity local or deliver it to mobile, email, and MQTT devices.",
+		"Connect WordPress, Strapi, Astro, or another Node.js backend to Notificator and deliver useful events to the inbox, mobile, email, and MQTT devices.",
 	canonical: "https://notificator-project.com/integrations/",
 	openGraph: {
 		url: "https://notificator-project.com/integrations/",
 		title: "Notificator Integrations",
-		description: "Two event sources, one understandable path from website activity to a useful alert.",
+		description: "CMS integrations and server-side packages, connected through one understandable alert path.",
 	},
 };
 
@@ -29,7 +29,8 @@ const destinations = [
 				<p class="eyebrow">Integrations</p>
 				<h1 class="display-title">Choose where your events begin.</h1>
 				<p class="section-copy">
-					Connect WordPress or Strapi, decide which activity matters, and send each resulting alert only to the places where it is useful.
+					Choose a guided CMS integration or a server-side package, decide which activity matters, and send each alert only where it is
+					useful.
 				</p>
 				<div class="hero-actions">
 					<a class="button button-primary" href="#platforms">Compare integrations</a><a
@@ -39,9 +40,11 @@ const destinations = [
 					</a>
 				</div>
 			</div>
-			<aside class="source-map" aria-label="WordPress and Strapi events flowing into Notificator">
+			<aside class="source-map" aria-label="Supported platform and server events flowing into Notificator">
 				<div class="source-row"><span>WP</span><div><small>Stable</small><strong>WordPress event</strong></div></div>
 				<div class="source-row"><span>S</span><div><small>Preview</small><strong>Strapi content event</strong></div></div>
+				<div class="source-row"><span>A</span><div><small>Preview</small><strong>Astro server event</strong></div></div>
+				<div class="source-row"><span>JS</span><div><small>SDK</small><strong>Node.js backend event</strong></div></div>
 				<i aria-hidden="true">↓</i>
 				<div class="notificator-node"><span>N</span><div><small>Shared layer</small><strong>Notificator alert</strong></div></div>
 			</aside>
@@ -54,8 +57,8 @@ const destinations = [
 				<p class="eyebrow">Available integrations</p><h2 id="platform-title" class="section-title">
 					Different platforms, clearly defined capabilities.
 				</h2><p class="section-copy">
-					The integrations share connected destinations, but their discovery, rule-building, and local activity experiences remain native to
-					each platform.
+					WordPress and Strapi provide native administration experiences. Astro and the Node.js SDK focus on trusted server-side events
+					while sharing the same connected destinations.
 				</p>
 			</div>
 			<div class="platform-grid">
@@ -81,6 +84,30 @@ const destinations = [
 					</ul>
 					<strong>Explore Strapi →</strong>
 				</a>
+				<a id="astro" class="astro" href="https://docs.notificator-project.com/guides/astro-integration/">
+					<div class="platform-top"><span>A</span><small>0.1.0 Preview</small></div>
+					<h3>Astro Integration</h3>
+					<p>
+						Send meaningful alerts from Astro Actions, API routes, server-rendered workflows, webhooks, and successful production builds.
+					</p>
+					<ul>
+						<li>Astro 5, 6, and 7 support</li><li>Server-only helpers with typed payloads</li><li>
+							Optional successful-build notifications
+						</li><li>No browser tracking or client-side secret exposure</li>
+					</ul>
+					<strong>Set up Astro →</strong>
+				</a>
+				<a id="node-sdk" class="sdk" href="https://docs.notificator-project.com/guides/node-sdk/">
+					<div class="platform-top"><span>JS</span><small>Official SDK</small></div>
+					<h3>Node.js SDK</h3>
+					<p>Connect server applications, workers, queues, and functions through the hosted Notificator API with a small typed client.</p>
+					<ul>
+						<li>Node.js 20 or newer</li><li>Structured responses and API errors</li><li>Timeouts and request cancellation</li><li>
+							Hosted delivery infrastructure
+						</li>
+					</ul>
+					<strong>Explore the Node.js SDK →</strong>
+				</a>
 			</div>
 		</div>
 	</section>
@@ -90,12 +117,16 @@ const destinations = [
 			<div>
 				<p class="eyebrow">Shared alert layer</p><h2 id="shared-title" class="section-title">One understandable path after the event.</h2><p
 					class="section-copy">
-					Each integration identifies the event and builds a readable message. Notificator then applies the selected connected destinations
-					without erasing the platform-specific local experience.
+					Each integration identifies the event and builds a readable message. Notificator then applies the selected connected destinations,
+					while WordPress and Strapi retain their platform-specific local activity views.
 				</p><a href="/how-it-works/">Follow the complete workflow →</a>
 			</div>
 			<ol class="shared-steps">
-				<li><span>01</span><div><strong>An event occurs</strong><p>A WordPress hook fires or a Strapi entry changes.</p></div></li><li>
+				<li>
+					<span>01</span><div>
+						<strong>An event occurs</strong><p>A CMS event fires or trusted Astro and Node.js server code reaches a meaningful state.</p>
+					</div>
+				</li><li>
 					<span>02</span><div>
 						<strong>A rule adds meaning</strong><p>Templates and available values create a useful title, message, and severity.</p>
 					</div>
@@ -134,8 +165,8 @@ const destinations = [
 		<div class="site-shell future-card">
 			<div>
 				<p class="eyebrow">More sources over time</p><h2>Notificator is no longer tied to one CMS.</h2><p>
-					WordPress remains the mature integration and Strapi begins the next phase. Future sources will join only when they can offer a
-					clear, maintainable event and rule experience.
+					WordPress remains the mature integration, Strapi provides a managed CMS preview, and Astro is the first framework-specific server
+					package. Future sources will join when they can offer a clear, maintainable integration.
 				</p>
 			</div><div>
 				<a class="button button-primary" href="https://github.com/notificator-project">Follow development ↗</a><a href="/contact/">
@@ -231,6 +262,12 @@ const destinations = [
 	}
 	.platform-grid > a.preview {
 		background: linear-gradient(145deg, #fff, #f1eeff);
+	}
+	.platform-grid > a.astro {
+		background: linear-gradient(145deg, #fff, #fff2eb);
+	}
+	.platform-grid > a.sdk {
+		background: linear-gradient(145deg, #fff, #edf7ff);
 	}
 	.platform-top {
 		display: flex;
