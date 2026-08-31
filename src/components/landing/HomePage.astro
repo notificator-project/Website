@@ -354,26 +354,43 @@ const integrations = [
 	<div class="site-shell open-source-card">
 		<div>
 			<p class="eyebrow">Open by default</p>
-			<h2 class="section-title">Free, open source, and built to remain useful.</h2>
+			<h2 class="section-title">Open source from the event to the device.</h2>
 			<p class="section-copy">
-				Notificator’s current features stay free. Inspect the code, build an integration, report an issue, or support continued development.
+				The integrations, SDKs, and device firmware are developed in public. Inspect the code, report an issue, build a new path, or support
+				the work that keeps the ecosystem moving.
 			</p>
 			<div class="open-actions">
-				<a class="button button-primary" href="https://github.com/notificator-project/WordPress-Plugin" target="_blank" rel="noreferrer">
-					View on GitHub ↗
+				<a class="button button-primary" href="https://github.com/notificator-project" target="_blank" rel="noreferrer">
+					Explore all repositories ↗
 				</a>
 				<a class="button dark-secondary" href="https://buymeacoffee.com/vagelis" target="_blank" rel="noreferrer">Support the project</a>
 			</div>
 		</div>
 		<div class="repo-card">
 			<div class="repo-head">
-				<span class="repo-icon">N</span><div><small>notificator-project</small><strong>WordPress-Plugin</strong></div><i>Public</i>
+				<span class="repo-icon">N</span><div><small>github.com/notificator-project</small><strong>Notificator Project</strong></div><i>
+					Public
+				</i>
 			</div>
-			<p>Alerts and notifications driven by meaningful WordPress events.</p>
-			<div class="repo-code">
-				<span><i class="php"></i>PHP</span><span><i class="ts"></i>TypeScript</span><span><i class="scss"></i>SCSS</span>
+			<p>Independent tools for turning meaningful software events into useful alerts.</p>
+			<div class="repo-list" aria-label="Featured open-source repositories">
+				<a href="https://github.com/notificator-project/WordPress-Plugin" target="_blank" rel="noreferrer">
+					<span><strong>WordPress Plugin</strong><small>Website events and local alerts</small></span><i>Stable</i>
+				</a>
+				<a href="https://github.com/notificator-project/Strapi-Extension" target="_blank" rel="noreferrer">
+					<span><strong>Strapi Extension</strong><small>Lifecycle rules and activity</small></span><i>Preview</i>
+				</a>
+				<a href="https://github.com/notificator-project/astro" target="_blank" rel="noreferrer">
+					<span><strong>Astro Integration</strong><small>Server-side alerts for Astro</small></span><i>New</i>
+				</a>
+				<a href="https://github.com/notificator-project/Node-SDK" target="_blank" rel="noreferrer">
+					<span><strong>Node.js SDK</strong><small>Build with the hosted API</small></span><i>SDK</i>
+				</a>
+				<a href="https://github.com/notificator-project/IoT-Firmware" target="_blank" rel="noreferrer">
+					<span><strong>IoT Firmware</strong><small>Base, Touch, and future devices</small></span><i>Hardware</i>
+				</a>
 			</div>
-			<div class="repo-meta"><span>GPL-3.0</span><span>Actively developed</span></div>
+			<div class="repo-meta"><span>Open-source ecosystem</span><span>Actively developed</span></div>
 		</div>
 	</div>
 </section>
@@ -1639,14 +1656,12 @@ const integrations = [
 		color: #c1cbe0;
 	}
 
-	.repo-code,
 	.repo-meta {
 		display: flex;
 		align-items: center;
 		gap: 16px;
 	}
 
-	.repo-code span,
 	.repo-meta span {
 		display: flex;
 		align-items: center;
@@ -1655,20 +1670,58 @@ const integrations = [
 		color: #c1cbe0;
 	}
 
-	.repo-code i {
-		width: 7px;
-		height: 7px;
-		border-radius: 50%;
+	.repo-list {
+		display: grid;
+		gap: 6px;
 	}
 
-	.repo-code .php {
-		background: #777bb4;
+	.repo-list a {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 18px;
+		border: 1px solid transparent;
+		border-radius: 12px;
+		padding: 10px 12px;
+		color: white;
+		text-decoration: none;
+		transition:
+			border-color 160ms ease,
+			background 160ms ease,
+			transform 160ms ease;
 	}
-	.repo-code .ts {
-		background: #3178c6;
+
+	.repo-list a:hover {
+		border-color: rgba(92, 139, 255, 0.38);
+		background: rgba(255, 255, 255, 0.05);
+		transform: translateX(3px);
 	}
-	.repo-code .scss {
-		background: #c6538c;
+
+	.repo-list span {
+		display: grid;
+		gap: 2px;
+	}
+
+	.repo-list strong {
+		font-size: 0.84rem;
+	}
+
+	.repo-list small {
+		font-size: 0.7rem;
+		color: #9faac2;
+	}
+
+	.repo-list i {
+		flex: 0 0 auto;
+		border-radius: 999px;
+		background: rgba(47, 105, 255, 0.12);
+		padding: 4px 7px;
+		font-size: 0.62rem;
+		font-style: normal;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: #9eb9ff;
 	}
 
 	.repo-meta {
