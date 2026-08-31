@@ -40,6 +40,7 @@ MQTT devices use a user-owned HiveMQ Cloud cluster. Users control the broker cre
 
 ## Key articles
 
+- [Notificator for Astro is here, and Product Hunt is next](https://notificator-project.com/blog/notificator-for-astro-and-product-hunt-next/): The Astro integration preview, server-side use cases, security model, and preparation for the upcoming Product Hunt launch.
 - [The WordPress.org plugin review is underway](https://notificator-project.com/blog/wordpress-plugin-directory-review-in-progress/): Current directory review status, compliance updates, security hardening, website expansion, and accessibility improvements.
 - [Notificator 1.1 redesign and WordPress directory release](https://notificator-project.com/blog/notificator-1-1-redesign-and-wordpress-directory-release/): An overview of the redesigned plugin and its upcoming public release.
 - [Open release phase](https://notificator-project.com/blog/open-release-phase/): Background on the project's open release and repositories.

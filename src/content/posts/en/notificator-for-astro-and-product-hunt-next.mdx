@@ -1,0 +1,101 @@
+---
+pubDate: 2026-08-31
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "Notificator for Astro Is Here, and Product Hunt Is Next"
+description: "The first Notificator integration for Astro is now available, bringing server-side alerts and optional build notifications ahead of an upcoming Product Hunt launch."
+image:
+    source: "@assets/images/blog/notificator-astro-product-hunt.svg"
+    alt: "Notificator project update announcing the Astro integration preview and upcoming Product Hunt launch"
+tags: ["Notificator Project", "Astro", "Developer Integration", "Product Hunt", "Open Source", "Project Update"]
+---
+
+Notificator started with WordPress, expanded into Strapi, and then gained a general-purpose Node.js SDK. The next step is now available: a dedicated integration for Astro.
+
+`@notificator-project/astro` **0.1.0** is published on npm as a preview for developers who want meaningful Astro server events to reach the Notificator inbox, mobile push, optional email, and compatible MQTT devices.
+
+At the same time, we are preparing to introduce the wider Notificator ecosystem on Product Hunt. The launch is not live yet, but the project page, visuals, and supporting material are being finalized.
+
+## A focused integration for Astro
+
+The Astro package wraps the official Notificator Node.js SDK with defaults and helpers that fit naturally into an Astro project.
+
+It can send alerts from trusted server-side code such as:
+
+- Astro Actions and form workflows;
+- API routes and incoming webhooks;
+- server-rendered pages and middleware;
+- scheduled jobs and queue workers;
+- successful production builds.
+
+The package does not add analytics, browser tracking, or a client-side widget. Its job is deliberately narrow: take an event that matters inside trusted Astro code and deliver a useful alert.
+
+## Getting started
+
+Install the package in an Astro 5, 6, or 7 project running Node.js 20 or newer:
+
+```bash
+npm install @notificator-project/astro
+```
+
+Create a **Public API** key in the Notificator mobile app and store it in the server or deployment environment:
+
+```dotenv
+NOTIFICATOR_API_KEY=wpnotif_your_public_client_key
+```
+
+An Astro Action can then send an alert through the server helper:
+
+```ts
+import { createAstroNotifier } from "@notificator-project/astro/server";
+
+const notificator = createAstroNotifier();
+
+await notificator.notify({
+	title: "New contact request",
+	body: "A visitor submitted the website contact form.",
+	source: "astro-contact-action",
+	severity: "info",
+});
+```
+
+The same helper works in API routes and other trusted server workflows. A separate optional Astro integration can report successful production builds when that signal is useful to a team.
+
+## Static sites are still supported
+
+A fully static Astro site has no permanent application server after the build completes. That does not prevent it from using Notificator.
+
+Static projects can send a successful-build alert during generation, call Notificator from a deployment hook, or use a serverless function for runtime events such as form submissions and webhooks.
+
+This distinction is documented clearly so the package does not imply that static pages suddenly gain a server runtime.
+
+## Secrets stay on the server
+
+The integration uses a `public_client` key, despite the slightly confusing historical name of that key type. It is still a secret and must remain in trusted server or deployment environments.
+
+The Astro helper rejects browser execution, and the documentation explicitly warns against exposing the key through `PUBLIC_` environment variables or hydrated components.
+
+Notificator continues to operate the hosted delivery service. Astro projects do not need direct access to Expo, Supabase, email-provider, or platform MQTT credentials.
+
+## Where Astro fits
+
+Astro now has its own path on the [Get Started page](/get-started/) and a first-class entry in the [Integrations overview](/integrations/#astro).
+
+WordPress remains the mature no-code integration. Strapi provides a managed content-lifecycle preview. Astro serves framework-specific server workflows, while the general [Node.js SDK](https://docs.notificator-project.com/guides/node-sdk/) remains available for other backend stacks.
+
+The complete installation, security guidance, examples, build configuration, and troubleshooting steps are in the [Astro Integration guide](https://docs.notificator-project.com/guides/astro-integration/). You can also find the package on [npm](https://www.npmjs.com/package/@notificator-project/astro) and review the [0.1.0 source release](https://github.com/notificator-project/astro/releases/tag/v0.1.0).
+
+## Preparing for Product Hunt
+
+With the WordPress Plugin public, the iOS app live, two device firmware paths available, and developer integrations growing, Notificator is ready to be introduced to a wider group of builders and makers.
+
+The upcoming Product Hunt launch will present the ecosystem as a whole rather than a single plugin or application. It will cover local CMS activity, connected alerts, the mobile app, open-source physical devices, and the developer paths that now include Strapi, Node.js, and Astro.
+
+There is no Product Hunt link to share just yet. We will publish it through the website, Journal feed, and project channels when the launch page is ready.
+
+## What comes next
+
+The Astro package is a preview, so practical feedback matters more than adding a long feature list immediately. The first priorities are real-world testing across Astro deployment targets, clearer examples, and learning which server events teams actually find useful.
+
+Thank you to everyone who continues to test, document, and share the project. The [project changelog](/changelog/) now includes the Astro 0.1.0 release and the supporting website and documentation work.
