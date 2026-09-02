@@ -6,7 +6,7 @@ import type { AstroSeoProps } from "@astrolib/seo";
 const seo: AstroSeoProps = {
 	title: "Notificator Changelog | Every part of the project",
 	description:
-		"Follow releases and improvements across the Notificator WordPress Plugin, Strapi Extension, mobile app, device firmware, API, website, and documentation.",
+		"Follow releases and improvements across Notificator integrations, the web dashboard, mobile app, device firmware, API, website, and documentation.",
 	canonical: "https://notificator-project.com/changelog/",
 	openGraph: {
 		url: "https://notificator-project.com/changelog/",
@@ -37,7 +37,7 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 				<h1 class="display-title">Every moving part, in one place.</h1>
 				<p class="section-copy">
 					Notificator is more than one app or extension. Follow meaningful releases across the WordPress Plugin, Strapi Extension, mobile,
-					firmware, the API, this website, and the documentation, together with the milestones that shaped the project.
+					web dashboard, firmware, the API, this website, and the documentation, together with the milestones that shaped the project.
 				</p>
 				<div class="hero-actions">
 					<a class="button button-primary" href="#release-timeline">Browse every update</a>
@@ -53,10 +53,10 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 					</div>
 					<time datetime={latestDate}>{latestDateLabel}</time>
 				</div>
-				<h2 id="release-radar-title">The iOS app is live, and the project is easier to follow.</h2>
+				<h2 id="release-radar-title">Your account, now on the web too.</h2>
 				<p>
-					Mobile 1.2 brings clearer everyday screens and live App Store access, while open Journal feeds connect the website and app more
-					reliably.
+					The dashboard beta brings account creation, API keys, notifications, and device monitoring to your browser, with updated
+					onboarding and guides across the project.
 				</p>
 				<div class="radar-systems" aria-label="Systems included in the latest release wave">
 					{
@@ -763,6 +763,10 @@ const latestDateLabel = latestDate ? dateFormatter.format(new Date(`${latestDate
 	[data-system="mobile"] {
 		--system-bg: #ece8ff;
 		--system-color: #6246c7;
+	}
+	[data-system="dashboard"] {
+		--system-bg: #e0efff;
+		--system-color: #1f56db;
 	}
 	[data-system="firmware"] {
 		--system-bg: #ddf8ed;

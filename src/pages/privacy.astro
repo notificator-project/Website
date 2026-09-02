@@ -34,12 +34,12 @@ const policySections = [
 				<h1 class="display-title">Your alerts are useful because they are yours.</h1>
 				<p class="section-copy">
 					This policy explains what information Notificator handles, why it is needed, how it is protected, and the choices available to you
-					across the mobile apps, WordPress plugin, API, website, and compatible devices.
+					across the web dashboard, mobile apps, WordPress plugin, API, website, and compatible devices.
 				</p>
 			</div>
 
 			<div class="policy-summary" aria-label="Privacy policy summary">
-				<div><span>Effective</span><strong>21 July 2026</strong></div>
+				<div><span>Effective</span><strong>2 September 2026</strong></div>
 				<div><span>Advertising</span><strong>None</strong></div>
 				<div><span>Data sales</span><strong>We do not sell personal data</strong></div>
 				<div><span>Contact</span><a href="mailto:hello@notificator-project.com">hello@notificator-project.com</a></div>
@@ -63,7 +63,7 @@ const policySections = [
 					<p>
 						This policy applies to Notificator, including the Notificator mobile applications for iOS and Android, the Notificator
 						WordPress plugin, the Notificator API and notification infrastructure, compatible Notificator devices and firmware, and the
-						website at notificator-project.com.
+						website at notificator-project.com and web dashboard at dashboard.notificator-project.com.
 					</p>
 					<p>
 						Notificator is an independent open-source project operated by Vagelis P. (“Notificator”, “we”, “us”, or “our”). Questions
@@ -107,6 +107,17 @@ const policySections = [
 						stored using the operating system’s secure-storage facilities when available.
 					</p>
 
+					<h3>Web dashboard information</h3>
+					<p>
+						The dashboard uses the same account, notification, API-key, and device records as the mobile app. Session cookies support
+						sign-in. Browser-local storage keeps interface preferences and non-secret MQTT connection metadata; the MQTT password is kept
+						in the current tab's session storage. Broker credentials are forwarded transiently for authenticated tests and commands and
+						are not stored in the Notificator account database. Dashboard and mobile MQTT credentials are configured separately.
+					</p>
+					<p>
+						Dashboard profile images are requested from Gravatar using a hash of the account email address. Gravatar receives that
+						identifier and the normal network information needed to serve the image, such as the browser's IP address.
+					</p>
 					<h3>Device information</h3>
 					<p>
 						If you connect a compatible device, we may process its identifier, name, type, active or paused state, firmware version and
@@ -169,7 +180,12 @@ const policySections = [
 							notification delivery.
 						</li>
 						<li>
-							<a href="https://www.netlify.com/privacy/" target="_blank" rel="noreferrer">Netlify</a> for website, form, and API hosting.
+							<a href="https://www.netlify.com/privacy/" target="_blank" rel="noreferrer">Netlify</a> for website, dashboard, form, and API
+							hosting.
+						</li>
+						<li>
+							<a href="https://automattic.com/privacy/" target="_blank" rel="noreferrer">Gravatar / Automattic</a> for dashboard profile
+							images.
 						</li>
 						<li>
 							Email-delivery providers for password recovery, requested email notifications, support replies, and newsletter messages.
@@ -230,10 +246,10 @@ const policySections = [
 						personal information.
 					</p>
 					<ul>
-						<li>Update profile information and notification preferences in the app.</li>
+						<li>Update profile information and notification preferences in the app or web dashboard.</li>
 						<li>Allow or disable push notifications in your operating-system settings.</li>
 						<li>Disable email delivery, API keys, devices, or individual WordPress delivery channels.</li>
-						<li>Delete stored notification history, devices, and API keys using available app controls.</li>
+						<li>Delete stored notification history, devices, and API keys using available app or dashboard controls.</li>
 						<li>Unsubscribe from project newsletters using the link in the message or by contacting us.</li>
 						<li>Request access, correction, export, or deletion by emailing us from the address associated with your account.</li>
 					</ul>

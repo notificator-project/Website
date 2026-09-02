@@ -16,7 +16,11 @@ const seo: AstroSeoProps = {
 
 const destinations = [
 	{ marker: "LOCAL", title: "Local activity", copy: "Keep useful events in the WordPress dashboard or Strapi admin panel." },
-	{ marker: "APP", title: "Mobile push", copy: "Receive selected alerts through the Notificator app for iOS and Android." },
+	{
+		marker: "WEB + APP",
+		title: "Shared inbox and mobile push",
+		copy: "Read connected alerts in your browser or app. Install the app for push delivery to your phone.",
+	},
 	{ marker: "@", title: "Email alerts", copy: "Use the account email preference as an optional additional destination." },
 	{ marker: "IoT", title: "MQTT devices", copy: "Route alerts through your own HiveMQ Cloud connection to compatible devices." },
 ];
@@ -58,7 +62,9 @@ const destinations = [
 					Different platforms, clearly defined capabilities.
 				</h2><p class="section-copy">
 					WordPress and Strapi provide native administration experiences. Astro and the Node.js SDK focus on trusted server-side events
-					while sharing the same connected destinations.
+					while sharing the same connected destinations. Create your account and API keys in the <a href="/dashboard/">
+						web dashboard (beta)
+					</a> or mobile app.
 				</p>
 			</div>
 			<div class="platform-grid">

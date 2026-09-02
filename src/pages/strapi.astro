@@ -16,7 +16,7 @@ const seo: AstroSeoProps = {
 const actions = ["Entry created", "Entry updated", "Entry published", "Entry unpublished", "Entry deleted"];
 const destinations = [
 	["Strapi activity", "Local history and admin toasts without a Notificator API key."],
-	["Notificator inbox", "Store accepted events in the connected Notificator account."],
+	["Notificator inbox", "Read accepted events in the web dashboard or mobile app using the same account."],
 	["Mobile and email", "Add push delivery and the account email preference when useful."],
 	["MQTT devices", "Use a user-owned HiveMQ Cloud connection for compatible displays."],
 ];
@@ -97,8 +97,8 @@ const destinations = [
 		<div class="site-shell install-card">
 			<div>
 				<p class="eyebrow">Install the preview</p><h2>Start integration testing with Strapi 5.</h2><p>
-					Keep the API key and optional HiveMQ credentials in server environment variables. No connection secret is entered in the
-					browser-side rule editor.
+					Create a Strapi key in the <a href="/dashboard/">web dashboard (beta)</a> or mobile app. Keep the API key and optional HiveMQ credentials
+					in server environment variables. No connection secret is entered in the browser-side rule editor.
 				</p>
 			</div>
 			<div>

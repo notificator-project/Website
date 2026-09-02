@@ -32,7 +32,7 @@ const wordpressSteps = [
 	{
 		number: "04",
 		title: "Connect more destinations when ready",
-		copy: "Add a WordPress API key from the mobile app when you want the Notificator inbox, mobile push, email, or MQTT devices.",
+		copy: "Create a WordPress API key in the web dashboard or mobile app for the shared inbox, mobile push, email, or MQTT devices.",
 	},
 ];
 
@@ -68,7 +68,7 @@ const astroSteps = [
 	{
 		number: "02",
 		title: "Create a Public API key",
-		copy: "Create a Public API key in the mobile app and store it as NOTIFICATOR_API_KEY in your server or deployment environment.",
+		copy: "Create a Public API key in the web dashboard or mobile app and store it as NOTIFICATOR_API_KEY in your server or deployment environment.",
 	},
 	{
 		number: "03",
@@ -91,7 +91,7 @@ const apiSteps = [
 	{
 		number: "02",
 		title: "Create a Public API key",
-		copy: "Create a Public API key in the mobile app and store it in a server environment variable. Never expose it in browser code.",
+		copy: "Create a Public API key in the web dashboard or mobile app and store it in a server environment variable. Never expose it in browser code.",
 	},
 	{
 		number: "03",
@@ -324,8 +324,8 @@ const apiSteps = [
 				<p class="eyebrow">Optional shared path</p>
 				<h2 id="connected-title" class="section-title">Connect Notificator when alerts need to travel further.</h2>
 				<p class="section-copy">
-					Install the mobile app, create the API-key type that matches your integration, and enable only the destinations that are useful
-					for each rule.
+					Create your account in the web dashboard (beta) or mobile app, then create the API-key type that matches your integration. Use
+					either to review notifications and monitor devices; install the app when you want mobile push.
 				</p>
 				<div class="key-types" aria-label="Notificator API key types">
 					<span><b>WordPress</b> WordPress key</span>
@@ -334,8 +334,9 @@ const apiSteps = [
 					<span><b>Node.js SDK</b> Public API key</span>
 				</div>
 				<div class="connection-actions">
+					<a class="button button-primary" href="https://dashboard.notificator-project.com">Open web dashboard ↗</a>
 					<a
-						class="button button-primary"
+						class="button button-secondary"
 						href="https://apps.apple.com/gr/app/notificator-project/id6758410275"
 						target="_blank"
 						rel="noreferrer">
@@ -345,7 +346,11 @@ const apiSteps = [
 				</div>
 			</div>
 			<div class="destination-list">
-				<article><span>01</span><div><h3>Notificator inbox</h3><p>Keep connected alerts together inside the mobile app.</p></div></article>
+				<article>
+					<span>01</span><div>
+						<h3>Notificator inbox</h3><p>Read and manage the same connected alerts in your browser or the mobile app.</p>
+					</div>
+				</article>
 				<article>
 					<span>02</span><div><h3>Mobile and email</h3><p>Receive push alerts and use the account-level email preference.</p></div>
 				</article>

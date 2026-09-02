@@ -30,7 +30,7 @@ const steps = [
 	{
 		number: "03",
 		title: "Select the destinations",
-		copy: "Keep activity in WordPress or Strapi, send it through the mobile app, enable account email alerts, or route it to compatible MQTT devices.",
+		copy: "Keep activity in WordPress or Strapi, read connected alerts on the web or mobile, enable account email, or use compatible MQTT devices.",
 		detail: "Each notification can use the delivery channels that suit that event.",
 	},
 	{
@@ -50,18 +50,18 @@ const channels = [
 		requirement: "No account required",
 	},
 	{
-		label: "iOS + Android",
+		label: "Web + mobile",
 		marker: "APP",
-		title: "Mobile push",
-		copy: "Receive selected alerts on your phone through the Notificator mobile app, wherever you are.",
+		title: "Shared inbox and mobile push",
+		copy: "Read connected notifications in the web dashboard or app. Install the app when you also want mobile push alerts.",
 		requirement: "Account and active API key",
 	},
 	{
 		label: "Account preference",
 		marker: "@",
 		title: "Email alerts",
-		copy: "Enable email notifications from the mobile app when you want account alerts to reach your inbox as well.",
-		requirement: "Enabled in app settings",
+		copy: "Enable email notifications from the dashboard or mobile app when you want account alerts to reach your inbox as well.",
+		requirement: "Enabled in dashboard or app settings",
 	},
 	{
 		label: "Connected devices",
@@ -403,7 +403,7 @@ const channels = [
 
 	.channel-grid {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 16px;
 		margin-top: 50px;
 	}

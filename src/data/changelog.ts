@@ -1,4 +1,4 @@
-export type ChangelogSystem = "project" | "wordpress" | "strapi" | "astro" | "mobile" | "firmware" | "api" | "website" | "docs";
+export type ChangelogSystem = "project" | "wordpress" | "strapi" | "astro" | "dashboard" | "mobile" | "firmware" | "api" | "website" | "docs";
 
 export type ChangelogEntry = {
 	id: string;
@@ -26,6 +26,7 @@ export const changelogSystems: Array<{
 	{ id: "strapi", label: "Strapi Extension", shortLabel: "Strapi", marker: "S" },
 	{ id: "astro", label: "Astro Integration", shortLabel: "Astro", marker: "A" },
 	{ id: "mobile", label: "Mobile app", shortLabel: "Mobile", marker: "APP" },
+	{ id: "dashboard", label: "Web dashboard", shortLabel: "Dashboard", marker: "DASH" },
 	{ id: "firmware", label: "Device firmware", shortLabel: "Firmware", marker: "FW" },
 	{ id: "api", label: "Notificator API", shortLabel: "API", marker: "API" },
 	{ id: "website", label: "Project website", shortLabel: "Website", marker: "WEB" },
@@ -33,6 +34,53 @@ export const changelogSystems: Array<{
 ];
 
 export const changelogEntries: ChangelogEntry[] = [
+	{
+		id: "dashboard-0-1-0-beta",
+		date: "2026-09-02",
+		system: "dashboard",
+		version: "0.1.0 Beta",
+		title: "Your Notificator account is now available on the web",
+		summary:
+			"The web dashboard offers browser-based registration, API keys, connected notifications, and device monitoring alongside the mobile app.",
+		changes: [
+			"Uses the same account, API keys, notifications, and device records as the mobile app; no app installation is required to get started on the web.",
+			"Adds notification search and filters, read/unread controls, locked alerts, raw payload details, and in-dashboard toasts.",
+			"Supports API-key creation, last-used information, allowed-domain editing, explicit key copying, and revocation.",
+			"Adds browser-local HiveMQ settings, automatic active-device status refresh, device management, and signed Base/Touch OTA controls.",
+			"Keeps mobile push in the mobile app and clearly labels the web experience as beta.",
+			"Keeps homepage sign-in URLs clean while preserving return destinations for protected pages.",
+		],
+		link: { label: "Explore the web dashboard", href: "/dashboard/" },
+	},
+	{
+		id: "website-dashboard-onboarding",
+		date: "2026-09-02",
+		system: "website",
+		version: "September 2026",
+		title: "Choose the dashboard or app from the start",
+		summary: "Onboarding now presents the browser as an alternative for account creation and everyday Notificator management.",
+		changes: [
+			"Adds a dashboard overview page and links from navigation, footer, homepage, and Get Started.",
+			"Updates integration, mobile-app, device, and support copy to remove app-only account requirements.",
+			"Distinguishes the shared web inbox from local WordPress dashboard alerts and Strapi panel activity.",
+			"Documents dashboard session cookies, browser-local MQTT settings, and Gravatar in the privacy page.",
+		],
+		link: { label: "Get started", href: "/get-started/" },
+	},
+	{
+		id: "docs-dashboard-and-shared-accounts",
+		date: "2026-09-02",
+		system: "docs",
+		version: "September 2026",
+		title: "Shared account, API-key, and device guides",
+		summary: "Documentation and project READMEs explain how the dashboard and mobile app work together.",
+		changes: [
+			"Adds the Web Dashboard Guide, including beta limits, notifications, credentials, devices, and OTA.",
+			"Expands account and API-key guides to cover web and mobile while preserving the existing API-key documentation URL.",
+			"Updates WordPress, Strapi, Astro, Node.js, firmware, and organization READMEs with browser onboarding.",
+		],
+		link: { label: "Read the dashboard guide", href: "https://docs.notificator-project.com/guides/web-dashboard/" },
+	},
 	{
 		id: "astro-integration-0-1-0",
 		date: "2026-08-31",

@@ -29,6 +29,12 @@ MQTT devices use a user-owned HiveMQ Cloud cluster. Users control the broker cre
 - [Credits](https://notificator-project.com/credits/): Open-source libraries, fonts, services, development tools, and creative attribution for the website.
 - [Contact](https://notificator-project.com/contact/): Questions, feedback, collaboration, and project support.
 
+## Web dashboard (beta)
+
+- [Open the dashboard](https://dashboard.notificator-project.com): Create an account and API keys, read connected notifications, and monitor devices without installing the mobile app. The dashboard and app share the same account; mobile push still requires the app.
+- [Dashboard overview](https://notificator-project.com/dashboard/): Browser capabilities, beta limitations, and how the dashboard and mobile app work together.
+- [Dashboard guide](https://docs.notificator-project.com/guides/web-dashboard/): Sign-in, API keys, shared notifications, browser-local MQTT settings, device status, and signed OTA controls.
+
 ## Open-source resources
 
 - [Notificator on GitHub](https://github.com/notificator-project): The project's public repositories.

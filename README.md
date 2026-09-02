@@ -13,12 +13,13 @@ The site presents the complete Notificator ecosystem, publishes project updates,
 - [Astro Integration](https://docs.notificator-project.com/guides/astro-integration/) covers server-side alerts from Astro Actions, API routes, webhooks, server-rendered workflows, and successful builds.
 - [Public API](https://docs.notificator-project.com/reference/public-notify/) accepts authenticated server-side alerts through the hosted Notificator delivery service.
 - [Node.js SDK](https://docs.notificator-project.com/guides/node-sdk/) provides a typed server client for the hosted API without exposing platform credentials.
+- [Web dashboard (beta)](https://notificator-project.com/dashboard/) introduces browser registration, API-key management, shared notifications, and MQTT device monitoring. The live dashboard is at [dashboard.notificator-project.com](https://dashboard.notificator-project.com).
 - [Mobile app](https://notificator-project.com/mobile-app/) explains accounts, connected sites, push and optional email delivery, searchable weather locations, secure MQTT connection testing, model-aware device controls, and firmware status.
 - [Devices](https://notificator-project.com/devices/) covers Notificator Base, the Touch 3.49 preview, MQTT, open-source firmware, community builds, and enclosure attribution.
 - [Get a device](https://notificator-project.com/get-a-device/) compares supported ready-made hardware, free community batches, and the complete maker route without implying that the project sells devices.
 - [Build a device](https://notificator-project.com/build-a-device/) explains the ESP32-C3 electronics, OLED and touch hardware, wiring, the Bambu Lab A1 mini and AMS lite printing setup, beginner-friendly 3D printing, assembly, firmware, materials, licensing, the planned MakerWorld collection, and the project’s WordCamp Athens 2025 presentation.
 - [Firmware installer](https://notificator-project.com/firmware-installer/) loads the official multi-model catalog and installs the matching Base or Touch factory image over USB using ESP Web Tools.
-- [Changelog](https://notificator-project.com/changelog/) brings meaningful releases from the WordPress Plugin, Strapi Extension, Astro Integration, mobile app, firmware, API, website, and documentation into one filterable timeline.
+- [Changelog](https://notificator-project.com/changelog/) brings meaningful releases from the WordPress Plugin, Strapi Extension, Astro Integration, web dashboard, mobile app, firmware, API, website, and documentation into one filterable timeline.
 - [Journal](https://notificator-project.com/blog/) contains release notes, development updates, and project stories, with a standard [RSS feed](https://notificator-project.com/rss.xml).
 - [Support](https://notificator-project.com/support/) provides troubleshooting for integrations, apps, accounts, and devices.
 - [Privacy](https://notificator-project.com/privacy/) describes how data is handled across the project.
