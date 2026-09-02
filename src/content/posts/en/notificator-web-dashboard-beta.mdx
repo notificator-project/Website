@@ -1,0 +1,42 @@
+---
+pubDate: 2026-09-02
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "A Notificator Dashboard for the Browser"
+description: "The Notificator web dashboard is now available as a public beta for account setup, API keys, notifications, and connected device management."
+image:
+    source: "@assets/images/blog/notificator-dashboard-beta.png"
+    alt: "Notificator dashboard landing page with product overview and sign-in form"
+tags: ["Notificator Project", "Web Dashboard", "API Keys", "Devices", "Open Source", "Project Update"]
+---
+
+Notificator now has another place to begin: the [web dashboard](https://dashboard.notificator-project.com).
+
+The dashboard is a public beta for people who want to create a Notificator account, manage integrations, read connected notifications, or keep an eye on their devices without installing the mobile app. It uses the same account and connected data as the mobile app, so you can move between the two whenever it is useful.
+
+## Start in the browser
+
+Registration is available directly at [dashboard.notificator-project.com](https://dashboard.notificator-project.com/register). Existing users can sign in with the credentials they already use for Notificator.
+
+The dashboard is useful even when a phone is not part of the setup. It can create the API keys needed by the WordPress Plugin, Strapi Extension, Public API, Astro integration, and Node.js SDK. Active keys can be copied, reviewed, edited, and revoked from one place.
+
+## A focused shared inbox
+
+Connected notifications can be searched and filtered by their useful context, including CMS and non-CMS sources. Open an alert to review its fields and raw payload, mark it read or unread, or lock important history so it is not removed by bulk cleanup.
+
+The dashboard also shows a small toast when a new notification arrives while the dashboard is open. It is deliberately an open-dashboard experience for now, not background browser push. Mobile push remains available through the [Notificator iOS app](https://apps.apple.com/app/notificator-project/id6758410275) when you want alerts away from your desk.
+
+## Keep an eye on devices
+
+The Devices area can add supported hardware, show reported connection status, pause or resume delivery, remove paused devices, and request signed Base or Touch firmware updates. Live status and commands depend on a working connection to the user’s own HiveMQ Cloud setup; the dashboard is not a separate uptime service.
+
+Browser MQTT settings are kept separately from the credentials saved in the mobile app. Connection metadata stays local to the browser, while the password is held only for the current session. This keeps the dashboard convenient for device management without turning it into a shared broker.
+
+## The app and dashboard have different strengths
+
+The dashboard is the quickest route for account administration, API keys, notification history, and device overview. The mobile app remains the place for mobile push permission, on-the-go alerts, and immediate brightness or volume controls.
+
+WordPress dashboard alerts and Strapi panel activity can still stay local inside their own admin areas without an account. The web dashboard is a shared inbox for events that integrations send through a connected API key.
+
+The [dashboard guide](https://docs.notificator-project.com/guides/web-dashboard/) covers the current beta behavior, setup, security boundaries, MQTT configuration, notifications, and OTA controls. Features will continue to evolve as we learn from real usage.
