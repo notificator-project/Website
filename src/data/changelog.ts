@@ -35,6 +35,36 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "dashboard-optional-account-mqtt-storage",
+		date: "2026-09-03",
+		system: "dashboard",
+		version: "Beta update",
+		title: "Choose where to save your MQTT connection",
+		summary: "Adds optional encrypted account storage for HiveMQ credentials, while keeping session-only storage as the default.",
+		changes: [
+			"Adds an explicit Save to my account option in Device connection settings when account saving is enabled.",
+			"Encrypts the saved configuration and restricts access to its account owner; restores it when a dashboard session has no current connection.",
+			"Supports removing the account copy, switching back to session-only storage, and clearing the current browser connection separately.",
+			"Keeps connection testing separate from saving and clears MQTT session data on sign-out.",
+			"Prepares a shared account configuration for future authenticated plugin and mobile retrieval; those clients still use their own settings today.",
+		],
+		link: { label: "Read the dashboard guide", href: "https://docs.notificator-project.com/guides/web-dashboard/" },
+	},
+	{
+		id: "website-dashboard-announcement-and-mqtt-guidance",
+		date: "2026-09-03",
+		system: "website",
+		version: "September 2026",
+		title: "Dashboard announcement and clearer credential choices",
+		summary: "The dashboard announcement, privacy information, and setup guides explain browser access and optional account MQTT storage.",
+		changes: [
+			"Adds the dashboard beta announcement with an image of the actual sign-in page.",
+			"Updates the announcement and privacy page to explain optional encrypted MQTT storage, restoration, and removal.",
+			"Updates the dashboard and broker guides with session-only and account-saving instructions, and clarifies that mobile/plugin retrieval is future work.",
+		],
+		link: { label: "Read the dashboard announcement", href: "/blog/notificator-web-dashboard-beta/" },
+	},
+	{
 		id: "dashboard-0-1-0-beta",
 		date: "2026-09-02",
 		system: "dashboard",

@@ -31,7 +31,11 @@ The dashboard also shows a small toast when a new notification arrives while the
 
 The Devices area can add supported hardware, show reported connection status, pause or resume delivery, remove paused devices, and request signed Base or Touch firmware updates. Live status and commands depend on a working connection to the user’s own HiveMQ Cloud setup; the dashboard is not a separate uptime service.
 
-Browser MQTT settings are kept separately from the credentials saved in the mobile app. Connection metadata stays local to the browser, while the password is held only for the current session. This keeps the dashboard convenient for device management without turning it into a shared broker.
+### Choose where to save your connection
+
+*Updated 3 September 2026.* Session-only storage remains the default: connection metadata stays in the browser and the password lasts for the current tab session. Where account saving is enabled, you can choose **Save to my account** in **Settings → Device connection** to keep an encrypted copy of your HiveMQ configuration. The dashboard can restore that connection in another signed-in browser, while leaving an existing session connection in place. Testing a connection does not save it.
+
+You can remove the account copy, switch back to session-only storage, or clear the current browser session separately. Removing the account copy does not erase credentials already held by another browser or device. Your broker remains yours. The saved configuration is designed for future access from the plugin and mobile app through an authenticated API; those clients still use their separately configured credentials today.
 
 ## The app and dashboard have different strengths
 

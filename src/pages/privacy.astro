@@ -39,7 +39,7 @@ const policySections = [
 			</div>
 
 			<div class="policy-summary" aria-label="Privacy policy summary">
-				<div><span>Effective</span><strong>2 September 2026</strong></div>
+				<div><span>Effective</span><strong>3 September 2026</strong></div>
 				<div><span>Advertising</span><strong>None</strong></div>
 				<div><span>Data sales</span><strong>We do not sell personal data</strong></div>
 				<div><span>Contact</span><a href="mailto:hello@notificator-project.com">hello@notificator-project.com</a></div>
@@ -110,9 +110,21 @@ const policySections = [
 					<h3>Web dashboard information</h3>
 					<p>
 						The dashboard uses the same account, notification, API-key, and device records as the mobile app. Session cookies support
-						sign-in. Browser-local storage keeps interface preferences and non-secret MQTT connection metadata; the MQTT password is kept
-						in the current tab's session storage. Broker credentials are forwarded transiently for authenticated tests and commands and
-						are not stored in the Notificator account database. Dashboard and mobile MQTT credentials are configured separately.
+						sign-in. Browser-local storage keeps interface preferences and non-secret MQTT connection metadata. By default, the MQTT
+						password is held only in the current tab's session storage. Broker credentials are forwarded transiently for authenticated
+						tests and commands; testing a connection does not save it to your account.
+					</p>
+					<p>
+						Where account saving is enabled, choosing “Save to my account” stores an encrypted copy of the broker hostname, username,
+						password, and topic prefix in our Supabase account database, linked to your account and a last-saved timestamp. The dashboard
+						can restore this connection into your signed-in browser session. Encryption keys stay on trusted servers; those servers can
+						decrypt the configuration after authorizing access. This is encryption at rest, not end-to-end encryption.
+					</p>
+					<p>
+						You can remove the saved account copy from Device connection settings or switch back to session-only storage. Clearing a
+						browser session does not delete the account copy, and deleting the account copy does not erase credentials already held by
+						other browsers or devices. To revoke those credentials, change them at your broker. Mobile app and plugin credentials remain
+						separately configured; retrieving this shared account configuration from those clients is planned for a later update.
 					</p>
 					<p>
 						Dashboard profile images are requested from Gravatar using a hash of the account email address. Gravatar receives that
@@ -250,6 +262,7 @@ const policySections = [
 						<li>Allow or disable push notifications in your operating-system settings.</li>
 						<li>Disable email delivery, API keys, devices, or individual WordPress delivery channels.</li>
 						<li>Delete stored notification history, devices, and API keys using available app or dashboard controls.</li>
+						<li>Keep MQTT credentials session-only, or remove an opted-in account copy from dashboard Device connection settings.</li>
 						<li>Unsubscribe from project newsletters using the link in the message or by contacting us.</li>
 						<li>Request access, correction, export, or deletion by emailing us from the address associated with your account.</li>
 					</ul>
@@ -271,7 +284,7 @@ const policySections = [
 					</p>
 					<p>
 						After verifying account ownership, we will delete or anonymize the account profile, registered push tokens, API keys,
-						connected-device records, and stored notification history associated with the account, subject to the limited retention
+						connected-device records, saved MQTT credentials, and stored notification history associated with the account, subject to the limited retention
 						described above. Account deletion is permanent and may prevent connected plugins and devices from delivering future alerts
 						until configured with another account.
 					</p>
