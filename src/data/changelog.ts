@@ -59,6 +59,7 @@ export const changelogEntries: ChangelogEntry[] = [
 		summary: "The dashboard announcement, privacy information, and setup guides explain browser access and optional account MQTT storage.",
 		changes: [
 			"Adds the dashboard beta announcement with an image of the actual sign-in page.",
+			"Adds a Sign in button after the main navigation, also visible beside the mobile menu, linking directly to the dashboard.",
 			"Updates the announcement and privacy page to explain optional encrypted MQTT storage, restoration, and removal.",
 			"Updates the dashboard and broker guides with session-only and account-saving instructions, and clarifies that mobile/plugin retrieval is future work.",
 		],

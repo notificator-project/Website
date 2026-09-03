@@ -19,10 +19,6 @@ const links = [
 			<span>Notificator</span>
 		</a>
 
-		<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
-			<span aria-hidden="true"></span><span aria-hidden="true"></span>
-		</button>
-
 		<nav id="primary-navigation" class="primary-navigation" aria-label="Primary navigation">
 			<ul>
 				{
@@ -41,6 +37,12 @@ const links = [
 				}
 			</ul>
 		</nav>
+		<a class="header-sign-in" href="https://dashboard.notificator-project.com/sign-in" aria-label="Sign in to the Notificator dashboard">
+			Sign in
+		</a>
+		<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+			<span aria-hidden="true"></span><span aria-hidden="true"></span>
+		</button>
 	</div>
 </header>
 
@@ -62,6 +64,7 @@ const links = [
 		min-height: 64px;
 		align-items: center;
 		justify-content: space-between;
+		gap: 12px;
 		border: 0;
 		border-radius: 18px;
 		background: linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(236, 243, 255, 0.34));
@@ -112,6 +115,32 @@ const links = [
 
 	.primary-navigation {
 		gap: 8px;
+		margin-left: auto;
+	}
+
+	.header-sign-in {
+		display: inline-flex;
+		min-height: 44px;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		border-radius: 11px;
+		padding: 10px 18px;
+		background: #2155db;
+		color: #fff;
+		font-size: 0.95rem;
+		font-weight: 700;
+		white-space: nowrap;
+		transition: background-color 150ms ease;
+	}
+
+	.header-sign-in:hover {
+		background: #1946bb;
+	}
+
+	.header-sign-in:focus-visible {
+		outline: 2px solid #2155db;
+		outline-offset: 3px;
 	}
 
 	.primary-navigation ul {
@@ -175,7 +204,7 @@ const links = [
 		outline-offset: 2px;
 	}
 
-	@media (max-width: 820px) {
+	@media (max-width: 1024px) {
 		.site-header {
 			padding: 8px 0;
 		}
@@ -187,6 +216,12 @@ const links = [
 
 		.menu-toggle {
 			display: flex;
+			flex-shrink: 0;
+		}
+
+		.header-sign-in {
+			margin-left: auto;
+			padding-inline: 14px;
 		}
 
 		.primary-navigation {
@@ -220,6 +255,13 @@ const links = [
 			width: 100%;
 			justify-content: center;
 		}
+	}
+
+	@media (max-width: 380px) {
+		.header-inner { gap: 8px; padding-left: 10px; }
+		.brand { gap: 6px; font-size: 0.95rem; }
+		.brand img { width: 28px; height: 28px; }
+		.header-sign-in { padding-inline: 10px; }
 	}
 </style>
 
