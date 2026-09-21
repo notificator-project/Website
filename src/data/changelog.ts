@@ -35,6 +35,18 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "website-npm-footer-link",
+		date: "2026-09-22",
+		system: "website",
+		version: "Navigation update",
+		title: "Published packages are now easier to find",
+		summary: "The website footer now links directly to the Notificator npm organization alongside the project’s other public channels.",
+		changes: [
+			"Adds an npm icon and organization link beside the GitHub, X, YouTube, and RSS links.",
+			"Keeps the footer’s project and community links grouped under a clearer accessible label.",
+		],
+	},
+	{
 		id: "website-self-hosted-fonts",
 		date: "2026-09-22",
 		system: "website",
