@@ -35,6 +35,52 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "api-account-managed-mqtt-delivery",
+		date: "2026-09-21",
+		system: "api",
+		version: "Account MQTT update",
+		title: "Account MQTT connections now work for server integrations",
+		summary:
+			"The hosted API can use a user’s encrypted dashboard MQTT connection for authenticated WordPress delivery without exposing the broker password.",
+		changes: [
+			"Resolves saved MQTT credentials by the owner of an authenticated wordpress_server API key.",
+			"Decrypts and uses the broker connection only inside the hosted API, then closes the MQTT connection after delivery.",
+			"Keeps users without a saved MQTT row fully compatible: MQTT is skipped without blocking dashboard, push, or email delivery.",
+			"Requires the dashboard and API runtimes to share the same server-only MQTT_CREDENTIALS_ENCRYPTION_KEY.",
+		],
+		link: { label: "Read the MQTT account storage guide", href: "https://docs.notificator-project.com/guides/mqtt-broker-setup/" },
+	},
+	{
+		id: "wordpress-account-managed-mqtt",
+		date: "2026-09-21",
+		system: "wordpress",
+		version: "Account MQTT update",
+		title: "WordPress can reuse your saved account connection",
+		summary:
+			"Add an API key once and the plugin can use the MQTT connection saved to the same Notificator account without asking for the broker password again.",
+		changes: [
+			"Uses the account-managed MQTT connection automatically when no custom broker is configured locally.",
+			"Keeps the existing custom HiveMQ configuration as an explicit fallback for a different broker.",
+			"Adds account-aware broker testing and explains the server-managed connection in Settings.",
+			"Never imports or stores the account MQTT password in WordPress.",
+		],
+		link: { label: "Read the WordPress setup guide", href: "https://docs.notificator-project.com/guides/wordpress-plugin-setup/" },
+	},
+	{
+		id: "docs-account-managed-mqtt",
+		date: "2026-09-21",
+		system: "docs",
+		version: "September 2026",
+		title: "MQTT account sharing is documented end to end",
+		summary: "The setup guides and deployment notes now describe encrypted account storage, hosted API reuse, safe fallbacks, and key rotation.",
+		changes: [
+			"Documents the WordPress account-managed and custom MQTT paths side by side.",
+			"Explains the shared server-only encryption key requirement and the re-save step after key rotation.",
+			"Updates dashboard, API, plugin, and broker-storage documentation to remove stale future-work wording.",
+		],
+		link: { label: "Read the MQTT broker guide", href: "https://docs.notificator-project.com/guides/mqtt-broker-setup/" },
+	},
+	{
 		id: "dashboard-optional-account-mqtt-storage",
 		date: "2026-09-03",
 		system: "dashboard",
@@ -46,7 +92,7 @@ export const changelogEntries: ChangelogEntry[] = [
 			"Encrypts the saved configuration and restricts access to its account owner; restores it when a dashboard session has no current connection.",
 			"Supports removing the account copy, switching back to session-only storage, and clearing the current browser connection separately.",
 			"Keeps connection testing separate from saving and clears MQTT session data on sign-out.",
-			"Prepares a shared account configuration for future authenticated plugin and mobile retrieval; those clients still use their own settings today.",
+			"Prepares a shared account configuration for authenticated hosted API consumers; WordPress can now reuse the saved connection without receiving the broker password.",
 		],
 		link: { label: "Read the dashboard guide", href: "https://docs.notificator-project.com/guides/web-dashboard/" },
 	},
@@ -61,7 +107,7 @@ export const changelogEntries: ChangelogEntry[] = [
 			"Adds the dashboard beta announcement with an image of the actual sign-in page.",
 			"Adds a Sign in button after the main navigation, also visible beside the mobile menu, linking directly to the dashboard.",
 			"Updates the announcement and privacy page to explain optional encrypted MQTT storage, restoration, and removal.",
-			"Updates the dashboard and broker guides with session-only and account-saving instructions, and clarifies that mobile/plugin retrieval is future work.",
+			"Updates the dashboard and broker guides with session-only and account-saving instructions, including the hosted API path used by WordPress.",
 		],
 		link: { label: "Read the dashboard announcement", href: "/blog/notificator-web-dashboard-beta/" },
 	},

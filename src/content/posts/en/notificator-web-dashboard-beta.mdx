@@ -33,9 +33,9 @@ The Devices area can add supported hardware, show reported connection status, pa
 
 ### Choose where to save your connection
 
-*Updated 3 September 2026.* Session-only storage remains the default: connection metadata stays in the browser and the password lasts for the current tab session. Where account saving is enabled, you can choose **Save to my account** in **Settings → Device connection** to keep an encrypted copy of your HiveMQ configuration. The dashboard can restore that connection in another signed-in browser, while leaving an existing session connection in place. Testing a connection does not save it.
+_Updated 3 September 2026._ Session-only storage remains the default: connection metadata stays in the browser and the password lasts for the current tab session. Where account saving is enabled, you can choose **Save to my account** in **Settings → Device connection** to keep an encrypted copy of your HiveMQ configuration. The dashboard can restore that connection in another signed-in browser, while leaving an existing session connection in place. Testing a connection does not save it.
 
-You can remove the account copy, switch back to session-only storage, or clear the current browser session separately. Removing the account copy does not erase credentials already held by another browser or device. Your broker remains yours. The saved configuration is designed for future access from the plugin and mobile app through an authenticated API; those clients still use their separately configured credentials today.
+You can remove the account copy, switch back to session-only storage, or clear the current browser session separately. Removing the account copy does not erase credentials already held by another browser or device. Your broker remains yours. The hosted API can now let the WordPress plugin reuse the saved connection through an authenticated `wordpress_server` API key without returning the broker password. The mobile app continues to use its own secure connection storage.
 
 ## The app and dashboard have different strengths
 
