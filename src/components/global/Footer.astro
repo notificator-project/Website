@@ -93,7 +93,10 @@ const lastUpdated = new Intl.DateTimeFormat("en-GB", {
 			</nav>
 
 			<aside class="footer-apps" aria-label="Download the Notificator mobile app">
-				<p class="footer-apps-copy">Available for<br />iPhone and iPad</p>
+				<p class="footer-apps-copy">
+					<span class="footer-apps-kicker">Mobile app</span>
+					<span class="footer-apps-copy-text">Available on iPhone and iPad</span>
+				</p>
 				<a
 					class="app-store-badge"
 					href="https://apps.apple.com/gr/app/notificator-project/id6758410275"
@@ -240,6 +243,7 @@ const lastUpdated = new Intl.DateTimeFormat("en-GB", {
 		display: flex;
 		min-width: 0;
 		flex-direction: column;
+		gap: 34px;
 	}
 
 	.footer-links div {
@@ -301,7 +305,6 @@ const lastUpdated = new Intl.DateTimeFormat("en-GB", {
 		align-items: center;
 		justify-content: space-between;
 		gap: 18px;
-		margin-top: auto;
 		border: 1px solid rgba(142, 173, 235, 0.32);
 		border-radius: 18px;
 		background: linear-gradient(135deg, rgba(45, 103, 214, 0.2), rgba(255, 255, 255, 0.055));
@@ -310,7 +313,29 @@ const lastUpdated = new Intl.DateTimeFormat("en-GB", {
 	}
 
 	.footer-apps-copy {
+		display: grid;
+		gap: 3px;
 		margin: 0;
+		font-size: 0.86rem;
+		font-weight: 650;
+		line-height: 1.35;
+		color: #dce4fa;
+	}
+
+	.footer-apps-copy span {
+		display: block;
+	}
+
+	.footer-apps-kicker {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #9fb9f6;
+	}
+
+	.footer-apps-copy-text {
 		font-size: 0.86rem;
 		font-weight: 650;
 		line-height: 1.35;
