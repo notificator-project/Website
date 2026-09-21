@@ -111,14 +111,9 @@ const services = [
 		href: "https://fontsource.org/fonts/opendyslexic",
 	},
 	{
-		name: "Google Fonts",
-		copy: "Delivers the JetBrains Mono webfont used by the site.",
-		href: "https://fonts.google.com/",
-	},
-	{
-		name: "rsms.me",
-		copy: "Hosts and delivers the Inter webfont used throughout the site interface.",
-		href: "https://rsms.me/inter/",
+		name: "Apple App Store badge",
+		copy: "Official Apple marketing artwork used for the Notificator mobile app download links.",
+		href: "https://developer.apple.com/app-store/marketing/guidelines/",
 	},
 ];
 
@@ -295,12 +290,16 @@ const tools = [
 
 	<section class="license-section">
 		<div class="site-shell license-note">
-			<strong>Website source</strong>
-			<p>
-				The Notificator website repository is released under The Unlicense. Third-party software, fonts, services, trademarks, and creative
-				assets keep their original licenses and ownership.
-			</p>
-			<a href="https://github.com/notificator-project/website">Source and licence information ↗</a>
+			<div class="license-note-copy">
+				<strong>Website source</strong>
+				<p>
+					The website is released under The Unlicense. Third-party software, fonts, services, trademarks, and creative assets keep their original licenses and ownership.
+				</p>
+			</div>
+			<a class="license-note-link" href="https://github.com/notificator-project/website">
+				<span>View source &amp; licence</span>
+				<span aria-hidden="true">↗</span>
+			</a>
 		</div>
 	</section>
 </BaseLayout>
@@ -594,23 +593,52 @@ const tools = [
 
 	.license-note {
 		display: grid;
-		grid-template-columns: auto minmax(0, 1fr) auto;
-		gap: 20px;
+		grid-template-columns: minmax(0, 1fr) 240px;
+		gap: 28px;
 		align-items: center;
 		border: 1px solid var(--line);
-		border-radius: 18px;
-		background: white;
-		padding: 22px;
+		border-radius: 20px;
+		background: linear-gradient(110deg, #ffffff 0%, #fbfcff 100%);
+		padding: 24px 26px;
+		box-shadow: 0 12px 32px rgba(24, 39, 75, 0.045);
+	}
+
+	.license-note-copy {
+		display: grid;
+		gap: 7px;
+		min-width: 0;
+	}
+
+	.license-note-copy strong {
+		font-size: 0.95rem;
+		font-weight: 750;
 	}
 
 	.license-note p {
 		margin: 0;
+		max-width: 860px;
 		font-size: 0.84rem;
+		line-height: 1.5;
 		color: var(--ink-soft);
 	}
 
-	.license-note a {
-		font-size: 0.84rem;
+	.license-note-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 7px;
+		border: 1px solid #c9d8fb;
+		border-radius: 10px;
+		background: #f3f6ff;
+		padding: 10px 13px;
+		font-size: 0.78rem;
+		font-weight: 750;
+		white-space: nowrap;
+	}
+
+	.license-note-link:hover {
+		border-color: #9fbaf4;
+		background: #eaf0ff;
 	}
 
 	@media (max-width: 900px) {
@@ -624,6 +652,14 @@ const tools = [
 		.library-grid,
 		.service-grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.license-note {
+			grid-template-columns: 1fr;
+		}
+
+		.license-note-link {
+			justify-self: start;
 		}
 	}
 

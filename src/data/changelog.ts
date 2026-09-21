@@ -35,6 +35,19 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "website-self-hosted-fonts",
+		date: "2026-09-22",
+		system: "website",
+		version: "Performance update",
+		title: "Website fonts are now self-hosted",
+		summary: "The website now loads its primary typefaces locally, reducing third-party font requests during the initial page render.",
+		changes: [
+			"Serves compressed Inter and JetBrains Mono WOFF2 assets from the website, including Latin and Greek subsets.",
+			"Removes the external rsms.me and Google Fonts stylesheet requests from the critical rendering path.",
+			"Preloads the primary Latin font assets and keeps the typeface licences documented on the Credits page.",
+		],
+	},
+	{
 		id: "strapi-extension-1-0-0",
 		date: "2026-09-21",
 		system: "strapi",
