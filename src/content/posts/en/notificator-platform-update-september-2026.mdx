@@ -1,0 +1,59 @@
+---
+pubDate: 2026-09-21
+author:
+    name: Vagelis P.
+    link: https://github.com/vagelisp
+title: "Notificator Platform Update: Stable Integrations and a More Connected Dashboard"
+description: "Notificator 1.3, stable Astro and Strapi integrations, account-managed MQTT, and a dashboard with browser notifications bring the project closer together."
+image:
+    source: "@assets/images/blog/update.png"
+    alt: "Notificator platform update with integrations, dashboard notifications, and connected delivery"
+tags: ["Notificator Project", "Dashboard", "WordPress", "Astro", "Strapi", "Node.js", "MQTT", "Open Source"]
+---
+
+The latest Notificator releases bring the plugin, dashboard, API, and developer integrations closer together. This update is about making the platform easier to use for people who configure notifications and easier to extend for the teams building with it.
+
+## Stable integrations for Astro and Strapi
+
+The Astro integration and Strapi 5 extension are now stable **1.0.0** releases.
+
+The Astro package supports notifications from server-side helpers, API routes, webhooks, and successful production builds. The Strapi extension turns content lifecycle activity into rules that can stay in the Strapi activity log or continue to the Notificator inbox, mobile app, email, and connected devices.
+
+Both integrations now have release documentation, installation guidance, and a clear path for account-managed delivery. The preview labels are gone: these are the versions to use for current projects.
+
+## One account-managed MQTT connection
+
+Developers can now opt into the encrypted HiveMQ Cloud connection saved to the matching Notificator account. The API, Node.js SDK, Astro integration, and Strapi extension can reuse that connection without asking users to copy broker credentials into every project.
+
+Custom broker configuration remains available when a project needs it. Account-managed delivery is an opt-in path, keeps credentials on the server, and gives teams a simpler way to connect multiple integrations to the same device setup.
+
+The official Node.js SDK is now **0.1.2** and exposes the account delivery mode through its typed client. It is available as `@notificator-project/api`:
+
+```bash
+npm install @notificator-project/api
+```
+
+## WordPress Plugin 1.3
+
+The WordPress Plugin **1.3.0** release includes a broad dashboard and settings refresh. The redesign brings headers, panels, controls, search fields, filters, and modal flows into the same visual language, while improving the discovery workflow for recommended events and plugin findings.
+
+The settings screens now make connection state clearer, including when a saved account broker is available. Users can test the active connection, switch back to custom broker configuration, and keep the existing custom setup when account-managed MQTT is not appropriate.
+
+## A more useful dashboard
+
+The web dashboard is moving toward a more responsive application experience. Browser notifications can alert users while the dashboard is open in another tab or window, with permission and test controls in the dashboard settings. Navigation now keeps the sidebar in place while the content area loads, so moving between sections feels lighter and less disruptive.
+
+The dashboard also continues to surface the same setup state as the integrations: account-managed MQTT, delivery status, and notification activity are presented together instead of requiring users to repeat configuration in multiple places.
+
+## What this means for users
+
+Notificator is becoming one connected workflow:
+
+- Configure a connection once in the dashboard.
+- Reuse it from WordPress, Astro, Strapi, or a Node.js service when account delivery is enabled.
+- Keep custom broker credentials available for projects that need full control.
+- Receive useful alerts in the inbox, browser, mobile app, email, or connected devices.
+
+The releases are available now through the [WordPress Plugin](https://github.com/notificator-project/WordPress-Plugin), [Node.js SDK](https://github.com/notificator-project/Node-SDK), [Astro integration](https://github.com/notificator-project/astro), and [Strapi extension](https://github.com/notificator-project/Strapi-Extension) repositories. The [dashboard](https://dashboard.notificator-project.com/) and [developer documentation](https://docs.notificator-project.com/) contain the setup details for each path.
+
+This is an important step toward a consistent notification platform: fewer repeated credentials, clearer interfaces, and the same delivery model across the tools people already use.

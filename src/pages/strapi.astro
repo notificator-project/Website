@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
 
 const seo: AstroSeoProps = {
-	title: "Notificator for Strapi | Extension Preview",
+	title: "Notificator for Strapi | Stable Extension",
 	description: "Create Strapi content lifecycle rules with local panel activity and optional Notificator inbox, push, email, and MQTT delivery.",
 	canonical: "https://notificator-project.com/strapi/",
 	openGraph: {
@@ -26,13 +26,13 @@ const destinations = [
 	<section class="page-hero section-space">
 		<div class="site-shell hero-grid">
 			<div>
-				<p class="eyebrow">Strapi Extension · 0.1.1 Preview</p>
+				<p class="eyebrow">Strapi Extension · 1.0.0</p>
 				<h1 class="display-title">Content activity that reaches the right people.</h1>
 				<p class="section-copy">
 					Build readable alerts from Strapi 5 lifecycle events without writing and maintaining a handler for every content type.
 				</p>
 				<div class="hero-actions">
-					<a class="button button-primary" href="#rule-builder">Explore the preview</a>
+					<a class="button button-primary" href="#rule-builder">Explore the extension</a>
 					<a class="button button-secondary" href="https://github.com/notificator-project/Strapi-Extension">View on GitHub ↗</a>
 				</div>
 			</div>
@@ -96,7 +96,7 @@ const destinations = [
 	<section class="section-space install-section">
 		<div class="site-shell install-card">
 			<div>
-				<p class="eyebrow">Install the preview</p><h2>Start integration testing with Strapi 5.</h2><p>
+				<p class="eyebrow">Install the stable release</p><h2>Start with Strapi 5.</h2><p>
 					Create a Strapi key in the <a href="/dashboard/">web dashboard (beta)</a> or mobile app. Keep the API key and optional HiveMQ credentials
 					in server environment variables. No connection secret is entered in the browser-side rule editor.
 				</p>
@@ -112,10 +112,10 @@ const destinations = [
 
 	<section class="preview-note">
 		<div class="site-shell">
-			<strong>Preview status</strong><p>
-				Version 0.1.1 is ready for integration testing, but should not yet be the only record of a critical business, compliance, or security
-				event.
-			</p><a href="/blog/notificator-for-strapi-extension-preview/">Read the preview announcement →</a>
+			<strong>Stable 1.0.0 release</strong><p>
+				The Strapi Extension is ready for production integration. Continue to use a separate operational path for critical business,
+				compliance, or security events.
+			</p><a href="/blog/notificator-for-strapi-extension-preview/">Read the original announcement →</a>
 		</div>
 	</section>
 </BaseLayout>

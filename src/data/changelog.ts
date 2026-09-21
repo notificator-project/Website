@@ -35,6 +35,75 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "strapi-extension-1-0-0",
+		date: "2026-09-21",
+		system: "strapi",
+		version: "1.0.0",
+		title: "The Strapi Extension reaches its first stable release",
+		summary:
+			"Notificator for Strapi is now a stable Strapi 5 integration with account-managed MQTT delivery and an explicit custom-broker fallback.",
+		changes: [
+			"Adds a Use account MQTT toggle that reuses the encrypted HiveMQ connection saved to the Strapi API key's Notificator account.",
+			"Keeps custom HiveMQ configuration available for installations that use a different broker connection.",
+			"Keeps broker passwords out of Strapi account settings and the signed account-mode request.",
+			"Promotes the extension and setup documentation from preview to stable 1.0.0 guidance.",
+		],
+		link: {
+			label: "View the Strapi Extension release",
+			href: "https://github.com/notificator-project/Strapi-Extension/releases/tag/v1.0.0",
+		},
+	},
+	{
+		id: "astro-integration-1-0-0",
+		date: "2026-09-21",
+		system: "astro",
+		version: "1.0.0",
+		title: "The Astro integration reaches its first stable release",
+		summary: "The server-only Astro package is now stable and can use the encrypted MQTT connection saved to the matching Notificator account.",
+		changes: [
+			"Adds useAccountMqtt for successful-build notifications and mqttConnectionMode: account for server helpers.",
+			"Keeps API keys and broker credentials on trusted server runtimes only.",
+			"Publishes stable package and documentation guidance for Astro 5 and newer.",
+		],
+		link: {
+			label: "View the Astro Integration release",
+			href: "https://github.com/notificator-project/astro/releases/tag/v1.0.0",
+		},
+	},
+	{
+		id: "node-sdk-account-mqtt",
+		date: "2026-09-21",
+		system: "api",
+		version: "0.1.2",
+		title: "The Node.js SDK can reuse account MQTT",
+		summary:
+			"Server-side SDK clients can opt into the encrypted HiveMQ connection saved to the same Notificator account as their API key.",
+		changes: [
+			"Adds mqttConnectionMode: account for account-managed device delivery.",
+			"Expands the typed payload contract for account and custom MQTT modes.",
+			"Keeps the SDK server-only and never exposes broker credentials to applications.",
+		],
+		link: {
+			label: "View the Node.js SDK release",
+			href: "https://github.com/notificator-project/Node-SDK/releases/tag/v0.1.2",
+		},
+	},
+	{
+		id: "dashboard-browser-notifications",
+		date: "2026-09-21",
+		system: "dashboard",
+		version: "0.9.0 Beta",
+		title: "Browser alerts for the dashboard",
+		summary: "The dashboard can now deliver native browser notifications for new alerts when it is open in another tab or window.",
+		changes: [
+			"Adds an opt-in Browser notifications setting with browser permission status and a test notification.",
+			"Uses native notifications only while the dashboard is hidden or unfocused, keeping in-dashboard toasts for active sessions.",
+			"Falls back to in-dashboard toasts when native notifications are unsupported or blocked.",
+			"Keeps notification permission and preferences local to the current browser without storing a subscription in the Notificator account.",
+		],
+		link: { label: "Read the dashboard guide", href: "https://docs.notificator-project.com/guides/web-dashboard/" },
+	},
+	{
 		id: "api-account-managed-mqtt-delivery",
 		date: "2026-09-21",
 		system: "api",
