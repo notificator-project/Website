@@ -39,12 +39,13 @@ export const changelogEntries: ChangelogEntry[] = [
 		date: "2026-09-22",
 		system: "dashboard",
 		version: "UX polish",
-		title: "Notification rows are clearer and easier to scan",
-		summary: "The dashboard notification lists now keep timestamps aligned and make the complete row the navigation target.",
+		title: "Dashboard flows are clearer and safer",
+		summary: "The dashboard notification lists now keep timestamps aligned, while account recovery correctly respects MFA protection.",
 		changes: [
 			"Keeps relative timestamps such as ‘3 minutes ago’ on a single line with steadier numeric alignment.",
 			"Removes redundant chevrons while preserving full-row navigation on the overview and Notifications page.",
 			"Keeps row actions independently clickable so archive, unread, and delete controls continue to work as expected.",
+			"Routes password resets through the existing MFA verification step before allowing a password update.",
 		],
 	},
 	{
