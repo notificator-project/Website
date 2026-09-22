@@ -4,7 +4,7 @@ author:
     name: Vagelis P.
     link: https://github.com/vagelisp
 title: "A Notificator Dashboard for the Browser"
-description: "The Notificator web dashboard is now available as a public beta for account setup, API keys, notifications, and connected device management."
+description: "The Notificator web dashboard is a public beta for account setup, API keys, notifications, connected devices, browser alerts, and account security."
 image:
     source: "@assets/images/blog/notificator-dashboard-beta.png"
     alt: "Notificator dashboard landing page with product overview and sign-in form"
@@ -12,6 +12,8 @@ tags: ["Notificator Project", "Web Dashboard", "API Keys", "Devices", "Open Sour
 ---
 
 Notificator now has another place to begin: the [web dashboard](https://dashboard.notificator-project.com).
+
+_Updated 22 September 2026._
 
 The dashboard is a public beta for people who want to create a Notificator account, manage integrations, read connected notifications, or keep an eye on their devices without installing the mobile app. It uses the same account and connected data as the mobile app, so you can move between the two whenever it is useful.
 
@@ -25,7 +27,7 @@ The dashboard is useful even when a phone is not part of the setup. It can creat
 
 Connected notifications can be searched and filtered by their useful context, including CMS and non-CMS sources. Open an alert to review its fields and raw payload, mark it read or unread, or lock important history so it is not removed by bulk cleanup.
 
-The dashboard also shows a small toast when a new notification arrives while the dashboard is open. It is deliberately an open-dashboard experience for now, not background browser push. Mobile push remains available through the [Notificator iOS app](https://apps.apple.com/app/notificator-project/id6758410275) when you want alerts away from your desk.
+The dashboard shows an in-app toast when you are working in it and can now send a native browser notification when it is open in another tab or window. Enable **Browser notifications** in **Settings**, grant permission, and use the test action to verify delivery. Existing alerts are not replayed, and the dashboard falls back to in-app toasts when native notifications are unavailable or blocked. Mobile push remains available through the [Notificator iOS app](https://apps.apple.com/app/notificator-project/id6758410275) when you want alerts away from your desk.
 
 ## Keep an eye on devices
 
@@ -37,10 +39,14 @@ _Updated 3 September 2026._ Session-only storage remains the default: connection
 
 You can remove the account copy, switch back to session-only storage, or clear the current browser session separately. Removing the account copy does not erase credentials already held by another browser or device. Your broker remains yours. The hosted API can now let the WordPress plugin reuse the saved connection through an authenticated `wordpress_server` API key without returning the broker password. The mobile app continues to use its own secure connection storage.
 
+## Profile and account security
+
+The **Account** page now keeps the shared identity and security controls together. You can update your profile, request an email change with confirmation, and change your password after entering the current password. You can also enroll a TOTP authenticator by scanning a QR code or entering the setup key manually, verify the six-digit code, and remove 2FA later from the same panel. The dashboard and mobile app use the same Supabase account and MFA factors.
+
 ## The app and dashboard have different strengths
 
 The dashboard is the quickest route for account administration, API keys, notification history, and device overview. The mobile app remains the place for mobile push permission, on-the-go alerts, and immediate brightness or volume controls.
 
 WordPress dashboard alerts and Strapi panel activity can still stay local inside their own admin areas without an account. The web dashboard is a shared inbox for events that integrations send through a connected API key.
 
-The [dashboard guide](https://docs.notificator-project.com/guides/web-dashboard/) covers the current beta behavior, setup, security boundaries, MQTT configuration, notifications, and OTA controls. Features will continue to evolve as we learn from real usage.
+The [dashboard guide](https://docs.notificator-project.com/guides/web-dashboard/) covers the current beta behavior, setup, account security, MQTT configuration, notifications, and OTA controls. Features will continue to evolve as we learn from real usage.
