@@ -35,6 +35,21 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "dashboard-account-security-controls",
+		date: "2026-09-22",
+		system: "dashboard",
+		version: "Account security update",
+		title: "Account security is clearer in the dashboard",
+		summary: "The dashboard account page now brings profile, email, password, and authenticator controls together with safer setup guidance.",
+		changes: [
+			"Adds email changes with Supabase confirmation links and a clear pending-confirmation message.",
+			"Requires the current password before changing an account password, then validates the new password confirmation.",
+			"Adds TOTP authenticator enrollment and removal with QR setup, a manual setup key, six-digit verification, and clearer enabled or disabled states.",
+			"Improves account field sizing, spacing, invalid-date handling, and responsive security-panel layout.",
+		],
+		link: { label: "Read the web dashboard guide", href: "https://docs.notificator-project.com/guides/web-dashboard/#account-and-security" },
+	},
+	{
 		id: "dashboard-notification-row-polish",
 		date: "2026-09-22",
 		system: "dashboard",
