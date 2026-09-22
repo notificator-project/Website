@@ -35,6 +35,19 @@ export const changelogSystems: Array<{
 
 export const changelogEntries: ChangelogEntry[] = [
 	{
+		id: "dashboard-notification-row-polish",
+		date: "2026-09-22",
+		system: "dashboard",
+		version: "UX polish",
+		title: "Notification rows are clearer and easier to scan",
+		summary: "The dashboard notification lists now keep timestamps aligned and make the complete row the navigation target.",
+		changes: [
+			"Keeps relative timestamps such as ‘3 minutes ago’ on a single line with steadier numeric alignment.",
+			"Removes redundant chevrons while preserving full-row navigation on the overview and Notifications page.",
+			"Keeps row actions independently clickable so archive, unread, and delete controls continue to work as expected.",
+		],
+	},
+	{
 		id: "website-npm-footer-link",
 		date: "2026-09-22",
 		system: "website",
